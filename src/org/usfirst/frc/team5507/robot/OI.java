@@ -7,6 +7,8 @@
 
 package org.usfirst.frc.team5507.robot;
 
+import org.usfirst.frc.team5507.robot.commands.GripperClose;
+import org.usfirst.frc.team5507.robot.commands.GripperOpen;
 import org.usfirst.frc.team5507.robot.commands.IntakeTakeIn;
 import org.usfirst.frc.team5507.robot.commands.IntakeTakeOut;
 
@@ -51,11 +53,16 @@ public class OI {
 	
 	public OI()
 	{
-		Button aButton = new JoystickButton(stick, 1);
-		Button xButton = new JoystickButton(stick, 3);
+		Button aButton = new JoystickButton(stick, 1);//Takes in box
+		Button xButton = new JoystickButton(stick, 3);//Spits out box
+		Button leftButton = new JoystickButton(stick, 5); //open gripper arms
+		Button rightButton = new JoystickButton(stick, 6); //close gripper arms
 		
 		aButton.whileHeld(new IntakeTakeIn());
-		xButton.whileHeld(new IntakeTakeOut());
+		xButton.whileHeld(new IntakeTakeOut());		
+		leftButton.whenPressed(new GripperOpen());
+		rightButton.whenPressed(new GripperClose());
+				
 	}
 	
 	public Joystick getJoystick() {
