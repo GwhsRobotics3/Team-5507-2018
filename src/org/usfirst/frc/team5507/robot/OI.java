@@ -57,4 +57,8 @@ public class OI {
 		aButton.whileHeld(new IntakeTakeIn());
 		xButton.whileHeld(new IntakeTakeOut());
 	}
+	
+	public Joystick getJoystick() {
+		return stick;
+	}
 }
