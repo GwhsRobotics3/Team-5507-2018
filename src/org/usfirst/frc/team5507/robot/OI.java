@@ -7,6 +7,13 @@
 
 package org.usfirst.frc.team5507.robot;
 
+import org.usfirst.frc.team5507.robot.commands.IntakeTakeIn;
+import org.usfirst.frc.team5507.robot.commands.IntakeTakeOut;
+
+import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.buttons.Button;
+import edu.wpi.first.wpilibj.buttons.JoystickButton;
+
 /**
  * This class is the glue that binds the controls on the physical operator
  * interface to the commands and command groups that allow control of the robot.
@@ -39,4 +46,15 @@ public class OI {
 	// Start the command when the button is released and let it run the command
 	// until it is finished as determined by it's isFinished method.
 	// button.whenReleased(new ExampleCommand());
+	
+	Joystick stick = new Joystick(0);
+	
+	public OI()
+	{
+		Button aButton = new JoystickButton(stick, 1);
+		Button xButton = new JoystickButton(stick, 3);
+		
+		aButton.whileHeld(new IntakeTakeIn());
+		xButton.whileHeld(new IntakeTakeOut());
+	}
 }
