@@ -30,7 +30,14 @@ public class RobotMap {
 	
 	// CAN Addresses
 	public static int driveFrontLeft = 1;
-	public static int driveFrontRight = 2;
-	public static int driveBackLeft = 3;
-	public static int driveBackRight = 4;
+	public static int driveFrontRight = 3;
+	public static int driveBackLeft = 0;
+	public static int driveBackRight = 2;
+	public static int encoder = 4;
+	
+	public static int leftArm = 11;
+	public static int rightArm = 12;
+	
+	public static int climb = 13;
+		
 }

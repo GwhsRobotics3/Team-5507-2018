@@ -6,7 +6,6 @@ import org.usfirst.frc.team5507.robot.commands.DriveWithJoystick;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
 import edu.wpi.first.wpilibj.Joystick;
-import edu.wpi.first.wpilibj.Spark;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.drive.MecanumDrive;
 
@@ -21,6 +20,7 @@ public class DriveTrain extends Subsystem {
 	private WPI_TalonSRX frontRight = new WPI_TalonSRX(RobotMap.driveFrontRight);
 	private WPI_TalonSRX backLeft = new WPI_TalonSRX(RobotMap.driveBackLeft);
 	private WPI_TalonSRX backRight = new WPI_TalonSRX(RobotMap.driveBackRight);
+	//ADD ENCODERS
 	
 	private MecanumDrive m_drive = new MecanumDrive(frontLeft, frontRight, backLeft, backRight);
 
@@ -38,7 +38,8 @@ public class DriveTrain extends Subsystem {
     
     public void drive(Joystick stick)
     {
-    	drive(-stick.getY(), -stick.getX(), 0); //to do: add rotation
+    	drive(-stick.getRawAxis(0), stick.getRawAxis(1), stick.getRawAxis(3) - stick.getRawAxis(2));
+ 
     }
 }
 
