@@ -22,7 +22,11 @@ public class Climber extends Subsystem {
     
     public void up()
     {
-    	
+    	pulley.set(1);
+    }
+    public void down()
+    {
+    	pulley.set(-1);
     }
 }
 
