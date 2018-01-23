@@ -15,6 +15,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import org.usfirst.frc.team5507.robot.commands.ExampleCommand;
 import org.usfirst.frc.team5507.robot.subsystems.Climber;
 import org.usfirst.frc.team5507.robot.subsystems.DriveTrain;
+import org.usfirst.frc.team5507.robot.subsystems.Elevator;
 import org.usfirst.frc.team5507.robot.subsystems.EncoderDemo;
 import org.usfirst.frc.team5507.robot.subsystems.ExampleSubsystem;
 import org.usfirst.frc.team5507.robot.subsystems.Gripper;
@@ -36,6 +37,8 @@ public class Robot extends TimedRobot {
 	public static Gripper m_gripper = new Gripper();
 	public static EncoderDemo m_encoder = new EncoderDemo();
 	public static Climber m_climber = new Climber();
+	public static Elevator m_elevator = new Elevator();
+	
 	Command m_autonomousCommand;
 	SendableChooser<Command> m_chooser = new SendableChooser<>();
 

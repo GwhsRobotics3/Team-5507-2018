@@ -9,9 +9,8 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 /**
  *
  */
-public class Climber extends Subsystem {
-
-	private static WPI_TalonSRX climberPulley = new WPI_TalonSRX(RobotMap.climb);
+public class Elevator extends Subsystem {
+	private static WPI_TalonSRX elevatorPulley = new WPI_TalonSRX(RobotMap.elevator);
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
 
@@ -20,13 +19,14 @@ public class Climber extends Subsystem {
         //setDefaultCommand(new MySpecialCommand());
     }
     
-    public void up()
+    public void goUp()
     {
-    	climberPulley.set(1);
+    	elevatorPulley.set(1);
     }
-    public void down()
+    
+    public void goDown()
     {
-    	climberPulley.set(-1);
+    	elevatorPulley.set(-1);
     }
 }
 
