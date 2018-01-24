@@ -7,6 +7,10 @@
 
 package org.usfirst.frc.team5507.robot;
 
+import org.usfirst.frc.team5507.robot.commands.ClimberDown;
+import org.usfirst.frc.team5507.robot.commands.ClimberUp;
+import org.usfirst.frc.team5507.robot.commands.ElevatorDown;
+import org.usfirst.frc.team5507.robot.commands.ElevatorUp;
 import org.usfirst.frc.team5507.robot.commands.EncoderToAngle;
 import org.usfirst.frc.team5507.robot.commands.GripperClose;
 import org.usfirst.frc.team5507.robot.commands.GripperOpen;
@@ -58,15 +62,24 @@ public class OI {
 		Button xButton = new JoystickButton(stick, 3);//Spits out box
 		Button leftButton = new JoystickButton(stick, 5); //open gripper arms
 		Button rightButton = new JoystickButton(stick, 6); //close gripper arms
-		Button bButton = new JoystickButton(stick, 2); //test button for encoder 90
-		Button yButton = new JoystickButton(stick, 4);//test button for encoder 180
+		//Button bButton = new JoystickButton(stick, 2); //test button for encoder 90
+		//Button yButton = new JoystickButton(stick, 4);//test button for encoder 180
+		Button backLeft = new JoystickButton(stick,5); // up elevator
+		Button backRight = new JoystickButton(stick, 6);
+		Button bButton = new JoystickButton(stick, 2); 
+		Button yButton = new JoystickButton(stick, 4);
 		
 		aButton.whileHeld(new IntakeTakeIn());
 		xButton.whileHeld(new IntakeTakeOut());		
 		leftButton.whenPressed(new GripperOpen());
 		rightButton.whenPressed(new GripperClose());
-		bButton.whenPressed(new EncoderToAngle(90));
-		yButton.whenPressed(new EncoderToAngle(180));
+		backLeft.whenPressed(new ClimberUp());
+		backRight.whenPressed(new ClimberDown());
+		bButton.whenPressed(new ElevatorUp());
+		yButton.whenPressed(new ElevatorDown());
+		
+		
+		
 		
 				
 	}

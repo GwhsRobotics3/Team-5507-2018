@@ -13,7 +13,9 @@ import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import org.usfirst.frc.team5507.robot.commands.ExampleCommand;
+import org.usfirst.frc.team5507.robot.subsystems.Climber;
 import org.usfirst.frc.team5507.robot.subsystems.DriveTrain;
+import org.usfirst.frc.team5507.robot.subsystems.Elevator;
 import org.usfirst.frc.team5507.robot.subsystems.EncoderDemo;
 import org.usfirst.frc.team5507.robot.subsystems.ExampleSubsystem;
 import org.usfirst.frc.team5507.robot.subsystems.Gripper;
@@ -25,6 +27,9 @@ import org.usfirst.frc.team5507.robot.subsystems.Intake;
  * documentation. If you change the name of this class or the package after
  * creating this project, you must also update the build.properties file in the
  * project.
+ * 
+ * @author Julia Ma, Jennessa Ma, Daphne Nong, Thomas Lee
+ * SHOUTOUT TO GREG OUR ONE AND ONLY MENTOR, THE MASTERMIND OF THIS CODE 
  */
 public class Robot extends TimedRobot {
 	public static final ExampleSubsystem kExampleSubsystem
@@ -34,6 +39,9 @@ public class Robot extends TimedRobot {
 	public static DriveTrain m_driveTrain = new DriveTrain();
 	public static Gripper m_gripper = new Gripper();
 	public static EncoderDemo m_encoder = new EncoderDemo();
+	public static Climber m_climber = new Climber();
+	public static Elevator m_elevator = new Elevator();
+	
 	Command m_autonomousCommand;
 	SendableChooser<Command> m_chooser = new SendableChooser<>();
 
