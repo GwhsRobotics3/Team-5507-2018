@@ -26,9 +26,11 @@ public class AutonomousDriveDropPickUp extends CommandGroup {
         // arm.
     	addSequential(new DriveForward(3.0));
     	addSequential(new DriveTurnByAngle(-90));
-    	addSequential(new DriveForward(3.0));
+    	addParallel(new DriveForward(3.0));
+    	addParallel(new ElevatorUp());
     	addSequential(new IntakeTakeOut());
-    	addSequential(new DriveSideways(3.0, 0.8));
+    	addParallel(new ElevatorDown());
+    	addParallel(new DriveSideways(3.0, 0.8));
     	addSequential(new DriveForward(1.0));
     	addSequential(new DriveTurnByAngle(-90));
     	addSequential(new DriveForward(1.0));
