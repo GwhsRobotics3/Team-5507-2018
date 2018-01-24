@@ -8,6 +8,7 @@
 package org.usfirst.frc.team5507.robot;
 
 import edu.wpi.first.wpilibj.DriverStation;
+import edu.wpi.first.wpilibj.I2C;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
@@ -56,8 +57,8 @@ public class Robot extends TimedRobot {
 	
 	public Robot() {
 	   try {
-            m_ahrs = new AHRS(SerialPort.Port.kMXP, SerialDataType.kProcessedData, (byte)50);
-            //ahrs.enableLogging(true);
+		    m_ahrs = new AHRS(I2C.Port.kMXP);
+       	    m_ahrs.enableLogging(true);
         } catch (RuntimeException ex ) {
             DriverStation.reportError("Error instantiating navX MXP:  " + ex.getMessage(), true);
         }
