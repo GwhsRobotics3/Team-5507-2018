@@ -7,9 +7,11 @@
 
 package org.usfirst.frc.team5507.robot;
 
+import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
+import edu.wpi.first.wpilibj.SerialPort;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import org.usfirst.frc.team5507.robot.commands.ExampleCommand;
@@ -20,6 +22,9 @@ import org.usfirst.frc.team5507.robot.subsystems.EncoderDemo;
 import org.usfirst.frc.team5507.robot.subsystems.ExampleSubsystem;
 import org.usfirst.frc.team5507.robot.subsystems.Gripper;
 import org.usfirst.frc.team5507.robot.subsystems.Intake;
+
+import com.kauailabs.navx.frc.AHRS;
+import com.kauailabs.navx.frc.AHRS.SerialDataType;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -42,9 +47,19 @@ public class Robot extends TimedRobot {
 	public static Elevator m_elevator = new Elevator();
 	public static Gripper m_gripper = new Gripper();
 	public static Intake m_intake = new Intake();
+	public static AHRS m_ahrs;
 	
 	Command m_autonomousCommand;
 	SendableChooser<Command> m_chooser = new SendableChooser<>();
+	
+	public Robot() {
+	   try {
+            m_ahrs = new AHRS(SerialPort.Port.kMXP, SerialDataType.kProcessedData, (byte)50);
+            //ahrs.enableLogging(true);
+        } catch (RuntimeException ex ) {
+            DriverStation.reportError("Error instantiating navX MXP:  " + ex.getMessage(), true);
+        }
+	}
 	
 	public void putSmartDashboardData() {
 		SmartDashboard.putData(m_climber);
@@ -53,6 +68,7 @@ public class Robot extends TimedRobot {
 		SmartDashboard.putData(m_encoder);
 		SmartDashboard.putData(m_gripper);
 		SmartDashboard.putData(m_intake);
+		SmartDashboard.putNumber("IMU_Yaw", m_ahrs.getYaw());
 	}
 
 	/**
