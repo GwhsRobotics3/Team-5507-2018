@@ -26,7 +26,7 @@ public class DriveTrain extends Subsystem {
 	private WPI_TalonSRX backRight = new WPI_TalonSRX(RobotMap.driveBackRight);
 	//ADD ENCODERS
 	
-	private MecanumDrive m_drive = new MecanumDrive(frontLeft, frontRight, backLeft, backRight);
+	private MecanumDrive m_drive = new MecanumDrive(frontLeft, backLeft, frontRight, backRight);
 
 	public DriveTrain() {
 		configTalon(frontLeft);
