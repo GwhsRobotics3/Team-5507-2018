@@ -28,22 +28,32 @@ import org.usfirst.frc.team5507.robot.subsystems.Intake;
  * creating this project, you must also update the build.properties file in the
  * project.
  * 
- * @author Julia Ma, Jennessa Ma, Daphne Nong, Thomas Lee
+ * @author Julia Ma, Jennessa Ma, Daphne Nong, Thomas Lee, Riley Blair, Nelson Truong, Greg Marra
  * SHOUTOUT TO GREG OUR ONE AND ONLY MENTOR, THE MASTERMIND OF THIS CODE 
  */
 public class Robot extends TimedRobot {
 	public static final ExampleSubsystem kExampleSubsystem
 			= new ExampleSubsystem();
 	public static OI m_oi;
-	public static Intake m_intake = new Intake();
-	public static DriveTrain m_driveTrain = new DriveTrain();
-	public static Gripper m_gripper = new Gripper();
-	public static EncoderDemo m_encoder = new EncoderDemo();
+
 	public static Climber m_climber = new Climber();
+	public static DriveTrain m_driveTrain = new DriveTrain();
+	public static EncoderDemo m_encoder = new EncoderDemo();
 	public static Elevator m_elevator = new Elevator();
+	public static Gripper m_gripper = new Gripper();
+	public static Intake m_intake = new Intake();
 	
 	Command m_autonomousCommand;
 	SendableChooser<Command> m_chooser = new SendableChooser<>();
+	
+	public void putSmartDashboardData() {
+		SmartDashboard.putData(m_climber);
+		SmartDashboard.putData(m_driveTrain);
+		SmartDashboard.putData(m_elevator);
+		SmartDashboard.putData(m_encoder);
+		SmartDashboard.putData(m_gripper);
+		SmartDashboard.putData(m_intake);
+	}
 
 	/**
 	 * This function is run when the robot is first started up and should be
@@ -106,6 +116,7 @@ public class Robot extends TimedRobot {
 	@Override
 	public void autonomousPeriodic() {
 		Scheduler.getInstance().run();
+		putSmartDashboardData();
 	}
 
 	@Override
@@ -125,6 +136,7 @@ public class Robot extends TimedRobot {
 	@Override
 	public void teleopPeriodic() {
 		Scheduler.getInstance().run();
+		putSmartDashboardData();
 	}
 
 	/**
