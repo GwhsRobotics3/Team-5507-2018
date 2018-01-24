@@ -36,42 +36,26 @@ public class DriveTurnByAngle extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	if (angle == -90)
+    	double angleError = (angle - ahrs.getYaw());
+    	if (angleError < 0)
     	{
-    		if(ahrs.getYaw() > -88)
-        	{
-        		Robot.m_driveTrain.drive(0, 0, 0.5);
-        	}
-        	else if((ahrs.getYaw() > -92) && (ahrs.getYaw() < -88))
-        	{
-        		Robot.m_driveTrain.drive(0, 0, 0);
-        	}
-        	else if(ahrs.getYaw() < -92)
-        	{
-        		Robot.m_driveTrain.drive(0, 0,-0.5);
-        	}
+    		Robot.m_driveTrain.drive(0, 0, 0.5);
     	}
-    	else 
+    	else if(angleError > 0)
     	{
-    		if(ahrs.getYaw() < 88)
-        	{
-    			Robot.m_driveTrain.drive(0, 0,-0.5);
-        	}
-        	else if((ahrs.getYaw() < 92) && (ahrs.getYaw() > 88))
-        	{
-        		Robot.m_driveTrain.drive(0, 0, 0);
-        	}
-        	else if(ahrs.getYaw() > 92)
-        	{
-        		Robot.m_driveTrain.drive(0, 0, 0.5);
-        	}
+    		Robot.m_driveTrain.drive(0, 0,-0.5);
     	}
     	
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-    	return (((ahrs.getYaw() > -92) && (ahrs.getYaw() < -88)) || ((ahrs.getYaw() < 92) && (ahrs.getYaw() > 88)));    	  	
+    	double angleError = (angle - ahrs.getYaw());
+    	if(Math.abs(angleError) < 2)
+    	{
+    		return true;
+    	}
+    	return false;
     }
 
     // Called once after isFinished returns true
