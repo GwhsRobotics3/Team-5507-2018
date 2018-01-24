@@ -29,13 +29,13 @@ public class DriveTurnByAngle extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	double angleError = (angle - Robot.m_ahrs.getYaw());
-    	if (angleError < 0)
+    	if (angleError > 0)
     	{
-    		Robot.m_driveTrain.drive(0, 0, 0.5);
+    		Robot.m_driveTrain.drive(0, 0, 0.3);
     	}
-    	else if(angleError > 0)
+    	else if(angleError < 0)
     	{
-    		Robot.m_driveTrain.drive(0, 0,-0.5);
+    		Robot.m_driveTrain.drive(0, 0,-0.3);
     	}
     	
     }

@@ -17,6 +17,8 @@ import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 import org.usfirst.frc.team5507.robot.commands.AutonomousDriveStraight;
+import org.usfirst.frc.team5507.robot.commands.AutonomousDriveStraightTurnLeft;
+import org.usfirst.frc.team5507.robot.commands.DriveTurnByAngle;
 import org.usfirst.frc.team5507.robot.commands.ExampleCommand;
 import org.usfirst.frc.team5507.robot.subsystems.Climber;
 import org.usfirst.frc.team5507.robot.subsystems.DriveTrain;
@@ -114,7 +116,8 @@ public class Robot extends TimedRobot {
 	 */
 	@Override
 	public void autonomousInit() {
-		m_autonomousCommand = new AutonomousDriveStraight(); //m_chooser.getSelected();
+		m_ahrs.reset();
+		m_autonomousCommand = new AutonomousDriveStraightTurnLeft(); //m_chooser.getSelected();
 
 		/*
 		 * String autoSelected = SmartDashboard.getString("Auto Selector",
