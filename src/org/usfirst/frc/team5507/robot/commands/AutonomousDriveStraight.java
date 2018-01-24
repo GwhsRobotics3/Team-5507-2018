@@ -25,5 +25,6 @@ public class AutonomousDriveStraight extends CommandGroup {
         // a CommandGroup containing them would require both the chassis and the
         // arm.
     	addSequential(new DriveForward(5.0));
+    	addSequential(new DriveStop());
     }
 }

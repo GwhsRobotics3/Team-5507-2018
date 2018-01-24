@@ -42,5 +42,6 @@ public class AutonomousDriveDropPickUp extends CommandGroup {
     	addSequential(new DriveSideways(4.0, 0.8));
     	addSequential(new DriveForward(1.0));
         addSequential(new IntakeTakeOut());
+        addSequential(new DriveStop());
     }
 }
