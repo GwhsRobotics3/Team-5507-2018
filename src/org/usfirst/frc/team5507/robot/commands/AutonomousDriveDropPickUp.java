@@ -3,11 +3,11 @@ package org.usfirst.frc.team5507.robot.commands;
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
 /**
- * drives straight, turns left, drop
+ * drives to switch, drops pre-loaded box, picks up new box, goes to exchange
  */
-public class AutonomousDriveStraightTurnLeft extends CommandGroup {
+public class AutonomousDriveDropPickUp extends CommandGroup {
 
-    public AutonomousDriveStraightTurnLeft() {
+    public AutonomousDriveDropPickUp() {
         // Add Commands here:
         // e.g. addSequential(new Command1());
         //      addSequential(new Command2());
@@ -29,6 +29,18 @@ public class AutonomousDriveStraightTurnLeft extends CommandGroup {
     	addParallel(new DriveForward(3.0));
     	addParallel(new ElevatorUp());
     	addSequential(new IntakeTakeOut());
-    	addSequential(new ElevatorDown());
+    	addParallel(new ElevatorDown());
+    	addParallel(new DriveSideways(3.0, 0.8));
+    	addSequential(new DriveForward(1.0));
+    	addSequential(new DriveTurnByAngle(-90));
+    	addSequential(new DriveForward(1.0));
+    	addSequential(new GripperOpen());
+    	addSequential(new IntakeTakeIn());
+    	addSequential(new GripperClose());
+    	addSequential(new DriveSideways(2.0, -0.8));
+    	addSequential(new DriveForward(4.0));
+    	addSequential(new DriveSideways(4.0, 0.8));
+    	addSequential(new DriveForward(1.0));
+        addSequential(new IntakeTakeOut());
     }
 }

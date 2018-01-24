@@ -8,16 +8,18 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class DriveForward extends Command {
+public class DriveSideways extends Command {
 
 	private Timer m_timer = new Timer(); //subjected to change with encoders
 	private double time;
+	private double speed;
 	
-    public DriveForward(double t) {
+    public DriveSideways(double t, double s) {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     	requires(Robot.m_driveTrain);   
     	time = t;
+    	speed = s;
     }
 
     // Called just before this Command runs the first time
@@ -28,7 +30,7 @@ public class DriveForward extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.m_driveTrain.drive(0, 0.8, 0);
+    		Robot.m_driveTrain.drive(speed, 0, 0);
     }
 
     // Make this return true when this Command no longer needs to run execute()
@@ -37,7 +39,7 @@ public class DriveForward extends Command {
     	{
     		return true;
     	}
-		return false;
+        return false;
     }
 
     // Called once after isFinished returns true
