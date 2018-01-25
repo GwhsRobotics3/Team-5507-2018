@@ -4,6 +4,7 @@ import org.usfirst.frc.team5507.robot.Robot;
 import org.usfirst.frc.team5507.robot.RobotMap;
 
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  *
@@ -31,6 +32,7 @@ public class DriveForwardDistance extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	Robot.m_driveTrain.drive(d1);
+    	SmartDashboard.putNumber("Target position", d1);
     }
 
     // Make this return true when this Command no longer needs to run execute()

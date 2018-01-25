@@ -121,7 +121,7 @@ public class Robot extends TimedRobot {
 	@Override
 	public void autonomousInit() {
 		m_ahrs.reset();
-		m_autonomousCommand = new AutonomousDriveStraightTurnLeft(); //m_chooser.getSelected();
+		m_autonomousCommand = new AutonomousDriveStraight(); //m_chooser.getSelected();
 
 		/*
 		 * String autoSelected = SmartDashboard.getString("Auto Selector",
