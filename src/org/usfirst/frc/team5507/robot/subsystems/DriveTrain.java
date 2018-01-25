@@ -86,8 +86,12 @@ public class DriveTrain extends Subsystem {
     
     public void drive(Joystick stick)
     {
-    	drive(stick.getRawAxis(0), -stick.getRawAxis(1), stick.getRawAxis(3) - stick.getRawAxis(2));
- 
+    	double y = stick.getRawAxis(1);
+    	double x = stick.getRawAxis(0);
+    	if(Math.abs(x) > .1 || Math.abs(y) > .1)
+    	{
+    		drive(stick.getRawAxis(0), stick.getRawAxis(1), stick.getRawAxis(3) - stick.getRawAxis(2));
+    	}
     }
     public void drive(double targetPos)
     {
