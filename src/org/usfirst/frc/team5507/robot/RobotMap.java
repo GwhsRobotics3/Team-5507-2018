@@ -24,11 +24,16 @@ public class RobotMap {
 	// public static int rangefinderPort = 1;
 	// public static int rangefinderModule = 1;
 	
+	public static final double WHEEL_CIRCUMFERENCE = 18.84956;
+	public static final double TICKS_PER_REVOLUTION = 4096;
+	public static final double DISTANCE = TICKS_PER_REVOLUTION / WHEEL_CIRCUMFERENCE; //1 inch moved
+	
+	
 	// PWM Outputs
 	public static int intakeLeftMotor = 4;
 	public static int intakeRightMotor = 5;
 	
-	// CAN Addresses
+	// CAN Addresses 
 	public static int driveFrontLeft = 1;
 	public static int driveFrontRight = 3;
 	public static int driveBackLeft = 0;

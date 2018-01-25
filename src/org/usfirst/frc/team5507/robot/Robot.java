@@ -38,7 +38,7 @@ import com.kauailabs.navx.frc.AHRS.SerialDataType;
  * creating this project, you must also update the build.properties file in the
  * project.
  * 
- * @author Julia Ma, Jennessa Ma, Daphne Nong, Thomas Lee, Riley Blair, Nelson Truong, Greg Marra
+ * @author Julia Ma, Jennessa Ma, Daphne Nong, Thomas Lee, Riley Blair, Nelson Truong, GREG MARRA
  * SHOUTOUT TO GREG OUR ONE AND ONLY MENTOR, THE MASTERMIND OF THIS CODE 
  */
 public class Robot extends TimedRobot {
@@ -53,6 +53,7 @@ public class Robot extends TimedRobot {
 	public static Gripper m_gripper = new Gripper();
 	public static Intake m_intake = new Intake();
 	public static AHRS m_ahrs;
+	
 	
 	Command m_autonomousCommand;
 	SendableChooser<Command> m_chooser = new SendableChooser<>();
@@ -84,7 +85,10 @@ public class Robot extends TimedRobot {
 	public void robotInit() {
 		m_oi = new OI();
 		m_chooser.addDefault("Default Auto", new ExampleCommand());
-		// chooser.addObject("My Auto", new MyAutoCommand());
+		// chooser.addObject("My Auto", new MyAutoComman
+		//+d());
+		
+		
 		SmartDashboard.putData("Auto mode", m_chooser);
 	}
 

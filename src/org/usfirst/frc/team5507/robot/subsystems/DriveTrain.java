@@ -1,6 +1,7 @@
 package org.usfirst.frc.team5507.robot.subsystems;
 
 import org.usfirst.frc.team5507.robot.Constants;
+import org.usfirst.frc.team5507.robot.Robot;
 import org.usfirst.frc.team5507.robot.RobotMap;
 import org.usfirst.frc.team5507.robot.commands.DriveWithJoystick;
 
@@ -8,6 +9,8 @@ import com.ctre.phoenix.motorcontrol.FeedbackDevice;
 import com.ctre.phoenix.motorcontrol.StatusFrameEnhanced;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
+import edu.wpi.first.wpilibj.CounterBase.EncodingType;
+import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.drive.MecanumDrive;
@@ -25,7 +28,9 @@ public class DriveTrain extends Subsystem {
 	private WPI_TalonSRX backLeft = new WPI_TalonSRX(RobotMap.driveBackLeft);
 	private WPI_TalonSRX backRight = new WPI_TalonSRX(RobotMap.driveBackRight);
 	//ADD ENCODERS
-	
+	private Encoder leftEncoder = new Encoder(1, 2, false, EncodingType.k4X);
+	private Encoder rightEncoder = new Encoder(3, 4, false, EncodingType.k4X);  
+
 	private MecanumDrive m_drive = new MecanumDrive(frontLeft, backLeft, frontRight, backRight);
 
 	public DriveTrain() {
@@ -80,8 +85,15 @@ public class DriveTrain extends Subsystem {
     
     public void drive(Joystick stick)
     {
-    	drive(-stick.getRawAxis(0), stick.getRawAxis(1), stick.getRawAxis(3) - stick.getRawAxis(2));
+    	drive(stick.getRawAxis(0), stick.getRawAxis(1), stick.getRawAxis(3) - stick.getRawAxis(2));
  
+    }
+    public void drive(double targetPos)
+    {
+    	if(leftEncoder.getDistancePerPulse() < targetPos)
+    	{
+    		Robot.m_driveTrain.drive(0, 0.4, 0);
+    	}
     }
 }
 
