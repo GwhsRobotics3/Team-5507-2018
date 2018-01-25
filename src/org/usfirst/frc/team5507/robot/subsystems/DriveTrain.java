@@ -28,8 +28,8 @@ public class DriveTrain extends Subsystem {
 	private WPI_TalonSRX backLeft = new WPI_TalonSRX(RobotMap.driveBackLeft);
 	private WPI_TalonSRX backRight = new WPI_TalonSRX(RobotMap.driveBackRight);
 	//ADD ENCODERS
-	private Encoder leftEncoder = new Encoder(1, 2, false, EncodingType.k4X);
-	private Encoder rightEncoder = new Encoder(3, 4, false, EncodingType.k4X);  
+//	private Encoder leftEncoder = new Encoder(1, 2, false, EncodingType.k4X);
+//	private Encoder rightEncoder = new Encoder(3, 4, false, EncodingType.k4X);  
 
 	private MecanumDrive m_drive = new MecanumDrive(frontLeft, backLeft, frontRight, backRight);
 
@@ -78,6 +78,7 @@ public class DriveTrain extends Subsystem {
     
     public void drive(double ySpeed, double xSpeed, double zRotation)
     {
+    	
     	m_drive.driveCartesian(ySpeed, xSpeed, zRotation);
     	SmartDashboard.putNumber("frontleftpos", frontLeft.getSelectedSensorPosition(0));
     	SmartDashboard.putNumber("frontleftspd", frontLeft.getSelectedSensorVelocity(0));
@@ -85,12 +86,12 @@ public class DriveTrain extends Subsystem {
     
     public void drive(Joystick stick)
     {
-    	drive(stick.getRawAxis(0), stick.getRawAxis(1), stick.getRawAxis(3) - stick.getRawAxis(2));
+    	drive(stick.getRawAxis(0), -stick.getRawAxis(1), stick.getRawAxis(3) - stick.getRawAxis(2));
  
     }
     public void drive(double targetPos)
     {
-    	if(leftEncoder.getDistancePerPulse() < targetPos)
+    	if(frontLeft.getSelectedSensorPosition(0) < targetPos)
     	{
     		Robot.m_driveTrain.drive(0, 0.4, 0);
     	}
