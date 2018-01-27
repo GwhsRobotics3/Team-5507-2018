@@ -35,9 +35,9 @@ public class DriveTrain extends Subsystem {
 
 	public DriveTrain() {
 		configTalon(frontLeft);
-		//configTalon(frontRight);
-		//configTalon(backRight);
-		//configTalon(backLeft);
+		configTalon(frontRight);
+		configTalon(backRight);
+		configTalon(backLeft);
 	}
 	
 	 // config a talon motor controller with an Encoder
