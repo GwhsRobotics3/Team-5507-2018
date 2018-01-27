@@ -62,26 +62,23 @@ public class OI {
 		Button xButton = new JoystickButton(stick, 3);//Spits out box
 		Button leftButton = new JoystickButton(stick, 5); //open gripper arms
 		Button rightButton = new JoystickButton(stick, 6); //close gripper arms
-		//Button bButton = new JoystickButton(stick, 2); //test button for encoder 90
-		//Button yButton = new JoystickButton(stick, 4);//test button for encoder 180
+		Button bButton = new JoystickButton(stick, 2); //test button for encoder 90
+		Button yButton = new JoystickButton(stick, 4);//test button for encoder 180
 		Button backLeft = new JoystickButton(stick,5); // up elevator
 		Button backRight = new JoystickButton(stick, 6);
-		Button bButton = new JoystickButton(stick, 2); 
-		Button yButton = new JoystickButton(stick, 4);
+	//	Button bButton = new JoystickButton(stick, 2); 
+		//Button yButton = new JoystickButton(stick, 4);
 		
 		aButton.whileHeld(new IntakeTakeIn());
 		xButton.whileHeld(new IntakeTakeOut());		
 		leftButton.whenPressed(new GripperOpen());
 		rightButton.whenPressed(new GripperClose());
 		backLeft.whenPressed(new ClimberUp());
-		backRight.whenPressed(new ClimberDown());
+		backRight.whenPressed(new ClimberDown());		
 		bButton.whenPressed(new ElevatorUp());
 		yButton.whenPressed(new ElevatorDown());
 		
-		
-		
-		
-				
+
 	}
 	
 	public Joystick getJoystick() {
