@@ -142,6 +142,7 @@ public class Robot extends TimedRobot {
 	@Override
 	public void autonomousPeriodic() {
 		Scheduler.getInstance().run();
+		
 		putSmartDashboardData();
 		//SmartDashboard.putNumber("Position", Robot.leftEncoder);
 	}
