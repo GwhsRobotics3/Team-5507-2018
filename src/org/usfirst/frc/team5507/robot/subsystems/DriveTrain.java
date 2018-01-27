@@ -21,9 +21,10 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  */
 public class DriveTrain extends Subsystem {
 	private double pos;
+	private double x = frontLeft.getSelectedSensorPosition(0);
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
-	private WPI_TalonSRX frontLeft = new WPI_TalonSRX(RobotMap.driveFrontLeft);
+	private static WPI_TalonSRX frontLeft = new WPI_TalonSRX(RobotMap.driveFrontLeft);
 	private WPI_TalonSRX frontRight = new WPI_TalonSRX(RobotMap.driveFrontRight);
 	private WPI_TalonSRX backLeft = new WPI_TalonSRX(RobotMap.driveBackLeft);
 	private WPI_TalonSRX backRight = new WPI_TalonSRX(RobotMap.driveBackRight);
@@ -77,8 +78,7 @@ public class DriveTrain extends Subsystem {
     }
     
     public void drive(double ySpeed, double xSpeed, double zRotation)
-    {
-    	
+    {   	
     	m_drive.driveCartesian(ySpeed, xSpeed, zRotation);
     	SmartDashboard.putNumber("frontleftpos", frontLeft.getSelectedSensorPosition(0));
     	SmartDashboard.putNumber("frontleftspd", frontLeft.getSelectedSensorVelocity(0));
@@ -87,7 +87,7 @@ public class DriveTrain extends Subsystem {
     	SmartDashboard.putNumber("backleftpos", backLeft.getSelectedSensorPosition(0));
     	SmartDashboard.putNumber("backleftspd", backLeft.getSelectedSensorVelocity(0));
     	SmartDashboard.putNumber("backrightpos", backRight.getSelectedSensorPosition(0));
-    	SmartDashboard.putNumber("backrightspd", backRight.getSelectedSensorVelocity(0));
+    	SmartDashboard.putNumber("backrightspd", backRight.getSelectedSensorVelocity(0));  	
     }
     
     public void drive(Joystick stick)
@@ -99,6 +99,7 @@ public class DriveTrain extends Subsystem {
     		drive(stick.getRawAxis(0), stick.getRawAxis(1), stick.getRawAxis(3) - stick.getRawAxis(2));
     	}
     }
+    
     public void drive(double targetPos)
     {
     	pos = targetPos;
@@ -106,6 +107,16 @@ public class DriveTrain extends Subsystem {
     	{
     		Robot.m_driveTrain.drive(0, 0.4, 0);
     	}
+    }
+    
+    public static double getCurrentPos()
+    {
+    	return frontLeft.getSelectedSensorPosition(0);
+    }
+    
+    public void resetPos()
+    {
+    	x = 0;
     }
 }
 
