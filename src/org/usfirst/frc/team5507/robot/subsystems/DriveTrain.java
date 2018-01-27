@@ -91,9 +91,10 @@ public class DriveTrain extends Subsystem {
     {
     	double y = stick.getRawAxis(1);
     	double x = stick.getRawAxis(0);
-    	if(Math.abs(x) > .1 || Math.abs(y) > .1)
-    	{
-    		drive(stick.getRawAxis(0), stick.getRawAxis(1), stick.getRawAxis(3) - stick.getRawAxis(2));
+    	double z = stick.getRawAxis(3) - stick.getRawAxis(2);
+    	if(Math.abs(x) > .1 || Math.abs(y) > .1 || Math.abs(z) > .1)
+    	{ 
+    		drive(x, y, z);
     	}
     }
     public void drive(double targetPos)
