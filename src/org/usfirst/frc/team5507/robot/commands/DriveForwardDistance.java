@@ -2,6 +2,7 @@ package org.usfirst.frc.team5507.robot.commands;
 
 import org.usfirst.frc.team5507.robot.Robot;
 import org.usfirst.frc.team5507.robot.RobotMap;
+import org.usfirst.frc.team5507.robot.subsystems.DriveTrain;
 
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -15,6 +16,7 @@ public class DriveForwardDistance extends Command {
 	public static final double WHEEL_CIRCUMFERENCE = 18.84956;
 	public static final double TICKS_PER_REVOLUTION = 4096;
 	public static final double DISTANCE = TICKS_PER_REVOLUTION / WHEEL_CIRCUMFERENCE; //1 inch moved
+	
     public DriveForwardDistance(double d) {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
@@ -37,7 +39,7 @@ public class DriveForwardDistance extends Command {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return false;
+    	return d1 == SmartDashboard.get;
     }
 
     // Called once after isFinished returns true

@@ -20,7 +20,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  *
  */
 public class DriveTrain extends Subsystem {
-
+	private double pos;
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
 	private WPI_TalonSRX frontLeft = new WPI_TalonSRX(RobotMap.driveFrontLeft);
@@ -35,9 +35,9 @@ public class DriveTrain extends Subsystem {
 
 	public DriveTrain() {
 		configTalon(frontLeft);
-		//configTalon(frontRight);
-		//configTalon(backRight);
-		//configTalon(backLeft);
+		configTalon(frontRight);
+		configTalon(backRight);
+		configTalon(backLeft);
 	}
 	
 	 // config a talon motor controller with an Encoder
@@ -82,6 +82,12 @@ public class DriveTrain extends Subsystem {
     	m_drive.driveCartesian(ySpeed, xSpeed, zRotation);
     	SmartDashboard.putNumber("frontleftpos", frontLeft.getSelectedSensorPosition(0));
     	SmartDashboard.putNumber("frontleftspd", frontLeft.getSelectedSensorVelocity(0));
+    	SmartDashboard.putNumber("frontrightpos", frontRight.getSelectedSensorPosition(0));
+    	SmartDashboard.putNumber("frontrightspd", frontRight.getSelectedSensorVelocity(0));
+    	SmartDashboard.putNumber("backleftpos", backLeft.getSelectedSensorPosition(0));
+    	SmartDashboard.putNumber("backleftspd", backLeft.getSelectedSensorVelocity(0));
+    	SmartDashboard.putNumber("backrightpos", backRight.getSelectedSensorPosition(0));
+    	SmartDashboard.putNumber("backrightspd", backRight.getSelectedSensorVelocity(0));
     }
     
     public void drive(Joystick stick)
@@ -95,7 +101,8 @@ public class DriveTrain extends Subsystem {
     }
     public void drive(double targetPos)
     {
-    	if(frontLeft.getSelectedSensorPosition(0) < targetPos)
+    	pos = targetPos;
+    	if(frontLeft.getSelectedSensorPosition(0) < pos)
     	{
     		Robot.m_driveTrain.drive(0, 0.4, 0);
     	}
