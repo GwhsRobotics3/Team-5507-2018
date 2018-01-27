@@ -21,10 +21,9 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  */
 public class DriveTrain extends Subsystem {
 
-    public static int targetPos;
-	// Put methods for controlling this subsystem
+    // Put methods for controlling this subsystem
     // here. Call these from Commands.
-	public static WPI_TalonSRX frontLeft = new WPI_TalonSRX(RobotMap.driveFrontLeft);
+	private WPI_TalonSRX frontLeft = new WPI_TalonSRX(RobotMap.driveFrontLeft);
 	private WPI_TalonSRX frontRight = new WPI_TalonSRX(RobotMap.driveFrontRight);
 	private WPI_TalonSRX backLeft = new WPI_TalonSRX(RobotMap.driveBackLeft);
 	private WPI_TalonSRX backRight = new WPI_TalonSRX(RobotMap.driveBackRight);
@@ -89,12 +88,7 @@ public class DriveTrain extends Subsystem {
     {
     	double y = stick.getRawAxis(1);
     	double x = stick.getRawAxis(0);
-    	double z = stick.getRawAxis(3)- stick.getRawAxis(2);
-    	if(Math.abs(x) > .2 || Math.abs(y) > .2 || Math.abs(z) > .2)
-    	{
-    		drive(stick.getRawAxis(0), stick.getRawAxis(1), stick.getRawAxis(3) - stick.getRawAxis(2));
-    	}
-    	else
+    	if(Math.abs(x) > .1 || Math.abs(y) > .1)
     	{
     		drive(stick.getRawAxis(0), stick.getRawAxis(1), stick.getRawAxis(3) - stick.getRawAxis(2));
     	}

@@ -2,7 +2,6 @@ package org.usfirst.frc.team5507.robot.commands;
 
 import org.usfirst.frc.team5507.robot.Robot;
 import org.usfirst.frc.team5507.robot.RobotMap;
-import org.usfirst.frc.team5507.robot.subsystems.DriveTrain;
 
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -26,7 +25,7 @@ public class DriveForwardDistance extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	DriveTrain.frontLeft.setSelectedSensorPosition(0, 0, 0);
+    	
     }
     
 
@@ -38,7 +37,7 @@ public class DriveForwardDistance extends Command {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-    	return (DriveTrain.frontLeft.getSelectedSensorPosition(0) > DriveTrain.targetPos);
+        return false;
     }
 
     // Called once after isFinished returns true

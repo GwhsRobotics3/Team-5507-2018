@@ -76,7 +76,7 @@ public class OI {
 		backLeft.whenPressed(new ClimberUp());
 		backRight.whenPressed(new ClimberDown());
 		bButton.whenPressed(new ElevatorUp());
-		yButton.whenPressed(new ElevatorDown());	
+		yButton.whenPressed(new ElevatorDown());
 		
 		
 		
