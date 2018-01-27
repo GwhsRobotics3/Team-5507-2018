@@ -23,10 +23,10 @@ public class DriveTrain extends Subsystem {
 
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
-	private WPI_TalonSRX frontLeft = new WPI_TalonSRX(RobotMap.driveFrontLeft);
-	private WPI_TalonSRX frontRight = new WPI_TalonSRX(RobotMap.driveFrontRight);
-	private WPI_TalonSRX backLeft = new WPI_TalonSRX(RobotMap.driveBackLeft);
-	private WPI_TalonSRX backRight = new WPI_TalonSRX(RobotMap.driveBackRight);
+	public static WPI_TalonSRX frontLeft = new WPI_TalonSRX(RobotMap.driveFrontLeft);
+	public static WPI_TalonSRX frontRight = new WPI_TalonSRX(RobotMap.driveFrontRight);
+	public static WPI_TalonSRX backLeft = new WPI_TalonSRX(RobotMap.driveBackLeft);
+	public static WPI_TalonSRX backRight = new WPI_TalonSRX(RobotMap.driveBackRight);
 	//ADD ENCODERS
 //	private Encoder leftEncoder = new Encoder(1, 2, false, EncodingType.k4X);
 //	private Encoder rightEncoder = new Encoder(3, 4, false, EncodingType.k4X);  
@@ -82,6 +82,9 @@ public class DriveTrain extends Subsystem {
     	m_drive.driveCartesian(ySpeed, xSpeed, zRotation);
     	SmartDashboard.putNumber("frontleftpos", frontLeft.getSelectedSensorPosition(0));
     	SmartDashboard.putNumber("frontleftspd", frontLeft.getSelectedSensorVelocity(0));
+    	SmartDashboard.putNumber("frontrightpos", frontLeft.getSelectedSensorPosition(0));
+    	SmartDashboard.putNumber("backrightpos", frontLeft.getSelectedSensorPosition(0));
+    	SmartDashboard.putNumber("backleftpos", frontLeft.getSelectedSensorPosition(0));
     }
     
     public void drive(Joystick stick)
