@@ -12,7 +12,7 @@ public class DriveWithJoystick extends Command {
     public DriveWithJoystick() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-    	requires(Robot.m_driveTrain);
+    	requires(Robot.m_gripper);
     }
 
     // Called just before this Command runs the first time
@@ -21,7 +21,7 @@ public class DriveWithJoystick extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.m_driveTrain.drive(Robot.m_oi.getJoystick());
+    	Robot.m_gripper.control(Robot.m_oi.getJoystick());
     }
 
     // Make this return true when this Command no longer needs to run execute()

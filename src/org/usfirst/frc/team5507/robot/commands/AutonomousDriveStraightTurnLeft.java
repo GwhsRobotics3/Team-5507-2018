@@ -24,10 +24,10 @@ public class AutonomousDriveStraightTurnLeft extends CommandGroup {
         // e.g. if Command1 requires chassis, and Command2 requires arm,
         // a CommandGroup containing them would require both the chassis and the
         // arm.
-    	addSequential(new DriveForward(1.0));
+    	addSequential(new DriveForwardDistance(5.0));
     	addSequential(new DriveTurnByAngle(-90));
-    	addParallel(new DriveForward(1.0));
-    	addParallel(new ElevatorUp());
+    	addSequential(new DriveForwardDistance(2.0)); //parallel w/ ElevatorUp
+    	//addParallel(new ElevatorUp());
     	addSequential(new IntakeTakeOut());
     	addSequential(new ElevatorDown());
     	addSequential(new DriveStop());

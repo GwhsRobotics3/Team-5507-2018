@@ -16,6 +16,7 @@ import org.usfirst.frc.team5507.robot.commands.GripperClose;
 import org.usfirst.frc.team5507.robot.commands.GripperOpen;
 import org.usfirst.frc.team5507.robot.commands.IntakeTakeIn;
 import org.usfirst.frc.team5507.robot.commands.IntakeTakeOut;
+import org.usfirst.frc.team5507.robot.commands.TestPrint;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
@@ -60,21 +61,21 @@ public class OI {
 	{
 		Button aButton = new JoystickButton(stick, 1);//Takes in box
 		Button xButton = new JoystickButton(stick, 3);//Spits out box
-		Button leftButton = new JoystickButton(stick, 5); //open gripper arms
-		Button rightButton = new JoystickButton(stick, 6); //close gripper arms
+	//	Button leftButton = new JoystickButton(stick, 5); //open gripper arms		
+	//	Button rightButton = new JoystickButton(stick, 6); //close gripper arms
 		Button bButton = new JoystickButton(stick, 2); //test button for encoder 90
 		Button yButton = new JoystickButton(stick, 4);//test button for encoder 180
-		Button backLeft = new JoystickButton(stick,5); // up elevator
-		Button backRight = new JoystickButton(stick, 6);
+	//	Button backLeft = new JoystickButton(stick,5); // up elevator
+	//	Button backRight = new JoystickButton(stick, 6);
 	//	Button bButton = new JoystickButton(stick, 2); 
 		//Button yButton = new JoystickButton(stick, 4);
 		
 		aButton.whileHeld(new IntakeTakeIn());
 		xButton.whileHeld(new IntakeTakeOut());		
-		leftButton.whenPressed(new GripperOpen());
-		rightButton.whenPressed(new GripperClose());
-		backLeft.whenPressed(new ClimberUp());
-		backRight.whenPressed(new ClimberDown());		
+	//	leftButton.whenPressed(new GripperOpen());
+	//	rightButton.whenPressed(new GripperClose());
+		//backLeft.whenPressed(new TestPrint());
+	//	backRight.whenPressed(new ClimberDown());		
 		bButton.whenPressed(new ElevatorUp());
 		yButton.whenPressed(new ElevatorDown());
 		

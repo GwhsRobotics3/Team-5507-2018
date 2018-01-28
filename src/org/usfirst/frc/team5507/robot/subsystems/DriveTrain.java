@@ -21,7 +21,6 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  */
 public class DriveTrain extends Subsystem {
 	private double pos;
-	private double x = frontLeft.getSelectedSensorPosition(0);
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
 	private static WPI_TalonSRX frontLeft = new WPI_TalonSRX(RobotMap.driveFrontLeft);
@@ -73,7 +72,7 @@ public class DriveTrain extends Subsystem {
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
-    	setDefaultCommand(new DriveWithJoystick());
+    	//setDefaultCommand(new DriveWithJoystick());
    	
     }
     
@@ -94,9 +93,10 @@ public class DriveTrain extends Subsystem {
     {
     	double y = stick.getRawAxis(1);
     	double x = stick.getRawAxis(0);
-    	if(Math.abs(x) > .1 || Math.abs(y) > .1)
+    	double z = stick.getRawAxis(3) - stick.getRawAxis(2);
+    	if(Math.abs(x) > .1 || Math.abs(y) > .1 || Math.abs(z) > .1)
     	{
-    		drive(stick.getRawAxis(0), stick.getRawAxis(1), stick.getRawAxis(3) - stick.getRawAxis(2));
+    		drive(x, y, z);
     	}
     }
     
@@ -114,9 +114,10 @@ public class DriveTrain extends Subsystem {
     	return frontLeft.getSelectedSensorPosition(0);
     }
     
-    public void resetPos()
+    public static void resetPos()
     {
-    	x = 0;
+    	frontLeft.setSelectedSensorPosition(0,0,0);
+   
     }
 }
 

@@ -23,7 +23,9 @@ public class DriveTurnByAngle extends Command {
     }
 
     // Called just before this Command runs the first time
-    protected void initialize() { 	 
+    protected void initialize() { 	
+    	Robot.m_ahrs.zeroYaw();
+    	System.out.println("zero");
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -36,6 +38,7 @@ public class DriveTurnByAngle extends Command {
     	else if(angleError < 0)
     	{
     		Robot.m_driveTrain.drive(0, 0,-0.3);
+    		System.out.println("turning left");
     	}
     	
     }
@@ -45,6 +48,7 @@ public class DriveTurnByAngle extends Command {
     	double angleError = (angle - Robot.m_ahrs.getYaw());
     	if(Math.abs(angleError) < 2)
     	{
+    		System.out.println("adam");
     		return true;
     	}
     	return false;
