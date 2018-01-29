@@ -30,8 +30,8 @@ public class RobotMap {
 	
 	
 	// PWM Outputs
-	public static int intakeLeftMotor = 4;
-	public static int intakeRightMotor = 5;
+	public static int intakeLeftMotor = 1;
+	public static int intakeRightMotor = 3;
 	
 	// CAN Addresses 
 	public static int driveFrontLeft = 1;
@@ -40,8 +40,8 @@ public class RobotMap {
 	public static int driveBackRight = 2;
 	public static int encoder = 4;
 	
-	public static int leftArm = 11;
-	public static int rightArm = 12;
+	public static int leftArm = 0;
+	public static int rightArm = 2;
 	
 	public static int arm = 13;
 	public static int pulley = 14;

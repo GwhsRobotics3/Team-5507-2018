@@ -44,4 +44,3 @@ public class Climber extends Subsystem {
     	climberPulley.set(-.5);
     }
 }
-

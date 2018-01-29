@@ -3,6 +3,8 @@ package org.usfirst.frc.team5507.robot.subsystems;
 import org.usfirst.frc.team5507.robot.RobotMap;
 import org.usfirst.frc.team5507.robot.commands.IntakeStop;
 
+import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
+
 import edu.wpi.first.wpilibj.Spark;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
@@ -13,8 +15,8 @@ public class Intake extends Subsystem {
 
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
-	private Spark m_leftWheel = new Spark(RobotMap.intakeLeftMotor);
-	private Spark m_rightWheel = new Spark(RobotMap.intakeRightMotor);
+	private WPI_TalonSRX m_leftWheel = new WPI_TalonSRX(RobotMap.intakeLeftMotor);
+	private WPI_TalonSRX m_rightWheel = new WPI_TalonSRX(RobotMap.intakeRightMotor);
 	
 	public void initDefaultCommand() {
         // Set the default command for a subsystem here.
@@ -24,14 +26,14 @@ public class Intake extends Subsystem {
     
     public void reelIn()
     {
-    	m_leftWheel.set(1);
-    	m_rightWheel.set(-1);
+    	m_leftWheel.set(.75);
+    	m_rightWheel.set(.75);
     }
     
     public void reelOut()
     {
-    	m_leftWheel.set(-1);
-    	m_rightWheel.set(1);
+    	m_leftWheel.set(-.75);
+    	m_rightWheel.set(-.75); 
     }
     
     public void stop()

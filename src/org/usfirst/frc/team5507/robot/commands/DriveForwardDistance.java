@@ -27,7 +27,7 @@ public class DriveForwardDistance extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	
+    	DriveTrain.resetPos();
     }
     
 
@@ -39,11 +39,12 @@ public class DriveForwardDistance extends Command {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-    	return d1 == DriveTrain.getCurrentPos();
+    	return DriveTrain.getCurrentPos() >= d1;
     }
 
     // Called once after isFinished returns true
     protected void end() {
+    	DriveTrain.resetPos();
     }
 
     // Called when another command which requires one or more of the same
