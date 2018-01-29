@@ -37,7 +37,6 @@ public class DriveTurnByAngle extends Command {
     	{
     		Robot.m_driveTrain.drive(0, 0,-0.3);
     	}
-    	
     }
 
     // Make this return true when this Command no longer needs to run execute()

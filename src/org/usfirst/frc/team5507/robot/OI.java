@@ -8,6 +8,7 @@
 package org.usfirst.frc.team5507.robot;
 
 import org.usfirst.frc.team5507.robot.commands.ClimberDown;
+import org.usfirst.frc.team5507.robot.commands.ClimberRewind;
 import org.usfirst.frc.team5507.robot.commands.ClimberUp;
 import org.usfirst.frc.team5507.robot.commands.ElevatorDown;
 import org.usfirst.frc.team5507.robot.commands.ElevatorUp;
@@ -74,9 +75,10 @@ public class OI {
 		leftButton.whenPressed(new GripperOpen());
 		rightButton.whenPressed(new GripperClose());
 		backLeft.whenPressed(new ClimberUp());
-		backRight.whenPressed(new ClimberDown());		
+		backRight.whenPressed(new ClimberDown());	
+		yButton.whenPressed(new ClimberRewind());
 		bButton.whenPressed(new ElevatorUp());
-		yButton.whenPressed(new ElevatorDown());
+//		yButton.whenPressed(new ElevatorDown());
 		
 
 	}

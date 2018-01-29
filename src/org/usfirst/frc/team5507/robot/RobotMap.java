@@ -43,8 +43,9 @@ public class RobotMap {
 	public static int leftArm = 11;
 	public static int rightArm = 12;
 	
-	public static int climb = 13;
+	public static int arm = 13;
+	public static int pulley = 14;
 	
-	public static int elevator = 14;
+	public static int elevator = 15;
 		
 }
