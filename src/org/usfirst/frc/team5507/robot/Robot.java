@@ -56,7 +56,7 @@ public class Robot extends TimedRobot {
 	
 	
 	Command m_autonomousCommand;
-	SendableChooser<Command> m_chooser = new SendableChooser<>();
+	SendableChooser<Command> m_chooser = new SendableChooser<>(); 
 	
 	public Robot() {
 	   try {

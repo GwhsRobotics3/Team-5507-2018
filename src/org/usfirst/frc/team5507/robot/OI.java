@@ -59,27 +59,20 @@ public class OI {
 	
 	public OI()
 	{
-		Button aButton = new JoystickButton(stick, 1);//Takes in box
-		Button xButton = new JoystickButton(stick, 3);//Spits out box
-	//	Button leftButton = new JoystickButton(stick, 5); //open gripper arms		
-	//	Button rightButton = new JoystickButton(stick, 6); //close gripper arms
-		Button bButton = new JoystickButton(stick, 2); //test button for encoder 90
-		Button yButton = new JoystickButton(stick, 4);//test button for encoder 180
-	//	Button backLeft = new JoystickButton(stick,5); // up elevator
-	//	Button backRight = new JoystickButton(stick, 6);
-	//	Button bButton = new JoystickButton(stick, 2); 
-		//Button yButton = new JoystickButton(stick, 4);
-		
+		Button aButton = new JoystickButton(stick, 1); //arm in
+		Button xButton = new JoystickButton(stick, 3); //arm out
+		Button backLeft = new JoystickButton(stick,5); //gripper
+		Button backRight = new JoystickButton(stick, 6); //gripper
+		Button bButton = new JoystickButton(stick, 2);  //elevator up
+		Button yButton = new JoystickButton(stick, 4); //elevator down
+		//climbing right joystick
+
 		aButton.whileHeld(new IntakeTakeIn());
 		xButton.whileHeld(new IntakeTakeOut());		
-	//	leftButton.whenPressed(new GripperOpen());
-	//	rightButton.whenPressed(new GripperClose());
-		//backLeft.whenPressed(new TestPrint());
-	//	backRight.whenPressed(new ClimberDown());		
+		backLeft.whenPressed(new GripperOpen());
+		backRight.whenPressed(new GripperClose());	
 		bButton.whenPressed(new ElevatorUp());
-		yButton.whenPressed(new ElevatorDown());
-		
-
+		yButton.whenPressed(new ElevatorUp());		
 	}
 	
 	public Joystick getJoystick() {

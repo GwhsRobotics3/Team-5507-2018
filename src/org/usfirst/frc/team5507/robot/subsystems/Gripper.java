@@ -22,33 +22,32 @@ public class Gripper extends Subsystem {
 	
 
     public void initDefaultCommand() {
-        // Set the default command for a subsystem here.
+     //  Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
-    	setDefaultCommand(new DriveWithJoystick());
+    	//setDefaultCommand(new DriveWithJoystick());
     }
     
-    public void control(Joystick stick) {
-    	leftArm.set(stick.getRawAxis(0)*.5);
-    	rightArm.set(stick.getRawAxis(4)*.5);
+//   public void control(Joystick stick) {
+//    	leftArm.set(stick.getRawAxis(0)*.5);
+//    	rightArm.set(stick.getRawAxis(4)*.5);
+//    }
+    
+    public void open()
+    {
+    	leftArm.set(-1);  
+    	rightArm.set(-1);
     }
     
-//    public void open()
-//    {
-//    	
-//    	leftArm.set(-1);  
-//    	rightArm.set(-1);
-//    }
-//    
-//    public void close()
-//    {
-//    	leftArm.set(1);
-//    	rightArm.set(1);
-//    }
-//    
-//    public void stop()
-//    {
-//    	leftArm.set(0);
-//    	rightArm.set(0);
-//    }
+    public void close()
+    {
+    	leftArm.set(1);
+    	rightArm.set(1);
+    }
+    
+    public void stop()
+    {
+    	leftArm.set(0);
+    	rightArm.set(0);
+    }
 }
 

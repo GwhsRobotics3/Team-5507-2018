@@ -28,4 +28,9 @@ public class Climber extends Subsystem {
     {
     	climberPulley.set(-.5);
     }
+    
+    public void testPrint()
+    {
+    	System.out.println("button left trigger");
+    }
 }
