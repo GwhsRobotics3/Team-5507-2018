@@ -28,6 +28,7 @@ import org.usfirst.frc.team5507.robot.subsystems.ExampleSubsystem;
 import org.usfirst.frc.team5507.robot.subsystems.Gripper;
 import org.usfirst.frc.team5507.robot.subsystems.Intake;
 
+import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import com.kauailabs.navx.frc.AHRS;
 import com.kauailabs.navx.frc.AHRS.SerialDataType;
 
@@ -142,7 +143,6 @@ public class Robot extends TimedRobot {
 	@Override
 	public void autonomousPeriodic() {
 		Scheduler.getInstance().run();
-		
 		putSmartDashboardData();
 		//SmartDashboard.putNumber("Position", Robot.leftEncoder);
 	}
@@ -164,6 +164,7 @@ public class Robot extends TimedRobot {
 	@Override
 	public void teleopPeriodic() {
 		Scheduler.getInstance().run();
+		
 		putSmartDashboardData();
 	}
 
