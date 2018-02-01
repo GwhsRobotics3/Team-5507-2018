@@ -64,34 +64,148 @@ public class SmartGripper extends Subsystem {
     		   return currentState;
     	   }
     	    
-    	    public int getCurrentState()
+    	    public static int getCurrentState()
     	    {
     	    	return currentState;
     	    }
     	    
-    	    public double getPositionForState()
+    	    public double getPositionForStateR()
     	    {
     	    	if(currentState == startPos)
     	    	{
-    	    		return Constants.startPosition;
+    	    		return Constants.startPositionR;
     	    	}
     	    	else if(currentState == readyPos)
     	    	{
-    	    		return Constants.readyPosition;
+    	    		return Constants.readyPositionR;
     	    	}
     	    	else 
     	    	{
-    	    		return Constants.grabPosition;
+    	    		return Constants.grabPositionR;
     	    	}
     	    }
     	    
-    	    public void setDesiredPosition(double pos)
+    	    public double getPositionForStateL()
     	    {
-    	    	if(pos == Constants.grabPosition)
+    	    	if(currentState == startPos)
     	    	{
-    	    		pos = Constants.grabPosition;
+    	    		return Constants.startPositionL;
+    	    	}
+    	    	else if(currentState == readyPos)
+    	    	{
+    	    		return Constants.readyPositionL;
+    	    	}
+    	    	else 
+    	    	{
+    	    		return Constants.grabPositionL;
+    	    	}
+    	    }
+    	    
+    	    public static void setDesiredPosition(double pos) {
+    	    	if(getCurrentState() == startPos && pos == Constants.readyPositionR)
+    	    	{
+    	    		while(leftArm.getSelectedSensorPosition(0) < pos)
+    	    		{
+    	    			goForwardL();
+    	    			
+    	    		}
+    	    		while(rightArm.getSelectedSensorPosition(0) < pos)
+    	    		{
+    	    			goForwardR();
+    	    		}
     	    	}
     	    	
+    	    	if(getCurrentState() == startPos && pos == Constants.grabPositionR)
+    	    	{
+    	    		while(leftArm.getSelectedSensorPosition(0) < pos)
+    	    		{
+    	    			goForwardL();
+    	    			
+    	    		}
+    	    		while(rightArm.getSelectedSensorPosition(0) < pos)
+    	    		{
+    	    			goForwardR();
+    	    		}
+    	    	}
+    	    	
+    	    	if(getCurrentState() == readyPos && pos == Constants.grabPositionR)
+    	    	{
+    	    		while(leftArm.getSelectedSensorPosition(0) < pos)
+    	    		{
+    	    			goForwardL();
+    	    			
+    	    		}
+    	    		while(rightArm.getSelectedSensorPosition(0) < pos)
+    	    		{
+    	    			goForwardR();
+    	    		}
+    	    	}
+    	    	
+    	    	if(getCurrentState() == readyPos && pos == Constants.startPositionR)
+    	    	{
+    	    		while(leftArm.getSelectedSensorPosition(0) > pos)
+    	    		{
+    	    			goBackL();
+    	    			
+    	    		}
+    	    		while(rightArm.getSelectedSensorPosition(0) > pos)
+    	    		{
+    	    			goBackR();
+    	    		}
+    	    	}
+    	    	
+    	    	if(getCurrentState() == grabPos && pos == Constants.readyPositionR)
+    	    	{
+    	    		while(leftArm.getSelectedSensorPosition(0) > pos)
+    	    		{
+    	    			goBackL();
+    	    			
+    	    		}
+    	    		while(rightArm.getSelectedSensorPosition(0) > pos)
+    	    		{
+    	    			goBackR();
+    	    		}
+    	    	}
+    	    	
+    	    	if(getCurrentState() == grabPos && pos == Constants.startPositionR)
+    	    	{
+    	    		while(leftArm.getSelectedSensorPosition(0) > pos)
+    	    		{
+    	    			goBackL();
+    	    			
+    	    		}
+    	    		while(rightArm.getSelectedSensorPosition(0) > pos)
+    	    		{
+    	    			goBackR();
+    	    		}
+    	    	}
+    	    	
+    	    }
+    	    public static double getCurrentPosL()
+    	    {
+    	    	return leftArm.getSelectedSensorPosition(0);
+    	    }
+    	    public static double getCurrentPosR()
+    	    {
+    	    	return rightArm.getSelectedSensorPosition(0);
+    	    }
+    	    public static void goForwardR()
+    	    {
+    	    	rightArm.set(.5);
+    	    }
+    	    
+    	    public static void goBackR()
+    	    {
+    	    	rightArm.set(-.5);
+    	    }
+    	    public static void goForwardL()
+    	    {
+    	    	leftArm.set(.5);
+    	    }
+    	    
+    	    public static void goBackL()
+    	    {
+    	    	leftArm.set(-.5);
     	    }
     }
 
