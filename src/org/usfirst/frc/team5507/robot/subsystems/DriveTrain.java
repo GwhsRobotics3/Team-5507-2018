@@ -10,7 +10,10 @@ import com.ctre.phoenix.motorcontrol.StatusFrameEnhanced;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
 import edu.wpi.first.wpilibj.CounterBase.EncodingType;
+import edu.wpi.first.wpilibj.Counter;
+import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.Encoder;
+import edu.wpi.first.wpilibj.GenericHID.RumbleType;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.drive.MecanumDrive;
@@ -27,6 +30,8 @@ public class DriveTrain extends Subsystem {
 	private WPI_TalonSRX frontRight = new WPI_TalonSRX(RobotMap.driveFrontRight);
 	private WPI_TalonSRX backLeft = new WPI_TalonSRX(RobotMap.driveBackLeft);
 	private WPI_TalonSRX backRight = new WPI_TalonSRX(RobotMap.driveBackRight);
+	private static DigitalInput limitSwitch = new DigitalInput(1);
+	Counter counter = new Counter(limitSwitch);
 	//ADD ENCODERS
 //	private Encoder leftEncoder = new Encoder(1, 2, false, EncodingType.k4X);
 //	private Encoder rightEncoder = new Encoder(3, 4, false, EncodingType.k4X);  
@@ -119,5 +124,12 @@ public class DriveTrain extends Subsystem {
     	frontLeft.setSelectedSensorPosition(0,0,0);
    
     }
+    
+    public boolean isSwitchSetDrive() {
+        return counter.get() < 0;
+    }
+
+
+
 }
 

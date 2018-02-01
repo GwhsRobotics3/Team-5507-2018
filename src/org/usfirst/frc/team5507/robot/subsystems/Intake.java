@@ -5,8 +5,11 @@ import org.usfirst.frc.team5507.robot.commands.IntakeStop;
 
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
+import edu.wpi.first.wpilibj.Counter;
+import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.Spark;
 import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  * Wheels on the hands of the gripper take in the box and spits it out.
@@ -17,6 +20,8 @@ public class Intake extends Subsystem {
     // here. Call these from Commands.
 	private WPI_TalonSRX m_leftWheel = new WPI_TalonSRX(RobotMap.intakeLeftMotor);
 	private WPI_TalonSRX m_rightWheel = new WPI_TalonSRX(RobotMap.intakeRightMotor);
+//	private static DigitalInput limitSwitch = new DigitalInput(1);
+//	Counter counter = new Counter(limitSwitch);
 	
 	public void initDefaultCommand() {
         // Set the default command for a subsystem here.
@@ -28,6 +33,7 @@ public class Intake extends Subsystem {
     {
     	m_leftWheel.set(.75);
     	m_rightWheel.set(.75);
+//    	SmartDashboard.putBoolean("Intake limit switch", isSwitchSet());
     }
     
     public void reelOut()
@@ -41,5 +47,9 @@ public class Intake extends Subsystem {
     	m_leftWheel.set(0);
     	m_rightWheel.set(0);
     }
+    
+//    public boolean isSwitchSet() {
+//        return counter.get() > 0;
+//    }
 }
 

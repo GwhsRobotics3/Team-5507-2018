@@ -33,15 +33,18 @@ public class DriveForward extends Command {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-    	if (m_timer.get() > time)
-    	{
-    		return true;
-    	}
-		return false;
-    }
+//    	if (m_timer.get() > time)
+//    	{
+//    		return true;
+//    	}
+//		return false;
+    	return Robot.m_driveTrain.isSwitchSetDrive();
+      }
+    
 
     // Called once after isFinished returns true
     protected void end() {
+    	end();
     }
 
     // Called when another command which requires one or more of the same
