@@ -21,12 +21,12 @@ public class Elevator extends Subsystem {
     
     public void goUp()
     {
-    	elevatorPulley.set(1);
+    	elevatorPulley.set(.5);
     }
     
     public void goDown()
     {
-    	elevatorPulley.set(-1);
+    	elevatorPulley.set(-.5);
     }
 }
 
