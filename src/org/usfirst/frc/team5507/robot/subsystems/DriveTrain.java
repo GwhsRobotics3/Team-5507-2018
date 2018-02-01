@@ -105,12 +105,21 @@ public class DriveTrain extends Subsystem {
     	}
     }
     
-    public void drive(double targetPos)
+    public void driveForward(double targetPos)
     {
     	pos = targetPos;
     	if(frontLeft.getSelectedSensorPosition(0) < pos)
     	{
     		Robot.m_driveTrain.drive(0, 0.4, 0);
+    	}
+    }
+    
+    public void driveSideways(double targetPos)
+    {
+    	pos = targetPos;
+    	if(frontLeft.getSelectedSensorPosition(0) < pos)
+    	{
+    		Robot.m_driveTrain.drive(0.4, 0, 0);
     	}
     }
     
