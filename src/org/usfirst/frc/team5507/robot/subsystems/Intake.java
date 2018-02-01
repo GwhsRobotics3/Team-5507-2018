@@ -4,6 +4,7 @@ import org.usfirst.frc.team5507.robot.RobotMap;
 import org.usfirst.frc.team5507.robot.commands.IntakeStop;
 
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
+import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
 
 import edu.wpi.first.wpilibj.Counter;
 import edu.wpi.first.wpilibj.DigitalInput;
@@ -18,8 +19,8 @@ public class Intake extends Subsystem {
 
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
-	private WPI_TalonSRX m_leftWheel = new WPI_TalonSRX(RobotMap.intakeLeftMotor);
-	private WPI_TalonSRX m_rightWheel = new WPI_TalonSRX(RobotMap.intakeRightMotor);
+	private WPI_VictorSPX m_leftWheel = new WPI_VictorSPX(RobotMap.intakeLeftMotor);
+	private WPI_VictorSPX m_rightWheel = new WPI_VictorSPX(RobotMap.intakeRightMotor);
 //	private static DigitalInput limitSwitch = new DigitalInput(1);
 //	Counter counter = new Counter(limitSwitch);
 	
