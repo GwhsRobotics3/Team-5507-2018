@@ -25,6 +25,11 @@ public class SmartGripper extends Subsystem {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
     }
+    public static void resetPos() 
+    {
+    	leftArm.setSelectedSensorPosition(0, 0, 0);
+    	rightArm.setSelectedSensorPosition(0, 0, 0);
+    }
     public void ArmEncoders()
     {
     	DriveTrain.configTalon(leftArm);
