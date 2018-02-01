@@ -112,8 +112,7 @@ public class SmartElevator extends Subsystem {
     		{
     			goDown();
     		}
-    	}
-    	
+    	}   	
     }
     
     public static void goUp()
@@ -123,7 +122,7 @@ public class SmartElevator extends Subsystem {
     
     public static void goDown()
     {
-    	elevatorPulley.set(.5);
+    	elevatorPulley.set(-.5);
     }
     
     public static double getCurrentPos()
