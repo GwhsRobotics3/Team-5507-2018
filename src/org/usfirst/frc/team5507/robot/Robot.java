@@ -27,6 +27,7 @@ import org.usfirst.frc.team5507.robot.subsystems.EncoderDemo;
 import org.usfirst.frc.team5507.robot.subsystems.ExampleSubsystem;
 import org.usfirst.frc.team5507.robot.subsystems.Gripper;
 import org.usfirst.frc.team5507.robot.subsystems.Intake;
+import org.usfirst.frc.team5507.robot.subsystems.SmartElevator;
 
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import com.kauailabs.navx.frc.AHRS;
@@ -51,6 +52,7 @@ public class Robot extends TimedRobot {
 	public static DriveTrain m_driveTrain = new DriveTrain();
 	public static EncoderDemo m_encoder = new EncoderDemo();
 	public static Elevator m_elevator = new Elevator();
+	public static SmartElevator m_smartElevator = new SmartElevator();
 	public static Gripper m_gripper = new Gripper();
 	public static Intake m_intake = new Intake();
 	public static AHRS m_ahrs;

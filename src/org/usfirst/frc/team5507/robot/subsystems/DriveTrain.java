@@ -46,7 +46,7 @@ public class DriveTrain extends Subsystem {
 	}
 	
 	 // config a talon motor controller with an Encoder
-	public void configTalon(WPI_TalonSRX talon) {
+	public static void configTalon(WPI_TalonSRX talon) {
 		talon.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative, Constants.kPIDLoopIdx, Constants.kTimeoutMs);
 		talon.setSensorPhase(true);
 		talon.setInverted(false);

@@ -28,7 +28,6 @@ public class RobotMap {
 	public static final double TICKS_PER_REVOLUTION = 4096;
 	public static final double DISTANCE = TICKS_PER_REVOLUTION / WHEEL_CIRCUMFERENCE; //1 inch moved
 	
-	
 	// PWM Outputs
 	public static int intakeLeftMotor = 1;
 	public static int intakeRightMotor = 3;
