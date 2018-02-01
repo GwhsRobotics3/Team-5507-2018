@@ -1,6 +1,7 @@
 package org.usfirst.frc.team5507.robot.commands;
 
 import org.usfirst.frc.team5507.robot.Robot;
+import org.usfirst.frc.team5507.robot.subsystems.SmartElevator;
 
 import edu.wpi.first.wpilibj.command.Command;
 
@@ -21,7 +22,7 @@ public class SmartElevatorUp extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.m_smartElevator.setDesiredPosition(getPositionForState().getNextStateDown());
+    	Robot.m_smartElevator.getPositionForState(Robot.m_smartElevator.setNextStateUp());
     }
 
     // Make this return true when this Command no longer needs to run execute()

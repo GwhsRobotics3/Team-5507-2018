@@ -23,6 +23,10 @@ public class SmartElevator extends Subsystem {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
     }
+    public void elevatorEncoder()
+    {
+    	DriveTrain.configTalon(elevatorPulley);
+    }
     
    public int getNextStateDown()
    {
@@ -41,7 +45,7 @@ public class SmartElevator extends Subsystem {
 	   return currentState;
    }
    
-   public int getNextStateUp()
+   public int setNextStateUp()
    {
 	   if(currentState == lowPos)
 	   {
@@ -58,12 +62,12 @@ public class SmartElevator extends Subsystem {
 	   return currentState;
    }
     
-    public int getCurrentState()
+    public static int getCurrentState()
     {
     	return currentState;
     }
     
-    public double getPositionForState()
+    public double getPositionForState(int currentState)
     {
     	if(currentState == lowPos)
     	{
@@ -79,14 +83,52 @@ public class SmartElevator extends Subsystem {
     	}
     }
     
-    public void setDesiredPosition(double pos)
+    public static void setDesiredPosition(double pos)
     {
     	if(pos == Constants.highPosition)
     	{
     		pos = Constants.highPosition;
+    		while(pos < getCurrentPos())
+    		{
+    			goUp();
+    		}
+    	}	 
+    	else if(pos == Constants.medPosition)
+    	{
+    		pos = Constants.medPosition;
+    		if(getCurrentPos() < pos)
+    		{
+    			goUp();
+    		}
+    		else
+    		{
+    			goDown();
+    		}    		
     	}
-    		elevatorPulley.set(.5);
+    	else
+    	{
+    		pos = Constants.lowPosition;
+    		if(getCurrentPos() < pos)
+    		{
+    			goDown();
+    		}
+    	}
     	
+    }
+    
+    public static void goUp()
+    {
+    	elevatorPulley.set(.5);
+    }
+    
+    public static void goDown()
+    {
+    	elevatorPulley.set(.5);
+    }
+    
+    public static double getCurrentPos()
+    {
+    	return elevatorPulley.getSelectedSensorPosition(0);
     }
 }
 

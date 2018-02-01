@@ -28,7 +28,7 @@ public class Elevator extends Subsystem {
     
     public void goUp()
     {
-<<<<<<< HEAD
+
     	elevatorPulley.set(1);
 //    	if (forwardLimitSwitch.get())
 //        {
@@ -36,22 +36,22 @@ public class Elevator extends Subsystem {
 //        }    	
 //    	SmartDashboard.putBoolean("Top elevator limit switch", isSwitchSetTop());
 //    	SmartDashboard.putBoolean("Botton elevator limit switch", isSwitchSetBottom());
-=======
+
     	elevatorPulley.set(.5);
->>>>>>> origin/master
+
     }
     
     public void goDown()
     {
-<<<<<<< HEAD
+
     	elevatorPulley.set(-1);
 //    	if (downLimitSwitch.get())
 //        {
 //    		 elevatorPulley.set(0);
 //        }    	
-=======
+
     	elevatorPulley.set(-.5);
->>>>>>> origin/master
+
     }
     
     public void stop()

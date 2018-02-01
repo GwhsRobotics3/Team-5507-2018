@@ -51,7 +51,7 @@ public class Robot extends TimedRobot {
 	public static Climber m_climber = new Climber();
 	public static DriveTrain m_driveTrain = new DriveTrain();
 	public static EncoderDemo m_encoder = new EncoderDemo();
-	public static Elevator m_elevator = new Elevator();
+	//public static Elevator m_elevator = new Elevator();
 	public static SmartElevator m_smartElevator = new SmartElevator();
 	public static Gripper m_gripper = new Gripper();
 	public static Intake m_intake = new Intake();
