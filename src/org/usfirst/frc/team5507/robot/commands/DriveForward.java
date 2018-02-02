@@ -44,7 +44,7 @@ public class DriveForward extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
-    	OI.stick.setRumble(0.4,0.4);
+    	Robot.m_oi.controller.setRumble(0.4,0.4);
     	end();
     }
 
