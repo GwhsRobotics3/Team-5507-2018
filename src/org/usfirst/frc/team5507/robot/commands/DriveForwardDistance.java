@@ -22,7 +22,6 @@ public class DriveForwardDistance extends Command {
         // eg. requires(chassis);
     	d1 = DISTANCE * d * 12 ;
     	requires(Robot.m_driveTrain);
-    	
     }
 
     // Called just before this Command runs the first time

@@ -33,8 +33,8 @@ public class OI {
 	//// joystick.
 	// You create one by telling it which joystick it's on and which button
 	// number it is.
-	// Joystick stick = new Joystick(port);
-	// Button button = new JoystickButton(stick, buttonNumber);
+	// Joystick controller = new Joystick(port);
+	// Button button = new JoystickButton(controller, buttonNumber);
 
 	// There are a few additional built in buttons you can use. Additionally,
 	// by subclassing Button you can create custom triggers and bind those to
@@ -55,28 +55,26 @@ public class OI {
 	// Start the command when the button is released and let it run the command
 	// until it is finished as determined by it's isFinished method.
 	// button.whenReleased(new ExampleCommand());
-	
-	Joystick stick = new Joystick(0);
+	public XboxController controller;
 	
 	public OI()
 	{
-		Button aButton = new JoystickButton(stick, 1); //arm in
-		Button xButton = new JoystickButton(stick, 3); //arm out
-		Button backLeft = new JoystickButton(stick,5); //gripper
-		Button backRight = new JoystickButton(stick, 6); //gripper
-		Button bButton = new JoystickButton(stick, 2);  //elevator up
-		Button yButton = new JoystickButton(stick, 4); //elevator down
+		controller = new XboxController(0);
+		
+		Button aButton = new JoystickButton(controller, 1); //arm in
+		Button xButton = new JoystickButton(controller, 3); //arm out
+		Button backLeft = new JoystickButton(controller,5); //gripper
+		Button backRight = new JoystickButton(controller, 6); //gripper
+		Button bButton = new JoystickButton(controller, 2);  //elevator up
+		Button yButton = new JoystickButton(controller, 4); //elevator down
 		//climbing right joystick
 
 		aButton.whileHeld(new IntakeTakeIn());
 		xButton.whileHeld(new IntakeTakeOut());		
 		backLeft.whenPressed(new SmartGripperTest(20)); //GripperOpen command
 		backRight.whenPressed(new GripperClose());	
-		bButton.whenPressed(new ElevatorUp());
+		bButton.whenPressed(new ElevatorUp());	
 		yButton.whenPressed(new ElevatorUp());		
 	}
 	
-	public Joystick getJoystick() {
-		return stick;
-	}
 }

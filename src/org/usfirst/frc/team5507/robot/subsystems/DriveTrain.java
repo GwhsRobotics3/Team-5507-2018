@@ -137,8 +137,5 @@ public class DriveTrain extends Subsystem {
     public boolean isSwitchSetDrive() {
         return counter.get() < 0;
     }
-
-
-
 }
 

@@ -14,6 +14,11 @@ public class XboxController extends Joystick {
 	private int m_outputs;
 	private short m_leftRumble;
 	private short m_rightRumble;
+	private static Joystick stick = new Joystick(0);
+	
+	public static Joystick getJoystick() {
+		return stick;
+	}
 	
     public void setRumble(double leftValue, double rightValue){
 		setRumble(RumbleType.kLeftRumble, leftValue);
