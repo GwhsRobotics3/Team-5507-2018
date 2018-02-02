@@ -32,7 +32,7 @@ public class ElevatorDown extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
-    	Robot.m_elevator.stop();
+    	Robot.m_Smartelevator.stop();
     }
 
     // Called when another command which requires one or more of the same

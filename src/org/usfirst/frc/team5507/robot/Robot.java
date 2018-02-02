@@ -28,7 +28,7 @@ import org.usfirst.frc.team5507.robot.subsystems.ExampleSubsystem;
 import org.usfirst.frc.team5507.robot.subsystems.Gripper;
 import org.usfirst.frc.team5507.robot.subsystems.Intake;
 import org.usfirst.frc.team5507.robot.subsystems.SmartElevator;
-import org.usfirst.frc.team5507.robot.subsystems.SmartGripper;
+//import org.usfirst.frc.team5507.robot.subsystems.SmartGripper;
 
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import com.kauailabs.navx.frc.AHRS;
@@ -57,7 +57,7 @@ public class Robot extends TimedRobot {
 	public static Gripper m_gripper = new Gripper();
 	public static Intake m_intake = new Intake();
 	public static AHRS m_ahrs;
-	public static SmartGripper m_smartGripper = new SmartGripper();
+	//public static SmartGripper m_smartGripper = new SmartGripper();
 	
 	
 	Command m_autonomousCommand;
@@ -75,7 +75,7 @@ public class Robot extends TimedRobot {
 	public void putSmartDashboardData() {
 		SmartDashboard.putData(m_climber);
 		SmartDashboard.putData(m_driveTrain);
-		SmartDashboard.putData(m_elevator);
+	//	SmartDashboard.putData(m_elevator);
 		SmartDashboard.putData(m_encoder);
 		SmartDashboard.putData(m_gripper);
 		SmartDashboard.putData(m_intake);

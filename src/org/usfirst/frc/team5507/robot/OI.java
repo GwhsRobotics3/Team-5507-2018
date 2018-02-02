@@ -16,7 +16,7 @@ import org.usfirst.frc.team5507.robot.commands.GripperClose;
 import org.usfirst.frc.team5507.robot.commands.GripperOpen;
 import org.usfirst.frc.team5507.robot.commands.IntakeTakeIn;
 import org.usfirst.frc.team5507.robot.commands.IntakeTakeOut;
-import org.usfirst.frc.team5507.robot.commands.SmartGripperTest;
+//import org.usfirst.frc.team5507.robot.commands.SmartGripperTest;
 import org.usfirst.frc.team5507.robot.commands.TestPrint;
 
 import edu.wpi.first.wpilibj.Joystick;
@@ -71,7 +71,7 @@ public class OI {
 
 		aButton.whileHeld(new IntakeTakeIn());
 		xButton.whileHeld(new IntakeTakeOut());		
-		backLeft.whenPressed(new SmartGripperTest(20)); //GripperOpen command
+		backLeft.whenPressed(new GripperOpen()); //GripperOpen command
 		backRight.whenPressed(new GripperClose());	
 		bButton.whenPressed(new ElevatorUp());	
 		yButton.whenPressed(new ElevatorUp());		
