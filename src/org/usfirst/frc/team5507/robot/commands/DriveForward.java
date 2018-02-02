@@ -37,8 +37,8 @@ public class DriveForward extends Command {
 //    	{
 //    		return true;
 //    	}
-//		return false;
-    	return Robot.m_driveTrain.isSwitchSetDrive();
+return false;
+//    	return Robot.m_driveTrain.isSwitchSetDrive();
       }
     
 

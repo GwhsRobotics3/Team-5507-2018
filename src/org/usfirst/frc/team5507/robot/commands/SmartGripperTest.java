@@ -4,6 +4,7 @@ import org.usfirst.frc.team5507.robot.Robot;
 import org.usfirst.frc.team5507.robot.subsystems.SmartGripper;
 
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  *
@@ -21,17 +22,19 @@ public class SmartGripperTest extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	SmartGripper.resetPos();
+    	SmartGripper.setDesiredPosition(10);
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	SmartGripper.setDesiredPosition(x);
+    	SmartDashboard.putNumber("Gripper position", SmartGripper.getCurrentPosL());
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return false;
+    	double y = SmartGripper.getCurrentPosL();
+        return y > x;
     }
 
     // Called once after isFinished returns true

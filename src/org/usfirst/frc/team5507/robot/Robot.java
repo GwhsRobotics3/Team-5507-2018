@@ -75,7 +75,7 @@ public class Robot extends TimedRobot {
 	public void putSmartDashboardData() {
 		SmartDashboard.putData(m_climber);
 		SmartDashboard.putData(m_driveTrain);
-		SmartDashboard.putData(m_elevator);
+		SmartDashboard.putData(m_smartElevator);
 		SmartDashboard.putData(m_encoder);
 		SmartDashboard.putData(m_gripper);
 		SmartDashboard.putData(m_intake);
