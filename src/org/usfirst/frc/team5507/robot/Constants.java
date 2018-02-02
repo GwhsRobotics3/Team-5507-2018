@@ -21,9 +21,9 @@ public class Constants {
 	public static final int readyPositionL = 20;
 	public static final int startPositionL = 10;
 	
-	public static final int highPosition = 30;
-	public static final int medPosition = 20;
-	public static final int lowPosition = 10;
+	public static final int ElhighPosition = 30;
+	public static final int ElmedPosition = 20;
+	public static final int EllowPosition = 10;
 	
 	public static final int kSlotIdx = 0;
 	

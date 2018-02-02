@@ -77,31 +77,31 @@ public class SmartElevator extends Subsystem {
     {
     	if(currentState == lowPos)
     	{
-    		return Constants.lowPosition;
+    		return Constants.EllowPosition;
     	}
     	else if(currentState == medPos)
     	{
-    		return Constants.medPosition;
+    		return Constants.ElmedPosition;
     	}
     	else 
     	{
-    		return Constants.highPosition;
+    		return Constants.ElhighPosition;
     	}
     }
     
     public static void setDesiredPosition(double pos)
     {
-    	if(pos == Constants.highPosition)
+    	if(pos == Constants.ElhighPosition)
     	{
-    		pos = Constants.highPosition;
+    		pos = Constants.ElhighPosition;
     		while(pos < getCurrentPos())
     		{
     			goUp();
     		}
     	}	 
-    	else if(pos == Constants.medPosition)
+    	else if(pos == Constants.ElmedPosition)
     	{
-    		pos = Constants.medPosition;
+    		pos = Constants.ElmedPosition;
     		if(getCurrentPos() < pos)
     		{
     			goUp();
@@ -113,7 +113,7 @@ public class SmartElevator extends Subsystem {
     	}
     	else
     	{
-    		pos = Constants.lowPosition;
+    		pos = Constants.EllowPosition;
     		if(getCurrentPos() < pos)
     		{
     			goDown();
