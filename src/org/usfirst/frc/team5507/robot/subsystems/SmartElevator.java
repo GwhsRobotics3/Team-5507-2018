@@ -5,6 +5,8 @@ import org.usfirst.frc.team5507.robot.RobotMap;
 
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
+import edu.wpi.first.wpilibj.Counter;
+import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 /**
@@ -16,6 +18,10 @@ public class SmartElevator extends Subsystem {
 	public static final int highPos = 3;
 	public static final int medPos = 2;
 	public static final int lowPos = 1;
+	private static DigitalInput limitSwitchTop = new DigitalInput(1);
+	Counter counterTop = new Counter(limitSwitchTop);
+	private static DigitalInput limitSwitchBottom = new DigitalInput(2);
+	Counter counterBottom = new Counter(limitSwitchBottom);
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
 
@@ -129,5 +135,17 @@ public class SmartElevator extends Subsystem {
     {
     	return elevatorPulley.getSelectedSensorPosition(0);
     }
+     public boolean isSwitchSetTop() {
+ return counterTop.get() > 0;
+ }
+
+public boolean isSwitchSetBottom() {
+  return counterBottom.get() > 0;
+}
+
+public void stop()
+{
+	elevatorPulley.set(0);
+}
 }
 

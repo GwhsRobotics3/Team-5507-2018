@@ -30,8 +30,8 @@ public class DriveTrain extends Subsystem {
 	private WPI_TalonSRX frontRight = new WPI_TalonSRX(RobotMap.driveFrontRight);
 	private WPI_TalonSRX backLeft = new WPI_TalonSRX(RobotMap.driveBackLeft);
 	private WPI_TalonSRX backRight = new WPI_TalonSRX(RobotMap.driveBackRight);
-	private static DigitalInput limitSwitch = new DigitalInput(1);
-	Counter counter = new Counter(limitSwitch);
+//	private static DigitalInput limitSwitch = new DigitalInput(1);
+//	Counter counter = new Counter(limitSwitch);
 	//ADD ENCODERS
 //	private Encoder leftEncoder = new Encoder(1, 2, false, EncodingType.k4X);
 //	private Encoder rightEncoder = new Encoder(3, 4, false, EncodingType.k4X);  
@@ -134,8 +134,11 @@ public class DriveTrain extends Subsystem {
    
     }
     
-    public boolean isSwitchSetDrive() {
-        return counter.get() < 0;
-    }
+//    public boolean isSwitchSetDrive() {
+//        return counter.get() < 0;
+//    }
+
+
+
 }
 

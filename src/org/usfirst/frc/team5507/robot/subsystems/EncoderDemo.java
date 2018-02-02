@@ -17,7 +17,7 @@ public class EncoderDemo extends Subsystem {
 
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
-	public static WPI_TalonSRX m_talon = new WPI_TalonSRX(RobotMap.encoder);
+	public static WPI_TalonSRX m_talon = new WPI_TalonSRX(25);
 	
 	public EncoderDemo()
 	{
