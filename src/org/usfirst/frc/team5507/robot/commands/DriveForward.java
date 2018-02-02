@@ -44,6 +44,7 @@ return false;
 
     // Called once after isFinished returns true
     protected void end() {
+    	Robot.m_oi.controller.setRumble(0.4,0.4);
     	end();
     }
 
