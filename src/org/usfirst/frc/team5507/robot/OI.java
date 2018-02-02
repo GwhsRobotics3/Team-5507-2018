@@ -20,6 +20,7 @@ import org.usfirst.frc.team5507.robot.commands.IntakeTakeOut;
 import org.usfirst.frc.team5507.robot.commands.TestPrint;
 
 import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 
@@ -74,7 +75,7 @@ public class OI {
 		backLeft.whenPressed(new GripperOpen()); //GripperOpen command
 		backRight.whenPressed(new GripperClose());	
 		bButton.whenPressed(new ElevatorUp());	
-		yButton.whenPressed(new ElevatorUp());		
+		yButton.whenPressed(new ElevatorUp());	
 	}
 	
 }
