@@ -1,42 +1,33 @@
 package org.usfirst.frc.team5507.robot.commands;
 
 import org.usfirst.frc.team5507.robot.Robot;
-import org.usfirst.frc.team5507.robot.subsystems.SmartGripper;
 
 import edu.wpi.first.wpilibj.command.Command;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import edu.wpi.first.wpilibj.command.InstantCommand;
 
 /**
  *
  */
-public class SmartGripperTest extends Command {
+public class SmartGripperToggle extends InstantCommand {
 
-	private double x;
-    public SmartGripperTest(double pos) {
+    public SmartGripperToggle() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     	requires(Robot.m_smartGripper);
-    	x = pos;
-    	
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	SmartGripper.setDesiredPosition(0);
-    	System.out.println("starting method");
+    	Robot.m_smartGripper.setState(Robot.m_smartGripper.getToggledState());
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	SmartGripper.setDesiredPosition(x);
-    	SmartDashboard.putNumber("Gripper position", SmartGripper.getCurrentPosL());
-    	System.out.println("executing");
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-    	double y = SmartGripper.getCurrentPosL();
-        return y > x;
+        return false;
     }
 
     // Called once after isFinished returns true
