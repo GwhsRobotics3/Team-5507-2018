@@ -3,6 +3,7 @@ package org.usfirst.frc.team5507.robot.commands;
 import org.usfirst.frc.team5507.robot.OI;
 import org.usfirst.frc.team5507.robot.Robot;
 //import org.usfirst.frc.team5507.robot.XboxController;
+import org.usfirst.frc.team5507.robot.subsystems.SmartGripper;
 
 import edu.wpi.first.wpilibj.command.Command;
 
@@ -14,7 +15,7 @@ public class TestPrint extends Command {
     public TestPrint() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-    	requires(Robot.m_climber);
+    	requires(Robot.m_smartGripper);
     }
 
     // Called just before this Command runs the first time
@@ -24,7 +25,8 @@ public class TestPrint extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {    
     //	Robot.m_oi.controller.setRumble(1, 1);
-    	Robot.m_climber.testPrint();
+    	//Robot.m_climber.testPrint();
+    	SmartGripper.setDesiredPosition(0);
     }
 
     // Make this return true when this Command no longer needs to run execute()

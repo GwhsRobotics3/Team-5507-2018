@@ -75,7 +75,7 @@ public class OI {
 		//aButton.whileHeld(new IntakeTakeIn());
 		aButton.whileHeld(new RumbleInTheJungleJuliaWasRight());
 		xButton.whileHeld(new IntakeTakeOut());		
-		backLeft.whenPressed(new SmartGripperTest(300)); //GripperOpen command
+		backLeft.whenPressed(new TestPrint()); //GripperOpen command
 		backRight.whenPressed(new GripperClose());	
 		bButton.whenPressed(new ElevatorUp());	
 		yButton.whenPressed(new ElevatorUp());	

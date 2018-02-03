@@ -107,6 +107,11 @@ public class SmartGripper extends Subsystem {
     	    }
     	    
     	    public static void setDesiredPosition(double pos) {
+    	    	System.out.println("using position method");
+    	    	System.out.println("left position: " + leftArm.getSelectedSensorPosition(0));
+    	    	System.out.println("right position: " + rightArm.getSelectedSensorPosition(0));
+    	    }
+    	    	/*
     	    	if(getCurrentState() == startPos && pos == Constants.readyPositionR)
     	    	{
     	    		if(leftArm.getSelectedSensorPosition(0) < pos)
@@ -186,6 +191,8 @@ public class SmartGripper extends Subsystem {
     	    	}
     	    	
     	    }
+    	    */
+    	    	
     	    public static double getCurrentPosL()
     	    {
     	    	return leftArm.getSelectedSensorPosition(0);
