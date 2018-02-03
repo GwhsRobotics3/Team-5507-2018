@@ -3,6 +3,7 @@ package org.usfirst.frc.team5507.robot.subsystems;
 import org.usfirst.frc.team5507.robot.Constants;
 import org.usfirst.frc.team5507.robot.RobotMap;
 
+import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
 import edu.wpi.first.wpilibj.Counter;
@@ -17,8 +18,11 @@ public class SmartElevator extends Subsystem {
 	private static WPI_TalonSRX elevatorPulley = new WPI_TalonSRX(RobotMap.elevator);	
 	private static int currentState;
 	public static final int STATE_HIGH = 3;
-	public static final int STATE_MEDIUM = 2;
+	public static final int STATE_MED = 2;
 	public static final int STATE_LOW = 1;
+	private static final int TICKS_HIGH = 30;
+	private static final int TICKS_MED = 20;
+	private static final int TICKS_LOW = 10;
 	private static DigitalInput limitSwitchTop = new DigitalInput(1);
 	Counter counterTop = new Counter(limitSwitchTop);
 	private static DigitalInput limitSwitchBottom = new DigitalInput(2);
@@ -31,14 +35,14 @@ public class SmartElevator extends Subsystem {
 		currentState = STATE_LOW;
 		DriveTrain.configTalon(elevatorPulley);
 		resetEncoders();
-		
+
 	}
 	public void initDefaultCommand() {
 		// Set the default command for a subsystem here.
 		//setDefaultCommand(new MySpecialCommand());
 		SmartDashboard.putNumber("Pulley Position", elevatorPulley.getSelectedSensorPosition(0));
 	}
-	
+
 	public static void resetEncoders() {
 		elevatorPulley.setSelectedSensorPosition(0, 0, 0);
 	}
@@ -47,22 +51,22 @@ public class SmartElevator extends Subsystem {
 	{
 		switch(currentState)
 		{
-			case(STATE_LOW):
-				currentState = STATE_MEDIUM;
-			
-			break;
-			case(STATE_MEDIUM):
-				
-				currentState = STATE_HIGH;
-			
-			break;
-			case(STATE_HIGH):
-				currentState = STATE_LOW;
-			
-			break;
-			default:
-				currentState = STATE_LOW;
-				
+		case(STATE_LOW):
+			currentState = STATE_MED;
+
+		break;
+		case(STATE_MED):
+
+			currentState = STATE_HIGH;
+
+		break;
+		case(STATE_HIGH):
+			currentState = STATE_LOW;
+
+		break;
+		default:
+			currentState = STATE_LOW;
+
 			break;
 		}
 		return currentState;
@@ -73,52 +77,79 @@ public class SmartElevator extends Subsystem {
 		return currentState;
 	}
 
-	public double getPositionForState(int currentState)
+	public void setState(int state)
 	{
-		if(currentState == lowPos)
-		{
-			return Constants.EllowPosition;
+		if(state < STATE_HIGH || state > STATE_LOW) {
+			state = STATE_MED;
 		}
-		else if(currentState == medPos)
+		
+		currentState = state;
+		
+		switch(currentState)
 		{
-			return Constants.ElmedPosition;
+			case(STATE_LOW):
+				setDesiredPosition(TICKS_LOW);
+			
+				break;
+			case(STATE_MED):
+				setDesiredPosition(TICKS_MED);
+			
+				break;
+			case(STATE_HIGH):
+				setDesiredPosition(TICKS_HIGH);
+			
+				break;
+			default:
+				setDesiredPosition(TICKS_LOW);
+				
+				break;
 		}
-		else 
-		{
-			return Constants.ElhighPosition;
-		}
+		
+		//		if(currentState == lowPos)
+		//		{
+		//			return ;
+		//		}
+		//		else if(currentState == medPos)
+		//		{
+		//			return Constants.ElmedPosition;
+		//		}
+		//		else 
+		//		{
+		//			return Constants.ElhighPosition;
+		//		}
 	}
 
 	public static void setDesiredPosition(double pos)
 	{
-		if(pos == Constants.ElhighPosition)
-		{
-			pos = Constants.ElhighPosition;
-			while(pos < getCurrentPos())
-			{
-				goUp();
-			}
-		}	 
-		else if(pos == Constants.ElmedPosition)
-		{
-			pos = Constants.ElmedPosition;
-			if(getCurrentPos() < pos)
-			{
-				goUp();
-			}
-			else
-			{
-				goDown();
-			}    		
-		}
-		else
-		{
-			pos = Constants.EllowPosition;
-			if(getCurrentPos() < pos)
-			{
-				goDown();
-			}
-		}   	
+		elevatorPulley.set(ControlMode.MotionMagic, pos);
+//		if(pos == Constants.ElhighPosition)
+//		{
+//			pos = Constants.ElhighPosition;
+//			while(pos < getCurrentPos())
+//			{
+//				goUp();
+//			}
+//		}	 
+//		else if(pos == Constants.ElmedPosition)
+//		{
+//			pos = Constants.ElmedPosition;
+//			if(getCurrentPos() < pos)
+//			{
+//				goUp();
+//			}
+//			else
+//			{
+//				goDown();
+//			}    		
+//		}
+//		else
+//		{
+//			pos = Constants.EllowPosition;
+//			if(getCurrentPos() < pos)
+//			{
+//				goDown();
+//			}
+//		}   	
 	}
 
 	public static void goUp()
@@ -135,7 +166,7 @@ public class SmartElevator extends Subsystem {
 	{
 		return elevatorPulley.getSelectedSensorPosition(0);
 	}
-	
+
 	public boolean isSwitchSetTop() {
 		return counterTop.get() > 0;
 	}
