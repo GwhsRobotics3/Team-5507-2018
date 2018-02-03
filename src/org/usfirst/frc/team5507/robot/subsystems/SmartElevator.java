@@ -33,7 +33,7 @@ public class SmartElevator extends Subsystem {
 	public SmartElevator()
 	{
 		currentState = STATE_LOW;
-		DriveTrain.configTalon(elevatorPulley);
+		Constants.configTalon(elevatorPulley);
 		resetEncoders();
 
 	}
