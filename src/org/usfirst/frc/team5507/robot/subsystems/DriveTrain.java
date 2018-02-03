@@ -18,6 +18,7 @@ import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.drive.MecanumDrive;
+import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
@@ -40,6 +41,8 @@ public class DriveTrain extends Subsystem {
 	private MecanumDrive m_drive = new MecanumDrive(frontLeft, backLeft, frontRight, backRight);
 
 	public DriveTrain() {
+		super("DriveTrain");
+	    LiveWindow.addChild(this, m_drive);
 		configTalon(frontLeft);
 		configTalon(frontRight);
 		configTalon(backRight);

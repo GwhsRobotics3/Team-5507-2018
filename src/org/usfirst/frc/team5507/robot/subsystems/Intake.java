@@ -10,6 +10,7 @@ import edu.wpi.first.wpilibj.Counter;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.Spark;
 import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
@@ -23,6 +24,12 @@ public class Intake extends Subsystem {
 	private WPI_VictorSPX m_rightWheel = new WPI_VictorSPX(RobotMap.intakeRightMotor);
 	private static DigitalInput limitSwitch = new DigitalInput(1);
 	Counter counter = new Counter(limitSwitch);
+	
+	public Intake() {
+		super("Intake");
+	    LiveWindow.addChild(this, limitSwitch);
+	    LiveWindow.addChild(this, counter);
+	}
 	
 	public void initDefaultCommand() {
         // Set the default command for a subsystem here.
