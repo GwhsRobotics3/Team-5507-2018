@@ -33,8 +33,8 @@ public class SmartGripper extends Subsystem {
 	public SmartGripper()
 	{
 		currentState = STATE_START;
-		DriveTrain.configTalon(leftArm);
-		DriveTrain.configTalon(rightArm);
+		Constants.configTalon(leftArm);
+		Constants.configTalon(rightArm);
 		resetEncoders();
 	}
 	

@@ -43,10 +43,10 @@ public class DriveTrain extends Subsystem {
 	public DriveTrain() {
 		super("DriveTrain");
 	    LiveWindow.addChild(this, m_drive);
-		configTalon(frontLeft);
-		configTalon(frontRight);
-		configTalon(backRight);
-		configTalon(backLeft);
+		Constants.configTalon(frontLeft);
+		Constants.configTalon(frontRight);
+		Constants.configTalon(backRight);
+		Constants.configTalon(backLeft);
 	}
 	
 	 // config a talon motor controller with an Encoder
