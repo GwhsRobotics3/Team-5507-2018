@@ -8,16 +8,17 @@ import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import edu.wpi.first.wpilibj.Counter;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  *
  */
 public class SmartElevator extends Subsystem {
 	private static WPI_TalonSRX elevatorPulley = new WPI_TalonSRX(RobotMap.elevator);	
-	private static int currentState = 1;
-	public static final int highPos = 3;
-	public static final int medPos = 2;
-	public static final int lowPos = 1;
+	private static int currentState;
+	public static final int STATE_HIGH = 3;
+	public static final int STATE_MEDIUM = 2;
+	public static final int STATE_LOW = 1;
 	private static DigitalInput limitSwitchTop = new DigitalInput(1);
 	Counter counterTop = new Counter(limitSwitchTop);
 	private static DigitalInput limitSwitchBottom = new DigitalInput(2);
@@ -25,45 +26,44 @@ public class SmartElevator extends Subsystem {
 	// Put methods for controlling this subsystem
 	// here. Call these from Commands.
 
+	public SmartElevator()
+	{
+		currentState = STATE_LOW;
+		DriveTrain.configTalon(elevatorPulley);
+		resetEncoders();
+		
+	}
 	public void initDefaultCommand() {
 		// Set the default command for a subsystem here.
 		//setDefaultCommand(new MySpecialCommand());
+		SmartDashboard.putNumber("Pulley Position", elevatorPulley.getSelectedSensorPosition(0));
 	}
-	public void elevatorEncoder()
-	{
-		DriveTrain.configTalon(elevatorPulley);
-	}
-
-	public int getNextStateDown()
-	{
-		if(currentState == lowPos)
-		{
-			currentState = lowPos;
-		}
-		else if(currentState == medPos)
-		{
-			currentState = lowPos;
-		}
-		else
-		{
-			currentState = medPos;
-		}
-		return currentState;
+	
+	public static void resetEncoders() {
+		elevatorPulley.setSelectedSensorPosition(0, 0, 0);
 	}
 
-	public int setNextStateUp()
+	public int getToggledState()
 	{
-		if(currentState == lowPos)
+		switch(currentState)
 		{
-			currentState = medPos;
-		}
-		else if(currentState == medPos)
-		{
-			currentState = highPos;
-		}
-		else 
-		{
-			currentState = highPos;
+			case(STATE_LOW):
+				currentState = STATE_MEDIUM;
+			
+			break;
+			case(STATE_MEDIUM):
+				
+				currentState = STATE_HIGH;
+			
+			break;
+			case(STATE_HIGH):
+				currentState = STATE_LOW;
+			
+			break;
+			default:
+				currentState = STATE_LOW;
+				
+			break;
 		}
 		return currentState;
 	}
