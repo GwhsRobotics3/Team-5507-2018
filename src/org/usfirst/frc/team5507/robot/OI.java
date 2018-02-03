@@ -16,6 +16,7 @@ import org.usfirst.frc.team5507.robot.commands.GripperClose;
 import org.usfirst.frc.team5507.robot.commands.GripperOpen;
 import org.usfirst.frc.team5507.robot.commands.IntakeTakeIn;
 import org.usfirst.frc.team5507.robot.commands.IntakeTakeOut;
+import org.usfirst.frc.team5507.robot.commands.RumbleInTheJungleJuliaWasRight;
 import org.usfirst.frc.team5507.robot.commands.SmartGripperTest;
 //import org.usfirst.frc.team5507.robot.commands.SmartGripperTest;
 import org.usfirst.frc.team5507.robot.commands.TestPrint;
@@ -71,7 +72,8 @@ public class OI {
 		Button yButton = new JoystickButton(controller, 4); //elevator down
 		//climbing right joystick
 
-		aButton.whileHeld(new IntakeTakeIn());
+		//aButton.whileHeld(new IntakeTakeIn());
+		aButton.whileHeld(new RumbleInTheJungleJuliaWasRight());
 		xButton.whileHeld(new IntakeTakeOut());		
 		backLeft.whenPressed(new SmartGripperTest(300)); //GripperOpen command
 		backRight.whenPressed(new GripperClose());	
