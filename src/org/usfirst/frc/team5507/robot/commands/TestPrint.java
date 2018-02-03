@@ -26,7 +26,7 @@ public class TestPrint extends Command {
     protected void execute() {    
     //	Robot.m_oi.controller.setRumble(1, 1);
     	//Robot.m_climber.testPrint();
-    	SmartGripper.setDesiredPosition(0);
+    	//SmartGripper.setDesiredPosition(0);
     }
 
     // Make this return true when this Command no longer needs to run execute()

@@ -1,5 +1,6 @@
 package org.usfirst.frc.team5507.robot.subsystems;
 
+import org.usfirst.frc.team5507.robot.Constants;
 import org.usfirst.frc.team5507.robot.RobotMap;
 import org.usfirst.frc.team5507.robot.commands.DriveWithJoystick;
 import org.usfirst.frc.team5507.robot.commands.GripperStop;
@@ -28,8 +29,8 @@ public class Gripper extends Subsystem {
     }
     public void ArmEncoders()
     {
-    	DriveTrain.configTalon(leftArm);
-    	DriveTrain.configTalon(rightArm);
+    	Constants.configTalon(leftArm);
+    	Constants.configTalon(rightArm);
     }
     
 //   public void control(Joystick stick) {
