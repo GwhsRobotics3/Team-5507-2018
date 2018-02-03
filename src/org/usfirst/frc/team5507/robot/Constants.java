@@ -13,13 +13,13 @@ public class Constants {
 	 * Which PID slot to pull gains from.  Starting 2018, you can choose 
 	 * from 0,1,2 or 3.  Only the first two (0,1) are visible in web-based configuration.
 	 */
-	public static final int grabPositionR = 30;
-	public static final int readyPositionR = 20;
-	public static final int startPositionR = 10;
+	public static final int grabPositionR = 300;
+	public static final int readyPositionR = 200;
+	public static final int startPositionR = 100;
 	
-	public static final int grabPositionL = 30;
-	public static final int readyPositionL = 20;
-	public static final int startPositionL = 10;
+	public static final int grabPositionL = 300;
+	public static final int readyPositionL = 200;
+	public static final int startPositionL = 100;
 	
 	public static final int ElhighPosition = 30;
 	public static final int ElmedPosition = 20;

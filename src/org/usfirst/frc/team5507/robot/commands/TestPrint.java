@@ -2,7 +2,7 @@ package org.usfirst.frc.team5507.robot.commands;
 
 import org.usfirst.frc.team5507.robot.OI;
 import org.usfirst.frc.team5507.robot.Robot;
-import org.usfirst.frc.team5507.robot.XboxController;
+//import org.usfirst.frc.team5507.robot.XboxController;
 
 import edu.wpi.first.wpilibj.command.Command;
 
@@ -23,7 +23,7 @@ public class TestPrint extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {    
-    	Robot.m_oi.controller.setRumble(1, 1);
+    //	Robot.m_oi.controller.setRumble(1, 1);
     	Robot.m_climber.testPrint();
     }
 

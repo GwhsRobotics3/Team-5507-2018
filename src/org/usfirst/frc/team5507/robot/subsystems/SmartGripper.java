@@ -109,12 +109,12 @@ public class SmartGripper extends Subsystem {
     	    public static void setDesiredPosition(double pos) {
     	    	if(getCurrentState() == startPos && pos == Constants.readyPositionR)
     	    	{
-    	    		while(leftArm.getSelectedSensorPosition(0) < pos)
+    	    		if(leftArm.getSelectedSensorPosition(0) < pos)
     	    		{
-    	    			goForwardL();
+    	    			goForwardL();   	    	
     	    			
     	    		}
-    	    		while(rightArm.getSelectedSensorPosition(0) < pos)
+    	    		if(rightArm.getSelectedSensorPosition(0) < pos)
     	    		{
     	    			goForwardR();
     	    		}
@@ -122,12 +122,12 @@ public class SmartGripper extends Subsystem {
     	    	
     	    	if(getCurrentState() == startPos && pos == Constants.grabPositionR)
     	    	{
-    	    		while(leftArm.getSelectedSensorPosition(0) < pos)
+    	    		if(leftArm.getSelectedSensorPosition(0) < pos)
     	    		{
     	    			goForwardL();
     	    			
     	    		}
-    	    		while(rightArm.getSelectedSensorPosition(0) < pos)
+    	    		if(rightArm.getSelectedSensorPosition(0) < pos)
     	    		{
     	    			goForwardR();
     	    		}
@@ -135,12 +135,12 @@ public class SmartGripper extends Subsystem {
     	    	
     	    	if(getCurrentState() == readyPos && pos == Constants.grabPositionR)
     	    	{
-    	    		while(leftArm.getSelectedSensorPosition(0) < pos)
+    	    		if(leftArm.getSelectedSensorPosition(0) < pos)
     	    		{
     	    			goForwardL();
     	    			
     	    		}
-    	    		while(rightArm.getSelectedSensorPosition(0) < pos)
+    	    		if(rightArm.getSelectedSensorPosition(0) < pos)
     	    		{
     	    			goForwardR();
     	    		}
@@ -148,12 +148,12 @@ public class SmartGripper extends Subsystem {
     	    	
     	    	if(getCurrentState() == readyPos && pos == Constants.startPositionR)
     	    	{
-    	    		while(leftArm.getSelectedSensorPosition(0) > pos)
+    	    		if(leftArm.getSelectedSensorPosition(0) > pos)
     	    		{
     	    			goBackL();
     	    			
     	    		}
-    	    		while(rightArm.getSelectedSensorPosition(0) > pos)
+    	    		if(rightArm.getSelectedSensorPosition(0) > pos)
     	    		{
     	    			goBackR();
     	    		}
@@ -161,12 +161,12 @@ public class SmartGripper extends Subsystem {
     	    	
     	    	if(getCurrentState() == grabPos && pos == Constants.readyPositionR)
     	    	{
-    	    		while(leftArm.getSelectedSensorPosition(0) > pos)
+    	    		if(leftArm.getSelectedSensorPosition(0) > pos)
     	    		{
     	    			goBackL();
     	    			
     	    		}
-    	    		while(rightArm.getSelectedSensorPosition(0) > pos)
+    	    		if(rightArm.getSelectedSensorPosition(0) > pos)
     	    		{
     	    			goBackR();
     	    		}
@@ -174,12 +174,12 @@ public class SmartGripper extends Subsystem {
     	    	
     	    	if(getCurrentState() == grabPos && pos == Constants.startPositionR)
     	    	{
-    	    		while(leftArm.getSelectedSensorPosition(0) > pos)
+    	    		if(leftArm.getSelectedSensorPosition(0) > pos)
     	    		{
     	    			goBackL();
     	    			
     	    		}
-    	    		while(rightArm.getSelectedSensorPosition(0) > pos)
+    	    		if(rightArm.getSelectedSensorPosition(0) > pos)
     	    		{
     	    			goBackR();
     	    		}

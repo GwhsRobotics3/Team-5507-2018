@@ -22,7 +22,7 @@ public class SmartGripperTest extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	SmartGripper.setDesiredPosition(10);
+    	SmartGripper.setDesiredPosition(100);
     }
 
     // Called repeatedly when this Command is scheduled to run

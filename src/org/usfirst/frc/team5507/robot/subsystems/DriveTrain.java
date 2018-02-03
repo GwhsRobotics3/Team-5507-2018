@@ -15,6 +15,7 @@ import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.GenericHID.RumbleType;
 import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.drive.MecanumDrive;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -94,11 +95,11 @@ public class DriveTrain extends Subsystem {
     	SmartDashboard.putNumber("backrightspd", backRight.getSelectedSensorVelocity(0));  	
     }
     
-    public void drive(Joystick stick)
+    public void drive(XboxController controller)
     {
-    	double y = stick.getRawAxis(1);
-    	double x = stick.getRawAxis(0);
-    	double z = stick.getRawAxis(3) - stick.getRawAxis(2);
+    	double y = controller.getRawAxis(1);
+    	double x = controller.getRawAxis(0);
+    	double z = controller.getRawAxis(3) - controller.getRawAxis(2);
     	if(Math.abs(x) > .1 || Math.abs(y) > .1 || Math.abs(z) > .1)
     	{
     		drive(x, y, z);
