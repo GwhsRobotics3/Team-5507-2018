@@ -2,23 +2,24 @@ package org.usfirst.frc.team5507.robot.commands;
 
 import org.usfirst.frc.team5507.robot.Robot;
 
-import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.InstantCommand;
 
 /**
  *
  */
-public class SmartGripperToggle extends InstantCommand {
-
-    public SmartGripperToggle() {
+public class SmartElevatorSetState extends InstantCommand {
+	private int state;
+    public SmartElevatorSetState(int s) {
     	super();
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-    	requires(Robot.m_smartGripper);
+    	requires(Robot.m_smartElevator);
+    	state = s;
     }
 
-    // Called just before this Command runs the first time
+    // Called once when the command executes
     protected void initialize() {
-    	Robot.m_smartGripper.setState(Robot.m_smartGripper.getToggledState());
+    	Robot.m_smartElevator.setState(state);
     }
+
 }
