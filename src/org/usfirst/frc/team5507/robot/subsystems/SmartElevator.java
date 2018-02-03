@@ -22,130 +22,131 @@ public class SmartElevator extends Subsystem {
 	Counter counterTop = new Counter(limitSwitchTop);
 	private static DigitalInput limitSwitchBottom = new DigitalInput(2);
 	Counter counterBottom = new Counter(limitSwitchBottom);
-    // Put methods for controlling this subsystem
-    // here. Call these from Commands.
+	// Put methods for controlling this subsystem
+	// here. Call these from Commands.
 
-    public void initDefaultCommand() {
-        // Set the default command for a subsystem here.
-        //setDefaultCommand(new MySpecialCommand());
-    }
-    public void elevatorEncoder()
-    {
-    	DriveTrain.configTalon(elevatorPulley);
-    }
-    
-   public int getNextStateDown()
-   {
-	   if(currentState == lowPos)
-	   {
-		   currentState = lowPos;
-	   }
-	   else if(currentState == medPos)
-	   {
-		   currentState = lowPos;
-	   }
-	   else
-	   {
-		   currentState = medPos;
-	   }
-	   return currentState;
-   }
-   
-   public int setNextStateUp()
-   {
-	   if(currentState == lowPos)
-	   {
-		    currentState = medPos;
-	   }
-	   else if(currentState == medPos)
-	   {
-		   currentState = highPos;
-	   }
-	   else 
-	   {
-		   currentState = highPos;
-	   }
-	   return currentState;
-   }
-    
-    public static int getCurrentState()
-    {
-    	return currentState;
-    }
-    
-    public double getPositionForState(int currentState)
-    {
-    	if(currentState == lowPos)
-    	{
-    		return Constants.EllowPosition;
-    	}
-    	else if(currentState == medPos)
-    	{
-    		return Constants.ElmedPosition;
-    	}
-    	else 
-    	{
-    		return Constants.ElhighPosition;
-    	}
-    }
-    
-    public static void setDesiredPosition(double pos)
-    {
-    	if(pos == Constants.ElhighPosition)
-    	{
-    		pos = Constants.ElhighPosition;
-    		while(pos < getCurrentPos())
-    		{
-    			goUp();
-    		}
-    	}	 
-    	else if(pos == Constants.ElmedPosition)
-    	{
-    		pos = Constants.ElmedPosition;
-    		if(getCurrentPos() < pos)
-    		{
-    			goUp();
-    		}
-    		else
-    		{
-    			goDown();
-    		}    		
-    	}
-    	else
-    	{
-    		pos = Constants.EllowPosition;
-    		if(getCurrentPos() < pos)
-    		{
-    			goDown();
-    		}
-    	}   	
-    }
-    
-    public static void goUp()
-    {
-    	elevatorPulley.set(.5);
-    }
-    
-    public static void goDown()
-    {
-    	elevatorPulley.set(-.5);
-    }
-    
-    public static double getCurrentPos()
-    {
-    	return elevatorPulley.getSelectedSensorPosition(0);
-    }
-     public boolean isSwitchSetTop() {
- return counterTop.get() > 0;
- }
+	public void initDefaultCommand() {
+		// Set the default command for a subsystem here.
+		//setDefaultCommand(new MySpecialCommand());
+	}
+	public void elevatorEncoder()
+	{
+		DriveTrain.configTalon(elevatorPulley);
+	}
 
-public boolean isSwitchSetBottom() {
-  return counterBottom.get() > 0;
-}
+	public int getNextStateDown()
+	{
+		if(currentState == lowPos)
+		{
+			currentState = lowPos;
+		}
+		else if(currentState == medPos)
+		{
+			currentState = lowPos;
+		}
+		else
+		{
+			currentState = medPos;
+		}
+		return currentState;
+	}
 
-public void stop()
-{
-	elevatorPulley.set(0);
-}
+	public int setNextStateUp()
+	{
+		if(currentState == lowPos)
+		{
+			currentState = medPos;
+		}
+		else if(currentState == medPos)
+		{
+			currentState = highPos;
+		}
+		else 
+		{
+			currentState = highPos;
+		}
+		return currentState;
+	}
+
+	public static int getCurrentState()
+	{
+		return currentState;
+	}
+
+	public double getPositionForState(int currentState)
+	{
+		if(currentState == lowPos)
+		{
+			return Constants.EllowPosition;
+		}
+		else if(currentState == medPos)
+		{
+			return Constants.ElmedPosition;
+		}
+		else 
+		{
+			return Constants.ElhighPosition;
+		}
+	}
+
+	public static void setDesiredPosition(double pos)
+	{
+		if(pos == Constants.ElhighPosition)
+		{
+			pos = Constants.ElhighPosition;
+			while(pos < getCurrentPos())
+			{
+				goUp();
+			}
+		}	 
+		else if(pos == Constants.ElmedPosition)
+		{
+			pos = Constants.ElmedPosition;
+			if(getCurrentPos() < pos)
+			{
+				goUp();
+			}
+			else
+			{
+				goDown();
+			}    		
+		}
+		else
+		{
+			pos = Constants.EllowPosition;
+			if(getCurrentPos() < pos)
+			{
+				goDown();
+			}
+		}   	
+	}
+
+	public static void goUp()
+	{
+		elevatorPulley.set(.5);
+	}
+
+	public static void goDown()
+	{
+		elevatorPulley.set(-.5);
+	}
+
+	public static double getCurrentPos()
+	{
+		return elevatorPulley.getSelectedSensorPosition(0);
+	}
+	
+	public boolean isSwitchSetTop() {
+		return counterTop.get() > 0;
+	}
+
+	public boolean isSwitchSetBottom() {
+		return counterBottom.get() > 0;
+	}
+
+	public void stop()
+	{
+		elevatorPulley.set(0);
+	}
 }
 

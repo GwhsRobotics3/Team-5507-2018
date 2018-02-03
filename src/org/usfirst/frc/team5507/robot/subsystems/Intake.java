@@ -21,8 +21,8 @@ public class Intake extends Subsystem {
     // here. Call these from Commands.
 	private WPI_VictorSPX m_leftWheel = new WPI_VictorSPX(RobotMap.intakeLeftMotor);
 	private WPI_VictorSPX m_rightWheel = new WPI_VictorSPX(RobotMap.intakeRightMotor);
-//	private static DigitalInput limitSwitch = new DigitalInput(1);
-//	Counter counter = new Counter(limitSwitch);
+	private static DigitalInput limitSwitch = new DigitalInput(1);
+	Counter counter = new Counter(limitSwitch);
 	
 	public void initDefaultCommand() {
         // Set the default command for a subsystem here.
@@ -49,8 +49,8 @@ public class Intake extends Subsystem {
     	m_rightWheel.set(0);
     }
     
-//    public boolean isSwitchSet() {
-//        return counter.get() > 0;
-//    }
+   public boolean isSwitchSet() {
+       return counter.get() > 0;    
+       }
 }
 

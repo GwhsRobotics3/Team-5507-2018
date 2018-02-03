@@ -22,8 +22,8 @@ public class RumbleInTheJungleJuliaWasRight extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.m_oi.controller.setRumble(RumbleType.kLeftRumble, 5);
-    	Robot.m_oi.controller.setRumble(RumbleType.kRightRumble, 5);
+    	Robot.m_oi.controller.setRumble(RumbleType.kLeftRumble, 1);
+    	Robot.m_oi.controller.setRumble(RumbleType.kRightRumble, 1);
     }
 
     // Make this return true when this Command no longer needs to run execute()
