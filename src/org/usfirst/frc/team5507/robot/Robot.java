@@ -10,6 +10,7 @@ package org.usfirst.frc.team5507.robot;
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.I2C;
 import edu.wpi.first.wpilibj.TimedRobot;
+import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.SerialPort;
@@ -59,6 +60,8 @@ public class Robot extends TimedRobot {
 	public static Intake m_intake = new Intake();
 	public static AHRS m_ahrs;
 	public static SmartGripper m_smartGripper = new SmartGripper();
+	public static Timer m_timer = new Timer();
+
 	//public static SmartGripper m_smartGripper = new SmartGripper();
 	
 	
