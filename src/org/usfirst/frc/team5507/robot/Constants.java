@@ -18,6 +18,10 @@ public class Constants {
 	 * from 0,1,2 or 3.  Only the first two (0,1) are visible in web-based configuration.
 	 */
 	
+	public static final double TICKS_START = 0.0;
+	public static final double TICKS_OPEN = 1800;
+	public static final double TICKS_CLOSED = 2000;
+	
 	public static final int kSlotIdx = 0;
 	
 	/* Talon SRX/ Victor SPX will supported multiple (cascaded) PID loops.  

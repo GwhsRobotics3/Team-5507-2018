@@ -83,7 +83,7 @@ public class OI {
 		x.whileHeld(new IntakeTakeOut());		
 		b.whenPressed(new ElevatorUp());	
 		y.whenPressed(new ElevatorUp());	
-		backLeft.whenPressed(new SmartGripperSetState(1)); //GripperOpen command
+		//backLeft.whenPressed(new ); //GripperOpen command
 		backRight.whenPressed(new SmartGripperToggle());
 	}
 }

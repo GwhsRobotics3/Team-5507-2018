@@ -20,9 +20,6 @@ public class SmartElevator extends Subsystem {
 	public static final int STATE_HIGH = 3;
 	public static final int STATE_MED = 2;
 	public static final int STATE_LOW = 1;
-	private static final int TICKS_HIGH = 30;
-	private static final int TICKS_MED = 20;
-	private static final int TICKS_LOW = 10;
 	private static DigitalInput limitSwitchTop = new DigitalInput(1);
 	Counter counterTop = new Counter(limitSwitchTop);
 	private static DigitalInput limitSwitchBottom = new DigitalInput(2);
@@ -88,78 +85,65 @@ public class SmartElevator extends Subsystem {
 		switch(currentState)
 		{
 			case(STATE_LOW):
-				setDesiredPosition(TICKS_LOW);
+				setDesiredPosition(0);
 			
 				break;
 			case(STATE_MED):
-				setDesiredPosition(TICKS_MED);
+				setDesiredPosition(15);
 			
 				break;
 			case(STATE_HIGH):
-				setDesiredPosition(TICKS_HIGH);
+				setDesiredPosition(30);
 			
 				break;
 			default:
-				setDesiredPosition(TICKS_LOW);
+				setDesiredPosition(0);
 				
 				break;
 		}
-		
-		//		if(currentState == lowPos)
-		//		{
-		//			return ;
-		//		}
-		//		else if(currentState == medPos)
-		//		{
-		//			return Constants.ElmedPosition;
-		//		}
-		//		else 
-		//		{
-		//			return Constants.ElhighPosition;
-		//		}
 	}
 
-	public static void setDesiredPosition(double pos)
+	public static void setDesiredPosition(double inches)
 	{
-		elevatorPulley.set(ControlMode.MotionMagic, pos);
-//		if(pos == Constants.ElhighPosition)
+		double ticks = 4096 / (Math.PI * 1.25) * inches; 
+		elevatorPulley.set(ControlMode.MotionMagic, ticks + elevatorPulley.getSelectedSensorPosition(0));
+	}
+
+	public static void toggleUp()
+	{
+		setDesiredPosition(11);
+//		switch(currentState) 
 //		{
-//			pos = Constants.ElhighPosition;
-//			while(pos < getCurrentPos())
-//			{
-//				goUp();
-//			}
-//		}	 
-//		else if(pos == Constants.ElmedPosition)
-//		{
-//			pos = Constants.ElmedPosition;
-//			if(getCurrentPos() < pos)
-//			{
-//				goUp();
-//			}
-//			else
-//			{
-//				goDown();
-//			}    		
+//			case(STATE_LOW):
+//				return STATE_MED;
+//			
+//			case(STATE_MED):
+//				return STATE_HIGH;
+//			
+//			case(STATE_HIGH):
+//				return STATE_HIGH;
+//			
+//			default:
+//				return STATE_MED;
 //		}
-//		else
-//		{
-//			pos = Constants.EllowPosition;
-//			if(getCurrentPos() < pos)
-//			{
-//				goDown();
-//			}
-//		}   	
 	}
 
-	public static void goUp()
+	public static int toggleDown()
 	{
-		elevatorPulley.set(.5);
-	}
-
-	public static void goDown()
-	{
-		elevatorPulley.set(-.5);
+		switch(currentState)
+		{
+			case(STATE_HIGH):
+				return STATE_MED;
+			
+			case(STATE_MED):
+				return STATE_LOW;
+			
+			case(STATE_LOW):
+				return STATE_LOW;
+			
+			default:
+				return STATE_MED;
+		}
 	}
 
 	public static double getCurrentPos()
@@ -179,5 +163,7 @@ public class SmartElevator extends Subsystem {
 	{
 		elevatorPulley.set(0);
 	}
+	
+
 }
 
