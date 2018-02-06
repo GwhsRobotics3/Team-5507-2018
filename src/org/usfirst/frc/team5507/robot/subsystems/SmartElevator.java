@@ -106,26 +106,25 @@ public class SmartElevator extends Subsystem {
 	public static void setDesiredPosition(double inches)
 	{
 		double ticks = 4096 / (Math.PI * 1.25) * inches; 
-		elevatorPulley.set(ControlMode.MotionMagic, ticks + elevatorPulley.getSelectedSensorPosition(0));
+		elevatorPulley.set(ControlMode.MotionMagic, ticks);
 	}
 
-	public static void toggleUp()
+	public static int toggleUp()
 	{
-		setDesiredPosition(11);
-//		switch(currentState) 
-//		{
-//			case(STATE_LOW):
-//				return STATE_MED;
-//			
-//			case(STATE_MED):
-//				return STATE_HIGH;
-//			
-//			case(STATE_HIGH):
-//				return STATE_HIGH;
-//			
-//			default:
-//				return STATE_MED;
-//		}
+		switch(currentState) 
+		{
+			case(STATE_LOW):
+				return STATE_MED;
+			
+			case(STATE_MED):
+				return STATE_HIGH;
+			
+			case(STATE_HIGH):
+				return STATE_HIGH;
+			
+			default:
+				return STATE_MED;
+		}
 	}
 
 	public static int toggleDown()
