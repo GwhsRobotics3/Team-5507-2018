@@ -33,6 +33,8 @@ public class SmartGripper extends Subsystem {
 		Constants.configTalon(rightArm);
 		resetEncoders();
 	}
+	
+	
 
 	public static void resetEncoders() {
 		leftArm.setSelectedSensorPosition(0, 0, 0);
