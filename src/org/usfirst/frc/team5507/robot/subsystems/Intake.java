@@ -1,5 +1,6 @@
 package org.usfirst.frc.team5507.robot.subsystems;
 
+import org.usfirst.frc.team5507.robot.Robot;
 import org.usfirst.frc.team5507.robot.RobotMap;
 import org.usfirst.frc.team5507.robot.commands.IntakeStop;
 
@@ -9,6 +10,7 @@ import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
 import edu.wpi.first.wpilibj.Counter;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.Spark;
+import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -20,8 +22,8 @@ public class Intake extends Subsystem {
 
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
-	private WPI_VictorSPX m_leftWheel = new WPI_VictorSPX(RobotMap.intakeLeftMotor);
-	private WPI_VictorSPX m_rightWheel = new WPI_VictorSPX(RobotMap.intakeRightMotor);
+	private static WPI_VictorSPX m_leftWheel = new WPI_VictorSPX(RobotMap.intakeLeftMotor);
+	private static WPI_VictorSPX m_rightWheel = new WPI_VictorSPX(RobotMap.intakeRightMotor);
 	private static DigitalInput limitSwitch = new DigitalInput(1);
 	Counter counter = new Counter(limitSwitch);
 	
@@ -50,7 +52,7 @@ public class Intake extends Subsystem {
     	m_rightWheel.set(-.75); 
     }
     
-    public void stop()
+    public static void stop()
     {
     	m_leftWheel.set(0);
     	m_rightWheel.set(0);

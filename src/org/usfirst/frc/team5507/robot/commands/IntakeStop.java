@@ -1,6 +1,7 @@
 package org.usfirst.frc.team5507.robot.commands;
 
 import org.usfirst.frc.team5507.robot.Robot;
+import org.usfirst.frc.team5507.robot.subsystems.Intake;
 
 import edu.wpi.first.wpilibj.command.Command;
 
@@ -13,6 +14,7 @@ public class IntakeStop extends Command {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     	requires(Robot.m_intake);
+    	
     }
 
     // Called just before this Command runs the first time
@@ -21,7 +23,7 @@ public class IntakeStop extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.m_intake.stop();
+    	Intake.stop();
     }
 
     // Make this return true when this Command no longer needs to run execute()

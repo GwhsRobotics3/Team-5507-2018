@@ -26,11 +26,9 @@ import org.usfirst.frc.team5507.robot.subsystems.DriveTrain;
 import org.usfirst.frc.team5507.robot.subsystems.Elevator;
 import org.usfirst.frc.team5507.robot.subsystems.EncoderDemo;
 import org.usfirst.frc.team5507.robot.subsystems.ExampleSubsystem;
-import org.usfirst.frc.team5507.robot.subsystems.Gripper;
+import org.usfirst.frc.team5507.robot.subsystems.SmartGripper;
 import org.usfirst.frc.team5507.robot.subsystems.Intake;
 import org.usfirst.frc.team5507.robot.subsystems.SmartElevator;
-//import org.usfirst.frc.team5507.robot.subsystems.SmartGripper;
-import org.usfirst.frc.team5507.robot.subsystems.SmartGripper;
 
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import com.kauailabs.navx.frc.AHRS;
@@ -56,10 +54,9 @@ public class Robot extends TimedRobot {
 	public static EncoderDemo m_encoder = new EncoderDemo();
 	//public static Elevator m_elevator = new Elevator();
 	public static SmartElevator m_smartElevator = new SmartElevator();
-	public static Gripper m_gripper = new Gripper();
+	public static SmartGripper m_smartGripper = new SmartGripper();
 	public static Intake m_intake = new Intake();
 	public static AHRS m_ahrs;
-	public static SmartGripper m_smartGripper = new SmartGripper();
 	public static Timer m_timer = new Timer();
 
 	//public static SmartGripper m_smartGripper = new SmartGripper();
@@ -80,9 +77,9 @@ public class Robot extends TimedRobot {
 	public void putSmartDashboardData() {
 		SmartDashboard.putData(m_climber);
 		SmartDashboard.putData(m_driveTrain);
-	//	SmartDashboard.putData(m_elevator);
+		SmartDashboard.putData(m_smartElevator);
 		SmartDashboard.putData(m_encoder);
-		SmartDashboard.putData(m_gripper);
+		SmartDashboard.putData(m_smartGripper);
 		SmartDashboard.putData(m_intake);
 		SmartDashboard.putNumber("IMU_Yaw", m_ahrs.getYaw());
 	}
