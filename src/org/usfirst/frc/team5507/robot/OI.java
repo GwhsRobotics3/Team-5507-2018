@@ -17,6 +17,8 @@ import org.usfirst.frc.team5507.robot.commands.GripperOpen;
 import org.usfirst.frc.team5507.robot.commands.IntakeTakeIn;
 import org.usfirst.frc.team5507.robot.commands.IntakeTakeOut;
 import org.usfirst.frc.team5507.robot.commands.RumbleInTheJungleJuliaWasRight;
+import org.usfirst.frc.team5507.robot.commands.SmartElevatorDown;
+import org.usfirst.frc.team5507.robot.commands.SmartElevatorUp;
 import org.usfirst.frc.team5507.robot.commands.SmartGripperSetState;
 import org.usfirst.frc.team5507.robot.commands.SmartGripperToggle;
 //import org.usfirst.frc.team5507.robot.commands.SmartGripperTest;
@@ -83,7 +85,7 @@ public class OI {
 		x.whileHeld(new IntakeTakeOut());		
 		b.whenPressed(new ElevatorUp());	
 		y.whenPressed(new ElevatorUp());	
-		//backLeft.whenPressed(new ); //GripperOpen command
-		backRight.whenPressed(new SmartGripperToggle());
+		backLeft.whenPressed(new SmartElevatorUp()); //GripperOpen command
+		backRight.whenPressed(new SmartElevatorDown());
 	}
 }
