@@ -85,19 +85,19 @@ public class SmartElevator extends Subsystem {
 		switch(currentState)
 		{
 			case(STATE_LOW):
-				setDesiredPosition(0);
+				setDesiredPosition(Constants.ELEVATOR_LOW);
 			
 				break;
 			case(STATE_MED):
-				setDesiredPosition(15);
+				setDesiredPosition(Constants.ELEVATOR_MED);
 			
 				break;
 			case(STATE_HIGH):
-				setDesiredPosition(30);
+				setDesiredPosition(Constants.ELEVATOR_HIGH);
 			
 				break;
 			default:
-				setDesiredPosition(0);
+				setDesiredPosition(Constants.ELEVATOR_LOW);
 				
 				break;
 		}

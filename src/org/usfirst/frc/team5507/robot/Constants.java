@@ -22,6 +22,10 @@ public class Constants {
 	public static final double TICKS_OPEN = 1800;
 	public static final double TICKS_CLOSED = 2000;
 	
+	public static final double ELEVATOR_HIGH = 30;
+	public static final double ELEVATOR_MED = 15;
+	public static final double ELEVATOR_LOW = 0;
+	
 	public static final int kSlotIdx = 0;
 	
 	/* Talon SRX/ Victor SPX will supported multiple (cascaded) PID loops.  
