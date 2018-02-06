@@ -16,8 +16,10 @@ public class SmartGripperToggle extends InstantCommand {
 		requires(Robot.m_smartGripper);
 	}
 
-	// Called just before this Command runs the first time
-	protected void initialize() {
-		Robot.m_smartGripper.setState(Robot.m_smartGripper.getToggledState());
-	}
+    // Called just before this Command runs the first time
+    protected void initialize() {
+    	int newState = Robot.m_smartGripper.getToggledState();
+    	Robot.m_smartGripper.setState(newState);
+    }
+
 }

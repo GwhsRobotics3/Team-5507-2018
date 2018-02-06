@@ -17,6 +17,9 @@ public class Constants {
 	 * Which PID slot to pull gains from.  Starting 2018, you can choose 
 	 * from 0,1,2 or 3.  Only the first two (0,1) are visible in web-based configuration.
 	 */
+	public static final double TICKS_START = 0.0;
+	public static final double TICKS_OPEN = 1800;
+	public static final double TICKS_CLOSED = 2000;
 
 	public static final int kSlotIdx = 0;
 

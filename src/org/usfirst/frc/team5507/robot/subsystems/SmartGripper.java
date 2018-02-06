@@ -20,10 +20,6 @@ public class SmartGripper extends Subsystem {
 	public static final int STATE_OPEN = 2;
 	public static final int STATE_CLOSED = 3;
 
-	private static final double TICKS_START = 0.0;
-	private static final double TICKS_OPEN = 1800;
-	private static final double TICKS_CLOSED = 2000;
-
 	private static WPI_TalonSRX leftArm = new WPI_TalonSRX(RobotMap.leftArm);
 	private static WPI_TalonSRX rightArm = new WPI_TalonSRX(RobotMap.rightArm);
 
@@ -62,24 +58,19 @@ public class SmartGripper extends Subsystem {
 	{
 		switch (currentState)
 		{
-		case(STATE_START):
-			currentState =  STATE_OPEN;
+	
+			case(STATE_START):
+				return STATE_OPEN;
 
-		break;
-		case(STATE_OPEN):
-			currentState = STATE_CLOSED;
+			case(STATE_OPEN):
+				return STATE_CLOSED;
 
-		break;
-		case(STATE_CLOSED):
-			currentState = STATE_OPEN;
+			case(STATE_CLOSED):
+				return STATE_OPEN;
 
-		break;
-		default:
-			currentState = STATE_OPEN;
-
-			break;
+			default:
+				return STATE_OPEN;
 		}
-		return currentState;
 	}
 
 	public void setState(int s)
@@ -92,22 +83,24 @@ public class SmartGripper extends Subsystem {
 
 		switch(currentState)
 		{
-		case(STATE_START):
-			setTargetAngles(TICKS_START);
 
-		break;
-		case(STATE_OPEN):
-			setTargetAngles(TICKS_OPEN);
+			case(STATE_START):
+				setTargetAngles(Constants.TICKS_START);
+			
+				break;
+			case(STATE_OPEN):
+				setTargetAngles(Constants.TICKS_OPEN);
+			
+				break;
+			case(STATE_CLOSED):
+				setTargetAngles(Constants.TICKS_CLOSED);
+			
+				break;
+			default:
+				setTargetAngles(Constants.TICKS_OPEN);
+				
+				break;
 
-		break;
-		case(STATE_CLOSED):
-			setTargetAngles(TICKS_CLOSED);
-
-		break;
-		default:
-			setTargetAngles(TICKS_OPEN);
-
-			break;
 		}
 	}
 
