@@ -48,7 +48,7 @@ import com.kauailabs.navx.frc.AHRS.SerialDataType;
  */
 public class Robot extends TimedRobot {
 	public static final ExampleSubsystem kExampleSubsystem
-			= new ExampleSubsystem();
+	= new ExampleSubsystem();
 	public static OI m_oi;
 
 	public static Climber m_climber = new Climber();
@@ -63,24 +63,24 @@ public class Robot extends TimedRobot {
 	public static Timer m_timer = new Timer();
 
 	//public static SmartGripper m_smartGripper = new SmartGripper();
-	
-	
+
+
 	Command m_autonomousCommand;
 	SendableChooser<Command> m_chooser = new SendableChooser<>(); 
-	
+
 	public Robot() {
-	   try {
-		    m_ahrs = new AHRS(I2C.Port.kMXP);
-       	    m_ahrs.enableLogging(true);
-        } catch (RuntimeException ex ) {
-            DriverStation.reportError("Error instantiating navX MXP:  " + ex.getMessage(), true);
-        }
+		try {
+			m_ahrs = new AHRS(I2C.Port.kMXP);
+			m_ahrs.enableLogging(true);
+		} catch (RuntimeException ex ) {
+			DriverStation.reportError("Error instantiating navX MXP:  " + ex.getMessage(), true);
+		}
 	}
-	
+
 	public void putSmartDashboardData() {
 		SmartDashboard.putData(m_climber);
 		SmartDashboard.putData(m_driveTrain);
-	//	SmartDashboard.putData(m_elevator);
+		//	SmartDashboard.putData(m_elevator);
 		SmartDashboard.putData(m_encoder);
 		SmartDashboard.putData(m_gripper);
 		SmartDashboard.putData(m_intake);
@@ -97,8 +97,8 @@ public class Robot extends TimedRobot {
 		m_chooser.addDefault("Default Auto", new ExampleCommand());
 		// chooser.addObject("My Auto", new MyAutoComman
 		//+d());
-		
-		
+
+
 		SmartDashboard.putData("Auto mode", m_chooser);
 	}
 
@@ -173,7 +173,7 @@ public class Robot extends TimedRobot {
 	@Override
 	public void teleopPeriodic() {
 		Scheduler.getInstance().run();
-		
+
 		putSmartDashboardData();
 	}
 

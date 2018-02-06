@@ -60,11 +60,11 @@ public class OI {
 	// until it is finished as determined by it's isFinished method.
 	// button.whenReleased(new ExampleCommand());
 	public XboxController controller;
-	
+
 	public OI()
 	{
 		controller = new XboxController(0);
-		
+
 		Button a = new JoystickButton(controller, 1); //arm in
 		Button b = new JoystickButton(controller, 2);  //elevator up
 		Button x = new JoystickButton(controller, 3); //arm out
