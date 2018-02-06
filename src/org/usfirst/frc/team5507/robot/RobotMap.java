@@ -29,21 +29,22 @@ public class RobotMap {
 	public static final double DISTANCE = TICKS_PER_REVOLUTION / WHEEL_CIRCUMFERENCE; //1 inch moved
 	
 	// PWM Outputs
-	public static int intakeLeftMotor = 1;
-	public static int intakeRightMotor = 3;
+	public static int intakeLeftMotor = 6;
+	public static int intakeRightMotor = 7;
 	
 	// CAN Addresses 
-	public static int driveFrontLeft = 1;
-	public static int driveFrontRight = 24;
+	public static int driveFrontLeft = 5;
+	public static int driveFrontRight = 1;
 	public static int driveBackLeft = 0;
-	public static int driveBackRight = 2;
+	public static int driveBackRight = 4;
 //	public static int encoder = 4;
 	
-	public static int leftArm = 4;
-	public static int rightArm = 5;
+	public static int leftArm = 3;
+	public static int rightArm = 2;
 	
-	public static int climb = 13;
+	public static int climbArm = 8;
+	public static int climbPulley = 900;
 	
-	public static int elevator = 4;
+	public static int elevator = 10;
 		
 }
