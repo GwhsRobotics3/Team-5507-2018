@@ -44,7 +44,7 @@ public class SmartElevator extends Subsystem {
 		elevatorPulley.setSelectedSensorPosition(0, 0, 0);
 	}
 
-	public int getToggledState()
+	public static int getToggledState()
 	{
 		switch(currentState)
 		{
@@ -74,7 +74,7 @@ public class SmartElevator extends Subsystem {
 		return currentState;
 	}
 
-	public void setState(int state)
+	public static void setState(int state)
 	{
 		if(state < STATE_HIGH || state > STATE_LOW) {
 			state = STATE_MED;
