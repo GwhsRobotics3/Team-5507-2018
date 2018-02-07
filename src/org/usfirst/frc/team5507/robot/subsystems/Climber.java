@@ -4,6 +4,7 @@ import org.usfirst.frc.team5507.robot.RobotMap;
 
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
+import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 /**
@@ -21,31 +22,43 @@ public class Climber extends Subsystem {
         //setDefaultCommand(new MySpecialCommand());
     }
     
-    public void armUp()
+    public void climb(XboxController controller)
     {
-    	climberPulley.set(-.5);
-    	climberArm.set(-.5);
-    }
-//    public void robotUp()
-//    {
-//    	climberPulley.set(.5);
-//    }
-//    public void robotDown()
-//    {
-//    	climberPulley.set(-.5);
-//    }
-    public void armDown()
-    {
-    	climberPulley.set(.5);
-    	climberArm.set(.5);
-    }
-    public void climberRewind()
-    {
-    	climberPulley.set(-.5);
+    	
+    	double y = controller.getRawAxis(5);
+    	System.out.println("adam is climb");
+    	
+//    	if (Math.abs(y) > .1 )
+//    	{
+//    		armUp();
+//    	}
     }
     
-    public void testPrint()
+    public void armUp()
     {
-    	System.out.println("button left trigger");
+    	climberPulley.set(-.3);
+    	climberArm.set(-.3);	
     }
+    
+    public void robotUp()
+    {
+    	climberPulley.set(.3);
+    }
+    
+    public void robotDown()
+    {
+    	climberPulley.set(-.3);
+    }
+    
+    public void armDown()
+    {
+    	climberPulley.set(.3);
+    	climberArm.set(.3);
+    }
+    
+    public void climberRewind()
+    {
+    	climberPulley.set(-.3);
+    }
+    
 }
