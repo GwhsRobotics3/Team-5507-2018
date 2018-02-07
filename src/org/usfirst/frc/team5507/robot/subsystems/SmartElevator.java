@@ -74,7 +74,7 @@ public class SmartElevator extends Subsystem {
 		return currentState;
 	}
 
-	public static void setState(int state)
+	public void setState(int state)
 	{
 		if(state < STATE_HIGH || state > STATE_LOW) {
 			state = STATE_MED;
@@ -109,7 +109,7 @@ public class SmartElevator extends Subsystem {
 		elevatorPulley.set(ControlMode.MotionMagic, ticks);
 	}
 
-	public static int toggleUp()
+	public static int getNextStateUp()
 	{
 
 		switch(currentState) 
@@ -127,9 +127,9 @@ public class SmartElevator extends Subsystem {
 				return STATE_MED;
 
 		}
-}
+	}
 
-	public static int toggleDown()
+	public static int getNextStateDown()
 	{
 		switch(currentState)
 		{
