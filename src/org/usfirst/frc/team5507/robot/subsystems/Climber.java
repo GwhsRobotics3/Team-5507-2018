@@ -12,8 +12,10 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  */
 public class Climber extends Subsystem {
 
-	private static WPI_TalonSRX climberPulley = new WPI_TalonSRX(10);
-	private static WPI_TalonSRX climberArm = new WPI_TalonSRX(8);
+
+	private static WPI_TalonSRX climberPulley = new WPI_TalonSRX(RobotMap.climbPulley);
+	private static WPI_TalonSRX climberArm = new WPI_TalonSRX(RobotMap.climbArm);
+
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
 
@@ -27,18 +29,22 @@ public class Climber extends Subsystem {
 //    	climberPulley.set(-.5);
 //    	climberArm.set(-.5);
 //    }
+//    
+
     
+
     public void armUp(XboxController stick)
     {   	
     	climberPulley.set(stick.getRawAxis(5));
     	climberArm.set(-.5);
     	System.out.println("asdfgbhn");
     }
-    
+
     public void robotUp()
     {
     	climberPulley.set(.5);
     }
+
    public void robotDown()
     {
     	climberPulley.set(-.5);
