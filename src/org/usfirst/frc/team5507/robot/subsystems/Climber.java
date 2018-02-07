@@ -22,26 +22,26 @@ public class Climber extends Subsystem {
         //setDefaultCommand(new MySpecialCommand());
     }
     
-    public void armUp()
+//    public void armUp()
+//    {
+//    	climberPulley.set(-.5);
+//    	climberArm.set(-.5);
+//    }
+//    
+    public void armUp(XboxController stick)
     {
-    	climberPulley.set(-.5);
+    	climberPulley.set(stick.getRawAxis(5));
     	climberArm.set(-.5);
     }
     
-//    public void armUp(XboxController stick)
-//    {
-//    	climberPulley.set(stick.getRawAxis());
-//    	climberArm.set(-.5);
-//    }
-    
-//    public void robotUp()
-//    {
-//    	climberPulley.set(.5);
-//    }
-//    public void robotDown()
-//    {
-//    	climberPulley.set(-.5);
-//    }
+    public void robotUp()
+    {
+    	climberPulley.set(.5);
+    }
+    public void robotDown()
+    {
+    	climberPulley.set(-.5);
+    }
     public void armDown()
     {
     	climberPulley.set(.5);
