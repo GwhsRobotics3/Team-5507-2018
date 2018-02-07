@@ -8,9 +8,8 @@
 package org.usfirst.frc.team5507.robot;
 
 import org.usfirst.frc.team5507.robot.commands.ClimberDown;
+import org.usfirst.frc.team5507.robot.commands.ClimberRewind;
 import org.usfirst.frc.team5507.robot.commands.ClimberUp;
-import org.usfirst.frc.team5507.robot.commands.ElevatorDown;
-import org.usfirst.frc.team5507.robot.commands.ElevatorUp;
 import org.usfirst.frc.team5507.robot.commands.EncoderToAngle;
 import org.usfirst.frc.team5507.robot.commands.IntakeTakeIn;
 import org.usfirst.frc.team5507.robot.commands.IntakeTakeOut;
@@ -65,25 +64,21 @@ public class OI {
 	{
 		controller = new XboxController(0);
 		
-		Button a = new JoystickButton(controller, 1); //arm in
-		Button b = new JoystickButton(controller, 2);  //elevator up
-		Button x = new JoystickButton(controller, 3); //arm out
-		Button y = new JoystickButton(controller, 4); //elevator down
-		Button backLeft = new JoystickButton(controller,5); //gripper
-		Button backRight = new JoystickButton(controller, 6); //gripper
-		Button select = new JoystickButton(controller, 7); // select/back button
-		Button start = new JoystickButton(controller, 8); // start button
-		Button leftClick = new JoystickButton(controller, 9); // Left Joystick click
-		Button rightClick = new JoystickButton(controller, 10); // Right Joystick click`
-		//climbing right joystick
-
-		//aButton.whileHeld(new IntakeTakeIn());
+		Button a = new JoystickButton(controller, 1); //take in
+		Button b = new JoystickButton(controller, 2); // take out
+		Button x = new JoystickButton(controller, 3); // toggle gripper position
+		Button y = new JoystickButton(controller, 4); // retract climber chain
+		Button backLeft = new JoystickButton(controller,5); //elevator up
+		Button backRight = new JoystickButton(controller, 6);//elevator down
+		Button select = new JoystickButton(controller, 7); 
+		Button start = new JoystickButton(controller, 8);  
 
 		a.whileHeld(new IntakeTakeIn());
-		x.whileHeld(new IntakeTakeOut());		
-		b.whenPressed(new ElevatorUp());	
-		y.whenPressed(new ElevatorUp());	
-		backLeft.whenPressed(new SmartElevatorUp()); //GripperOpen command
+		b.whileHeld(new IntakeTakeOut());		
+		x.whenPressed(new SmartGripperToggle());
+		y.whileHeld(new ClimberRewind());
+		backLeft.whenPressed(new SmartElevatorUp()); 
 		backRight.whenPressed(new SmartElevatorDown());
+		
 	}
 }

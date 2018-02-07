@@ -27,9 +27,9 @@ public class AutonomousDriveStraightTurnRight extends CommandGroup {
     	addSequential(new DriveForward(3.0));
     	addSequential(new DriveTurnByAngle(90));
     	addParallel(new DriveForward(3.0));
-    	addParallel(new ElevatorUp());
+    	addParallel(new SmartElevatorUp());
     	addSequential(new IntakeTakeOut());
-    	addSequential(new ElevatorDown());
+    	addSequential(new SmartElevatorDown());
     	addSequential(new DriveStop());
     }
 }
