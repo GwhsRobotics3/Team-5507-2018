@@ -4,6 +4,7 @@ import org.usfirst.frc.team5507.robot.RobotMap;
 
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
+import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 /**
@@ -26,6 +27,13 @@ public class Climber extends Subsystem {
     	climberPulley.set(-.5);
     	climberArm.set(-.5);
     }
+    
+//    public void armUp(XboxController stick)
+//    {
+//    	climberPulley.set(stick.getRawAxis());
+//    	climberArm.set(-.5);
+//    }
+    
 //    public void robotUp()
 //    {
 //    	climberPulley.set(.5);

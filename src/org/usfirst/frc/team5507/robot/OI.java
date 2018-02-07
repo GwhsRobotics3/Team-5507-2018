@@ -12,8 +12,6 @@ import org.usfirst.frc.team5507.robot.commands.ClimberUp;
 import org.usfirst.frc.team5507.robot.commands.ElevatorDown;
 import org.usfirst.frc.team5507.robot.commands.ElevatorUp;
 import org.usfirst.frc.team5507.robot.commands.EncoderToAngle;
-import org.usfirst.frc.team5507.robot.commands.GripperClose;
-import org.usfirst.frc.team5507.robot.commands.GripperOpen;
 import org.usfirst.frc.team5507.robot.commands.IntakeTakeIn;
 import org.usfirst.frc.team5507.robot.commands.IntakeTakeOut;
 import org.usfirst.frc.team5507.robot.commands.RumbleInTheJungleJuliaWasRight;
