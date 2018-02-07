@@ -34,9 +34,7 @@ public class DriveTrain extends Subsystem {
 	private WPI_TalonSRX backRight = new WPI_TalonSRX(RobotMap.driveBackRight);
 //	private static DigitalInput limitSwitch = new DigitalInput(1);
 //	Counter counter = new Counter(limitSwitch);
-	//ADD ENCODERS
-//	private Encoder leftEncoder = new Encoder(1, 2, false, EncodingType.k4X);
-//	private Encoder rightEncoder = new Encoder(3, 4, false, EncodingType.k4X);  
+  
 
 	private MecanumDrive m_drive = new MecanumDrive(frontLeft, backLeft, frontRight, backRight);
 

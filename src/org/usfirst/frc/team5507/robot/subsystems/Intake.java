@@ -24,7 +24,7 @@ public class Intake extends Subsystem {
     // here. Call these from Commands.
 	private static WPI_VictorSPX m_leftWheel = new WPI_VictorSPX(RobotMap.intakeLeftMotor);
 	private static WPI_VictorSPX m_rightWheel = new WPI_VictorSPX(RobotMap.intakeRightMotor);
-	private static DigitalInput limitSwitch = new DigitalInput(1);
+	private static DigitalInput limitSwitch = new DigitalInput(3);
 	Counter counter = new Counter(limitSwitch);
 	
 	public Intake() {

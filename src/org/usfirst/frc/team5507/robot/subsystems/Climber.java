@@ -12,8 +12,8 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  */
 public class Climber extends Subsystem {
 
-	private static WPI_TalonSRX climberPulley = new WPI_TalonSRX(0);
-	private static WPI_TalonSRX climberArm = new WPI_TalonSRX(3);
+	private static WPI_TalonSRX climberPulley = new WPI_TalonSRX(RobotMap.climbPulley);
+	private static WPI_TalonSRX climberArm = new WPI_TalonSRX(RobotMap.climbArm);
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
 
