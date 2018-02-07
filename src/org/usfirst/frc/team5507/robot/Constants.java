@@ -66,5 +66,34 @@ public class Constants {
 			talon.configMotionAcceleration(6000, kTimeoutMs);
 			/* zero the sensor */
 			talon.setSelectedSensorPosition(0, kPIDLoopIdx, kTimeoutMs);
+			System.out.println("I am a MagEncoder");
+		}
+		public static void configTalonQuad(WPI_TalonSRX talon) {
+			talon.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder, kPIDLoopIdx, kTimeoutMs);
+			talon.setSensorPhase(true);
+			talon.setInverted(false);
+			
+			/* Set relevant frame periods to be at least as fast as periodic rate*/
+			talon.setStatusFramePeriod(StatusFrameEnhanced.Status_13_Base_PIDF0, 10, kTimeoutMs);
+			talon.setStatusFramePeriod(StatusFrameEnhanced.Status_10_MotionMagic, 10, kTimeoutMs);
+
+			/* set the peak and nominal outputs */
+			talon.configNominalOutputForward(0, kTimeoutMs);
+			talon.configNominalOutputReverse(0, kTimeoutMs);
+			talon.configPeakOutputForward(1, kTimeoutMs);
+			talon.configPeakOutputReverse(-1, kTimeoutMs);
+			
+			/* set closed loop gains in slot0 - see documentation */
+			talon.selectProfileSlot(kSlotIdx, kPIDLoopIdx);
+			talon.config_kF(0, 0.2, kTimeoutMs);
+			talon.config_kP(0, 0.2, kTimeoutMs);
+			talon.config_kI(0, 0, kTimeoutMs);
+			talon.config_kD(0, 0, kTimeoutMs);
+			/* set acceleration and vcruise velocity - see documentation */
+			talon.configMotionCruiseVelocity(15000, kTimeoutMs);
+			talon.configMotionAcceleration(6000, kTimeoutMs);
+			/* zero the sensor */
+			talon.setSelectedSensorPosition(0, kPIDLoopIdx, kTimeoutMs);
+			System.out.println("I am a QuadEncoder");
 		}
 }

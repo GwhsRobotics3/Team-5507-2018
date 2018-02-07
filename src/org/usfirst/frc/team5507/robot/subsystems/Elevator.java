@@ -13,7 +13,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  *
  */
 public class Elevator extends Subsystem {
-	private static WPI_TalonSRX elevatorPulley = new WPI_TalonSRX(RobotMap.elevator);
+	private static WPI_TalonSRX elevatorPulley = new WPI_TalonSRX(RobotMap.elevatorPulley);
 //	private static DigitalInput limitSwitchTop = new DigitalInput(1);
 //	Counter counterTop = new Counter(limitSwitchTop);
 //	private static DigitalInput limitSwitchBottom = new DigitalInput(2);

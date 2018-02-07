@@ -15,7 +15,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  *
  */
 public class SmartElevator extends Subsystem {
-	private static WPI_TalonSRX elevatorPulley = new WPI_TalonSRX(RobotMap.elevator);	
+	private static WPI_TalonSRX elevatorPulley = new WPI_TalonSRX(RobotMap.elevatorPulley);	
 	private static int currentState;
 	public static final int STATE_HIGH = 3;
 	public static final int STATE_MED = 2;
@@ -30,7 +30,7 @@ public class SmartElevator extends Subsystem {
 	public SmartElevator()
 	{
 		currentState = STATE_LOW;
-		Constants.configTalon(elevatorPulley);
+		Constants.configTalonQuad(elevatorPulley);
 		resetEncoders();
 
 	}
