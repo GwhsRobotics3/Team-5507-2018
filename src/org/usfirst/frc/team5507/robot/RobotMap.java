@@ -48,6 +48,6 @@ public class RobotMap {
 	public static int elevatorPulley = 10;
 	
 	//DIO ports
-	public static int intakeBoxLimitSwitch = 6;
+	public static int intakeBoxLimitSwitch = 0;
 		
 }
