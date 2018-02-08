@@ -21,6 +21,11 @@ public class SmartElevator extends Subsystem {
 	public static final int STATE_HIGH = 3;
 	public static final int STATE_MED = 2;
 	public static final int STATE_LOW = 1;
+	
+	public static final double ELEVATOR_HIGH = 30;
+	public static final double ELEVATOR_MED = 15;
+	public static final double ELEVATOR_LOW = 0;
+	
 	// Put methods for controlling this subsystem
 	// here. Call these from Commands.
 
@@ -41,31 +46,6 @@ public class SmartElevator extends Subsystem {
 		elevatorPulley.setSelectedSensorPosition(0, 0, 0);
 	}
 
-	public static int getToggledState()
-	{
-		switch(currentState)
-		{
-		case(STATE_LOW):
-			currentState = STATE_MED;
-
-		break;
-		case(STATE_MED):
-
-			currentState = STATE_HIGH;
-
-		break;
-		case(STATE_HIGH):
-			currentState = STATE_LOW;
-
-		break;
-		default:
-			currentState = STATE_LOW;
-
-			break;
-		}
-		return currentState;
-	}
-
 	public int getCurrentState()
 	{
 		return currentState;
@@ -82,20 +62,19 @@ public class SmartElevator extends Subsystem {
 		switch(currentState)
 		{
 			case(STATE_LOW):
-				setDesiredPosition(Constants.ELEVATOR_LOW);
-			
+				setDesiredPosition(ELEVATOR_LOW);					
 				break;
-			case(STATE_MED):
-				setDesiredPosition(Constants.ELEVATOR_MED);
-			
-				break;
-			case(STATE_HIGH):
-				setDesiredPosition(Constants.ELEVATOR_HIGH);
-			
-				break;
-			default:
-				setDesiredPosition(Constants.ELEVATOR_LOW);
 				
+			case(STATE_MED):
+				setDesiredPosition(ELEVATOR_MED);
+				break;
+				
+			case(STATE_HIGH):
+				setDesiredPosition(ELEVATOR_HIGH);
+				break;
+				
+			default:
+				setDesiredPosition(ELEVATOR_LOW);
 				break;
 		}
 	}
@@ -123,7 +102,6 @@ public class SmartElevator extends Subsystem {
 			
 			default:
 				return STATE_MED;
-
 		}
 	}
 
@@ -155,6 +133,5 @@ public class SmartElevator extends Subsystem {
 		elevatorPulley.set(0);
 	}
 	
-
 }
 
