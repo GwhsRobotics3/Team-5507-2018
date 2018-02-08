@@ -58,7 +58,6 @@ public class Constants {
 			talon.configMotionAcceleration(6000, kTimeoutMs);
 			/* zero the sensor */
 			talon.setSelectedSensorPosition(0, kPIDLoopIdx, kTimeoutMs);
-			System.out.println("I am a MagEncoder");
 		}
 		public static void configTalonQuad(WPI_TalonSRX talon) {
 			talon.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder, kPIDLoopIdx, kTimeoutMs);
@@ -90,7 +89,6 @@ public class Constants {
 			
 			/* zero the sensor */
 			talon.setSelectedSensorPosition(0, kPIDLoopIdx, kTimeoutMs);
-			System.out.println("I am a QuadEncoder");
 		}
 		//public ErrorCode configForwardLimitSwitchSource(RemoteLimitSwitchSource type, LimitSwitchNormal normalOpenOrClose,
 			//	int deviceID, int timeoutMs) {

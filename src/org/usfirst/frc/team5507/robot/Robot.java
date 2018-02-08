@@ -48,22 +48,15 @@ import com.kauailabs.navx.frc.AHRS.SerialDataType;
  * SHOUTOUT TO GREG OUR ONE AND ONLY MENTOR, THE MASTERMIND OF THIS CODE 
  */
 public class Robot extends TimedRobot {
-	public static final ExampleSubsystem kExampleSubsystem
-			= new ExampleSubsystem();
+	
 	public static OI m_oi;
-
 	public static Climber m_climber = new Climber();
 	public static DriveTrain m_driveTrain = new DriveTrain();
-	public static EncoderDemo m_encoder = new EncoderDemo();
-	//public static Elevator m_elevator = new Elevator();
 	public static SmartElevator m_smartElevator = new SmartElevator();
 	public static SmartGripper m_smartGripper = new SmartGripper();
 	public static Intake m_intake = new Intake();
 	public static AHRS m_ahrs;
 	public static Timer m_timer = new Timer();
-
-	//public static SmartGripper m_smartGripper = new SmartGripper();
-	
 	
 	Command m_autonomousCommand;
 	SendableChooser<Command> m_chooser = new SendableChooser<>(); 
@@ -81,7 +74,6 @@ public class Robot extends TimedRobot {
 		SmartDashboard.putData(m_climber);
 		SmartDashboard.putData(m_driveTrain);
 		SmartDashboard.putData(m_smartElevator);
-		SmartDashboard.putData(m_encoder);
 		SmartDashboard.putData(m_smartGripper);
 		SmartDashboard.putData(m_intake);
 		SmartDashboard.putNumber("IMU_Yaw", m_ahrs.getYaw());
@@ -98,17 +90,10 @@ public class Robot extends TimedRobot {
 	public void robotInit() {
 		m_oi = new OI();
 		m_chooser.addDefault("Default Auto", new ExampleCommand());
-		// chooser.addObject("My Auto", new MyAutoComman
-		//+d());
-		
 		SmartDashboard.putData("Auto mode", m_chooser);
-		
 		UsbCamera camera = CameraServer.getInstance().startAutomaticCapture();
 		camera.setResolution(320, 240);
-		
 	}
-	
-	
 	
 	/**
 	 * This function is called once each time the robot enters Disabled mode.
@@ -117,7 +102,6 @@ public class Robot extends TimedRobot {
 	 */
 	@Override
 	public void disabledInit() {
-
 	}
 
 	@Override
@@ -161,7 +145,6 @@ public class Robot extends TimedRobot {
 	public void autonomousPeriodic() {
 		Scheduler.getInstance().run();
 		putSmartDashboardData();
-		//SmartDashboard.putNumber("Position", Robot.leftEncoder);
 	}
 
 	@Override
