@@ -76,8 +76,8 @@ public class OI {
 		b.whileHeld(new IntakeTakeOut());		
 		x.whenPressed(new SmartGripperToggle());
 		y.whileHeld(new ClimberRewind());
-		backLeft.whenPressed(new SmartElevatorMove(1)); 
-		backRight.whenPressed(new SmartElevatorMove(-1));
+		backLeft.whenPressed(new SmartElevatorMove(-1)); 
+		backRight.whenPressed(new SmartElevatorMove(1));
 		
 	}
 }

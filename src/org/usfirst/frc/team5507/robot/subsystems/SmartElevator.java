@@ -9,6 +9,7 @@ import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import edu.wpi.first.wpilibj.Counter;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
@@ -32,12 +33,12 @@ public class SmartElevator extends Subsystem {
 		currentState = STATE_LOW;
 		Constants.configTalonQuad(elevatorPulley);
 		resetEncoders();
+		LiveWindow.addChild(this, elevatorPulley);
 
 	}
 	public void initDefaultCommand() {
 		// Set the default command for a subsystem here.
-		//setDefaultCommand(new MySpecialCommand());
-		SmartDashboard.putNumber("Pulley Position", elevatorPulley.getSelectedSensorPosition(0));
+		//setDefaultCommand(new MySpecialCommand())
 	}
 
 	public static void resetEncoders() {
@@ -69,14 +70,14 @@ public class SmartElevator extends Subsystem {
 		return currentState;
 	}
 
-	public static int getCurrentState()
+	public int getCurrentState()
 	{
 		return currentState;
 	}
 
 	public void setState(int state)
 	{
-		if(state < STATE_HIGH || state > STATE_LOW) {
+		if(state > STATE_HIGH || state < STATE_LOW) {
 			state = STATE_MED;
 		}
 		
@@ -105,8 +106,9 @@ public class SmartElevator extends Subsystem {
 
 	public static void setDesiredPosition(double inches)
 	{
-		double ticks = 4096 / (Math.PI * 1.25) * inches; 
+		double ticks = 12*64 / (Math.PI * 1.25) * inches; 
 		elevatorPulley.set(ControlMode.MotionMagic, ticks);
+		
 	}
 
 	public static int getNextStateUp()
@@ -147,7 +149,7 @@ public class SmartElevator extends Subsystem {
 		}
 	}
 
-	public static double getCurrentPos()
+	public double getCurrentPos()
 	{
 		return elevatorPulley.getSelectedSensorPosition(0);
 	}

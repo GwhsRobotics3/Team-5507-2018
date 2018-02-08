@@ -70,7 +70,7 @@ public class Constants {
 		}
 		public static void configTalonQuad(WPI_TalonSRX talon) {
 			talon.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder, kPIDLoopIdx, kTimeoutMs);
-			talon.setSensorPhase(true);
+			talon.setSensorPhase(false);
 			talon.setInverted(false);
 			
 			/* Set relevant frame periods to be at least as fast as periodic rate*/
@@ -80,20 +80,28 @@ public class Constants {
 			/* set the peak and nominal outputs */
 			talon.configNominalOutputForward(0, kTimeoutMs);
 			talon.configNominalOutputReverse(0, kTimeoutMs);
-			talon.configPeakOutputForward(1, kTimeoutMs);
-			talon.configPeakOutputReverse(-1, kTimeoutMs);
+			talon.configPeakOutputForward(0.5, kTimeoutMs);
+			talon.configPeakOutputReverse(-0.5, kTimeoutMs);
 			
 			/* set closed loop gains in slot0 - see documentation */
 			talon.selectProfileSlot(kSlotIdx, kPIDLoopIdx);
 			talon.config_kF(0, 0.2, kTimeoutMs);
-			talon.config_kP(0, 0.2, kTimeoutMs);
-			talon.config_kI(0, 0, kTimeoutMs);
-			talon.config_kD(0, 0, kTimeoutMs);
+			talon.config_kP(0, 1, kTimeoutMs);
+			talon.config_kI(0, 0.0, kTimeoutMs);
+			talon.config_kD(0, 0.0, kTimeoutMs);
+		//	talon.configAllowableClosedloopError(0, 2, kTimeoutMs); // how many units of error are ok?
+			
 			/* set acceleration and vcruise velocity - see documentation */
 			talon.configMotionCruiseVelocity(15000, kTimeoutMs);
 			talon.configMotionAcceleration(6000, kTimeoutMs);
+			
+			
 			/* zero the sensor */
 			talon.setSelectedSensorPosition(0, kPIDLoopIdx, kTimeoutMs);
 			System.out.println("I am a QuadEncoder");
 		}
+		//public ErrorCode configForwardLimitSwitchSource(RemoteLimitSwitchSource type, LimitSwitchNormal normalOpenOrClose,
+			//	int deviceID, int timeoutMs) {
+		//	return configForwardLimitSwitchSource(type.value, normalOpenOrClose.value, deviceID, timeoutMs);
+		//https://github.com/CrossTheRoadElec/Phoenix-frc-lib/blob/master/java/src/com/ctre/phoenix/motorcontrol/can/BaseMotorController.java#L731
 }
