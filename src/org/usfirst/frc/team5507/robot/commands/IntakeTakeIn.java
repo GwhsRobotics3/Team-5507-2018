@@ -1,9 +1,11 @@
 package org.usfirst.frc.team5507.robot.commands;
 
 import org.usfirst.frc.team5507.robot.Robot;
+import org.usfirst.frc.team5507.robot.subsystems.Intake;
 
 import edu.wpi.first.wpilibj.GenericHID.RumbleType;
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.command.Scheduler;
 
 /**
  *
@@ -38,14 +40,8 @@ public class IntakeTakeIn extends Command {
 
 	// Called once after isFinished returns true
 	protected void end() {
-		Robot.m_intake.stop();
-		if (Robot.m_timer.get() < 1)
-		{
-			Robot.m_oi.controller.setRumble(RumbleType.kLeftRumble, 1);
-			Robot.m_oi.controller.setRumble(RumbleType.kRightRumble, 1);
-		}
-		Robot.m_oi.controller.setRumble(RumbleType.kLeftRumble, 0);
-		Robot.m_oi.controller.setRumble(RumbleType.kRightRumble, 0);
+		Intake.stop();
+		Scheduler.getInstance().add(new RumbleInTheJungleJuliaWasRight());
 	}
 
 	// Called when another command which requires one or more of the same

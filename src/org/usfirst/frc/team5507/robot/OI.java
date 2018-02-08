@@ -81,6 +81,7 @@ public class OI {
 		y.whileHeld(new ClimberRewind());
 		backLeft.whenPressed(new SmartElevatorMove(-1)); 
 		backRight.whenPressed(new SmartElevatorMove(1));
+		start.whenPressed(new RumbleInTheJungleJuliaWasRight());
 		
 	}
 }
