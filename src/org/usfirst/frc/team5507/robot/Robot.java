@@ -24,7 +24,6 @@ import org.usfirst.frc.team5507.robot.commands.AutonomousDriveStraightTurnLeft;
 import org.usfirst.frc.team5507.robot.commands.ClimberUp;
 import org.usfirst.frc.team5507.robot.commands.DriveTurnByAngle;
 import org.usfirst.frc.team5507.robot.commands.ExampleCommand;
-import org.usfirst.frc.team5507.robot.subsystems.Camera;
 import org.usfirst.frc.team5507.robot.subsystems.Climber;
 import org.usfirst.frc.team5507.robot.subsystems.DriveTrain;
 import org.usfirst.frc.team5507.robot.subsystems.Elevator;
@@ -101,10 +100,12 @@ public class Robot extends TimedRobot {
 		m_chooser.addDefault("Default Auto", new ExampleCommand());
 		// chooser.addObject("My Auto", new MyAutoComman
 		//+d());
+		
+		SmartDashboard.putData("Auto mode", m_chooser);
+		
 		UsbCamera camera = CameraServer.getInstance().startAutomaticCapture();
 		camera.setResolution(320, 240);
 		
-		SmartDashboard.putData("Auto mode", m_chooser);
 	}
 	
 	
