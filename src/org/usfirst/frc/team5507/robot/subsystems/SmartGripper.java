@@ -37,12 +37,12 @@ public class SmartGripper extends Subsystem {
 		currentState = STATE_START;
 		Constants.configTalon(leftArm);
 		Constants.configTalon(rightArm);
-		configGripperTalon(leftArm);
-		configGripperTalon(rightArm);
 		leftArm.configForwardSoftLimitThreshold(DEGREES_START, Constants.kTimeoutMs);
 		leftArm.configReverseSoftLimitThreshold(DEGREES_OPEN, Constants.kTimeoutMs);
 		rightArm.configForwardSoftLimitThreshold(-DEGREES_START, Constants.kTimeoutMs);
 		rightArm.configReverseSoftLimitThreshold(-DEGREES_OPEN, Constants.kTimeoutMs);
+		configGripperTalon(leftArm);
+		configGripperTalon(rightArm);
 		resetEncoders();
 	}
 	
@@ -125,7 +125,9 @@ public class SmartGripper extends Subsystem {
 	{
 		talon.configContinuousCurrentLimit(CURRENT_LIMIT, Constants.kTimeoutMs);
 		talon.configPeakCurrentLimit(0, Constants.kTimeoutMs);
-
+		talon.configForwardSoftLimitEnable(true, Constants.kTimeoutMs);
+		talon.configReverseSoftLimitEnable(true, Constants.kTimeoutMs);
+		talon.enableCurrentLimit(true);
 	}
 	
 	public int angleToTicks(int degrees) {
