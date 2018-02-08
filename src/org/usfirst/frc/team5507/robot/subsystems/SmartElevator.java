@@ -1,6 +1,6 @@
 package org.usfirst.frc.team5507.robot.subsystems;
 
-import org.usfirst.frc.team5507.robot.Constants;
+
 import org.usfirst.frc.team5507.robot.RobotMap;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
