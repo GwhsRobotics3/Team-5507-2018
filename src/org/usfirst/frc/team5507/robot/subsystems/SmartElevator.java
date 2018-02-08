@@ -32,7 +32,7 @@ public class SmartElevator extends Subsystem {
 	public SmartElevator()
 	{
 		currentState = STATE_LOW;
-		Constants.configTalonQuad(elevatorPulley);
+		ConfigTalon.configTalonQuad(elevatorPulley);
 		resetEncoders();
 		addChild("elevator pulley talon", elevatorPulley);
 

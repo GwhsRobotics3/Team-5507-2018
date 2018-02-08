@@ -41,10 +41,10 @@ public class DriveTrain extends Subsystem {
 	public DriveTrain() {
 		super("DriveTrain");
 	    LiveWindow.addChild(this, m_drive);
-		Constants.configTalon(frontLeft);
-		Constants.configTalon(frontRight);
-		Constants.configTalon(backRight);
-		Constants.configTalon(backLeft);
+		ConfigTalon.configTalon(frontLeft);
+		ConfigTalon.configTalon(frontRight);
+		ConfigTalon.configTalon(backRight);
+		ConfigTalon.configTalon(backLeft);
 		addChild("front left talon",frontLeft);
 		addChild("front right talon", frontRight);
 		addChild("back left talon", backLeft);

@@ -35,12 +35,12 @@ public class SmartGripper extends Subsystem {
 	public SmartGripper()
 	{
 		currentState = STATE_START;
-		Constants.configTalon(leftArm);
-		Constants.configTalon(rightArm);
-		leftArm.configForwardSoftLimitThreshold(DEGREES_START, Constants.kTimeoutMs);
-		leftArm.configReverseSoftLimitThreshold(DEGREES_OPEN, Constants.kTimeoutMs);
-		rightArm.configForwardSoftLimitThreshold(-DEGREES_START, Constants.kTimeoutMs);
-		rightArm.configReverseSoftLimitThreshold(-DEGREES_OPEN, Constants.kTimeoutMs);
+		ConfigTalon.configTalon(leftArm);
+		ConfigTalon.configTalon(rightArm);
+		leftArm.configForwardSoftLimitThreshold(DEGREES_START, ConfigTalon.kTimeoutMs);
+		leftArm.configReverseSoftLimitThreshold(DEGREES_OPEN, ConfigTalon.kTimeoutMs);
+		rightArm.configForwardSoftLimitThreshold(-DEGREES_START, ConfigTalon.kTimeoutMs);
+		rightArm.configReverseSoftLimitThreshold(-DEGREES_OPEN, ConfigTalon.kTimeoutMs);
 		configGripperTalon(leftArm);
 		configGripperTalon(rightArm);
 		resetEncoders();
@@ -126,10 +126,10 @@ public class SmartGripper extends Subsystem {
 	
 	public void configGripperTalon(WPI_TalonSRX talon)
 	{
-		talon.configContinuousCurrentLimit(CURRENT_LIMIT, Constants.kTimeoutMs);
-		talon.configPeakCurrentLimit(0, Constants.kTimeoutMs);
-		talon.configForwardSoftLimitEnable(true, Constants.kTimeoutMs);
-		talon.configReverseSoftLimitEnable(true, Constants.kTimeoutMs);
+		talon.configContinuousCurrentLimit(CURRENT_LIMIT, ConfigTalon.kTimeoutMs);
+		talon.configPeakCurrentLimit(0, ConfigTalon.kTimeoutMs);
+		talon.configForwardSoftLimitEnable(true, ConfigTalon.kTimeoutMs);
+		talon.configReverseSoftLimitEnable(true, ConfigTalon.kTimeoutMs);
 		talon.enableCurrentLimit(true);
 	}
 	
