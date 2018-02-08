@@ -59,6 +59,9 @@ public class OI {
 	// button.whenReleased(new ExampleCommand());
 	public XboxController controller;
 	// cool beans
+
+	public static final int CLIMB_AXIS = 5;
+	
 	public OI()
 	{
 		controller = new XboxController(0);

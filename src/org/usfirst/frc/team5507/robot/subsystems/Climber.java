@@ -33,11 +33,10 @@ public class Climber extends Subsystem {
 
     
 
-    public void armUp(XboxController stick)
+    public void armUp(double speed)
     {   	
-    	climberPulley.set(stick.getRawAxis(5));
-    	climberArm.set(-.5);
-    	System.out.println("asdfgbhn");
+    	climberPulley.set(speed);
+    	climberArm.set(speed);
     }
 
     public void robotUp()
