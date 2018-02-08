@@ -23,12 +23,8 @@ import org.usfirst.frc.team5507.robot.commands.AutonomousDriveStraight;
 import org.usfirst.frc.team5507.robot.commands.AutonomousDriveStraightTurnLeft;
 import org.usfirst.frc.team5507.robot.commands.ClimberUp;
 import org.usfirst.frc.team5507.robot.commands.DriveTurnByAngle;
-import org.usfirst.frc.team5507.robot.commands.ExampleCommand;
 import org.usfirst.frc.team5507.robot.subsystems.Climber;
 import org.usfirst.frc.team5507.robot.subsystems.DriveTrain;
-import org.usfirst.frc.team5507.robot.subsystems.Elevator;
-import org.usfirst.frc.team5507.robot.subsystems.EncoderDemo;
-import org.usfirst.frc.team5507.robot.subsystems.ExampleSubsystem;
 import org.usfirst.frc.team5507.robot.subsystems.SmartGripper;
 import org.usfirst.frc.team5507.robot.subsystems.Intake;
 import org.usfirst.frc.team5507.robot.subsystems.SmartElevator;
@@ -89,7 +85,6 @@ public class Robot extends TimedRobot {
 	@Override
 	public void robotInit() {
 		m_oi = new OI();
-		m_chooser.addDefault("Default Auto", new ExampleCommand());
 		SmartDashboard.putData("Auto mode", m_chooser);
 		UsbCamera camera = CameraServer.getInstance().startAutomaticCapture();
 		camera.setResolution(320, 240);

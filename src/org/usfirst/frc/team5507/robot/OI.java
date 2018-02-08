@@ -10,7 +10,6 @@ package org.usfirst.frc.team5507.robot;
 import org.usfirst.frc.team5507.robot.commands.ClimberDown;
 import org.usfirst.frc.team5507.robot.commands.ClimberRewind;
 import org.usfirst.frc.team5507.robot.commands.ClimberUp;
-import org.usfirst.frc.team5507.robot.commands.EncoderToAngle;
 import org.usfirst.frc.team5507.robot.commands.IntakeTakeIn;
 import org.usfirst.frc.team5507.robot.commands.IntakeTakeOut;
 import org.usfirst.frc.team5507.robot.commands.RumbleInTheJungleJuliaWasRight;
