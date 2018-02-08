@@ -20,8 +20,6 @@ public class IntakeTakeIn extends Command {
 
 	// Called just before this Command runs the first time
 	protected void initialize() {
-		Robot.m_timer.reset();
-		Robot.m_timer.start();
 	}
 
 	// Called repeatedly when this Command is scheduled to run
@@ -31,22 +29,19 @@ public class IntakeTakeIn extends Command {
 
 	// Make this return true when this Command no longer needs to run execute()
 	protected boolean isFinished() {
-		if (Robot.m_intake.isSwitchSet()) 
-		{
-			return true;
-		} 
 		return false;
+//		return Robot.m_intake.isSwitchSet(); 
 	}
 
 	// Called once after isFinished returns true
 	protected void end() {
-		Intake.stop();
+		Robot.m_intake.stop();
 		Scheduler.getInstance().add(new RumbleInTheJungleJuliaWasRight());
 	}
 
 	// Called when another command which requires one or more of the same
 	// subsystems is scheduled to run
 	protected void interrupted() {
-		end();
+		Robot.m_intake.stop();
 	}
 }

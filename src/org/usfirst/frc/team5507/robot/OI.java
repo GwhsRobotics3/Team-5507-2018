@@ -75,7 +75,7 @@ public class OI {
 		Button select = new JoystickButton(controller, 7); 
 		Button start = new JoystickButton(controller, 8);  
 
-		a.whileHeld(new IntakeTakeIn());
+		a.whenPressed(new IntakeTakeIn());
 		b.whileHeld(new IntakeTakeOut());		
 		x.whenPressed(new SmartGripperToggle());
 		y.whileHeld(new ClimberRewind());

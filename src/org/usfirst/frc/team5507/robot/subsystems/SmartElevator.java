@@ -21,10 +21,6 @@ public class SmartElevator extends Subsystem {
 	public static final int STATE_HIGH = 3;
 	public static final int STATE_MED = 2;
 	public static final int STATE_LOW = 1;
-	private static DigitalInput limitSwitchTop = new DigitalInput(1);
-	Counter counterTop = new Counter(limitSwitchTop);
-	private static DigitalInput limitSwitchBottom = new DigitalInput(2);
-	Counter counterBottom = new Counter(limitSwitchBottom);
 	// Put methods for controlling this subsystem
 	// here. Call these from Commands.
 
@@ -152,14 +148,6 @@ public class SmartElevator extends Subsystem {
 	public double getCurrentPos()
 	{
 		return elevatorPulley.getSelectedSensorPosition(0);
-	}
-
-	public boolean isSwitchSetTop() {
-		return counterTop.get() > 0;
-	}
-
-	public boolean isSwitchSetBottom() {
-		return counterBottom.get() > 0;
 	}
 
 	public void stop()
