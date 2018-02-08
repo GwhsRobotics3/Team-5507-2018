@@ -24,14 +24,11 @@ public class Climber extends Subsystem {
         //setDefaultCommand(new MySpecialCommand());
     }
     
-//    public void armUp()
-//    {
-//    	climberPulley.set(-.5);
-//    	climberArm.set(-.5);
-//    }
-//    
-
-    
+    public Climber()
+    {
+    	addChild("Pulley",climberPulley);
+    	addChild("arm",climberArm);
+    }
 
     public void armUp(double speed)
     {   	

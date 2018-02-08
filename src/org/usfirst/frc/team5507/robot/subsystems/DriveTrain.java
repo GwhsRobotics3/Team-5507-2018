@@ -45,6 +45,10 @@ public class DriveTrain extends Subsystem {
 		Constants.configTalon(frontRight);
 		Constants.configTalon(backRight);
 		Constants.configTalon(backLeft);
+		addChild("front left talon",frontLeft);
+		addChild("front right talon", frontRight);
+		addChild("back left talon", backLeft);
+		addChild("back right talon", backRight);
 	}
 	
     public void initDefaultCommand() {

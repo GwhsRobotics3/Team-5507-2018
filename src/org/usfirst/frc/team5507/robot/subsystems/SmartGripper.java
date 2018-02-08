@@ -44,6 +44,9 @@ public class SmartGripper extends Subsystem {
 		configGripperTalon(leftArm);
 		configGripperTalon(rightArm);
 		resetEncoders();
+		
+		addChild("left arm", leftArm);
+		addChild("right arm", rightArm);
 	}
 	
 	public static void resetEncoders() {

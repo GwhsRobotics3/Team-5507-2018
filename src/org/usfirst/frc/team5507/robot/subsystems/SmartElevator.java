@@ -34,7 +34,7 @@ public class SmartElevator extends Subsystem {
 		currentState = STATE_LOW;
 		Constants.configTalonQuad(elevatorPulley);
 		resetEncoders();
-		LiveWindow.addChild(this, elevatorPulley);
+		addChild("elevator pulley talon", elevatorPulley);
 
 	}
 	public void initDefaultCommand() {

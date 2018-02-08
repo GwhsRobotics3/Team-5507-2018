@@ -1,15 +1,11 @@
 package org.usfirst.frc.team5507.robot.subsystems;
 
-import org.usfirst.frc.team5507.robot.Robot;
 import org.usfirst.frc.team5507.robot.RobotMap;
 import org.usfirst.frc.team5507.robot.commands.IntakeStop;
 
-import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
 
-import edu.wpi.first.wpilibj.Counter;
 import edu.wpi.first.wpilibj.DigitalInput;
-import edu.wpi.first.wpilibj.Spark;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
@@ -28,7 +24,9 @@ public class Intake extends Subsystem {
 	
 	public Intake() {
 		super("Intake");
-	    LiveWindow.addChild(this, limitSwitch);
+	    addChild("Limit Switch", limitSwitch);
+	    addChild("left intake talon", m_leftWheel);
+	    addChild("right intake talon", m_rightWheel);
 	}
 	
 	public void initDefaultCommand() {
