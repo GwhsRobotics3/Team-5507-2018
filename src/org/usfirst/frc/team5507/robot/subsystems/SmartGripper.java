@@ -20,6 +20,12 @@ public class SmartGripper extends Subsystem {
 	public static final int STATE_OPEN = 2;
 	public static final int STATE_CLOSED = 3;
 	
+	public static final int DEGREES_START = 0;
+	public static final int DEGREES_OPEN = 158;
+	public static final int DEGREES_CLOSED = 175;
+	
+	static final int CURRENT_LIMIT = 7;
+	
 	private static WPI_TalonSRX leftArm = new WPI_TalonSRX(RobotMap.leftArm);
 	private static WPI_TalonSRX rightArm = new WPI_TalonSRX(RobotMap.rightArm);
 	
@@ -31,6 +37,12 @@ public class SmartGripper extends Subsystem {
 		currentState = STATE_START;
 		Constants.configTalon(leftArm);
 		Constants.configTalon(rightArm);
+		configGripperTalon(leftArm);
+		configGripperTalon(rightArm);
+		leftArm.configForwardSoftLimitThreshold(DEGREES_START, Constants.kTimeoutMs);
+		leftArm.configReverseSoftLimitThreshold(DEGREES_OPEN, Constants.kTimeoutMs);
+		rightArm.configForwardSoftLimitThreshold(-DEGREES_START, Constants.kTimeoutMs);
+		rightArm.configReverseSoftLimitThreshold(-DEGREES_OPEN, Constants.kTimeoutMs);
 		resetEncoders();
 	}
 	
@@ -42,8 +54,6 @@ public class SmartGripper extends Subsystem {
 	public void initDefaultCommand() {
 		// Set the default command for a subsystem here.
 		// setDefaultCommand(new MySpecialCommand());
-		SmartDashboard.putNumber("Right arm position", rightArm.getSelectedSensorPosition(0));
-		SmartDashboard.putNumber("Left arm position", leftArm.getSelectedSensorPosition(0));
 	}
 	
 	public double getCurrentPosL() {
@@ -83,33 +93,42 @@ public class SmartGripper extends Subsystem {
 		switch(currentState)
 		{
 			case(STATE_START):
-				setTargetAngles(Constants.TICKS_START);
-			
+				setTargetAngles(DEGREES_START);
 				break;
-			case(STATE_OPEN):
-				setTargetAngles(Constants.TICKS_OPEN);
-			
-				break;
-			case(STATE_CLOSED):
-				setTargetAngles(Constants.TICKS_CLOSED);
-			
-				break;
-			default:
-				setTargetAngles(Constants.TICKS_OPEN);
 				
+			case(STATE_OPEN):
+				setTargetAngles(DEGREES_OPEN);
+				break;
+				
+			case(STATE_CLOSED):
+				setTargetAngles(DEGREES_CLOSED);
+				break;
+				
+			default:
+				setTargetAngles(DEGREES_OPEN);
 				break;
 		}
 	}
 	
-	private void setTargetAngles(double ticks) {	
-		leftArm.set(ControlMode.MotionMagic, ticks);
-		rightArm.set(ControlMode.MotionMagic, -ticks); // "negative" angle to drive opposite direction
-		}
+	private void setTargetAngles(int angle) {	
+		leftArm.set(ControlMode.MotionMagic, angleToTicks(angle));
+		rightArm.set(ControlMode.MotionMagic, -angleToTicks(angle)); // "negative" angle to drive opposite direction
+	}
 	
 	public void stop()
 	{
 		leftArm.set(0);
 		rightArm.set(0);
 	}
-		
+	
+	public void configGripperTalon(WPI_TalonSRX talon)
+	{
+		talon.configContinuousCurrentLimit(CURRENT_LIMIT, Constants.kTimeoutMs);
+		talon.configPeakCurrentLimit(0, Constants.kTimeoutMs);
+
+	}
+	
+	public int angleToTicks(int degrees) {
+		return (4096*degrees)/360;
+	}
 }

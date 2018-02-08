@@ -173,12 +173,7 @@ public class Robot extends TimedRobot {
 	 */
 	@Override
 	public void teleopPeriodic() {
-		Scheduler.getInstance().run();
-		if(m_oi.controller.getRawAxis(5) < -0.1)
-		{
-			Scheduler.getInstance().add(new ClimberUp());
-		}
-		
+		Scheduler.getInstance().run();		
 		putSmartDashboardData();
 	}
 
