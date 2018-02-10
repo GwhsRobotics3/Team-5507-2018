@@ -23,7 +23,7 @@ public class SmartGripper extends Subsystem {
 	public static final int DEGREES_OPEN = 158;
 	public static final int DEGREES_CLOSED = 175;
 	
-	static final int CURRENT_LIMIT = 7;
+	static final int CURRENT_LIMIT = 30;
 	
 	private static WPI_TalonSRX leftArm = new WPI_TalonSRX(RobotMap.leftArm);
 	private static WPI_TalonSRX rightArm = new WPI_TalonSRX(RobotMap.rightArm);
@@ -46,6 +46,9 @@ public class SmartGripper extends Subsystem {
 		
 		addChild("left arm", leftArm);
 		addChild("right arm", rightArm);
+		
+		//leftArm.getMotorOutputVoltage();
+		//rightArm.getMotorOutputVoltage();
 	}
 	
 	public static void resetEncoders() {
@@ -137,8 +140,8 @@ public class SmartGripper extends Subsystem {
 	}
 	
 	public void gripperUseJoystick() {
-		leftArm.set(Robot.m_oi.controller.getRawAxis(1));
-		rightArm.set(Robot.m_oi.controller.getRawAxis(1) * -1);
+		leftArm.set(Robot.m_oi.controller.getRawAxis(1) * .2);
+		rightArm.set(Robot.m_oi.controller.getRawAxis(1) * -1 * -.2);
 	}
 	
 	public void stopAllJoy() {

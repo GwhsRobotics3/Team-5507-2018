@@ -141,9 +141,7 @@ public class SmartElevator extends Subsystem {
 	{
 		elevatorPulley.set(0);
 	}
-<<<<<<< HEAD
 
-=======
 	
 	public void goUp()
 	{
@@ -156,6 +154,6 @@ public class SmartElevator extends Subsystem {
 		elevatorPulley.set(-.4);
 	}
 	
->>>>>>> origin/master
+
 }
 

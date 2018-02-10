@@ -19,8 +19,9 @@ import edu.wpi.first.wpilibj.SerialPort;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
-import org.usfirst.frc.team5507.robot.commands.AutonomousDriveStraight;
+//import org.usfirst.frc.team5507.robot.commands.AutonomousDriveStraight;
 import org.usfirst.frc.team5507.robot.commands.AutonomousDriveStraightTurnLeft;
+import org.usfirst.frc.team5507.robot.commands.AutonomousDriveStraightTurnRight;
 import org.usfirst.frc.team5507.robot.commands.ClimberUp;
 import org.usfirst.frc.team5507.robot.commands.DriveTurnByAngle;
 import org.usfirst.frc.team5507.robot.subsystems.Climber;
@@ -119,6 +120,17 @@ public class Robot extends TimedRobot {
 	public void autonomousInit() {
 		m_ahrs.reset();
 		m_autonomousCommand = new AutonomousDriveStraightTurnLeft(); //m_chooser.getSelected();
+//		String gameData;
+//		gameData = DriverStation.getInstance().getGameSpecificMessage();
+//		if(gameData.length() > 0)
+//		{
+//			if(gameData.charAt(0) == 'L')
+//			{
+//				m_autonomousCommand = new AutonomousDriveStraightTurnRight();
+//			} else if (gameData.charAt(0) == 'R') {
+//				m_autonomousCommand = new AutonomousDriveStraightTurnLeft();
+//			}
+//		}
 		DriveTrain.resetPos();
 		/*
 		 * String autoSelected = SmartDashboard.getString("Auto Selector",
@@ -162,14 +174,11 @@ public class Robot extends TimedRobot {
 	public void teleopPeriodic() {
 		Scheduler.getInstance().run();		
 		putSmartDashboardData();
-		
-		if(Math.abs(m_oi.controller.getRawAxis(1)) > 0.2)
-		{
+	
 			m_smartGripper.gripperUseJoystick();
-		}
-		else {
-			m_smartGripper.stopAllJoy();
-		}
+	
+			//m_smartGripper.stopAllJoy();
+		
 	}
 
 	/**
