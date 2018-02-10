@@ -4,6 +4,7 @@ import org.usfirst.frc.team5507.robot.RobotMap;
 
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
+import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.command.Subsystem;
 // cool beans
@@ -15,7 +16,6 @@ public class Climber extends Subsystem {
 
 	private static WPI_TalonSRX climberPulley = new WPI_TalonSRX(RobotMap.climbPulley);
 	private static WPI_TalonSRX climberArm = new WPI_TalonSRX(RobotMap.climbArm);
-
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
 
@@ -58,5 +58,15 @@ public class Climber extends Subsystem {
     public void testPrint()
     {
     	System.out.println("button left trigger");
+    }
+    
+    public void setThrowingPos()
+    {
+    	climberArm.set(.3);
+    }
+    
+    public void catapult()
+    {
+    	climberArm.set(.5);
     }
 }

@@ -133,5 +133,16 @@ public class SmartElevator extends Subsystem {
 		elevatorPulley.set(0);
 	}
 	
+	public void goUp()
+	{
+		//testing
+		elevatorPulley.set(.4);
+	}
+	
+	public void goDown()
+	{
+		elevatorPulley.set(-.4);
+	}
+	
 }
 
