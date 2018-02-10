@@ -128,14 +128,20 @@ public class Robot extends TimedRobot {
 	@Override
 	public void autonomousInit() {
 		m_ahrs.reset();
-		DriverStation.Alliance color;
-		color = DriverStation.getInstance().getAlliance();
-		if(color == DriverStation.Alliance.Blue){
-			
-		}
-
 		m_autonomousCommand = new AutonomousDriveStraightTurnLeft(); //m_chooser.getSelected();
 		DriveTrain.resetPos();
+		String gameData;
+		gameData = DriverStation.getInstance().getGameSpecificMessage();
+                if(gameData.length() > 0)
+                {
+                	if(gameData.charAt(0) == 'L')
+                	{
+                		//Put left auto code here
+                	} else {
+                		//Put right auto code here
+                	}
+                }
+
 		/*
 		 * String autoSelected = SmartDashboard.getString("Auto Selector",
 		 * "Default"); switch(autoSelected) { case "My Auto": autonomousCommand
