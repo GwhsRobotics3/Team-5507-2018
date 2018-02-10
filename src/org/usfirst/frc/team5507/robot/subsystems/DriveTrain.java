@@ -75,7 +75,7 @@ public class DriveTrain extends Subsystem {
     	double y = controller.getRawAxis(1);
     	double x = controller.getRawAxis(0);
     	double z = controller.getRawAxis(3) - controller.getRawAxis(2);
-    	if(Math.abs(x) > .1 || Math.abs(y) > .1 || Math.abs(z) > .1)
+    	if(Math.abs(x) > .2 || Math.abs(y) > .2 || Math.abs(z) > .2)
     	{
     		drive(x, y, z);
     	}

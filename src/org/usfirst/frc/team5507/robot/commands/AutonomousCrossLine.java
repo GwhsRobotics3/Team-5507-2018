@@ -3,11 +3,11 @@ package org.usfirst.frc.team5507.robot.commands;
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
 /**
- *
+ * This can be use regardless of any randomized switch/scale state.
  */
-public class AutonomousDriveStraight extends CommandGroup {
+public class AutonomousCrossLine extends CommandGroup {
 
-    public AutonomousDriveStraight() {
+    public AutonomousCrossLine() {
         // Add Commands here:
         // e.g. addSequential(new Command1());
         //      addSequential(new Command2());
@@ -24,7 +24,7 @@ public class AutonomousDriveStraight extends CommandGroup {
         // e.g. if Command1 requires chassis, and Command2 requires arm,
         // a CommandGroup containing them would require both the chassis and the
         // arm.
-    	addSequential(new DriveForwardDistance(5.0));
+    	addSequential(new DriveForwardDistance(10.0));
     	addSequential(new DriveStop());
     }
 }

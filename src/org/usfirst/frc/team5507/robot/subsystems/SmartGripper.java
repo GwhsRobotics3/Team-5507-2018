@@ -1,5 +1,6 @@
 package org.usfirst.frc.team5507.robot.subsystems;
 
+import org.usfirst.frc.team5507.robot.Robot;
 import org.usfirst.frc.team5507.robot.RobotMap;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
@@ -22,7 +23,7 @@ public class SmartGripper extends Subsystem {
 	public static final int DEGREES_OPEN = 158;
 	public static final int DEGREES_CLOSED = 175;
 	
-	static final int CURRENT_LIMIT = 7;
+	static final int CURRENT_LIMIT = 30;
 	
 	private static WPI_TalonSRX leftArm = new WPI_TalonSRX(RobotMap.leftArm);
 	private static WPI_TalonSRX rightArm = new WPI_TalonSRX(RobotMap.rightArm);
@@ -45,6 +46,9 @@ public class SmartGripper extends Subsystem {
 		
 		addChild("left arm", leftArm);
 		addChild("right arm", rightArm);
+		
+		//leftArm.getMotorOutputVoltage();
+		//rightArm.getMotorOutputVoltage();
 	}
 	
 	public static void resetEncoders() {
@@ -133,5 +137,15 @@ public class SmartGripper extends Subsystem {
 	
 	public int angleToTicks(int degrees) {
 		return (4096*degrees)/360;
+	}
+	
+	public void gripperUseJoystick() {
+		leftArm.set(Robot.m_oi.controller.getRawAxis(1) * .2);
+		rightArm.set(Robot.m_oi.controller.getRawAxis(1) * -1 * -.2);
+	}
+	
+	public void stopAllJoy() {
+		leftArm.set(0);
+		rightArm.set(0);
 	}
 }
