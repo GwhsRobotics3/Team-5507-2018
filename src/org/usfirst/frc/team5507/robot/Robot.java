@@ -24,6 +24,8 @@ import org.usfirst.frc.team5507.robot.commands.AutonomousDriveStraightTurnLeft;
 import org.usfirst.frc.team5507.robot.commands.AutonomousDriveStraightTurnRight;
 import org.usfirst.frc.team5507.robot.commands.ClimberUp;
 import org.usfirst.frc.team5507.robot.commands.DriveTurnByAngle;
+import org.usfirst.frc.team5507.robot.commands.SmartElevatorDownTest;
+import org.usfirst.frc.team5507.robot.commands.SmartElevatorUpTest;
 import org.usfirst.frc.team5507.robot.subsystems.Climber;
 import org.usfirst.frc.team5507.robot.subsystems.DriveTrain;
 import org.usfirst.frc.team5507.robot.subsystems.SmartGripper;
@@ -103,6 +105,14 @@ public class Robot extends TimedRobot {
 	@Override
 	public void disabledPeriodic() {
 		Scheduler.getInstance().run();
+    	if(Robot.m_oi.controller.getRawAxis(OI.CLIMB_AXIS) < -0.1)
+		{
+    		Scheduler.getInstance().add(new SmartElevatorUpTest());
+		}
+    	else if(Robot.m_oi.controller.getRawAxis(OI.CLIMB_AXIS) > -0.1)
+    	{
+    		Scheduler.getInstance().add(new SmartElevatorDownTest());
+    	}
 	}
 
 	/**
@@ -132,6 +142,18 @@ public class Robot extends TimedRobot {
 //			}
 //		}
 		DriveTrain.resetPos();
+		String gameData;
+		gameData = DriverStation.getInstance().getGameSpecificMessage();
+                if(gameData.length() > 0)
+                {
+                	if(gameData.charAt(0) == 'L')
+                	{
+                		//Put left auto code here
+                	} else {
+                		//Put right auto code here
+                	}
+                }
+
 		/*
 		 * String autoSelected = SmartDashboard.getString("Auto Selector",
 		 * "Default"); switch(autoSelected) { case "My Auto": autonomousCommand

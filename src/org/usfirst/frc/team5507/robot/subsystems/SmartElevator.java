@@ -35,6 +35,7 @@ public class SmartElevator extends Subsystem {
 		ConfigTalon.configTalonQuad(elevatorPulley);
 		resetEncoders();
 		addChild("elevator pulley talon", elevatorPulley);
+		SmartDashboard.getNumber("Elevator Pos", getCurrentPos());
 
 	}
 	public void initDefaultCommand() {
@@ -151,6 +152,7 @@ public class SmartElevator extends Subsystem {
 	
 	public void goDown()
 	{
+		//testing
 		elevatorPulley.set(-.4);
 	}
 	
