@@ -104,14 +104,6 @@ public class Robot extends TimedRobot {
 	@Override
 	public void disabledPeriodic() {
 		Scheduler.getInstance().run();
-    	if(Robot.m_oi.controller.getRawAxis(OI.CLIMB_AXIS) < -0.1)
-		{
-    		Scheduler.getInstance().add(new SmartElevatorUpTest());
-		}
-    	else if(Robot.m_oi.controller.getRawAxis(OI.CLIMB_AXIS) > -0.1)
-    	{
-    		Scheduler.getInstance().add(new SmartElevatorDownTest());
-    	}
 	}
 
 	/**
@@ -182,6 +174,14 @@ public class Robot extends TimedRobot {
 	public void teleopPeriodic() {
 		Scheduler.getInstance().run();		
 		putSmartDashboardData();
+		if(Robot.m_oi.controller.getRawAxis(OI.CLIMB_AXIS) < -0.1)
+		{
+    		Scheduler.getInstance().add(new SmartElevatorUpTest());
+		}
+    	else if(Robot.m_oi.controller.getRawAxis(OI.CLIMB_AXIS) > -0.1)
+    	{
+    		Scheduler.getInstance().add(new SmartElevatorDownTest());
+    	}
 	}
 
 	/**
