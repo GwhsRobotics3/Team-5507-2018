@@ -23,6 +23,8 @@ import org.usfirst.frc.team5507.robot.commands.AutonomousDriveStraight;
 import org.usfirst.frc.team5507.robot.commands.AutonomousDriveStraightTurnLeft;
 import org.usfirst.frc.team5507.robot.commands.ClimberUp;
 import org.usfirst.frc.team5507.robot.commands.DriveTurnByAngle;
+import org.usfirst.frc.team5507.robot.commands.SmartElevatorDownTest;
+import org.usfirst.frc.team5507.robot.commands.SmartElevatorUpTest;
 import org.usfirst.frc.team5507.robot.subsystems.Climber;
 import org.usfirst.frc.team5507.robot.subsystems.DriveTrain;
 import org.usfirst.frc.team5507.robot.subsystems.SmartGripper;
@@ -102,6 +104,14 @@ public class Robot extends TimedRobot {
 	@Override
 	public void disabledPeriodic() {
 		Scheduler.getInstance().run();
+    	if(Robot.m_oi.controller.getRawAxis(OI.CLIMB_AXIS) < -0.1)
+		{
+    		Scheduler.getInstance().add(new SmartElevatorUpTest());
+		}
+    	else if(Robot.m_oi.controller.getRawAxis(OI.CLIMB_AXIS) > -0.1)
+    	{
+    		Scheduler.getInstance().add(new SmartElevatorDownTest());
+    	}
 	}
 
 	/**
@@ -118,6 +128,12 @@ public class Robot extends TimedRobot {
 	@Override
 	public void autonomousInit() {
 		m_ahrs.reset();
+		DriverStation.Alliance color;
+		color = DriverStation.getInstance().getAlliance();
+		if(color == DriverStation.Alliance.Blue){
+			
+		}
+
 		m_autonomousCommand = new AutonomousDriveStraightTurnLeft(); //m_chooser.getSelected();
 		DriveTrain.resetPos();
 		/*
