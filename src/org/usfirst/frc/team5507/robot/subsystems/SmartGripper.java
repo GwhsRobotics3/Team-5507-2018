@@ -1,5 +1,6 @@
 package org.usfirst.frc.team5507.robot.subsystems;
 
+import org.usfirst.frc.team5507.robot.Robot;
 import org.usfirst.frc.team5507.robot.RobotMap;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
@@ -133,5 +134,15 @@ public class SmartGripper extends Subsystem {
 	
 	public int angleToTicks(int degrees) {
 		return (4096*degrees)/360;
+	}
+	
+	public void gripperUseJoystick() {
+		leftArm.set(Robot.m_oi.controller.getRawAxis(1));
+		rightArm.set(Robot.m_oi.controller.getRawAxis(1) * -1);
+	}
+	
+	public void stopAllJoy() {
+		leftArm.set(0);
+		rightArm.set(0);
 	}
 }

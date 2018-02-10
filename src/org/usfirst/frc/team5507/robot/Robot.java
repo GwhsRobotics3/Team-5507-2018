@@ -151,6 +151,8 @@ public class Robot extends TimedRobot {
 		if (m_autonomousCommand != null) {
 			m_autonomousCommand.cancel();
 		}
+		SmartElevator.stateReset();
+		SmartElevator.resetEncoders();
 	}
 
 	/**
@@ -160,6 +162,14 @@ public class Robot extends TimedRobot {
 	public void teleopPeriodic() {
 		Scheduler.getInstance().run();		
 		putSmartDashboardData();
+		
+		if(Math.abs(m_oi.controller.getRawAxis(1)) > 0.2)
+		{
+			m_smartGripper.gripperUseJoystick();
+		}
+		else {
+			m_smartGripper.stopAllJoy();
+		}
 	}
 
 	/**

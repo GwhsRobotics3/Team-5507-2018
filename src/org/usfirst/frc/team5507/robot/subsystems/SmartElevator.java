@@ -21,11 +21,11 @@ public class SmartElevator extends Subsystem {
 	public static final int STATE_HIGH = 3;
 	public static final int STATE_MED = 2;
 	public static final int STATE_LOW = 1;
-	
-	public static final double ELEVATOR_HIGH = 30;
-	public static final double ELEVATOR_MED = 15;
+
+	public static final double ELEVATOR_HIGH = 20;
+	public static final double ELEVATOR_MED = 10;
 	public static final double ELEVATOR_LOW = 0;
-	
+
 	// Put methods for controlling this subsystem
 	// here. Call these from Commands.
 
@@ -56,52 +56,56 @@ public class SmartElevator extends Subsystem {
 		if(state > STATE_HIGH || state < STATE_LOW) {
 			state = STATE_MED;
 		}
-		
+
 		currentState = state;
-		
+
 		switch(currentState)
 		{
-			case(STATE_LOW):
-				setDesiredPosition(ELEVATOR_LOW);					
-				break;
-				
-			case(STATE_MED):
-				setDesiredPosition(ELEVATOR_MED);
-				break;
-				
-			case(STATE_HIGH):
-				setDesiredPosition(ELEVATOR_HIGH);
-				break;
-				
-			default:
-				setDesiredPosition(ELEVATOR_LOW);
-				break;
+		case(STATE_LOW):
+			setDesiredPosTicks(ELEVATOR_LOW);					
+		break;
+
+		case(STATE_MED):
+			setDesiredPosTicks(ELEVATOR_MED);
+		break;
+
+		case(STATE_HIGH):
+			setDesiredPosTicks(ELEVATOR_HIGH);
+		break;
+
+		default:
+			setDesiredPosTicks(ELEVATOR_LOW);
+			break;
 		}
 	}
 
-	public static void setDesiredPosition(double inches)
-	{
-		double ticks = 12*64 / (Math.PI * 1.25) * inches; 
-		elevatorPulley.set(ControlMode.MotionMagic, ticks);
-		
-	}
+		public static void setDesiredPosTicks(double inches)
+		{
+			double ticks = ((768 / (Math.PI * 1.5)) * inches); 
+			elevatorPulley.set(ControlMode.MotionMagic, ticks);
+		}
+
+	//public static void setDesiredPosTicks(double ticks)
+	//{
+	//	elevatorPulley.set(ControlMode.MotionMagic, ticks);
+	//}
 
 	public static int getNextStateUp()
 	{
 
 		switch(currentState) 
 		{
-			case(STATE_LOW):
-				return STATE_MED;
-			
-			case(STATE_MED):
-				return STATE_HIGH;
-			
-			case(STATE_HIGH):
-				return STATE_HIGH;
-			
-			default:
-				return STATE_MED;
+		case(STATE_LOW):
+			return STATE_MED;
+
+		case(STATE_MED):
+			return STATE_HIGH;
+
+		case(STATE_HIGH):
+			return STATE_HIGH;
+
+		default:
+			return STATE_MED;
 		}
 	}
 
@@ -109,18 +113,23 @@ public class SmartElevator extends Subsystem {
 	{
 		switch(currentState)
 		{
-			case(STATE_HIGH):
-				return STATE_MED;
-			
-			case(STATE_MED):
-				return STATE_LOW;
-			
-			case(STATE_LOW):
-				return STATE_LOW;
-			
-			default:
-				return STATE_MED;
+		case(STATE_HIGH):
+			return STATE_MED;
+
+		case(STATE_MED):
+			return STATE_LOW;
+
+		case(STATE_LOW):
+			return STATE_LOW;
+
+		default:
+			return STATE_MED;
 		}
+	}
+
+	public static void stateReset()
+	{
+		currentState = STATE_LOW;
 	}
 
 	public double getCurrentPos()
@@ -132,6 +141,6 @@ public class SmartElevator extends Subsystem {
 	{
 		elevatorPulley.set(0);
 	}
-	
+
 }
 
