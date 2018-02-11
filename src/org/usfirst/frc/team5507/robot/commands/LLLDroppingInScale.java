@@ -29,7 +29,7 @@ public class LLLDroppingInScale extends CommandGroup {
         // a CommandGroup containing them would require both the chassis and the
         // arm.
     	
-    	addSequential(new DriveForwardDistance(1));
+    	addSequential(new DriveForwardDistance(-1));
     	if (side == "left")
     	{
     		addSequential(new DriveForwardDistance(-25));
@@ -38,13 +38,14 @@ public class LLLDroppingInScale extends CommandGroup {
     	}
     	else if(side == "right")
     	{
+    		addSequential(new DriveTurnByAngle(-90));
     		addSequential(new DriveForwardDistance(-14));
     		addSequential(new DriveTurnByAngle(90));
     		addSequential(new DriveForwardDistance(24));
-    		addSequential(new DriveSidewaysDistance(3));
+    		addSequential(new DriveSidewaysDistance(2));
+    		addSequential(new DriveTurnByAngle(-90));
     		addSequential(new Catapult());
     	}
-    	addSequential(new DriveStop());
-    	
+    	addSequential(new DriveStop());	
     }
 }
