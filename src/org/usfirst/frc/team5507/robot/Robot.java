@@ -20,7 +20,6 @@ import edu.wpi.first.wpilibj.SerialPort;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
-//import org.usfirst.frc.team5507.robot.commands.AutonomousDriveStraight;
 import org.usfirst.frc.team5507.robot.commands.AutonomousDriveStraightTurnLeft;
 import org.usfirst.frc.team5507.robot.commands.AutonomousDriveStraightTurnRight;
 import org.usfirst.frc.team5507.robot.commands.ClimberUp;
