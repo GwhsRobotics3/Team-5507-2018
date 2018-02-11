@@ -25,8 +25,8 @@ public class SmartGripper extends Subsystem {
 	
 	static final int CURRENT_LIMIT = 30;
 	
-	private static WPI_TalonSRX leftArm = new WPI_TalonSRX(RobotMap.leftArm);
-	private static WPI_TalonSRX rightArm = new WPI_TalonSRX(RobotMap.rightArm);
+	public static WPI_TalonSRX leftArm = new WPI_TalonSRX(RobotMap.leftArm);
+	public static WPI_TalonSRX rightArm = new WPI_TalonSRX(RobotMap.rightArm);
 	
 	// Put methods for controlling this subsystem
 	// here. Call these from Commands.
@@ -36,10 +36,10 @@ public class SmartGripper extends Subsystem {
 		currentState = STATE_START;
 		ConfigTalon.configTalon(leftArm);
 		ConfigTalon.configTalon(rightArm);
-		leftArm.configForwardSoftLimitThreshold(DEGREES_START, ConfigTalon.kTimeoutMs);
+		/*leftArm.configForwardSoftLimitThreshold(DEGREES_START, ConfigTalon.kTimeoutMs);
 		leftArm.configReverseSoftLimitThreshold(DEGREES_OPEN, ConfigTalon.kTimeoutMs);
 		rightArm.configForwardSoftLimitThreshold(-DEGREES_START, ConfigTalon.kTimeoutMs);
-		rightArm.configReverseSoftLimitThreshold(-DEGREES_OPEN, ConfigTalon.kTimeoutMs);
+		rightArm.configReverseSoftLimitThreshold(-DEGREES_OPEN, ConfigTalon.kTimeoutMs);*/
 		configGripperTalon(leftArm);
 		configGripperTalon(rightArm);
 		resetEncoders();
@@ -128,11 +128,11 @@ public class SmartGripper extends Subsystem {
 	
 	public void configGripperTalon(WPI_TalonSRX talon)
 	{
-		talon.configContinuousCurrentLimit(CURRENT_LIMIT, ConfigTalon.kTimeoutMs);
+		/*talon.configContinuousCurrentLimit(CURRENT_LIMIT, ConfigTalon.kTimeoutMs);
 		talon.configPeakCurrentLimit(0, ConfigTalon.kTimeoutMs);
 		talon.configForwardSoftLimitEnable(true, ConfigTalon.kTimeoutMs);
 		talon.configReverseSoftLimitEnable(true, ConfigTalon.kTimeoutMs);
-		talon.enableCurrentLimit(true);
+		talon.enableCurrentLimit(true);*/
 	}
 	
 	public int angleToTicks(int degrees) {
@@ -140,8 +140,8 @@ public class SmartGripper extends Subsystem {
 	}
 	
 	public void gripperUseJoystick() {
-		leftArm.set(Robot.m_oi.controller.getRawAxis(1) * .2);
-		rightArm.set(Robot.m_oi.controller.getRawAxis(1) * -1 * -.2);
+		leftArm.set(Robot.m_oi.controller.getRawAxis(1));
+		rightArm.set(Robot.m_oi.controller.getRawAxis(1) * -1);
 	}
 	
 	public void stopAllJoy() {

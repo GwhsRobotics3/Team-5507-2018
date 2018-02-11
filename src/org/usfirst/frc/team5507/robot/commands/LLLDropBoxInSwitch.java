@@ -29,17 +29,21 @@ public class LLLDropBoxInSwitch extends CommandGroup {
         // a CommandGroup containing them would require both the chassis and the
         // arm.
     	
-    	addSequential(new DriveForwardDistance(5.0));
+    	addSequential(new DriveForwardDistance(-5.0));
     	if (side == "left")
     	{
-    		addSequential(new DriveForwardDistance(9.0));
-    		//addSequential(new Ca); add catapult
+    		addSequential(new DriveForwardDistance(-9.0));
+    		addSequential(new DriveTurnByAngle(90.0));
+    		addSequential(new Catapult());
     	}
     	if(side == "right")
     	{
     		addSequential(new DriveTurnByAngle(-90.0));
-    		addSequential(new DriveForwardDistance(9.0));
-    		// add catapult;
+    		addSequential(new DriveForwardDistance(13.0));
+    		addSequential(new DriveTurnByAngle(90.0));
+    		addSequential(new DriveForwardDistance(-9.0));
+    		addSequential(new DriveTurnByAngle(90.0));
+    		addSequential(new Catapult());
     	}
     	addSequential(new DriveStop());
     }

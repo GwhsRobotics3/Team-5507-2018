@@ -60,13 +60,8 @@ public class Climber extends Subsystem {
     	System.out.println("button left trigger");
     }
     
-    public void setThrowingPos()
+    public void catapult(double speed)
     {
-    	climberArm.set(.3);
-    }
-    
-    public void catapult()
-    {
-    	climberArm.set(.5);
+    	climberArm.set(speed);
     }
 }

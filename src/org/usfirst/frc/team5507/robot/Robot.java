@@ -13,6 +13,7 @@ import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.I2C;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.Timer;
+import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.SerialPort;
@@ -56,7 +57,9 @@ public class Robot extends TimedRobot {
 	public static Intake m_intake = new Intake();
 	public static AHRS m_ahrs;
 	public static Timer m_timer = new Timer();
-	
+	public static WPI_TalonSRX left = new WPI_TalonSRX(3);
+	public static WPI_TalonSRX right = new WPI_TalonSRX(2);
+	public static XboxController stick = new XboxController(0);
 	Command m_autonomousCommand;
 	SendableChooser<Command> m_chooser = new SendableChooser<>(); 
 	
@@ -73,7 +76,7 @@ public class Robot extends TimedRobot {
 		SmartDashboard.putData(m_climber);
 		SmartDashboard.putData(m_driveTrain);
 		SmartDashboard.putData(m_smartElevator);
-		SmartDashboard.putData(m_smartGripper);
+		//SmartDashboard.putData(m_smartGripper);
 		SmartDashboard.putData(m_intake);
 		SmartDashboard.putNumber("IMU_Yaw", m_ahrs.getYaw());
 		SmartDashboard.putNumber("Pulley Position", Robot.m_smartElevator.getCurrentPos());
@@ -105,14 +108,14 @@ public class Robot extends TimedRobot {
 	@Override
 	public void disabledPeriodic() {
 		Scheduler.getInstance().run();
-    	if(Robot.m_oi.controller.getRawAxis(OI.CLIMB_AXIS) < -0.1)
-		{
-    		Scheduler.getInstance().add(new SmartElevatorUpTest());
-		}
-    	else if(Robot.m_oi.controller.getRawAxis(OI.CLIMB_AXIS) > -0.1)
-    	{
-    		Scheduler.getInstance().add(new SmartElevatorDownTest());
-    	}
+//    	if(Robot.m_oi.controller.getRawAxis(OI.CLIMB_AXIS) < -0.1)
+//		{
+//    		Scheduler.getInstance().add(new SmartElevatorUpTest());
+//		}
+//    	else if(Robot.m_oi.controller.getRawAxis(OI.CLIMB_AXIS) > -0.1)
+//    	{
+//    		Scheduler.getInstance().add(new SmartElevatorDownTest());
+//    	}
 	}
 
 	/**
@@ -130,17 +133,6 @@ public class Robot extends TimedRobot {
 	public void autonomousInit() {
 		m_ahrs.reset();
 		m_autonomousCommand = new AutonomousDriveStraightTurnLeft(); //m_chooser.getSelected();
-//		String gameData;
-//		gameData = DriverStation.getInstance().getGameSpecificMessage();
-//		if(gameData.length() > 0)
-//		{
-//			if(gameData.charAt(0) == 'L')
-//			{
-//				m_autonomousCommand = new AutonomousDriveStraightTurnRight();
-//			} else if (gameData.charAt(0) == 'R') {
-//				m_autonomousCommand = new AutonomousDriveStraightTurnLeft();
-//			}
-//		}
 		DriveTrain.resetPos();
 		String gameData;
 		gameData = DriverStation.getInstance().getGameSpecificMessage();
@@ -196,9 +188,10 @@ public class Robot extends TimedRobot {
 	public void teleopPeriodic() {
 		Scheduler.getInstance().run();		
 		putSmartDashboardData();
-	
-			m_smartGripper.gripperUseJoystick();
-	
+		left.set(stick.getRawAxis(1) * 0.5);
+		right.set(stick.getRawAxis(1) * -1 * 0.5);
+		//SmartGripper.leftArm.set(Robot.m_oi.controller.getRawAxis(1) * .2);
+	//	SmartGripper.rightArm.set(Robot.m_oi.controller.getRawAxis(1) * -1 * .2);
 			//m_smartGripper.stopAllJoy();
 		
 	}
