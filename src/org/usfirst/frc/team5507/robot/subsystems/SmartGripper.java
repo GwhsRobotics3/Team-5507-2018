@@ -20,8 +20,8 @@ public class SmartGripper extends Subsystem {
 	public static final int STATE_CLOSED = 3;
 	
 	public static final int DEGREES_START = 0;
-	public static final int DEGREES_OPEN = 158;
-	public static final int DEGREES_CLOSED = 175;
+	public static final int DEGREES_OPEN = 90;
+	public static final int DEGREES_CLOSED = 180;
 	
 	static final int CURRENT_LIMIT = 30;
 	
@@ -99,31 +99,41 @@ public class SmartGripper extends Subsystem {
 		{
 			case(STATE_START):
 				setTargetAngles(DEGREES_START);
+			System.out.println("Start" + " Degrees " + angleToTicks(DEGREES_START));
 				break;
 				
 			case(STATE_OPEN):
 				setTargetAngles(DEGREES_OPEN);
+			System.out.println("open" + " Degrees " + angleToTicks(DEGREES_OPEN));
 				break;
 				
 			case(STATE_CLOSED):
 				setTargetAngles(DEGREES_CLOSED);
+			System.out.println("Closed" + " Degrees " + angleToTicks(DEGREES_CLOSED));
 				break;
 				
 			default:
 				setTargetAngles(DEGREES_OPEN);
+				System.out.println("Open default" + " Degrees " + angleToTicks(DEGREES_OPEN));
 				break;
 		}
 	}
 	
 	private void setTargetAngles(int angle) {	
-		leftArm.set(ControlMode.MotionMagic, angleToTicks(angle));
-		rightArm.set(ControlMode.MotionMagic, -angleToTicks(angle)); // "negative" angle to drive opposite direction
+		double ticks = (4096 * angle)/ 360;
+		leftArm.set(ControlMode.MotionMagic, ticks);
+		rightArm.set(ControlMode.MotionMagic, -1 * ticks); // "negative" angle to drive opposite direction
 	}
 	
 	public void stop()
 	{
 		leftArm.set(0);
 		rightArm.set(0);
+	}
+	
+	public int getCurrentState()
+	{
+		return currentState;
 	}
 	
 	public void configGripperTalon(WPI_TalonSRX talon)
@@ -136,7 +146,7 @@ public class SmartGripper extends Subsystem {
 	}
 	
 	public int angleToTicks(int degrees) {
-		return (4096*degrees)/360;
+		return (4096 * degrees) / 360;
 	}
 	
 	public void gripperUseJoystick() {
@@ -148,4 +158,43 @@ public class SmartGripper extends Subsystem {
 		leftArm.set(0);
 		rightArm.set(0);
 	}
+	
+	public void setDesiredAngleForward(int angle) {
+		double targetPos = (4096 * angle) / 360;
+		if (getCurrentPosL() < targetPos) {
+			leftArm.set(0.4);
+		}
+		else {
+			leftArm.set(0);
+		}
+		
+		if (getCurrentPosR() > targetPos * -1) {
+			rightArm.set(-0.4);
+		}
+		else {
+			rightArm.set(0);
+		}
+		currentState++;
+		//Jennessa was right twice
+	}
+	
+	public void setDesiredAngleBackward(int angle) {
+		double targetPos = (4096 * angle) / 360;
+		if (getCurrentPosL() > targetPos) {
+			leftArm.set(-0.4);
+		}
+		else {
+			leftArm.set(0);
+		}
+		
+		if (getCurrentPosR() < targetPos * -1) {
+			rightArm.set(0.4);
+		}
+		else {
+			rightArm.set(0);
+		}
+		currentState--;
+		//Jennessa was right btw
+	}
+
 }

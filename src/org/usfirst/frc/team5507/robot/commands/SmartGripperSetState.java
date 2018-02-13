@@ -22,5 +22,6 @@ public class SmartGripperSetState extends InstantCommand {
     // Called just before this Command runs the first time
     protected void initialize() {
     	Robot.m_smartGripper.setState(state);
+    	System.out.println(Robot.m_smartGripper.getCurrentState());
     }
 }
