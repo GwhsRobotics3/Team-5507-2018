@@ -35,7 +35,7 @@ public class RRRDropInScale extends CommandGroup {
     		addSequential(new DriveTurnByAngle(-90));
     		addSequential(new Catapult());
     	}
-    	else if(side == "left")
+    	if (side == "left")
     	{
     		addSequential(new DriveTurnByAngle(90));
     		addSequential(new DriveForwardDistance(-14));
@@ -43,6 +43,13 @@ public class RRRDropInScale extends CommandGroup {
     		addSequential(new DriveForwardDistance(24));
     		addSequential(new DriveSidewaysDistance(3));
     		addSequential(new DriveTurnByAngle(-90));
+    		addSequential(new Catapult());
+    	}
+    	if (side == "middle")
+    	{
+    		addSequential(new DriveSidewaysDistance(8));
+    		addSequential(new DriveForwardDistance(-25));
+    		addSequential(new DriveTurnByAngle(-90.0));
     		addSequential(new Catapult());
     	}
     	addSequential(new DriveStop());	

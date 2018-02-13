@@ -46,8 +46,9 @@ public class RRRDropInSwitch extends CommandGroup {
 		}
 		if(side == "middle")
 		{
-			addSequential(new DriveSidewaysDistance(-3));
-			addSequential(new DriveForwardDistance(-1));
+			addSequential(new DriveForwardDistance(-2));
+			addSequential(new DriveSidewaysDistance(6));
+			addSequential(new DriveForwardDistance(-12));
 			addSequential(new Catapult());
 		}
 		addSequential(new DriveStop());

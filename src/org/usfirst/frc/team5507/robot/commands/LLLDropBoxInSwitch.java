@@ -44,6 +44,13 @@ public class LLLDropBoxInSwitch extends CommandGroup {
     		addSequential(new DriveTurnByAngle(90.0));
     		addSequential(new Catapult());
     	}
+    	if (side == "middle")
+		{
+    		addSequential(new DriveForwardDistance(-2));
+			addSequential(new DriveSidewaysDistance(-6));
+			addSequential(new DriveForwardDistance(-12));
+			addSequential(new Catapult());
+		}
     	addSequential(new DriveStop());
     }
 }

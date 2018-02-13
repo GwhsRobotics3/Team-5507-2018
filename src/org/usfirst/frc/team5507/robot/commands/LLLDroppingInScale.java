@@ -36,7 +36,7 @@ public class LLLDroppingInScale extends CommandGroup {
     		addSequential(new DriveTurnByAngle(90));
     		addSequential(new Catapult());
     	}
-    	else if(side == "right")
+    	if(side == "right")
     	{
     		addSequential(new DriveTurnByAngle(-90));
     		addSequential(new DriveForwardDistance(-14));
@@ -46,6 +46,13 @@ public class LLLDroppingInScale extends CommandGroup {
     		addSequential(new DriveTurnByAngle(-90));
     		addSequential(new Catapult());
     	}
+    	if (side == "middle")
+    	{
+    		addSequential(new DriveSidewaysDistance(8));
+    		addSequential(new DriveForwardDistance(-25));
+    		addSequential(new DriveTurnByAngle(-90.0));
+    		addSequential(new Catapult());
+    	}
     	addSequential(new DriveStop());	
-    }
+    } 
 }
