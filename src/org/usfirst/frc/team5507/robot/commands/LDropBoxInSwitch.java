@@ -5,11 +5,11 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 /**
  *
  */
-public class LLLDropBoxInSwitch extends CommandGroup {
+public class LDropBoxInSwitch extends CommandGroup {
 	
 	private String side;
 
-    public LLLDropBoxInSwitch(String s) {
+    public LDropBoxInSwitch(String s) {
     	side = s;
         // Add Commands here:
         // e.g. addSequential(new Command1());

@@ -5,12 +5,11 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 /**
  *
  */
-public class LLLDroppingInScale extends CommandGroup {
+public class RDropInScale extends CommandGroup {
 
 	private String side;
 	
-    public LLLDroppingInScale(String s) {
-    	
+    public RDropInScale(String s) {
     	side = s;
         // Add Commands here:
         // e.g. addSequential(new Command1());
@@ -30,19 +29,19 @@ public class LLLDroppingInScale extends CommandGroup {
         // arm.
     	
     	addSequential(new DriveForwardDistance(-1));
-    	if (side == "left")
+    	if (side == "right")
     	{
     		addSequential(new DriveForwardDistance(-25));
-    		addSequential(new DriveTurnByAngle(90));
+    		addSequential(new DriveTurnByAngle(-90));
     		addSequential(new Catapult());
     	}
-    	if(side == "right")
+    	if (side == "left")
     	{
-    		addSequential(new DriveTurnByAngle(-90));
-    		addSequential(new DriveForwardDistance(-14));
     		addSequential(new DriveTurnByAngle(90));
+    		addSequential(new DriveForwardDistance(-14));
+    		addSequential(new DriveTurnByAngle(-90));
     		addSequential(new DriveForwardDistance(24));
-    		addSequential(new DriveSidewaysDistance(2));
+    		addSequential(new DriveSidewaysDistance(3));
     		addSequential(new DriveTurnByAngle(-90));
     		addSequential(new Catapult());
     	}
@@ -54,5 +53,5 @@ public class LLLDroppingInScale extends CommandGroup {
     		addSequential(new Catapult());
     	}
     	addSequential(new DriveStop());	
-    } 
+    }
 }

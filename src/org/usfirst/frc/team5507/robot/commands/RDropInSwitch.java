@@ -5,11 +5,11 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 /**
  *
  */
-public class RRRDropInSwitch extends CommandGroup {
+public class RDropInSwitch extends CommandGroup {
 
 	private String side;
 
-	public RRRDropInSwitch(String s) {
+	public RDropInSwitch(String s) {
 		side = s;
 		// Add Commands here:
 		// e.g. addSequential(new Command1());

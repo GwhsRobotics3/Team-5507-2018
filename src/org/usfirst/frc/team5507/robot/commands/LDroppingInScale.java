@@ -5,11 +5,12 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 /**
  *
  */
-public class RRRDropInScale extends CommandGroup {
+public class LDroppingInScale extends CommandGroup {
 
 	private String side;
 	
-    public RRRDropInScale(String s) {
+    public LDroppingInScale(String s) {
+    	
     	side = s;
         // Add Commands here:
         // e.g. addSequential(new Command1());
@@ -29,19 +30,19 @@ public class RRRDropInScale extends CommandGroup {
         // arm.
     	
     	addSequential(new DriveForwardDistance(-1));
-    	if (side == "right")
-    	{
-    		addSequential(new DriveForwardDistance(-25));
-    		addSequential(new DriveTurnByAngle(-90));
-    		addSequential(new Catapult());
-    	}
     	if (side == "left")
     	{
+    		addSequential(new DriveForwardDistance(-25));
     		addSequential(new DriveTurnByAngle(90));
-    		addSequential(new DriveForwardDistance(-14));
+    		addSequential(new Catapult());
+    	}
+    	if(side == "right")
+    	{
     		addSequential(new DriveTurnByAngle(-90));
+    		addSequential(new DriveForwardDistance(-14));
+    		addSequential(new DriveTurnByAngle(90));
     		addSequential(new DriveForwardDistance(24));
-    		addSequential(new DriveSidewaysDistance(3));
+    		addSequential(new DriveSidewaysDistance(2));
     		addSequential(new DriveTurnByAngle(-90));
     		addSequential(new Catapult());
     	}
@@ -51,7 +52,11 @@ public class RRRDropInScale extends CommandGroup {
     		addSequential(new DriveForwardDistance(-25));
     		addSequential(new DriveTurnByAngle(-90.0));
     		addSequential(new Catapult());
+//        	addSequential(new DriveTurnByAngle(-68.0));
+//        	addSequential(new DriveForwardDistance(-10.8));
+//        	addSequential(new Catapult());
+//        	addSequential(new DriveStop());
     	}
     	addSequential(new DriveStop());	
-    }
+    } 
 }
