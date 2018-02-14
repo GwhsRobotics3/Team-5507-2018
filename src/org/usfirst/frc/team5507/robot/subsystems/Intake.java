@@ -6,10 +6,8 @@ import org.usfirst.frc.team5507.robot.commands.IntakeStop;
 import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
 
 import edu.wpi.first.wpilibj.DigitalInput;
-import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Subsystem;
-import edu.wpi.first.wpilibj.livewindow.LiveWindow;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+
 
 /**
  * Wheels on the hands of the gripper take in the box and spits it out.

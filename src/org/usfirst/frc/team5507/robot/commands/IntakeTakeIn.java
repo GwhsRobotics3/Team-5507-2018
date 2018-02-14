@@ -1,11 +1,7 @@
 package org.usfirst.frc.team5507.robot.commands;
 
 import org.usfirst.frc.team5507.robot.Robot;
-import org.usfirst.frc.team5507.robot.subsystems.Intake;
-
-import edu.wpi.first.wpilibj.GenericHID.RumbleType;
 import edu.wpi.first.wpilibj.command.Command;
-import edu.wpi.first.wpilibj.command.Scheduler;
 
 /**
  *

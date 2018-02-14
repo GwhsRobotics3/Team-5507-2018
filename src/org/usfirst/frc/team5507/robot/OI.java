@@ -8,19 +8,13 @@
 package org.usfirst.frc.team5507.robot;
 
 import org.usfirst.frc.team5507.robot.commands.Catapult;
-import org.usfirst.frc.team5507.robot.commands.ClimberDown;
+
 import org.usfirst.frc.team5507.robot.commands.ClimberRewind;
-import org.usfirst.frc.team5507.robot.commands.ClimberUp;
 import org.usfirst.frc.team5507.robot.commands.IntakeTakeIn;
 import org.usfirst.frc.team5507.robot.commands.IntakeTakeOut;
 import org.usfirst.frc.team5507.robot.commands.RumbleInTheJungleJuliaWasRight;
 import org.usfirst.frc.team5507.robot.commands.SmartElevatorMove;
-import org.usfirst.frc.team5507.robot.commands.SmartGripperSetState;
 import org.usfirst.frc.team5507.robot.commands.SmartGripperToggle;
-//import org.usfirst.frc.team5507.robot.commands.SmartGripperTest;
-import org.usfirst.frc.team5507.robot.commands.TestPrint;
-
-import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;

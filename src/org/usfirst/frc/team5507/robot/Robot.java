@@ -16,16 +16,10 @@ import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
-import edu.wpi.first.wpilibj.SerialPort;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 import org.usfirst.frc.team5507.robot.commands.AutonomousDriveStraightTurnLeft;
-import org.usfirst.frc.team5507.robot.commands.AutonomousDriveStraightTurnRight;
-import org.usfirst.frc.team5507.robot.commands.ClimberUp;
-import org.usfirst.frc.team5507.robot.commands.DriveTurnByAngle;
-import org.usfirst.frc.team5507.robot.commands.SmartElevatorDownTest;
-import org.usfirst.frc.team5507.robot.commands.SmartElevatorUpTest;
 import org.usfirst.frc.team5507.robot.subsystems.Climber;
 import org.usfirst.frc.team5507.robot.subsystems.DriveTrain;
 import org.usfirst.frc.team5507.robot.subsystems.SmartGripper;
@@ -34,7 +28,6 @@ import org.usfirst.frc.team5507.robot.subsystems.SmartElevator;
 
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import com.kauailabs.navx.frc.AHRS;
-import com.kauailabs.navx.frc.AHRS.SerialDataType;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -47,7 +40,7 @@ import com.kauailabs.navx.frc.AHRS.SerialDataType;
  * SHOUTOUT TO GREG OUR ONE AND ONLY MENTOR, THE MASTERMIND OF THIS CODE 
  */
 public class Robot extends TimedRobot {
-	
+
 	public static OI m_oi;
 	public static Climber m_climber = new Climber();
 	public static DriveTrain m_driveTrain = new DriveTrain();
@@ -61,16 +54,16 @@ public class Robot extends TimedRobot {
 	public static XboxController stick = new XboxController(0);
 	Command m_autonomousCommand;
 	SendableChooser<Command> m_chooser = new SendableChooser<>(); 
-	
+
 	public Robot() {
-	   try {
-		    m_ahrs = new AHRS(I2C.Port.kMXP);
-       	    m_ahrs.enableLogging(true);
-        } catch (RuntimeException ex ) {
-            DriverStation.reportError("Error instantiating navX MXP:  " + ex.getMessage(), true);
-        }
+		try {
+			m_ahrs = new AHRS(I2C.Port.kMXP);
+			m_ahrs.enableLogging(true);
+		} catch (RuntimeException ex ) {
+			DriverStation.reportError("Error instantiating navX MXP:  " + ex.getMessage(), true);
+		}
 	}
-	
+
 	public void putSmartDashboardData() {
 		SmartDashboard.putData(m_climber);
 		SmartDashboard.putData(m_driveTrain);
@@ -95,7 +88,7 @@ public class Robot extends TimedRobot {
 		UsbCamera camera = CameraServer.getInstance().startAutomaticCapture();
 		camera.setResolution(320, 240);
 	}
-	
+
 	/**
 	 * This function is called once each time the robot enters Disabled mode.
 	 * You can use it to reset any subsystem information you want to clear when
@@ -108,14 +101,14 @@ public class Robot extends TimedRobot {
 	@Override
 	public void disabledPeriodic() {
 		Scheduler.getInstance().run();
-//    	if(Robot.m_oi.controller.getRawAxis(OI.CLIMB_AXIS) < -0.1)
-//		{
-//    		Scheduler.getInstance().add(new SmartElevatorUpTest());
-//		}
-//    	else if(Robot.m_oi.controller.getRawAxis(OI.CLIMB_AXIS) > -0.1)
-//    	{
-//    		Scheduler.getInstance().add(new SmartElevatorDownTest());
-//    	}
+		//    	if(Robot.m_oi.controller.getRawAxis(OI.CLIMB_AXIS) < -0.1)
+		//		{
+		//    		Scheduler.getInstance().add(new SmartElevatorUpTest());
+		//		}
+		//    	else if(Robot.m_oi.controller.getRawAxis(OI.CLIMB_AXIS) > -0.1)
+		//    	{
+		//    		Scheduler.getInstance().add(new SmartElevatorDownTest());
+		//    	}
 	}
 
 	/**
@@ -136,15 +129,15 @@ public class Robot extends TimedRobot {
 		DriveTrain.resetPos();
 		String gameData;
 		gameData = DriverStation.getInstance().getGameSpecificMessage();
-                if(gameData.length() > 0)
-                {
-                	if(gameData.charAt(0) == 'L')
-                	{
-                		//Put left auto code here
-                	} else {
-                		//Put right auto code here
-                	}
-                }
+		if(gameData.length() > 0)
+		{
+			if(gameData.charAt(0) == 'L')
+			{
+				//Put left auto code here
+			} else {
+				//Put right auto code here
+			}
+		}
 
 		/*
 		 * String autoSelected = SmartDashboard.getString("Auto Selector",
@@ -191,9 +184,9 @@ public class Robot extends TimedRobot {
 		left.set(stick.getRawAxis(1) * 0.5);
 		right.set(stick.getRawAxis(1) * -1 * 0.5);
 		//SmartGripper.leftArm.set(Robot.m_oi.controller.getRawAxis(1) * .2);
-	//	SmartGripper.rightArm.set(Robot.m_oi.controller.getRawAxis(1) * -1 * .2);
-			//m_smartGripper.stopAllJoy();
-		
+		//	SmartGripper.rightArm.set(Robot.m_oi.controller.getRawAxis(1) * -1 * .2);
+		//m_smartGripper.stopAllJoy();
+
 	}
 
 	/**

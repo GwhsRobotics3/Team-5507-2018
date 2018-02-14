@@ -2,14 +2,9 @@ package org.usfirst.frc.team5507.robot.subsystems;
 
 
 import org.usfirst.frc.team5507.robot.RobotMap;
-
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
-
-import edu.wpi.first.wpilibj.Counter;
-import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.command.Subsystem;
-import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
@@ -22,8 +17,8 @@ public class SmartElevator extends Subsystem {
 	public static final int STATE_MED = 2;
 	public static final int STATE_LOW = 1;
 
-	public static final double ELEVATOR_HIGH = 20;
-	public static final double ELEVATOR_MED = 10;
+	public static final double ELEVATOR_HIGH = 5;
+	public static final double ELEVATOR_MED = 2;
 	public static final double ELEVATOR_LOW = 0;
 
 	// Put methods for controlling this subsystem

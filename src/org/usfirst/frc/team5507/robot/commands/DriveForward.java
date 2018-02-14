@@ -11,13 +11,13 @@ import edu.wpi.first.wpilibj.command.Command;
 public class DriveForward extends Command {
 
 	private Timer m_timer = new Timer(); //subjected to change with encoders
-	private double time;
+	//private double time;
 	
     public DriveForward(double t) {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     	requires(Robot.m_driveTrain);   
-    	time = t;
+    	//time = t;
     }
 
     // Called just before this Command runs the first time

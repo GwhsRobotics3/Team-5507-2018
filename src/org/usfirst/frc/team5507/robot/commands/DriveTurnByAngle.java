@@ -1,11 +1,6 @@
 package org.usfirst.frc.team5507.robot.commands;
 
 import org.usfirst.frc.team5507.robot.Robot;
-
-import com.kauailabs.navx.frc.AHRS;
-
-import edu.wpi.first.wpilibj.DriverStation;
-import edu.wpi.first.wpilibj.I2C;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
