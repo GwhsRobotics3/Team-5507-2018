@@ -46,16 +46,19 @@ public class SmartGripperJankyMove extends Command {
 		{
 			if(currentState == 1)
 			{
+				Robot.m_smartGripper.changeState(1);
 				return Robot.m_smartGripper.getCurrentPosL() > angleToTicks(170);
 			}
 			if(currentState == 3)
 			{
+				Robot.m_smartGripper.changeState(-1);
 				return Robot.m_smartGripper.getCurrentPosL() < angleToTicks(182);
 			}
 		}
 		if(newState == 3)
 		{
-			return Robot.m_smartGripper.getCurrentPosL() > angleToTicks(182);
+			Robot.m_smartGripper.changeState(1);
+			return Robot.m_smartGripper.getCurrentPosL() > angleToTicks(180);
 		}
 		return false;
 	}

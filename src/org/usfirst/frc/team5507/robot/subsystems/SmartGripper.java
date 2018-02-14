@@ -174,7 +174,6 @@ public class SmartGripper extends Subsystem {
 		else {
 			rightArm.set(0);
 		}
-		currentState++;
 		//Jennessa was right twice
 	}
 	
@@ -193,8 +192,12 @@ public class SmartGripper extends Subsystem {
 		else {
 			rightArm.set(0);
 		}
-		currentState--;
 		//Jennessa was right btw
+	}
+	
+	public void changeState(int x)
+	{
+		currentState += x;
 	}
 	
 }
