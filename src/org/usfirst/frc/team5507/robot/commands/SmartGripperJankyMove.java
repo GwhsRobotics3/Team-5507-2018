@@ -42,6 +42,21 @@ public class SmartGripperJankyMove extends Command {
 
 	// Make this return true when this Command no longer needs to run execute()
 	protected boolean isFinished() {
+		if(newState == 2)
+		{
+			if(currentState == 1)
+			{
+				return Robot.m_smartGripper.getCurrentPosL() > angleToTicks(170);
+			}
+			if(currentState == 3)
+			{
+				return Robot.m_smartGripper.getCurrentPosL() < angleToTicks(182);
+			}
+		}
+		if(newState == 3)
+		{
+			return Robot.m_smartGripper.getCurrentPosL() > angleToTicks(182);
+		}
 		return false;
 	}
 
