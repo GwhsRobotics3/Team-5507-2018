@@ -9,7 +9,8 @@ import edu.wpi.first.wpilibj.command.Command;
  */
 public class SmartGripperJankyMove extends Command {
 
-	private int state;
+	private int newState;
+	private int currentState;
 
 	public double angleToTicks(double angle) {
 		return (4096 * angle) / 360;
@@ -23,22 +24,19 @@ public class SmartGripperJankyMove extends Command {
 
 	// Called just before this Command runs the first time
 	protected void initialize() {
-		state = Robot.m_smartGripper.getToggledState();
+		currentState = Robot.m_smartGripper.getCurrentState();
+		newState = Robot.m_smartGripper.getToggledState();
 	}
 
 	// Called repeatedly when this Command is scheduled to run
 	protected void execute() {
-		if(state == 1)
+		if(newState == 2)
 		{
 			Robot.m_smartGripper.setDesiredAngleForward(170);
 		}
-		if(state == 2)
+		if(newState == 3) 
 		{
-			Robot.m_smartGripper.setDesiredAngleForward(182);
-		}
-		if(state == 3) 
-		{
-			Robot.m_smartGripper.setDesiredAngleBackward(170);
+			Robot.m_smartGripper.setDesiredAngleBackward(182);
 		}
 	}
 

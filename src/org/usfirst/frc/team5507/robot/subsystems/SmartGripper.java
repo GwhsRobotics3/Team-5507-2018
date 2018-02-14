@@ -196,5 +196,5 @@ public class SmartGripper extends Subsystem {
 		currentState--;
 		//Jennessa was right btw
 	}
-
+	
 }
