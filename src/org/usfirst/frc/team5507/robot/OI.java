@@ -14,6 +14,8 @@ import org.usfirst.frc.team5507.robot.commands.IntakeTakeIn;
 import org.usfirst.frc.team5507.robot.commands.IntakeTakeOut;
 import org.usfirst.frc.team5507.robot.commands.RumbleInTheJungleJuliaWasRight;
 import org.usfirst.frc.team5507.robot.commands.SmartElevatorMove;
+//import org.usfirst.frc.team5507.robot.commands.SmartGripperJankyMove;
+import org.usfirst.frc.team5507.robot.commands.SmartGripperSetState;
 import org.usfirst.frc.team5507.robot.commands.SmartGripperToggle;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.buttons.Button;
@@ -68,6 +70,8 @@ public class OI {
 		Button backRight = new JoystickButton(controller, 6);//elevator down
 		Button select = new JoystickButton(controller, 7); 
 		Button start = new JoystickButton(controller, 8);  
+		Button leftJoy = new JoystickButton(controller, 9);
+		Button rightJoy = new JoystickButton(controller, 10);
 
 		a.whileHeld(new IntakeTakeIn());
 		b.whileHeld(new IntakeTakeOut());		
@@ -77,5 +81,6 @@ public class OI {
 		backRight.whenPressed(new SmartElevatorMove(1));
 		start.whenPressed(new RumbleInTheJungleJuliaWasRight());
 		select.whenPressed(new Catapult());
+		//leftJoy.whenPressed(new SmartGripperJankyMove());
 	}
 }
