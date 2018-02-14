@@ -1,6 +1,7 @@
 package org.usfirst.frc.team5507.robot.commands;
 
 import org.usfirst.frc.team5507.robot.Robot;
+import org.usfirst.frc.team5507.robot.subsystems.SmartGripper;
 
 import edu.wpi.first.wpilibj.command.Command;
 
@@ -11,10 +12,6 @@ public class SmartGripperJankyMove extends Command {
 
 	private int newState;
 	private int currentState;
-
-	public double angleToTicks(double angle) {
-		return (4096 * angle) / 360;
-	}
 
 	public SmartGripperJankyMove() {
 		// Use requires() here to declare subsystem dependencies
@@ -30,11 +27,11 @@ public class SmartGripperJankyMove extends Command {
 
 	// Called repeatedly when this Command is scheduled to run
 	protected void execute() {
-		if(newState == 2)
+		if(newState == SmartGripper.STATE_OPEN)
 		{
 			Robot.m_smartGripper.setDesiredAngleForward(20);
 		}
-		if(newState == 3) 
+		if(newState == SmartGripper.STATE_CLOSED) 
 		{
 			Robot.m_smartGripper.setDesiredAngleBackward(40);
 		}
@@ -42,23 +39,23 @@ public class SmartGripperJankyMove extends Command {
 
 	// Make this return true when this Command no longer needs to run execute()
 	protected boolean isFinished() {
-		if(newState == 2)
+		if(newState == SmartGripper.STATE_OPEN)
 		{
-			if(currentState == 1)
+			if(currentState == SmartGripper.STATE_START)
 			{
 				Robot.m_smartGripper.changeState(1);
-				return Robot.m_smartGripper.getCurrentPosL() > angleToTicks(20);
+				return Robot.m_smartGripper.getCurrentPosL() > SmartGripper.angleToTicks(20);
 			}
-			if(currentState == 3)
+			if(currentState == SmartGripper.STATE_CLOSED)
 			{
 				Robot.m_smartGripper.changeState(-1);
-				return Robot.m_smartGripper.getCurrentPosL() < angleToTicks(20);
+				return Robot.m_smartGripper.getCurrentPosL() < SmartGripper.angleToTicks(20);
 			}
 		}
-		if(newState == 3)
+		if(newState == SmartGripper.STATE_CLOSED)
 		{
 			Robot.m_smartGripper.changeState(1);
-			return Robot.m_smartGripper.getCurrentPosL() > angleToTicks(40);
+			return Robot.m_smartGripper.getCurrentPosL() > SmartGripper.angleToTicks(40);
 		}
 		return false;
 	}

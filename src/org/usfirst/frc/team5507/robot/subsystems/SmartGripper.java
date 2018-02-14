@@ -145,7 +145,7 @@ public class SmartGripper extends Subsystem {
 		talon.enableCurrentLimit(true);*/
 	}
 	
-	public int angleToTicks(int degrees) {
+	public static int angleToTicks(int degrees) {
 		return (4096 * degrees) / 360;
 	}
 	
