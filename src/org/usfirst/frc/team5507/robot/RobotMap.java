@@ -32,7 +32,7 @@ public class RobotMap {
 	public static int intakeLeftMotor = 9;
 	public static int intakeRightMotor = 7;
 	
-	// CAN Addresses 
+	// CAN Addresses 0
 	public static int driveFrontLeft = 5;
 	public static int driveFrontRight = 1;
 	public static int driveBackLeft = 0;
