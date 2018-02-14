@@ -2,6 +2,8 @@ package org.usfirst.frc.team5507.robot.subsystems;
 
 import org.usfirst.frc.team5507.robot.RobotMap;
 
+import com.ctre.phoenix.motorcontrol.ControlMode;
+import com.ctre.phoenix.motorcontrol.can.VictorSPX;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import edu.wpi.first.wpilibj.command.Subsystem;
 // cool beans
@@ -11,8 +13,8 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 public class Climber extends Subsystem {
 
 
-	private static WPI_TalonSRX climberPulley = new WPI_TalonSRX(RobotMap.climbPulley);
-	private static WPI_TalonSRX climberArm = new WPI_TalonSRX(RobotMap.climbArm);
+	private static VictorSPX climberPulley = new VictorSPX(RobotMap.climbPulley);
+	private static VictorSPX climberArm = new VictorSPX(RobotMap.climbArm);
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
 
@@ -23,33 +25,36 @@ public class Climber extends Subsystem {
     
     public Climber()
     {
-    	addChild("Pulley",climberPulley);
-    	addChild("arm",climberArm);
+//    	addChild("Pulley", climberPulley);
+//    	addChild("arm", climberArm);
     }
 
     public void armUp(double speed)
     {   	
-    	climberPulley.set(speed);
-    	climberArm.set(speed);
+    	climberArm.set(ControlMode.PercentOutput, speed);
     }
 
     public void robotUp()
     {
-    	climberPulley.set(.5);
+    	climberPulley.set(ControlMode.PercentOutput, .5);
     }
 
    public void robotDown()
     {
-    	climberPulley.set(-.5);
+    	climberPulley.set(ControlMode.PercentOutput, -.5);
     }
     public void armDown()
     {
-    	climberPulley.set(.5);
-    	climberArm.set(.5);
+    	climberArm.set(ControlMode.PercentOutput, .5);
     }
     public void climberRewind()
     {
-    	climberPulley.set(.5);
+    	climberPulley.set(ControlMode.PercentOutput, .5);
+    }
+    
+    public void pulleyStop()
+    {
+    	climberPulley.set(ControlMode.PercentOutput, 0);
     }
     
     public void testPrint()
@@ -59,6 +64,6 @@ public class Climber extends Subsystem {
     
     public void catapult(double speed)
     {
-    	climberArm.set(speed);
+    	climberArm.set(ControlMode.PercentOutput, speed);
     }
 }

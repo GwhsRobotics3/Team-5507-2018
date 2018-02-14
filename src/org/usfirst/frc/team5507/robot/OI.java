@@ -10,6 +10,7 @@ package org.usfirst.frc.team5507.robot;
 import org.usfirst.frc.team5507.robot.commands.Catapult;
 
 import org.usfirst.frc.team5507.robot.commands.ClimberRewind;
+import org.usfirst.frc.team5507.robot.commands.ClimberUp;
 import org.usfirst.frc.team5507.robot.commands.IntakeTakeIn;
 import org.usfirst.frc.team5507.robot.commands.IntakeTakeOut;
 import org.usfirst.frc.team5507.robot.commands.RumbleInTheJungleJuliaWasRight;
@@ -80,8 +81,9 @@ public class OI {
 		y.whileHeld(new ClimberRewind());
 		backLeft.whenPressed(new SmartElevatorMove(-1)); 
 		backRight.whenPressed(new SmartElevatorMove(1));
-		start.whenPressed(new RumbleInTheJungleJuliaWasRight());
+		//start.whenPressed(new RumbleInTheJungleJuliaWasRight());
 		select.whenPressed(new Catapult());
-		leftJoy.whenPressed(new SmartGripperJankyMove());
+		//leftJoy.whenPressed(new SmartGripperJankyMove());
+		start.whileHeld(new ClimberUp());
 	}
 }

@@ -20,8 +20,8 @@ public class SmartGripper extends Subsystem {
 	public static final int STATE_CLOSED = 3;
 	
 	public static final int DEGREES_START = 0;
-	public static final int DEGREES_OPEN = 90;
-	public static final int DEGREES_CLOSED = 180;
+	public static final int DEGREES_OPEN = 60;
+	public static final int DEGREES_CLOSED = 80;
 	
 	static final int CURRENT_LIMIT = 30;
 	
@@ -162,14 +162,14 @@ public class SmartGripper extends Subsystem {
 	public void setDesiredAngleForward(int angle) {
 		double targetPos = (4096 * angle) / 360;
 		if (getCurrentPosL() < targetPos) {
-			leftArm.set(0.4);
+			leftArm.set(0.35);
 		}
 		else {
 			leftArm.set(0);
 		}
 		
 		if (getCurrentPosR() > targetPos * -1) {
-			rightArm.set(-0.4);
+			rightArm.set(-0.35);
 		}
 		else {
 			rightArm.set(0);
@@ -180,14 +180,14 @@ public class SmartGripper extends Subsystem {
 	public void setDesiredAngleBackward(int angle) {
 		double targetPos = (4096 * angle) / 360;
 		if (getCurrentPosL() > targetPos) {
-			leftArm.set(-0.4);
+			leftArm.set(-0.35);
 		}
 		else {
 			leftArm.set(0);
 		}
 		
 		if (getCurrentPosR() < targetPos * -1) {
-			rightArm.set(0.4);
+			rightArm.set(0.35);
 		}
 		else {
 			rightArm.set(0);

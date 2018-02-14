@@ -20,6 +20,9 @@ import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 import org.usfirst.frc.team5507.robot.commands.AutonomousDriveStraightTurnLeft;
+import org.usfirst.frc.team5507.robot.commands.ClimberUp;
+import org.usfirst.frc.team5507.robot.commands.SmartElevatorDownTest;
+import org.usfirst.frc.team5507.robot.commands.SmartElevatorUpTest;
 import org.usfirst.frc.team5507.robot.subsystems.Climber;
 import org.usfirst.frc.team5507.robot.subsystems.DriveTrain;
 import org.usfirst.frc.team5507.robot.subsystems.SmartGripper;
@@ -101,14 +104,7 @@ public class Robot extends TimedRobot {
 	@Override
 	public void disabledPeriodic() {
 		Scheduler.getInstance().run();
-		//    	if(Robot.m_oi.controller.getRawAxis(OI.CLIMB_AXIS) < -0.1)
-		//		{
-		//    		Scheduler.getInstance().add(new SmartElevatorUpTest());
-		//		}
-		//    	else if(Robot.m_oi.controller.getRawAxis(OI.CLIMB_AXIS) > -0.1)
-		//    	{
-		//    		Scheduler.getInstance().add(new SmartElevatorDownTest());
-		//    	}
+
 	}
 
 	/**
@@ -180,12 +176,24 @@ public class Robot extends TimedRobot {
 	@Override
 	public void teleopPeriodic() {
 		Scheduler.getInstance().run();		
-		putSmartDashboardData();
+		putSmartDashboardData();		
+//		if(Robot.m_oi.controller.getRawAxis(OI.CLIMB_AXIS) < -0.1)
+//		{
+//			Scheduler.getInstance().add(new SmartElevatorUpTest());
+//		}
+//		else if(Robot.m_oi.controller.getRawAxis(OI.CLIMB_AXIS) > -0.1)
+//		{
+//			Scheduler.getInstance().add(new SmartElevatorDownTest());
+//		}
 		//left.set(stick.getRawAxis(1) * 0.5);
 		//right.set(stick.getRawAxis(1) * -1 * 0.5);
 		//SmartGripper.leftArm.set(Robot.m_oi.controller.getRawAxis(1) * .2);
 		//	SmartGripper.rightArm.set(Robot.m_oi.controller.getRawAxis(1) * -1 * .2);
 		//m_smartGripper.stopAllJoy();
+//		if(Robot.m_oi.controller.getRawAxis(5) > 0)
+//		{
+//			Scheduler.getInstance().add(new ClimberUp());
+//		}
 
 	}
 
