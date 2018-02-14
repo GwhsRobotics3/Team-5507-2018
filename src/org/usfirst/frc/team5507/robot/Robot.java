@@ -181,8 +181,8 @@ public class Robot extends TimedRobot {
 	public void teleopPeriodic() {
 		Scheduler.getInstance().run();		
 		putSmartDashboardData();
-		left.set(stick.getRawAxis(1) * 0.5);
-		right.set(stick.getRawAxis(1) * -1 * 0.5);
+		//left.set(stick.getRawAxis(1) * 0.5);
+		//right.set(stick.getRawAxis(1) * -1 * 0.5);
 		//SmartGripper.leftArm.set(Robot.m_oi.controller.getRawAxis(1) * .2);
 		//	SmartGripper.rightArm.set(Robot.m_oi.controller.getRawAxis(1) * -1 * .2);
 		//m_smartGripper.stopAllJoy();

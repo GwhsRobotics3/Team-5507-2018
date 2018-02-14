@@ -49,7 +49,7 @@ public class Climber extends Subsystem {
     }
     public void climberRewind()
     {
-    	climberPulley.set(-.5);
+    	climberPulley.set(.5);
     }
     
     public void testPrint()

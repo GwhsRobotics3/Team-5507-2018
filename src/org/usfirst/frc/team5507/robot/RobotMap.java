@@ -29,7 +29,7 @@ public class RobotMap {
 	public static final double DISTANCE = TICKS_PER_REVOLUTION / WHEEL_CIRCUMFERENCE; //1 inch moved
 	
 	// PWM Outputs
-	public static int intakeLeftMotor = 6;
+	public static int intakeLeftMotor = 9;
 	public static int intakeRightMotor = 7;
 	
 	// CAN Addresses 
@@ -42,7 +42,7 @@ public class RobotMap {
 	public static int rightArm = 2;
 	
 	public static int climbArm = 8;
-	public static int climbPulley = 9;
+	public static int climbPulley = 6;
 	
 	public static int elevatorPulley = 10;
 	

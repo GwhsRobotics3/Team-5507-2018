@@ -32,11 +32,11 @@ public class SmartGripperJankyMove extends Command {
 	protected void execute() {
 		if(newState == 2)
 		{
-			Robot.m_smartGripper.setDesiredAngleForward(170);
+			Robot.m_smartGripper.setDesiredAngleForward(70);
 		}
 		if(newState == 3) 
 		{
-			Robot.m_smartGripper.setDesiredAngleBackward(182);
+			Robot.m_smartGripper.setDesiredAngleBackward(90);
 		}
 	}
 
@@ -47,18 +47,18 @@ public class SmartGripperJankyMove extends Command {
 			if(currentState == 1)
 			{
 				Robot.m_smartGripper.changeState(1);
-				return Robot.m_smartGripper.getCurrentPosL() > angleToTicks(170);
+				return Robot.m_smartGripper.getCurrentPosL() > angleToTicks(70);
 			}
 			if(currentState == 3)
 			{
 				Robot.m_smartGripper.changeState(-1);
-				return Robot.m_smartGripper.getCurrentPosL() < angleToTicks(182);
+				return Robot.m_smartGripper.getCurrentPosL() < angleToTicks(90);
 			}
 		}
 		if(newState == 3)
 		{
 			Robot.m_smartGripper.changeState(1);
-			return Robot.m_smartGripper.getCurrentPosL() > angleToTicks(180);
+			return Robot.m_smartGripper.getCurrentPosL() > angleToTicks(90);
 		}
 		return false;
 	}
