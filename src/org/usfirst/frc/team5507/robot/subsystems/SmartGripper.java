@@ -91,7 +91,7 @@ public class SmartGripper extends Subsystem {
 	{
 		if(s < STATE_START || s > STATE_CLOSED) {
 			s = STATE_OPEN;
-			}
+		}
 			
 		currentState = s;
 		
@@ -99,17 +99,17 @@ public class SmartGripper extends Subsystem {
 		{
 			case(STATE_START):
 				setTargetAngles(DEGREES_START);
-			System.out.println("Start" + " Degrees " + angleToTicks(DEGREES_START));
+				System.out.println("Start" + " Degrees " + angleToTicks(DEGREES_START));
 				break;
 				
 			case(STATE_OPEN):
 				setTargetAngles(DEGREES_OPEN);
-			System.out.println("open" + " Degrees " + angleToTicks(DEGREES_OPEN));
+				System.out.println("open" + " Degrees " + angleToTicks(DEGREES_OPEN));
 				break;
 				
 			case(STATE_CLOSED):
 				setTargetAngles(DEGREES_CLOSED);
-			System.out.println("Closed" + " Degrees " + angleToTicks(DEGREES_CLOSED));
+				System.out.println("Closed" + " Degrees " + angleToTicks(DEGREES_CLOSED));
 				break;
 				
 			default:
