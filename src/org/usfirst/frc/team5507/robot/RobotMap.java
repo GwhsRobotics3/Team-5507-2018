@@ -34,7 +34,7 @@ public class RobotMap {
 	
 	// CAN Addresses 0
 	public static int driveFrontLeft = 5;
-	public static int driveFrontRight = 1;
+	public static int driveFrontRight = 10;
 	public static int driveBackLeft = 0;
 	public static int driveBackRight = 4;
 	
@@ -44,7 +44,7 @@ public class RobotMap {
 	public static int climbArm = 8;
 	public static int climbPulley = 6;
 	
-	public static int elevatorPulley = 10;
+	public static int elevatorPulley = 1;
 	
 	//DIO ports
 	public static int intakeBoxLimitSwitch = 0;

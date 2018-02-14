@@ -7,6 +7,7 @@ import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  *
@@ -120,7 +121,7 @@ public class SmartGripper extends Subsystem {
 	}
 	
 	private void setTargetAngles(int angle) {	
-		double ticks = (4096 * angle)/ 360;
+		double ticks = angleToTicks(angle);
 		leftArm.set(ControlMode.MotionMagic, ticks);
 		rightArm.set(ControlMode.MotionMagic, -1 * ticks); // "negative" angle to drive opposite direction
 	}
@@ -198,6 +199,11 @@ public class SmartGripper extends Subsystem {
 	public void changeState(int x)
 	{
 		currentState += x;
+	}
+	public void putExtraData() {
+		SmartDashboard.putNumber("Right Arm Pos", getCurrentPosR());
+		SmartDashboard.putNumber("Right Arm Pos", getCurrentPosL());
+		SmartDashboard.putNumber("Gripper State", currentState);
 	}
 	
 }
