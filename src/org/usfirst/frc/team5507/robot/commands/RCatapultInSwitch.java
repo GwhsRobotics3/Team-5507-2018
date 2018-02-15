@@ -1,15 +1,17 @@
 package org.usfirst.frc.team5507.robot.commands;
 
+import org.usfirst.frc.team5507.robot.FieldHelper;
+
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
 /**
  *
  */
-public class RDropInSwitch extends CommandGroup {
+public class RCatapultInSwitch extends CommandGroup {
 
-	private String side;
+	private int side;
 
-	public RDropInSwitch(String s) {
+	public RCatapultInSwitch(int s) {
 		side = s;
 		// Add Commands here:
 		// e.g. addSequential(new Command1());
@@ -29,13 +31,13 @@ public class RDropInSwitch extends CommandGroup {
 		// arm.
 
 		addSequential(new DriveForwardDistance(-5.0));
-		if (side == "right")
+		if (side == FieldHelper.ROBOT_START_RIGHT)
 		{
 			addSequential(new DriveForwardDistance(-9.0));
 			addSequential(new DriveTurnByAngle(-90.0));
 			addSequential(new Catapult());
 		}
-		if(side == "left")
+		if(side == FieldHelper.ROBOT_START_LEFT)
 		{
 			addSequential(new DriveTurnByAngle(90.0));
 			addSequential(new DriveForwardDistance(14.0));
@@ -44,7 +46,7 @@ public class RDropInSwitch extends CommandGroup {
 			addSequential(new DriveTurnByAngle(-90.0));
 			addSequential(new Catapult());
 		}
-		if(side == "middle")
+		if(side == FieldHelper.ROBOT_START_MIDDLE)
 		{
 			addSequential(new DriveForwardDistance(-2));
 			addSequential(new DriveSidewaysDistance(6));

@@ -1,15 +1,17 @@
 package org.usfirst.frc.team5507.robot.commands;
 
+import org.usfirst.frc.team5507.robot.FieldHelper;
+
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
 /**
  *
  */
-public class LDroppingInScale extends CommandGroup {
+public class LCatapultInScale extends CommandGroup {
 
-	private String side;
+	private int side;
 	
-    public LDroppingInScale(String s) {
+    public LCatapultInScale(int s) {
     	
     	side = s;
         // Add Commands here:
@@ -30,13 +32,13 @@ public class LDroppingInScale extends CommandGroup {
         // arm.
     	
     	addSequential(new DriveForwardDistance(-1));
-    	if (side == "left")
+    	if (side == FieldHelper.ROBOT_START_LEFT)
     	{
     		addSequential(new DriveForwardDistance(-25));
     		addSequential(new DriveTurnByAngle(90));
     		addSequential(new Catapult());
     	}
-    	if(side == "right")
+    	if(side == FieldHelper.ROBOT_START_RIGHT)
     	{
     		addSequential(new DriveTurnByAngle(-90));
     		addSequential(new DriveForwardDistance(-14));
@@ -46,7 +48,7 @@ public class LDroppingInScale extends CommandGroup {
     		addSequential(new DriveTurnByAngle(-90));
     		addSequential(new Catapult());
     	}
-    	if (side == "middle")
+    	if (side == FieldHelper.ROBOT_START_MIDDLE)
     	{
     		addSequential(new DriveSidewaysDistance(8));
     		addSequential(new DriveForwardDistance(-25));
@@ -58,5 +60,6 @@ public class LDroppingInScale extends CommandGroup {
 //        	addSequential(new DriveStop());
     	}
     	addSequential(new DriveStop());	
-    } 
+    }
+
 }

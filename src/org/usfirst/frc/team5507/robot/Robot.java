@@ -21,6 +21,8 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 import org.usfirst.frc.team5507.robot.commands.AutonomousDriveStraightTurnLeft;
 import org.usfirst.frc.team5507.robot.commands.ClimberUp;
+import org.usfirst.frc.team5507.robot.commands.LCatapultInScale;
+import org.usfirst.frc.team5507.robot.commands.RCatapultInScale;
 import org.usfirst.frc.team5507.robot.commands.SmartElevatorDownTest;
 import org.usfirst.frc.team5507.robot.commands.SmartElevatorUpTest;
 import org.usfirst.frc.team5507.robot.subsystems.Climber;
@@ -123,16 +125,14 @@ public class Robot extends TimedRobot {
 		m_ahrs.reset();
 		m_autonomousCommand = new AutonomousDriveStraightTurnLeft(); //m_chooser.getSelected();
 		DriveTrain.resetPos();
-		String gameData;
-		gameData = DriverStation.getInstance().getGameSpecificMessage();
-		if(gameData.length() > 0)
+		
+		if (FieldHelper.isScaleLeft()) // change from scale to switch if needed and vise versa
 		{
-			if(gameData.charAt(0) == 'L')
-			{
-				//Put left auto code here
-			} else {
-				//Put right auto code here
-			}
+			m_autonomousCommand = new LCatapultInScale(FieldHelper.ROBOT_START_LEFT); // change arguement every new match
+		}
+		else 
+		{
+			m_autonomousCommand = new RCatapultInScale(FieldHelper.ROBOT_START_LEFT);
 		}
 
 		/*
