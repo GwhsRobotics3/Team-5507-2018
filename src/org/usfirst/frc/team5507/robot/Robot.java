@@ -74,10 +74,11 @@ public class Robot extends TimedRobot {
 		SmartDashboard.putData(m_smartGripper);
 		SmartDashboard.putData(m_intake);
 		SmartDashboard.putNumber("IMU_Yaw", m_ahrs.getYaw());
-		SmartDashboard.putNumber("Pulley Position", Robot.m_smartElevator.getCurrentPos());
 		SmartDashboard.putNumber("Elevator State", Robot.m_smartElevator.getCurrentState());
 		SmartDashboard.putBoolean("limit switch", Robot.m_intake.isSwitchSet());
 		m_smartGripper.putExtraData();
+		SmartDashboard.putNumber("Elevator pos", m_smartElevator.getCurrentPos());
+		SmartDashboard.putNumber("Elevator State", m_smartElevator.getCurrentState());
 	}
 
 	/**

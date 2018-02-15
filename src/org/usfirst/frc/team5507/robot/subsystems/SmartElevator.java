@@ -17,8 +17,8 @@ public class SmartElevator extends Subsystem {
 	public static final int STATE_MED = 2;
 	public static final int STATE_LOW = 1;
 
-	public static final double ELEVATOR_HIGH = 5;
-	public static final double ELEVATOR_MED = 2;
+	public static final double ELEVATOR_HIGH = 24;
+	public static final double ELEVATOR_MED = 12;
 	public static final double ELEVATOR_LOW = 0;
 
 	// Put methods for controlling this subsystem
@@ -30,7 +30,7 @@ public class SmartElevator extends Subsystem {
 		ConfigTalon.configTalonQuad(elevatorPulley);
 		resetEncoders();
 		addChild("elevator pulley talon", elevatorPulley);
-		SmartDashboard.getNumber("Elevator Pos", getCurrentPos());
+		
 
 	}
 	public void initDefaultCommand() {
@@ -58,27 +58,28 @@ public class SmartElevator extends Subsystem {
 		switch(currentState)
 		{
 		case(STATE_LOW):
-			setDesiredPosTicks(ELEVATOR_LOW);					
+			setDesiredPosInches(ELEVATOR_LOW);					
 		break;
 
 		case(STATE_MED):
-			setDesiredPosTicks(ELEVATOR_MED);
+			setDesiredPosInches(ELEVATOR_MED);
 		break;
 
 		case(STATE_HIGH):
-			setDesiredPosTicks(ELEVATOR_HIGH);
+			setDesiredPosInches(ELEVATOR_HIGH);
 		break;
 
 		default:
-			setDesiredPosTicks(ELEVATOR_LOW);
+			setDesiredPosInches(ELEVATOR_LOW);
 			break;
 		}
 	}
 
-		public static void setDesiredPosTicks(double inches)
+		public static void setDesiredPosInches(double inches)
 		{
 			double ticks = ((768 / (Math.PI * 1.5)) * inches); 
 			elevatorPulley.set(ControlMode.MotionMagic, ticks);
+			System.out.println(ticks);
 		}
 
 	//public static void setDesiredPosTicks(double ticks)

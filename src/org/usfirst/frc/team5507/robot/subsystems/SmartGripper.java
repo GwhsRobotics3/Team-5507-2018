@@ -21,8 +21,8 @@ public class SmartGripper extends Subsystem {
 	public static final int STATE_CLOSED = 3;
 	
 	public static final int DEGREES_START = 0;
-	public static final int DEGREES_OPEN = 60;
-	public static final int DEGREES_CLOSED = 80;
+	public static final int DEGREES_OPEN = 15;
+	public static final int DEGREES_CLOSED = 30;
 	
 	static final int CURRENT_LIMIT = 30;
 	
