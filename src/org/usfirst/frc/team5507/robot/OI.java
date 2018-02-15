@@ -75,8 +75,8 @@ public class OI {
 		Button leftJoy = new JoystickButton(controller, 9);
 		Button rightJoy = new JoystickButton(controller, 10);
 
-		a.whileHeld(new IntakeTakeIn());
-		b.whileHeld(new IntakeTakeOut());		
+		//a.whileHeld(new IntakeTakeIn());
+		//b.whileHeld(new IntakeTakeOut());		
 		x.whenPressed(new SmartGripperToggle());
 		y.whileHeld(new ClimberRewind());
 		backLeft.whenPressed(new SmartElevatorMove(-1)); 
