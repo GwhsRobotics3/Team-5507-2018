@@ -1,6 +1,7 @@
 package org.usfirst.frc.team5507.robot.subsystems;
 
 
+import org.usfirst.frc.team5507.robot.Robot;
 import org.usfirst.frc.team5507.robot.RobotMap;
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
@@ -152,6 +153,7 @@ public class SmartElevator extends Subsystem {
 		elevatorPulley.set(-.4);
 	}
 	
+
 	public double ticksToAngle(double ticks)
 	{
 		 return (ticks * 360) / 768;
@@ -165,6 +167,5 @@ public class SmartElevator extends Subsystem {
 		SmartDashboard.putNumber("Elevator State", getCurrentState());
 	}
 	
-
 }
 

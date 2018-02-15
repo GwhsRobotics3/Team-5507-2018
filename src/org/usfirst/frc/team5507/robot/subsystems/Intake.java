@@ -1,5 +1,6 @@
 package org.usfirst.frc.team5507.robot.subsystems;
 
+import org.usfirst.frc.team5507.robot.Robot;
 import org.usfirst.frc.team5507.robot.RobotMap;
 import org.usfirst.frc.team5507.robot.commands.IntakeStop;
 
@@ -7,6 +8,7 @@ import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
 
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 
 /**
@@ -55,5 +57,9 @@ public class Intake extends Subsystem {
    public boolean isSwitchSet() {
        return limitSwitch.get();    
        }
+   
+	public void putExtraData() {
+		SmartDashboard.putBoolean("limit switch", Robot.m_intake.isSwitchSet());
+	}
 }
 

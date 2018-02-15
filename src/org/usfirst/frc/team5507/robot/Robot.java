@@ -20,7 +20,6 @@ import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 import org.usfirst.frc.team5507.robot.commands.AutonomousDriveStraightTurnLeft;
-import org.usfirst.frc.team5507.robot.commands.ClimberUp;
 import org.usfirst.frc.team5507.robot.commands.LCatapultInScale;
 import org.usfirst.frc.team5507.robot.commands.RCatapultInScale;
 import org.usfirst.frc.team5507.robot.subsystems.Climber;
@@ -74,10 +73,12 @@ public class Robot extends TimedRobot {
 		SmartDashboard.putData(m_smartGripper);
 		SmartDashboard.putData(m_intake);
 		SmartDashboard.putNumber("IMU_Yaw", m_ahrs.getYaw());
-		SmartDashboard.putNumber("Elevator State", Robot.m_smartElevator.getCurrentState());
-		SmartDashboard.putBoolean("limit switch", Robot.m_intake.isSwitchSet());
+		m_intake.putExtraData();
 		m_smartGripper.putExtraData();
 		m_smartElevator.putExtraData();
+		SmartDashboard.putNumber("Elevator State", Robot.m_smartElevator.getCurrentState());
+		SmartDashboard.putBoolean("limit switch", Robot.m_intake.isSwitchSet());
+		SmartDashboard.putNumber("Elevator pos", m_smartElevator.getCurrentPos());
 	}
 
 	/**
