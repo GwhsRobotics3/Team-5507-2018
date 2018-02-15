@@ -33,22 +33,22 @@ public class SmartGripperManualDrive extends Command {
     	{
     		if(direction == ARM_OUT)
     		{
-    			Robot.m_smartGripper.moveRight(-0.5);
+    			Robot.m_smartGripper.moveRight(0.5);
     		}
     		else
     		{
-    			Robot.m_smartGripper.moveRight(0.5);
+    			Robot.m_smartGripper.moveRight(-0.5);
     		}
     	}
     	else 
     	{
     		if(direction == ARM_OUT)
     		{
-    			Robot.m_smartGripper.moveLeft(0.5);
+    			Robot.m_smartGripper.moveLeft(-0.5);
     		}
     		else
     		{
-    			Robot.m_smartGripper.moveLeft(-0.5);
+    			Robot.m_smartGripper.moveLeft(0.5);
     		}
     	}
     }
