@@ -21,8 +21,8 @@ public class SmartGripper extends Subsystem {
 	public static final int STATE_CLOSED = 3;
 	
 	public static final int DEGREES_START = 0;
-	public static final int DEGREES_OPEN = 15;
-	public static final int DEGREES_CLOSED = 30;
+	public static final int DEGREES_OPEN = 60;
+	public static final int DEGREES_CLOSED = 90;
 	
 	static final int CURRENT_LIMIT = 30;
 	
@@ -150,6 +150,16 @@ public class SmartGripper extends Subsystem {
 		return (4096 * degrees) / 360;
 	}
 	
+	public double ticksToAngleR()
+	{
+		return (this.getCurrentPosR() * 360) / 4096;
+	}
+	
+	public double ticksToAngleL()
+	{
+		return (this.getCurrentPosL() * 360) / 4096;
+	}
+	
 	public void gripperUseJoystick() {
 		leftArm.set(Robot.m_oi.controller.getRawAxis(1));
 		rightArm.set(Robot.m_oi.controller.getRawAxis(1) * -1);
@@ -212,9 +222,9 @@ public class SmartGripper extends Subsystem {
 	}
 	
 	public void putExtraData() {
-		SmartDashboard.putNumber("Right Arm Pos", getCurrentPosR());
-		SmartDashboard.putNumber("Right Arm Pos", getCurrentPosL());
-		SmartDashboard.putNumber("Gripper State", currentState);
+		SmartDashboard.putNumber("Right Arm Pos", ticksToAngleR());
+		SmartDashboard.putNumber("Left Arm Pos", ticksToAngleL());
+		SmartDashboard.putNumber("Gripper State", currentState);		
 	}
 	
 }

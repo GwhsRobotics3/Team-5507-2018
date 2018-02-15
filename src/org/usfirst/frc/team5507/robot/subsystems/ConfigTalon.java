@@ -49,9 +49,9 @@ public class ConfigTalon extends Subsystem {
 		/* set closed loop gains in slot0 - see documentation */
 		talon.selectProfileSlot(kSlotIdx, kPIDLoopIdx);
 		talon.config_kF(0, 0.2, kTimeoutMs);
-		talon.config_kP(0, 0.2, kTimeoutMs);
-		talon.config_kI(0, 0, kTimeoutMs);
-		talon.config_kD(0, 0, kTimeoutMs);
+		talon.config_kP(0, 1, kTimeoutMs);
+		talon.config_kI(0, 0.001, kTimeoutMs);
+		talon.config_kD(0, 10, kTimeoutMs);
 		/* set acceleration and vcruise velocity - see documentation */
 		talon.configMotionCruiseVelocity(15000, kTimeoutMs);
 		talon.configMotionAcceleration(6000, kTimeoutMs);

@@ -19,7 +19,7 @@ public class SmartElevator extends Subsystem {
 
 	public static final double ELEVATOR_HIGH = 24;
 	public static final double ELEVATOR_MED = 12;
-	public static final double ELEVATOR_LOW = 0;
+	public static final double ELEVATOR_LOW = 3;
 
 	// Put methods for controlling this subsystem
 	// here. Call these from Commands.
@@ -150,6 +150,19 @@ public class SmartElevator extends Subsystem {
 	{
 		//testing
 		elevatorPulley.set(-.4);
+	}
+	
+	public double ticksToAngle(double ticks)
+	{
+		 return (ticks * 360) / 768;
+	}
+	
+	public void putExtraData()
+	{
+		//SmartDashboard.putBoolean("Elevator Bottom Limit Switch", elevatorPulley.limit)
+		//SmartDashboard.putBoolean("Elevator Top Limit Switch", elevatorPulley.get)
+		SmartDashboard.putNumber("Elevator pos", ticksToAngle(getCurrentPos()));
+		SmartDashboard.putNumber("Elevator State", getCurrentState());
 	}
 	
 

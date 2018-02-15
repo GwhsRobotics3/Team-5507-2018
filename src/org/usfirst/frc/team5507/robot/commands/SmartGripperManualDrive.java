@@ -33,22 +33,22 @@ public class SmartGripperManualDrive extends Command {
     	{
     		if(direction == ARM_OUT)
     		{
-    			Robot.m_smartGripper.moveRight(-0.5);
+    			Robot.m_smartGripper.moveRight(-0.3);
     		}
     		else
     		{
-    			Robot.m_smartGripper.moveRight(0.5);
+    			Robot.m_smartGripper.moveRight(0.3);
     		}
     	}
     	else 
     	{
     		if(direction == ARM_OUT)
     		{
-    			Robot.m_smartGripper.moveLeft(0.5);
+    			Robot.m_smartGripper.moveLeft(0.3);
     		}
     		else
     		{
-    			Robot.m_smartGripper.moveLeft(-0.5);
+    			Robot.m_smartGripper.moveLeft(-0.3);
     		}
     	}
     }
@@ -65,5 +65,6 @@ public class SmartGripperManualDrive extends Command {
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
+    	Robot.m_smartGripper.stop();
     }
 }

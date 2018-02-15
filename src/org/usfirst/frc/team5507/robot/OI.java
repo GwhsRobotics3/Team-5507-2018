@@ -14,8 +14,10 @@ import org.usfirst.frc.team5507.robot.commands.ClimberUp;
 import org.usfirst.frc.team5507.robot.commands.IntakeTakeIn;
 import org.usfirst.frc.team5507.robot.commands.IntakeTakeOut;
 import org.usfirst.frc.team5507.robot.commands.RumbleInTheJungleJuliaWasRight;
+import org.usfirst.frc.team5507.robot.commands.SmartElevatorManualDrive;
 import org.usfirst.frc.team5507.robot.commands.SmartElevatorMove;
 import org.usfirst.frc.team5507.robot.commands.SmartGripperJankyMove;
+import org.usfirst.frc.team5507.robot.commands.SmartGripperManualDrive;
 //import org.usfirst.frc.team5507.robot.commands.SmartGripperJankyMove;
 import org.usfirst.frc.team5507.robot.commands.SmartGripperSetState;
 import org.usfirst.frc.team5507.robot.commands.SmartGripperToggle;
@@ -75,8 +77,8 @@ public class OI {
 		Button leftJoy = new JoystickButton(controller, 9);
 		Button rightJoy = new JoystickButton(controller, 10);
 
-		//a.whileHeld(new IntakeTakeIn());
-		//b.whileHeld(new IntakeTakeOut());		
+		a.whileHeld(new IntakeTakeIn());
+		b.whileHeld(new IntakeTakeOut());		
 		x.whenPressed(new SmartGripperToggle());
 		y.whileHeld(new ClimberRewind());
 		backLeft.whenPressed(new SmartElevatorMove(-1)); 
@@ -85,5 +87,13 @@ public class OI {
 		select.whenPressed(new Catapult());
 		//leftJoy.whenPressed(new SmartGripperJankyMove());
 		start.whileHeld(new ClimberUp());
+		
+/*		x.whileHeld(new SmartGripperManualDrive(1, 1));
+		y.whileHeld(new SmartGripperManualDrive(-1, 1));
+		select.whileHeld(new SmartGripperManualDrive(1, -1));
+		start.whileHeld(new SmartGripperManualDrive(-1, -1));
+		backLeft.whileHeld(new SmartElevatorManualDrive(-1)); 
+		backRight.whileHeld(new SmartElevatorManualDrive(1));*/
+		
 	}
 }

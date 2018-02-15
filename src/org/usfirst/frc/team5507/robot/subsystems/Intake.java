@@ -35,15 +35,15 @@ public class Intake extends Subsystem {
     
     public void reelIn()
     {
-    	m_leftWheel.set(.75);
-    	m_rightWheel.set(.75);
+    	m_leftWheel.set(.25);
+    	m_rightWheel.set(.25);
 //    	SmartDashboard.putBoolean("Intake limit switch", isSwitchSet());
     }
     
     public void reelOut()
     {
-    	m_leftWheel.set(-.75);
-    	m_rightWheel.set(-.75); 
+    	m_leftWheel.set(-1);
+    	m_rightWheel.set(-1); 
     }
     
     public void stop()
