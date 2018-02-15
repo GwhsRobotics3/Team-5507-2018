@@ -7,12 +7,20 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class SmartElevatorDownTest extends Command {
-
-    public SmartElevatorDownTest() {
+public class SmartGripperManualDrive extends Command {
+	
+	private int side;
+	private int direction;
+	
+	public static final int RIGHT_ARM = 1;
+	public static final int ARM_OUT = 1;
+	
+    public SmartGripperManualDrive(int s, int d) {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-    	requires(Robot.m_smartElevator);
+    	requires(Robot.m_smartGripper);
+    	side = s;
+    	direction = d;
     }
 
     // Called just before this Command runs the first time
@@ -21,7 +29,28 @@ public class SmartElevatorDownTest extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.m_smartElevator.goDown();
+    	if(side == RIGHT_ARM)
+    	{
+    		if(direction == ARM_OUT)
+    		{
+    			Robot.m_smartGripper.moveRight(-0.5);
+    		}
+    		else
+    		{
+    			Robot.m_smartGripper.moveRight(0.5);
+    		}
+    	}
+    	else 
+    	{
+    		if(direction == ARM_OUT)
+    		{
+    			Robot.m_smartGripper.moveLeft(0.5);
+    		}
+    		else
+    		{
+    			Robot.m_smartGripper.moveLeft(-0.5);
+    		}
+    	}
     }
 
     // Make this return true when this Command no longer needs to run execute()

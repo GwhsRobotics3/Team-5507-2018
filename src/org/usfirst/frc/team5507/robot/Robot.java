@@ -23,8 +23,6 @@ import org.usfirst.frc.team5507.robot.commands.AutonomousDriveStraightTurnLeft;
 import org.usfirst.frc.team5507.robot.commands.ClimberUp;
 import org.usfirst.frc.team5507.robot.commands.LCatapultInScale;
 import org.usfirst.frc.team5507.robot.commands.RCatapultInScale;
-import org.usfirst.frc.team5507.robot.commands.SmartElevatorDownTest;
-import org.usfirst.frc.team5507.robot.commands.SmartElevatorUpTest;
 import org.usfirst.frc.team5507.robot.subsystems.Climber;
 import org.usfirst.frc.team5507.robot.subsystems.DriveTrain;
 import org.usfirst.frc.team5507.robot.subsystems.SmartGripper;

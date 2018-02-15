@@ -200,6 +200,17 @@ public class SmartGripper extends Subsystem {
 	{
 		currentState += x;
 	}
+	
+	public void moveLeft(double speed)
+	{
+		leftArm.set(speed);
+	}
+	
+	public void moveRight(double speed)
+	{
+		rightArm.set(speed);
+	}
+	
 	public void putExtraData() {
 		SmartDashboard.putNumber("Right Arm Pos", getCurrentPosR());
 		SmartDashboard.putNumber("Right Arm Pos", getCurrentPosL());
