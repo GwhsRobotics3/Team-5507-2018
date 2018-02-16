@@ -28,6 +28,7 @@ public class ConfigTalon extends Subsystem {
 	
 
     public void initDefaultCommand() {
+    	
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
     }
@@ -35,7 +36,6 @@ public class ConfigTalon extends Subsystem {
 		talon.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative, kPIDLoopIdx, kTimeoutMs);
 		talon.setSensorPhase(true);
 		talon.setInverted(false);
-		
 		/* Set relevant frame periods to be at least as fast as periodic rate*/
 		talon.setStatusFramePeriod(StatusFrameEnhanced.Status_13_Base_PIDF0, 10, kTimeoutMs);
 		talon.setStatusFramePeriod(StatusFrameEnhanced.Status_10_MotionMagic, 10, kTimeoutMs);

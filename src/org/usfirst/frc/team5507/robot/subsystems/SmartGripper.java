@@ -41,8 +41,8 @@ public class SmartGripper extends Subsystem {
 		leftArm.configReverseSoftLimitThreshold(DEGREES_OPEN, ConfigTalon.kTimeoutMs);
 		rightArm.configForwardSoftLimitThreshold(-DEGREES_START, ConfigTalon.kTimeoutMs);
 		rightArm.configReverseSoftLimitThreshold(-DEGREES_OPEN, ConfigTalon.kTimeoutMs);*/
-		configGripperTalon(leftArm);
-		configGripperTalon(rightArm);
+		configGripperTalonL(leftArm);
+		configGripperTalonR(rightArm);
 		resetEncoders();
 		
 		addChild("left arm", leftArm);
@@ -137,13 +137,26 @@ public class SmartGripper extends Subsystem {
 		return currentState;
 	}
 	
-	public void configGripperTalon(WPI_TalonSRX talon)
+	public void configGripperTalonL(WPI_TalonSRX talon)
 	{
-		/*talon.configContinuousCurrentLimit(CURRENT_LIMIT, ConfigTalon.kTimeoutMs);
+		talon.configContinuousCurrentLimit(CURRENT_LIMIT, ConfigTalon.kTimeoutMs);
 		talon.configPeakCurrentLimit(0, ConfigTalon.kTimeoutMs);
 		talon.configForwardSoftLimitEnable(true, ConfigTalon.kTimeoutMs);
-		talon.configReverseSoftLimitEnable(true, ConfigTalon.kTimeoutMs);
-		talon.enableCurrentLimit(true);*/
+		talon.configForwardSoftLimitThreshold(1024, ConfigTalon.kTimeoutMs);
+		talon.configReverseSoftLimitEnable(true, ConfigTalon.kTimeoutMs); // someone was right (no name)
+		talon.configReverseSoftLimitThreshold(0, ConfigTalon.kTimeoutMs);
+		talon.enableCurrentLimit(true);
+	}
+	
+	public void configGripperTalonR(WPI_TalonSRX talon)
+	{
+		talon.configContinuousCurrentLimit(CURRENT_LIMIT, ConfigTalon.kTimeoutMs);
+		talon.configPeakCurrentLimit(0, ConfigTalon.kTimeoutMs);
+		talon.configForwardSoftLimitEnable(true, ConfigTalon.kTimeoutMs);
+		talon.configForwardSoftLimitThreshold(0, ConfigTalon.kTimeoutMs);
+		talon.configReverseSoftLimitEnable(true, ConfigTalon.kTimeoutMs); // someone was right (no name)
+		talon.configReverseSoftLimitThreshold(-1024, ConfigTalon.kTimeoutMs);
+		talon.enableCurrentLimit(true);
 	}
 	
 	public static int angleToTicks(int degrees) {
@@ -224,7 +237,9 @@ public class SmartGripper extends Subsystem {
 	public void putExtraData() {
 		SmartDashboard.putNumber("Right Arm Pos", ticksToAngleR());
 		SmartDashboard.putNumber("Left Arm Pos", ticksToAngleL());
-		SmartDashboard.putNumber("Gripper State", currentState);		
+		SmartDashboard.putNumber("Gripper State", currentState);
+		SmartDashboard.putNumber("Left Arm Output", leftArm.getOutputCurrent());
+		SmartDashboard.putNumber("Right Arm Output", rightArm.getOutputCurrent());
 	}
 	
 }

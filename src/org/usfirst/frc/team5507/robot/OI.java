@@ -84,7 +84,7 @@ public class OI {
 		backLeft.whenPressed(new SmartElevatorMove(-1)); 
 		backRight.whenPressed(new SmartElevatorMove(1));
 		//start.whenPressed(new RumbleInTheJungleJuliaWasRight());
-		select.whenPressed(new Catapult());
+		//select.whenPressed(new Catapult());
 		//leftJoy.whenPressed(new SmartGripperJankyMove());
 		start.whileHeld(new ClimberUp());
 		

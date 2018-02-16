@@ -49,7 +49,7 @@ public class Climber extends Subsystem {
     }
     public void climberRewind()
     {
-    	climberPulley.set(ControlMode.PercentOutput, .5);
+    	climberPulley.set(ControlMode.PercentOutput, 1);
     }
     
     public void pulleyStop()

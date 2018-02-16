@@ -22,6 +22,7 @@ public class DriveTrain extends Subsystem {
 	private WPI_TalonSRX frontRight = new WPI_TalonSRX(RobotMap.driveFrontRight);
 	private WPI_TalonSRX backLeft = new WPI_TalonSRX(RobotMap.driveBackLeft);
 	private WPI_TalonSRX backRight = new WPI_TalonSRX(RobotMap.driveBackRight);
+	static final int CURRENT_LIMIT = 30;
 //	private static DigitalInput limitSwitch = new DigitalInput(1);
 //	Counter counter = new Counter(limitSwitch);
   
@@ -68,7 +69,7 @@ public class DriveTrain extends Subsystem {
     	double z = controller.getRawAxis(3) - controller.getRawAxis(2);
     	if(Math.abs(x) > .2 || Math.abs(y) > .2 || Math.abs(z) > .2)
     	{
-    		drive(x, -y, z);
+    		drive(x, -y , z);
     	}
     }
     
@@ -99,7 +100,7 @@ public class DriveTrain extends Subsystem {
     {
     	frontLeft.setSelectedSensorPosition(0,0,0);
    
-    }
+    } 
     
 //    public boolean isSwitchSetDrive() {
 //        return counter.get() < 0;
