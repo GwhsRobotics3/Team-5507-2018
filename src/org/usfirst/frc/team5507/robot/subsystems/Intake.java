@@ -37,7 +37,7 @@ public class Intake extends Subsystem {
     
     public void reelIn()
     {
-    	m_leftWheel.set(.25);
+    	m_leftWheel.set(.25); //775 motor can stall for a long period of time (> 5 min) at .25 speed (~3V)
     	m_rightWheel.set(.25);
     	SmartDashboard.putBoolean("Intake limit switch", isSwitchSet());
     }
@@ -59,9 +59,9 @@ public class Intake extends Subsystem {
        }
    
 	public void putExtraData() {
-		SmartDashboard.putBoolean("limit switch", Robot.m_intake.isSwitchSet());
-		SmartDashboard.putNumber("left wheel voltage", m_leftWheel.getMotorOutputVoltage());
-		SmartDashboard.putNumber("right wheel voltage", m_rightWheel.getMotorOutputVoltage());
+		SmartDashboard.putBoolean("intake limit switch", Robot.m_intake.isSwitchSet());
+		SmartDashboard.putNumber("intake left wheel voltage", m_leftWheel.getMotorOutputVoltage());
+		SmartDashboard.putNumber("intake right wheel voltage", m_rightWheel.getMotorOutputVoltage());
 	}
 }
 
