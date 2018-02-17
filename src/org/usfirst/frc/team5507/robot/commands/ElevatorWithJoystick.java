@@ -14,7 +14,7 @@ public class ElevatorWithJoystick extends Command {
     public ElevatorWithJoystick() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-    	requires(Robot.m_dumbElevator);
+    	requires(Robot.m_smartElevator);
     }
 
     // Called just before this Command runs the first time
@@ -23,7 +23,12 @@ public class ElevatorWithJoystick extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.m_dumbElevator.drive(Robot.m_oi.controller.getRawAxis(OI.ELEVATOR_AXIS));
+    	if(Math.abs(Robot.m_oi.controller.getRawAxis(OI.ELEVATOR_AXIS)) > 0.2) {
+    		Robot.m_smartElevator.drive(Robot.m_oi.controller.getRawAxis(OI.ELEVATOR_AXIS));	
+    	}
+    	else {
+    		Robot.m_smartElevator.drive(0);
+    	}
     }
 
     // Make this return true when this Command no longer needs to run execute()

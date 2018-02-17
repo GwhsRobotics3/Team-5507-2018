@@ -3,10 +3,11 @@ package org.usfirst.frc.team5507.robot.subsystems;
 
 import org.usfirst.frc.team5507.robot.Robot;
 import org.usfirst.frc.team5507.robot.RobotMap;
+import org.usfirst.frc.team5507.robot.commands.ElevatorWithJoystick;
+
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
-import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
@@ -14,8 +15,11 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  *
  */
 public class SmartElevator extends Subsystem {
-	private static WPI_TalonSRX elevatorPulley = new WPI_TalonSRX(RobotMap.elevatorPulley);	
+	private static WPI_TalonSRX elevatorPulley = new WPI_TalonSRX(RobotMap.elevatorPulley);
 	private static int currentState;
+	
+	private static final double GRAVITY_WITHOUT_BOX = 0;
+	private static final double GRAVITY_WITH_BOX = 0;
 	public static final int STATE_HIGH = 3;
 	public static final int STATE_MED = 2;
 	public static final int STATE_LOW = 1;
@@ -37,8 +41,7 @@ public class SmartElevator extends Subsystem {
 
 	}
 	public void initDefaultCommand() {
-		// Set the default command for a subsystem here.
-		//setDefaultCommand(new MySpecialCommand())
+		setDefaultCommand(new ElevatorWithJoystick());
 	}
 
 	public static void resetEncoders() {
@@ -78,12 +81,12 @@ public class SmartElevator extends Subsystem {
 		}
 	}
 
-		public static void setDesiredPosInches(double inches)
-		{
-			double ticks = ((768 / (Math.PI * 1.5)) * inches); 
-			elevatorPulley.set(ControlMode.MotionMagic, ticks);
-			System.out.println(ticks);
-		}
+	public static void setDesiredPosInches(double inches)
+	{
+		double ticks = ((768 / (Math.PI * 1.5)) * inches); 
+		elevatorPulley.set(ControlMode.MotionMagic, ticks);
+		System.out.println(ticks);
+	}
 
 	//public static void setDesiredPosTicks(double ticks)
 	//{
@@ -157,11 +160,11 @@ public class SmartElevator extends Subsystem {
 		 return (ticks * 360) / 768;
 	}
 	
-	public boolean isSwitchSetTop() {
+	public boolean isSwitchSetBot() {
 		return elevatorPulley.getSensorCollection().isFwdLimitSwitchClosed();
 	}
 	
-	public boolean isSwitchSetBot() {
+	public boolean isSwitchSetTop() {
 		return elevatorPulley.getSensorCollection().isRevLimitSwitchClosed();   
 	}
 
@@ -173,7 +176,18 @@ public class SmartElevator extends Subsystem {
 		SmartDashboard.putNumber("Elevator State", getCurrentState());
 		SmartDashboard.putBoolean("Elevator top limit switch", isSwitchSetTop());
 		SmartDashboard.putBoolean("Elevator bottom limit switch", isSwitchSetBot());
+		SmartDashboard.putNumber("Elevator Voltage", elevatorPulley.getMotorOutputVoltage());
 	}
-	
+
+	public void drive(double desiredSpeed) {
+		double outputSpeed = 0;
+		if(Robot.m_smartGripper.getCurrentState() == SmartGripper.STATE_OPEN) {
+			outputSpeed = GRAVITY_WITHOUT_BOX + desiredSpeed;
+		}
+		if(Robot.m_smartGripper.getCurrentState() == SmartGripper.STATE_CLOSED) {
+			outputSpeed = GRAVITY_WITH_BOX + desiredSpeed;
+		}
+		elevatorPulley.set(outputSpeed);
+	}
 }
 
