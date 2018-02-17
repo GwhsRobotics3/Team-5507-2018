@@ -5,6 +5,8 @@ import org.usfirst.frc.team5507.robot.Robot;
 import org.usfirst.frc.team5507.robot.RobotMap;
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
+
+import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
@@ -139,32 +141,28 @@ public class SmartElevator extends Subsystem {
 	{
 		elevatorPulley.set(0);
 	}
-
 	
-	public void goUp()
-	{
-		//testing
-		elevatorPulley.set(.4);
-	}
-	
-	public void goDown()
-	{
-		//testing
-		elevatorPulley.set(-.4);
-	}
-	
-
 	public double ticksToAngle(double ticks)
 	{
 		 return (ticks * 360) / 768;
 	}
 	
+	public boolean isSwitchSetTop() {
+		return elevatorPulley.getSensorCollection().isFwdLimitSwitchClosed();
+	}
+	
+	public boolean isSwitchSetBot() {
+		return elevatorPulley.getSensorCollection().isRevLimitSwitchClosed();   
+	}
+
 	public void putExtraData()
 	{
-		//SmartDashboard.putBoolean("Elevator Bottom Limit Switch", elevatorPulley.limit)
-		//SmartDashboard.putBoolean("Elevator Top Limit Switch", elevatorPulley.get)
+		//SmartDashboard.putBoolean("Elevator Bottom Limit Switch", elevatorPulley.limit());
+		//SmartDashboard.putBoolean("Elevator Top Limit Switch", elevatorPulley.get());
 		SmartDashboard.putNumber("Elevator pos", ticksToAngle(getCurrentPos()));
 		SmartDashboard.putNumber("Elevator State", getCurrentState());
+		SmartDashboard.putBoolean("Elevator top limit switch", isSwitchSetTop());
+		SmartDashboard.putBoolean("Elevator bottom limit switch", isSwitchSetBot());
 	}
 	
 }
