@@ -73,12 +73,13 @@ public class DriveTrain extends Subsystem {
     	}
     }
     
-    public void driveForward(double targetPos)
+    public void driveForward(double targetPos, double angle)
     {
     	pos = targetPos;
+    	double angleError = Robot.m_ahrs.getYaw() - angle;
     	if(frontLeft.getSelectedSensorPosition(0) < pos)
     	{
-    		Robot.m_driveTrain.drive(0, 0.4, 0);
+    		Robot.m_driveTrain.drive(0, .4, angleError / 180);
     	}
     }
     

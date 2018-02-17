@@ -136,6 +136,16 @@ public class SmartElevator extends Subsystem {
 	{
 		return elevatorPulley.getSelectedSensorPosition(0);
 	}
+	
+	public void goUp()
+	{
+		elevatorPulley.set(0.5);
+	}
+	
+	public void goDown()
+	{
+		elevatorPulley.set(-0.5);
+	}
 
 	public void stop()
 	{

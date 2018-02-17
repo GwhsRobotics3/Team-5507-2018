@@ -12,6 +12,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 public class DriveForwardDistance extends Command {
 	
 	private double d1;
+	private double startAngle;
 	public static final double WHEEL_CIRCUMFERENCE = 18.84956;
 	public static final double TICKS_PER_REVOLUTION = 4096;
 	public static final double DISTANCE = TICKS_PER_REVOLUTION / WHEEL_CIRCUMFERENCE; //1 inch moved
@@ -26,12 +27,13 @@ public class DriveForwardDistance extends Command {
     // Called just before this Command runs the first time
     protected void initialize() {
     	DriveTrain.resetPos();
+    	startAngle = Robot.m_ahrs.getYaw();
     }
     
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.m_driveTrain.driveForward(d1);
+    	Robot.m_driveTrain.driveForward(d1, startAngle);
     	SmartDashboard.putNumber("Target position Forward", d1);
     }
 

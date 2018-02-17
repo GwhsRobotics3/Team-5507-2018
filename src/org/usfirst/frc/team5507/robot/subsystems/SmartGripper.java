@@ -141,36 +141,35 @@ public class SmartGripper extends Subsystem {
 	{
 		talon.configContinuousCurrentLimit(CURRENT_LIMIT, ConfigTalon.kTimeoutMs);
 		talon.configPeakCurrentLimit(0, ConfigTalon.kTimeoutMs);
-		talon.configForwardSoftLimitEnable(true, ConfigTalon.kTimeoutMs);
-		talon.configForwardSoftLimitThreshold(1024, ConfigTalon.kTimeoutMs);
-		talon.configReverseSoftLimitEnable(true, ConfigTalon.kTimeoutMs); // someone was right (no name)
-		talon.configReverseSoftLimitThreshold(0, ConfigTalon.kTimeoutMs);
 		talon.enableCurrentLimit(true);
+		
+		talon.configForwardSoftLimitThreshold(angleToTicks(DEGREES_CLOSED), ConfigTalon.kTimeoutMs);
+		talon.configForwardSoftLimitEnable(true, ConfigTalon.kTimeoutMs);
+		talon.configReverseSoftLimitThreshold(0, ConfigTalon.kTimeoutMs);
+		talon.configReverseSoftLimitEnable(true, ConfigTalon.kTimeoutMs); // someone was right (no name)
+
 	}
 	
 	public void configGripperTalonR(WPI_TalonSRX talon)
 	{
 		talon.configContinuousCurrentLimit(CURRENT_LIMIT, ConfigTalon.kTimeoutMs);
 		talon.configPeakCurrentLimit(0, ConfigTalon.kTimeoutMs);
-		talon.configForwardSoftLimitEnable(true, ConfigTalon.kTimeoutMs);
-		talon.configForwardSoftLimitThreshold(0, ConfigTalon.kTimeoutMs);
-		talon.configReverseSoftLimitEnable(true, ConfigTalon.kTimeoutMs); // someone was right (no name)
-		talon.configReverseSoftLimitThreshold(-1024, ConfigTalon.kTimeoutMs);
 		talon.enableCurrentLimit(true);
+		
+		talon.configForwardSoftLimitThreshold(0, ConfigTalon.kTimeoutMs);
+		talon.configForwardSoftLimitEnable(true, ConfigTalon.kTimeoutMs);
+		talon.configReverseSoftLimitThreshold(-(angleToTicks((DEGREES_CLOSED))), ConfigTalon.kTimeoutMs);
+		talon.configReverseSoftLimitEnable(true, ConfigTalon.kTimeoutMs); // someone was right (no name)
+
 	}
 	
 	public static int angleToTicks(int degrees) {
 		return (4096 * degrees) / 360;
 	}
 	
-	public double ticksToAngleR()
+	public double ticksToAngle(double pos)
 	{
-		return (this.getCurrentPosR() * 360) / 4096;
-	}
-	
-	public double ticksToAngleL()
-	{
-		return (this.getCurrentPosL() * 360) / 4096;
+		return (pos * 360) / 4096;
 	}
 	
 	public void gripperUseJoystick() {
@@ -235,8 +234,8 @@ public class SmartGripper extends Subsystem {
 	}
 	
 	public void putExtraData() {
-		SmartDashboard.putNumber("Right Arm Pos", ticksToAngleR());
-		SmartDashboard.putNumber("Left Arm Pos", ticksToAngleL());
+		SmartDashboard.putNumber("Right Arm Pos", ticksToAngle(this.getCurrentPosR()));
+		SmartDashboard.putNumber("Left Arm Pos", ticksToAngle(this.getCurrentPosL()));
 		SmartDashboard.putNumber("Gripper State", currentState);
 		SmartDashboard.putNumber("Left Arm Output", leftArm.getOutputCurrent());
 		SmartDashboard.putNumber("Right Arm Output", rightArm.getOutputCurrent());
