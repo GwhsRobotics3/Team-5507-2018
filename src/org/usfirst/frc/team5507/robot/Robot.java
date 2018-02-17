@@ -76,9 +76,7 @@ public class Robot extends TimedRobot {
 		m_intake.putExtraData();
 		m_smartGripper.putExtraData();
 		m_smartElevator.putExtraData();
-		//SmartDashboard.putNumber("Elevator State", Robot.m_smartElevator.getCurrentState());
 		SmartDashboard.putBoolean("limit switch", Robot.m_intake.isSwitchSet());
-		//SmartDashboard.putNumber("Elevator pos", m_smartElevator.getCurrentPos());
 	}
 
 	/**
@@ -105,7 +103,7 @@ public class Robot extends TimedRobot {
 	@Override
 	public void disabledPeriodic() {
 		Scheduler.getInstance().run();
-
+		putSmartDashboardData();
 	}
 
 	/**
@@ -165,8 +163,6 @@ public class Robot extends TimedRobot {
 		if (m_autonomousCommand != null) {
 			m_autonomousCommand.cancel();
 		}
-		SmartElevator.stateReset();
-		SmartElevator.resetEncoders();
 	}
 
 	/**
@@ -175,25 +171,7 @@ public class Robot extends TimedRobot {
 	@Override
 	public void teleopPeriodic() {
 		Scheduler.getInstance().run();		
-		putSmartDashboardData();		
-//		if(Robot.m_oi.controller.getRawAxis(OI.CLIMB_AXIS) < -0.1)
-//		{
-//			Scheduler.getInstance().add(new SmartElevatorUpTest());
-//		}
-//		else if(Robot.m_oi.controller.getRawAxis(OI.CLIMB_AXIS) > -0.1)
-//		{
-//			Scheduler.getInstance().add(new SmartElevatorDownTest());
-//		}
-		//left.set(stick.getRawAxis(1) * 0.5);
-		//right.set(stick.getRawAxis(1) * -1 * 0.5);
-		//SmartGripper.leftArm.set(Robot.m_oi.controller.getRawAxis(1) * .2);
-		//	SmartGripper.rightArm.set(Robot.m_oi.controller.getRawAxis(1) * -1 * .2);
-		//m_smartGripper.stopAllJoy();
-//		if(Robot.m_oi.controller.getRawAxis(5) > 0)
-//		{
-//			Scheduler.getInstance().add(new ClimberUp());
-//		}
-
+		putSmartDashboardData();
 	}
 
 	/**
@@ -201,5 +179,6 @@ public class Robot extends TimedRobot {
 	 */
 	@Override
 	public void testPeriodic() {
+		putSmartDashboardData();
 	}
 }

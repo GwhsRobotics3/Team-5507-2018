@@ -175,6 +175,7 @@ public class SmartElevator extends Subsystem {
 		SmartDashboard.putBoolean("Elevator top limit switch", isSwitchSetTop());
 		SmartDashboard.putBoolean("Elevator bottom limit switch", isSwitchSetBot());
 		SmartDashboard.putNumber("Elevator Voltage", elevatorPulley.getMotorOutputVoltage());
+		SmartDashboard.putNumber("Elevator Current", elevatorPulley.getOutputCurrent());
 	}
 
 	public void drive(double desiredSpeed) {
