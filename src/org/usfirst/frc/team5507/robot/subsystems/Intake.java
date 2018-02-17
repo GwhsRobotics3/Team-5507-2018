@@ -39,7 +39,7 @@ public class Intake extends Subsystem {
     {
     	m_leftWheel.set(.25);
     	m_rightWheel.set(.25);
-//    	SmartDashboard.putBoolean("Intake limit switch", isSwitchSet());
+    	SmartDashboard.putBoolean("Intake limit switch", isSwitchSet());
     }
     
     public void reelOut()
