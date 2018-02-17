@@ -60,6 +60,8 @@ public class Intake extends Subsystem {
    
 	public void putExtraData() {
 		SmartDashboard.putBoolean("limit switch", Robot.m_intake.isSwitchSet());
+		SmartDashboard.putNumber("left wheel voltage", m_leftWheel.getMotorOutputVoltage());
+		SmartDashboard.putNumber("right wheel voltage", m_rightWheel.getMotorOutputVoltage());
 	}
 }
 

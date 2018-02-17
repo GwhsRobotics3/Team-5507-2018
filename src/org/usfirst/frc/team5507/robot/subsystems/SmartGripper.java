@@ -22,9 +22,9 @@ public class SmartGripper extends Subsystem {
 	
 	public static final int DEGREES_START = 0;
 	public static final int DEGREES_OPEN = 60;
-	public static final int DEGREES_CLOSED = 90;
+	public static final int DEGREES_CLOSED = 100;
 	
-	static final int CURRENT_LIMIT = 30;
+	static final int CURRENT_LIMIT = 5;
 	
 	public static WPI_TalonSRX leftArm = new WPI_TalonSRX(RobotMap.leftArm);
 	public static WPI_TalonSRX rightArm = new WPI_TalonSRX(RobotMap.rightArm);
@@ -239,6 +239,8 @@ public class SmartGripper extends Subsystem {
 		SmartDashboard.putNumber("Gripper State", currentState);
 		SmartDashboard.putNumber("Left Arm Output", leftArm.getOutputCurrent());
 		SmartDashboard.putNumber("Right Arm Output", rightArm.getOutputCurrent());
+		SmartDashboard.putNumber("Left Arm Voltage", leftArm.getMotorOutputVoltage());
+		SmartDashboard.putNumber("Right Arm Voltage", rightArm.getMotorOutputVoltage());
 	}
 	
 }

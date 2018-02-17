@@ -170,8 +170,6 @@ public class SmartElevator extends Subsystem {
 
 	public void putExtraData()
 	{
-		//SmartDashboard.putBoolean("Elevator Bottom Limit Switch", elevatorPulley.limit());
-		//SmartDashboard.putBoolean("Elevator Top Limit Switch", elevatorPulley.get());
 		SmartDashboard.putNumber("Elevator pos", ticksToAngle(getCurrentPos()));
 		SmartDashboard.putNumber("Elevator State", getCurrentState());
 		SmartDashboard.putBoolean("Elevator top limit switch", isSwitchSetTop());
