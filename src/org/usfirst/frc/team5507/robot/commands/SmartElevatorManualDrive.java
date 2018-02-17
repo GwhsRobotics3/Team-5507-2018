@@ -15,7 +15,7 @@ public class SmartElevatorManualDrive extends Command {
     public SmartElevatorManualDrive(int d) {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-    	requires(Robot.m_smartElevator);
+    	//requires(Robot.m_smartElevator);
     	direction = d;
     }
 
@@ -27,11 +27,11 @@ public class SmartElevatorManualDrive extends Command {
     protected void execute() {
     	if (direction > 0)
     	{
-    		Robot.m_smartElevator.goUp();
+    		//Robot.m_smartElevator.goUp();
     	}
     	else
     	{
-    		Robot.m_smartElevator.goDown();
+    		//Robot.m_smartElevator.goDown();
     	}
     }
 
@@ -47,6 +47,6 @@ public class SmartElevatorManualDrive extends Command {
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
-    	Robot.m_smartElevator.stop();
+    	//Robot.m_smartElevator.stop();
     }
 }

@@ -15,7 +15,7 @@ public class SmartElevatorMove extends InstantCommand {
 	public SmartElevatorMove(int direction) {
 		// Use requires() here to declare subsystem dependencies
 		// eg. requires(chassis);
-		requires(Robot.m_smartElevator);
+		//requires(Robot.m_smartElevator);
 		d = direction;
 	}
 
@@ -31,6 +31,6 @@ public class SmartElevatorMove extends InstantCommand {
 			newState = SmartElevator.getNextStateDown();
 			System.out.println("Moving down");
 		}
-		Robot.m_smartElevator.setState(newState);
+		//Robot.m_smartElevator.setState(newState);
 	}
 }

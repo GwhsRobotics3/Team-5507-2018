@@ -24,6 +24,7 @@ import org.usfirst.frc.team5507.robot.commands.LCatapultInScale;
 import org.usfirst.frc.team5507.robot.commands.RCatapultInScale;
 import org.usfirst.frc.team5507.robot.subsystems.Climber;
 import org.usfirst.frc.team5507.robot.subsystems.DriveTrain;
+import org.usfirst.frc.team5507.robot.subsystems.DumbElevator;
 import org.usfirst.frc.team5507.robot.subsystems.SmartGripper;
 import org.usfirst.frc.team5507.robot.subsystems.Intake;
 import org.usfirst.frc.team5507.robot.subsystems.SmartElevator;
@@ -46,7 +47,8 @@ public class Robot extends TimedRobot {
 	public static OI m_oi;
 	public static Climber m_climber = new Climber();
 	public static DriveTrain m_driveTrain = new DriveTrain();
-	public static SmartElevator m_smartElevator = new SmartElevator();
+	//public static SmartElevator m_smartElevator = new SmartElevator();
+	public static DumbElevator m_dumbElevator = new DumbElevator();
 	public static SmartGripper m_smartGripper = new SmartGripper();
 	public static Intake m_intake = new Intake();
 	public static AHRS m_ahrs;
@@ -69,16 +71,18 @@ public class Robot extends TimedRobot {
 	public void putSmartDashboardData() {
 		SmartDashboard.putData(m_climber);
 		SmartDashboard.putData(m_driveTrain);
-		SmartDashboard.putData(m_smartElevator);
+		//SmartDashboard.putData(m_smartElevator);
+		SmartDashboard.putData(m_dumbElevator);
 		SmartDashboard.putData(m_smartGripper);
 		SmartDashboard.putData(m_intake);
 		SmartDashboard.putNumber("IMU_Yaw", m_ahrs.getYaw());
 		m_intake.putExtraData();
 		m_smartGripper.putExtraData();
-		m_smartElevator.putExtraData();
-		SmartDashboard.putNumber("Elevator State", Robot.m_smartElevator.getCurrentState());
+		//m_smartElevator.putExtraData();
+		//SmartDashboard.putNumber("Elevator State", Robot.m_smartElevator.getCurrentState());
 		SmartDashboard.putBoolean("limit switch", Robot.m_intake.isSwitchSet());
-		SmartDashboard.putNumber("Elevator pos", m_smartElevator.getCurrentPos());
+		//SmartDashboard.putNumber("Elevator pos", m_smartElevator.getCurrentPos());
+		SmartDashboard.putNumber("elevator voltage", Robot.m_dumbElevator.getVoltage());
 	}
 
 	/**

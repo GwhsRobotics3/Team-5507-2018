@@ -60,7 +60,7 @@ public class OI {
 	public XboxController controller;
 	// cool beans
 
-	public static final int CLIMB_AXIS = 5;
+	public static final int ELEVATOR_AXIS = 5;
 	
 	public OI()
 	{

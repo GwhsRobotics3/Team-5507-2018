@@ -4,6 +4,7 @@ import org.usfirst.frc.team5507.robot.OI;
 import org.usfirst.frc.team5507.robot.Robot;
 
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  *
@@ -13,7 +14,7 @@ public class ElevatorWithJoystick extends Command {
     public ElevatorWithJoystick() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-    	requires(Robot.m_smartElevator);
+    	requires(Robot.m_dumbElevator);
     }
 
     // Called just before this Command runs the first time
@@ -22,19 +23,12 @@ public class ElevatorWithJoystick extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	if(Robot.m_oi.controller.getRawAxis(OI.CLIMB_AXIS) < -0.1)
-		{
-    		Robot.m_smartElevator.goUp();
-		}
-    	else if(Robot.m_oi.controller.getRawAxis(OI.CLIMB_AXIS) > -0.1)
-    	{
-    		Robot.m_smartElevator.goDown();
-    	}
+    	Robot.m_dumbElevator.drive(Robot.m_oi.controller.getRawAxis(OI.ELEVATOR_AXIS));
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return false;
+        return (false);
     }
 
     // Called once after isFinished returns true

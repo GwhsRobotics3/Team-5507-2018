@@ -13,13 +13,13 @@ public class SmartElevatorSetState extends InstantCommand {
     	super();
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-    	requires(Robot.m_smartElevator);
+    	//requires(Robot.m_smartElevator);
     	state = s;
     }
 
     // Called once when the command executes
     protected void initialize() {
-    	Robot.m_smartElevator.setState(state);
+    	//Robot.m_smartElevator.setState(state);
     }
 
 }
