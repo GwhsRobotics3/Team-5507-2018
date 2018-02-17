@@ -70,8 +70,8 @@ public class ConfigTalon extends Subsystem {
 		/* set the peak and nominal outputs */
 		talon.configNominalOutputForward(0, kTimeoutMs);
 		talon.configNominalOutputReverse(0, kTimeoutMs);
-		talon.configPeakOutputForward(0.5, kTimeoutMs);
-		talon.configPeakOutputReverse(-0.5, kTimeoutMs);
+		talon.configPeakOutputForward(1, kTimeoutMs);
+		talon.configPeakOutputReverse(-1, kTimeoutMs);
 		
 		/* set closed loop gains in slot0 - see documentation */
 		talon.selectProfileSlot(kSlotIdx, kPIDLoopIdx);
