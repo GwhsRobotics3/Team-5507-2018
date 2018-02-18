@@ -31,15 +31,17 @@ public class CatapultInLScale extends CommandGroup {
         // a CommandGroup containing them would require both the chassis and the
         // arm.
     	
-    	addSequential(new DriveForwardDistance(-1));
+    	addSequential(new AutonomousWait(0));
     	if (side == FieldHelper.ROBOT_START_LEFT)
     	{
+    		addSequential(new DriveForwardDistance(-1));
     		addSequential(new DriveForwardDistance(-25));
     		addSequential(new DriveTurnByAngle(90));
     		addSequential(new Catapult());
     	}
     	if(side == FieldHelper.ROBOT_START_RIGHT)
     	{
+    		addSequential(new DriveForwardDistance(-1));
     		addSequential(new DriveTurnByAngle(-90));
     		addSequential(new DriveForwardDistance(-14));
     		addSequential(new DriveTurnByAngle(90));
@@ -50,6 +52,7 @@ public class CatapultInLScale extends CommandGroup {
     	}
     	if (side == FieldHelper.ROBOT_START_MIDDLE)
     	{
+    		addSequential(new DriveForwardDistance(-1));
     		addSequential(new DriveSidewaysDistance(8));
     		addSequential(new DriveForwardDistance(-25));
     		addSequential(new DriveTurnByAngle(-90.0));

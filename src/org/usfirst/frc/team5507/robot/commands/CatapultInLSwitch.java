@@ -30,13 +30,13 @@ public class CatapultInLSwitch extends CommandGroup {
         // a CommandGroup containing them would require both the chassis and the
         // arm.
 
-    	
+    	addSequential(new AutonomousWait(0));
     	if (side == FieldHelper.ROBOT_START_LEFT)
     	{
-    		//addSequential(new DriveForwardDistance(-5.0));
-    		//addSequential(new DriveForwardDistance(-7.0)); //9
-    		//addSequential(new DriveTurnByAngle(-90.0)); //+90 
-    		addSequential(new Catapult());
+    		addSequential(new DriveForwardDistance(-5.0));
+    		addSequential(new DriveForwardDistance(-7.0)); //9
+    		addSequential(new DriveTurnByAngle(90.0)); //+90 
+    		//addSequential(new Catapult());
     	}
     	if(side == FieldHelper.ROBOT_START_RIGHT)
     	{
@@ -46,15 +46,16 @@ public class CatapultInLSwitch extends CommandGroup {
     		addSequential(new DriveTurnByAngle(90.0));
     		addSequential(new DriveForwardDistance(-9.0));
     		addSequential(new DriveTurnByAngle(90.0));
-    		addSequential(new Catapult());
+    		//addSequential(new Catapult());
     	}
     	if (side == FieldHelper.ROBOT_START_MIDDLE)
 		{
-    		addSequential(new DriveForwardDistance(-5.0));
     		addSequential(new DriveForwardDistance(-2));
-			addSequential(new DriveSidewaysDistance(-6));
-			addSequential(new DriveForwardDistance(-12));
-			addSequential(new Catapult());
+    		addSequential(new DriveTurnByAngle(-45));
+			addSequential(new DriveForwardDistance(-4.5));
+			addSequential(new DriveTurnByAngle(45));
+			addSequential(new DriveForwardDistance(-2.5));
+			//addSequential(new Catapult());
 		}
     	addSequential(new DriveStop());
     }
