@@ -16,14 +16,18 @@ import org.usfirst.frc.team5507.robot.commands.IntakeTakeOut;
 import org.usfirst.frc.team5507.robot.commands.RumbleInTheJungleJuliaWasRight;
 import org.usfirst.frc.team5507.robot.commands.SmartElevatorManualDrive;
 import org.usfirst.frc.team5507.robot.commands.SmartElevatorMove;
+import org.usfirst.frc.team5507.robot.commands.SmartGripperIntakeGrabCube;
 import org.usfirst.frc.team5507.robot.commands.SmartGripperJankyMove;
 import org.usfirst.frc.team5507.robot.commands.SmartGripperManualDrive;
 //import org.usfirst.frc.team5507.robot.commands.SmartGripperJankyMove;
 import org.usfirst.frc.team5507.robot.commands.SmartGripperSetState;
 import org.usfirst.frc.team5507.robot.commands.SmartGripperToggle;
+import org.usfirst.frc.team5507.robot.subsystems.SmartGripper;
+
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
+import edu.wpi.first.wpilibj.command.CommandGroup;
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -62,6 +66,14 @@ public class OI {
 
 	public static final int ELEVATOR_AXIS = 5;
 	
+	// Allow easily toggling between multiple control schemes.
+	public static final int CONTROL_SCHEME_DEFAULT = 1;
+	public static final int CONTROL_SCHEME_COMPETITION = 2;
+	public static final int CONTROL_SCHEME_TESTING = 3;
+	
+	// Set the control scheme to be used
+	public int control_scheme = CONTROL_SCHEME_COMPETITION;
+	
 	public OI()
 	{
 		controller = new XboxController(0);
@@ -77,23 +89,42 @@ public class OI {
 		Button leftJoy = new JoystickButton(controller, 9);
 		Button rightJoy = new JoystickButton(controller, 10);
 
-		a.whileHeld(new IntakeTakeIn());
-		b.whileHeld(new IntakeTakeOut());		
-		x.whenPressed(new SmartGripperToggle());
-		y.whileHeld(new ClimberRewind());
-		//backLeft.whenPressed(new SmartElevatorMove(-1)); 
-		//backRight.whenPressed(new SmartElevatorMove(1));
-		//start.whenPressed(new RumbleInTheJungleJuliaWasRight());
-		//select.whenPressed(new Catapult());
-		//leftJoy.whenPressed(new SmartGripperJankyMove());
-		start.whileHeld(new ClimberUp());
-		
-/*		x.whileHeld(new SmartGripperManualDrive(1, 1));
-		y.whileHeld(new SmartGripperManualDrive(-1, 1));
-		select.whileHeld(new SmartGripperManualDrive(1, -1));
-		start.whileHeld(new SmartGripperManualDrive(-1, -1));
-		backLeft.whileHeld(new SmartElevatorManualDrive(-1)); 
-		backRight.whileHeld(new SmartElevatorManualDrive(1));*/
-		
+		switch(control_scheme) {			
+			case CONTROL_SCHEME_COMPETITION:
+				// Greg's proposed controller mappings
+				a.whileHeld(new IntakeTakeIn());
+				b.whileHeld(new IntakeTakeOut());
+				x.whileHeld(new SmartGripperIntakeGrabCube());
+				y.whenPressed(new SmartGripperSetState(SmartGripper.STATE_OPEN));
+				backLeft.whenPressed(new SmartElevatorManualDrive(-1)); 
+				backRight.whenPressed(new SmartElevatorManualDrive(1));
+				//start.whenPressed(new Catapult());
+				//select.whenPressed(new ClimberRewind());
+				//start.whileHeld(new ClimberUp());
+				break;
+			
+			case CONTROL_SCHEME_TESTING:
+				x.whileHeld(new SmartGripperManualDrive(1, 1));
+				y.whileHeld(new SmartGripperManualDrive(-1, 1));
+				select.whileHeld(new SmartGripperManualDrive(1, -1));
+				start.whileHeld(new SmartGripperManualDrive(-1, -1));
+				backLeft.whileHeld(new SmartElevatorManualDrive(-1)); 
+				backRight.whileHeld(new SmartElevatorManualDrive(1));
+				break;
+			
+			case CONTROL_SCHEME_DEFAULT:
+			default:
+				a.whileHeld(new IntakeTakeIn());
+				b.whileHeld(new IntakeTakeOut());		
+				x.whenPressed(new SmartGripperToggle());
+				y.whileHeld(new ClimberRewind());
+				//backLeft.whenPressed(new SmartElevatorMove(-1)); 
+				//backRight.whenPressed(new SmartElevatorMove(1));
+				//start.whenPressed(new RumbleInTheJungleJuliaWasRight());
+				//select.whenPressed(new Catapult());
+				//leftJoy.whenPressed(new SmartGripperJankyMove());
+				start.whileHeld(new ClimberUp());
+				break;
+		}
 	}
 }

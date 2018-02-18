@@ -39,9 +39,8 @@ public class SmartElevator extends Subsystem {
 		configTalon(elevatorPulley);
 		resetEncoders();
 		addChild("elevator pulley talon", elevatorPulley);
-		
-
 	}
+	
 	public void initDefaultCommand() {
 		setDefaultCommand(new ElevatorWithJoystick());
 	}
