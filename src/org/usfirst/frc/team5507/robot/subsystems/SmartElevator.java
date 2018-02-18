@@ -6,6 +6,8 @@ import org.usfirst.frc.team5507.robot.RobotMap;
 import org.usfirst.frc.team5507.robot.commands.ElevatorWithJoystick;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
+import com.ctre.phoenix.motorcontrol.FeedbackDevice;
+import com.ctre.phoenix.motorcontrol.StatusFrameEnhanced;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
@@ -34,7 +36,7 @@ public class SmartElevator extends Subsystem {
 	public SmartElevator()
 	{
 		currentState = STATE_LOW;
-		ConfigTalon.configTalonQuad(elevatorPulley);
+		configTalon(elevatorPulley);
 		resetEncoders();
 		addChild("elevator pulley talon", elevatorPulley);
 		
@@ -187,6 +189,38 @@ public class SmartElevator extends Subsystem {
 			outputSpeed = GRAVITY_WITH_BOX + desiredSpeed;
 		}
 		elevatorPulley.set(outputSpeed);
+	}
+	
+	public static void configTalon(WPI_TalonSRX talon) {
+		talon.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder, ConfigTalon.kPIDLoopIdx, ConfigTalon.kTimeoutMs);
+		talon.setSensorPhase(false);
+		talon.setInverted(false);
+		
+		/* Set relevant frame periods to be at least as fast as periodic rate*/
+		talon.setStatusFramePeriod(StatusFrameEnhanced.Status_13_Base_PIDF0, 10, ConfigTalon.kTimeoutMs);
+		talon.setStatusFramePeriod(StatusFrameEnhanced.Status_10_MotionMagic, 10, ConfigTalon.kTimeoutMs);
+
+		/* set the peak and nominal outputs */
+		talon.configNominalOutputForward(0, ConfigTalon.kTimeoutMs);
+		talon.configNominalOutputReverse(0, ConfigTalon.kTimeoutMs);
+		talon.configPeakOutputForward(1, ConfigTalon.kTimeoutMs);
+		talon.configPeakOutputReverse(-1, ConfigTalon.kTimeoutMs);
+		
+		/* set closed loop gains in slot0 - see documentation */
+		talon.selectProfileSlot(ConfigTalon.kSlotIdx, ConfigTalon.kPIDLoopIdx);
+		talon.config_kF(0, 0.2, ConfigTalon.kTimeoutMs);
+		talon.config_kP(0, 1, ConfigTalon.kTimeoutMs);
+		talon.config_kI(0, 0, ConfigTalon.kTimeoutMs);
+		talon.config_kD(0, 10, ConfigTalon.kTimeoutMs);
+	//	talon.configAllowableClosedloopError(0, 2, kTimeoutMs); // how many units of error are ok?
+		
+		/* set acceleration and vcruise velocity - see documentation */
+		talon.configMotionCruiseVelocity(15000, ConfigTalon.kTimeoutMs);
+		talon.configMotionAcceleration(6000, ConfigTalon.kTimeoutMs);
+		
+		
+		/* zero the sensor */
+		talon.setSelectedSensorPosition(0, ConfigTalon.kPIDLoopIdx, ConfigTalon.kTimeoutMs);
 	}
 }
 
