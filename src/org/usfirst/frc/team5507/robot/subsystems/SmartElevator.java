@@ -144,12 +144,12 @@ public class SmartElevator extends Subsystem {
 	
 	public void goUp()
 	{
-		elevatorPulley.set(1);
+		elevatorPulley.set(-1);
 	}
 	
 	public void goDown()
 	{
-		elevatorPulley.set(-1);
+		elevatorPulley.set(1);
 	}
 
 	public void stop()
