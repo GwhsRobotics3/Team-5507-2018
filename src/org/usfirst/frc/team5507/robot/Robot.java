@@ -89,6 +89,7 @@ public class Robot extends TimedRobot {
 		m_smartElevator.putExtraData();
 		m_driveTrain.putExtraData();
 		SmartDashboard.putBoolean("limit switch", Robot.m_intake.isSwitchSet());
+		Robot.m_oi.putPOV();
 	}
 
 	/**

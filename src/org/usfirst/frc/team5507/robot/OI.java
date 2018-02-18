@@ -28,6 +28,7 @@ import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import edu.wpi.first.wpilibj.command.CommandGroup;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -126,5 +127,8 @@ public class OI {
 				start.whileHeld(new ClimberUp());
 				break;
 		}
+	}
+	public void putPOV(){
+		SmartDashboard.putNumber("D-Pad", controller.getPOV());
 	}
 }
