@@ -7,11 +7,11 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 /**
  *
  */
-public class LCatapultInScale extends CommandGroup {
+public class CatapultInLScale extends CommandGroup {
 
 	private int side;
 	
-    public LCatapultInScale(int s) {
+    public CatapultInLScale(int s) {
     	
     	side = s;
         // Add Commands here:

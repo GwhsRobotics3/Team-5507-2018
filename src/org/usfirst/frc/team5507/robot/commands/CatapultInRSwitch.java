@@ -7,11 +7,11 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 /**
  *
  */
-public class RCatapultInSwitch extends CommandGroup {
+public class CatapultInRSwitch extends CommandGroup {
 
 	private int side;
 
-	public RCatapultInSwitch(int s) {
+	public CatapultInRSwitch(int s) {
 		side = s;
 		// Add Commands here:
 		// e.g. addSequential(new Command1());

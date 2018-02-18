@@ -1,5 +1,5 @@
 {
-  "dividerPosition": 0.33368091762252344,
+  "dividerPosition": 0.3336842105263158,
   "tabPane": [
     {
       "title": "Camera",
@@ -285,6 +285,41 @@
                   "_title": "SmartDashboard/backleftspd"
                 }
               ]
+            }
+          }
+        }
+      }
+    },
+    {
+      "title": "Auto",
+      "autoPopulate": false,
+      "autoPopulatePrefix": "",
+      "widgetPane": {
+        "gridSize": 128.0,
+        "showGrid": true,
+        "hgap": 16.0,
+        "vgap": 16.0,
+        "tiles": {
+          "0,0": {
+            "size": [
+              2,
+              1
+            ],
+            "content": {
+              "_type": "ComboBox Chooser",
+              "_source0": "network_table:///SmartDashboard/Auto modes",
+              "_title": "/SmartDashboard/Auto modes"
+            }
+          },
+          "2,0": {
+            "size": [
+              2,
+              1
+            ],
+            "content": {
+              "_type": "Command",
+              "_source0": "network_table:///SmartDashboard/Auto mode",
+              "_title": "SmartDashboard/Auto mode"
             }
           }
         }

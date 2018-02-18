@@ -21,8 +21,10 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 import org.usfirst.frc.team5507.robot.commands.AutonomousCrossLine;
 import org.usfirst.frc.team5507.robot.commands.AutonomousDriveStraightTurnLeft;
-import org.usfirst.frc.team5507.robot.commands.LCatapultInScale;
-import org.usfirst.frc.team5507.robot.commands.RCatapultInScale;
+import org.usfirst.frc.team5507.robot.commands.CatapultInLScale;
+import org.usfirst.frc.team5507.robot.commands.CatapultInRScale;
+import org.usfirst.frc.team5507.robot.commands.DriveForward;
+import org.usfirst.frc.team5507.robot.commands.DriveForwardDistance;
 import org.usfirst.frc.team5507.robot.subsystems.Climber;
 import org.usfirst.frc.team5507.robot.subsystems.DriveTrain;
 import org.usfirst.frc.team5507.robot.subsystems.SmartGripper;
@@ -85,6 +87,7 @@ public class Robot extends TimedRobot {
 		m_intake.putExtraData();
 		m_smartGripper.putExtraData();
 		m_smartElevator.putExtraData();
+		m_driveTrain.putExtraData();
 		SmartDashboard.putBoolean("limit switch", Robot.m_intake.isSwitchSet());
 	}
 
@@ -170,6 +173,7 @@ public class Robot extends TimedRobot {
 				m_autonomousCommand = new AutonomousCrossLine();
 				
 		}
+		SmartDashboard.putData("Auto mode", m_autonomousCommand);
 		
 		/*
 		 * String autoSelected = SmartDashboard.getString("Auto Selector",

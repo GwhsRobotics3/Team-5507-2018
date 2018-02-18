@@ -11,13 +11,13 @@ import edu.wpi.first.wpilibj.command.Command;
 public class DriveForward extends Command {
 
 	private Timer m_timer = new Timer(); //subjected to change with encoders
-	//private double time;
+	private double time;
 	
     public DriveForward(double t) {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     	requires(Robot.m_driveTrain);   
-    	//time = t;
+    	time = t;
     }
 
     // Called just before this Command runs the first time
@@ -33,19 +33,20 @@ public class DriveForward extends Command {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-//    	if (m_timer.get() > time)
-//    	{
-//    		return true;
-//    	}
-return false;
-//    	return Robot.m_driveTrain.isSwitchSetDrive();
+    	if (m_timer.get() > time)
+    	{
+    		return true;
+    	}
+    	else
+    	{
+    		return false;
+    	}
       }
     
 
     // Called once after isFinished returns true
     protected void end() {
     //	Robot.m_oi.controller.setRumble(0.4,0.4);
-    	end();
     }
 
     // Called when another command which requires one or more of the same

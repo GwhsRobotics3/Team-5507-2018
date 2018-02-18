@@ -52,14 +52,6 @@ public class DriveTrain extends Subsystem {
     public void drive(double ySpeed, double xSpeed, double zRotation)
     {   	
     	m_drive.driveCartesian(ySpeed, xSpeed, zRotation);
-    	SmartDashboard.putNumber("frontleftpos", frontLeft.getSelectedSensorPosition(0));
-    	SmartDashboard.putNumber("frontleftspd", frontLeft.getSelectedSensorVelocity(0));
-    	SmartDashboard.putNumber("frontrightpos", frontRight.getSelectedSensorPosition(0));
-    	SmartDashboard.putNumber("frontrightspd", frontRight.getSelectedSensorVelocity(0));
-    	SmartDashboard.putNumber("backleftpos", backLeft.getSelectedSensorPosition(0));
-    	SmartDashboard.putNumber("backleftspd", backLeft.getSelectedSensorVelocity(0));
-    	SmartDashboard.putNumber("backrightpos", backRight.getSelectedSensorPosition(0));
-    	SmartDashboard.putNumber("backrightspd", backRight.getSelectedSensorVelocity(0));  	
     }
     
     public void drive(XboxController controller)
@@ -75,12 +67,18 @@ public class DriveTrain extends Subsystem {
     
     public void driveForward(double targetPos, double angle)
     {
-    	pos = targetPos;
     	double angleError = Robot.m_ahrs.getYaw() - angle;
-    	if(frontLeft.getSelectedSensorPosition(0) < pos)
+    	double speed = 0;
+    	if((targetPos < 0) && (frontLeft.getSelectedSensorPosition(0) > targetPos))
     	{
-    		Robot.m_driveTrain.drive(0, .4, angleError / 180);
+    		speed = -0.4;
     	}
+    	if ((targetPos > 0) && (frontLeft.getSelectedSensorPosition(0) < targetPos))
+    	{
+    		speed = 0.4;
+    	}
+    	System.out.println(speed);
+    	Robot.m_driveTrain.drive(0, speed, angleError / 180);
     }
     
     public void driveSideways(double targetPos)
@@ -102,6 +100,18 @@ public class DriveTrain extends Subsystem {
     	frontLeft.setSelectedSensorPosition(0,0,0);
    
     } 
+    
+    public void putExtraData()
+    {
+    	SmartDashboard.putNumber("frontleftpos", frontLeft.getSelectedSensorPosition(0));
+    	SmartDashboard.putNumber("frontleftspd", frontLeft.getSelectedSensorVelocity(0));
+    	SmartDashboard.putNumber("frontrightpos", frontRight.getSelectedSensorPosition(0));
+    	SmartDashboard.putNumber("frontrightspd", frontRight.getSelectedSensorVelocity(0));
+    	SmartDashboard.putNumber("backleftpos", backLeft.getSelectedSensorPosition(0));
+    	SmartDashboard.putNumber("backleftspd", backLeft.getSelectedSensorVelocity(0));
+    	SmartDashboard.putNumber("backrightpos", backRight.getSelectedSensorPosition(0));
+    	SmartDashboard.putNumber("backrightspd", backRight.getSelectedSensorVelocity(0));  
+    }
     
 //    public boolean isSwitchSetDrive() {
 //        return counter.get() < 0;

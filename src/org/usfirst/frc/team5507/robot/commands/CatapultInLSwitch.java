@@ -7,11 +7,11 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 /**
  *
  */
-public class LCatapultInSwitch extends CommandGroup {
+public class CatapultInLSwitch extends CommandGroup {
 	
 	private int side;
 
-    public LCatapultInSwitch(int s) {
+    public CatapultInLSwitch(int s) {
     	side = s;
         // Add Commands here:
         // e.g. addSequential(new Command1());

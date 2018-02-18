@@ -7,11 +7,11 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 /**
  *
  */
-public class RCatapultInScale extends CommandGroup {
+public class CatapultInRScale extends CommandGroup {
 
 	private int side;
 	
-    public RCatapultInScale(int s) {
+    public CatapultInRScale(int s) {
     	side = s;
         // Add Commands here:
         // e.g. addSequential(new Command1());

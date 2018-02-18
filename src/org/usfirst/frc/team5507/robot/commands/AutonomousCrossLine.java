@@ -24,7 +24,7 @@ public class AutonomousCrossLine extends CommandGroup {
         // e.g. if Command1 requires chassis, and Command2 requires arm,
         // a CommandGroup containing them would require both the chassis and the
         // arm.
-    	addSequential(new DriveForwardDistance(10.0));
+    	addSequential(new DriveForwardDistance(-7.0));
     	addSequential(new DriveStop());
     }
 }

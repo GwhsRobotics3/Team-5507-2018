@@ -1,10 +1,10 @@
 package org.usfirst.frc.team5507.robot;
 
 import org.usfirst.frc.team5507.robot.commands.AutonomousCrossLine;
-import org.usfirst.frc.team5507.robot.commands.LCatapultInScale;
-import org.usfirst.frc.team5507.robot.commands.LCatapultInSwitch;
-import org.usfirst.frc.team5507.robot.commands.RCatapultInScale;
-import org.usfirst.frc.team5507.robot.commands.RCatapultInSwitch;
+import org.usfirst.frc.team5507.robot.commands.CatapultInLScale;
+import org.usfirst.frc.team5507.robot.commands.CatapultInLSwitch;
+import org.usfirst.frc.team5507.robot.commands.CatapultInRScale;
+import org.usfirst.frc.team5507.robot.commands.CatapultInRSwitch;
 
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.command.Command;
@@ -48,48 +48,48 @@ public class FieldHelper {
 		if(goal == "switch") {
 			if(isSwitchLeft()) {
 				if(position == ROBOT_START_LEFT) {
-					x = new LCatapultInSwitch(ROBOT_START_LEFT);
+					x = new CatapultInLSwitch(ROBOT_START_LEFT);
 				}
 				else if(position == ROBOT_START_RIGHT) {
-					x = new LCatapultInSwitch(ROBOT_START_RIGHT);
+					x = new CatapultInLSwitch(ROBOT_START_RIGHT);
 				}
 				else if(position == ROBOT_START_MIDDLE) {
-					x = new LCatapultInSwitch(ROBOT_START_MIDDLE);
+					x = new CatapultInLSwitch(ROBOT_START_MIDDLE);
 				}
 			}
 			else {
 				if(position == ROBOT_START_LEFT) {
-					x = new RCatapultInSwitch(ROBOT_START_LEFT);
+					x = new CatapultInRSwitch(ROBOT_START_LEFT);
 				}
 				else if(position == ROBOT_START_RIGHT) {
-					x = new RCatapultInSwitch(ROBOT_START_RIGHT);
+					x = new CatapultInRSwitch(ROBOT_START_RIGHT);
 				}
 				else if(position == ROBOT_START_MIDDLE) {
-					x = new RCatapultInSwitch(ROBOT_START_MIDDLE);
+					x = new CatapultInRSwitch(ROBOT_START_MIDDLE);
 				}
 			}
 		}
 		else if(goal == "scale") {
 			if(isScaleLeft()) {
 				if(position == ROBOT_START_LEFT) {
-					x = new LCatapultInScale(ROBOT_START_LEFT);
+					x = new CatapultInLScale(ROBOT_START_LEFT);
 				}
 				else if(position == ROBOT_START_RIGHT) {
-					x = new LCatapultInScale(ROBOT_START_RIGHT);
+					x = new CatapultInLScale(ROBOT_START_RIGHT);
 				}
 				else if(position == ROBOT_START_MIDDLE) {
-					x = new LCatapultInScale(ROBOT_START_MIDDLE);
+					x = new CatapultInLScale(ROBOT_START_MIDDLE);
 				}
 			}
 			else {
 				if(position == ROBOT_START_LEFT) {
-					x = new RCatapultInScale(ROBOT_START_LEFT);
+					x = new CatapultInRScale(ROBOT_START_LEFT);
 				}
 				else if(position == ROBOT_START_RIGHT) {
-					x = new RCatapultInScale(ROBOT_START_RIGHT);
+					x = new CatapultInRScale(ROBOT_START_RIGHT);
 				}
 				else if(position == ROBOT_START_MIDDLE) {
-					x = new RCatapultInScale(ROBOT_START_MIDDLE);
+					x = new CatapultInRScale(ROBOT_START_MIDDLE);
 				}
 			}
 		}
