@@ -4,6 +4,7 @@ package org.usfirst.frc.team5507.robot.subsystems;
 import org.usfirst.frc.team5507.robot.Robot;
 import org.usfirst.frc.team5507.robot.RobotMap;
 import org.usfirst.frc.team5507.robot.commands.ElevatorWithJoystick;
+import org.usfirst.frc.team5507.robot.commands.SmartElevatorStop;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.FeedbackDevice;
@@ -42,7 +43,7 @@ public class SmartElevator extends Subsystem {
 	}
 	
 	public void initDefaultCommand() {
-		//setDefaultCommand();
+		setDefaultCommand(new SmartElevatorStop());
 	}
 
 	public static void resetEncoders() {
