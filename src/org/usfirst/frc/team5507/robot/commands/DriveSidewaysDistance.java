@@ -36,7 +36,12 @@ public class DriveSidewaysDistance extends Command {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-    	return DriveTrain.getCurrentPos() >= d1;
+    	double errorPos = d1 - DriveTrain.getCurrentPos();
+    	if(Math.abs(errorPos) < DISTANCE)
+    	{
+    		return true;
+    	}
+    	return false;
     }
 
     // Called once after isFinished returns true
