@@ -31,7 +31,6 @@ public class Intake extends Subsystem {
 	
 	public void initDefaultCommand() {
         // Set the default command for a subsystem here.
-        //setDefaultCommand(new MySpecialCommand());
 		setDefaultCommand(new IntakeStop());
     }
     
@@ -56,7 +55,7 @@ public class Intake extends Subsystem {
     
    public boolean isSwitchSet() {
        return limitSwitch.get();    
-       }
+    }
    
 	public void putExtraData() {
 		SmartDashboard.putBoolean("intake limit switch", Robot.m_intake.isSwitchSet());

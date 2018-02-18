@@ -2,6 +2,7 @@ package org.usfirst.frc.team5507.robot.commands;
 
 import org.usfirst.frc.team5507.robot.Robot;
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.command.Scheduler;
 
 /**
  *
@@ -26,14 +27,13 @@ public class IntakeTakeIn extends Command {
 
 	// Make this return true when this Command no longer needs to run execute()
 	protected boolean isFinished() {
-		return false; 
-	
+		return Robot.m_intake.isSwitchSet(); 
 	}
 
 	// Called once after isFinished returns true
 	protected void end() {
 		Robot.m_intake.stop();
-		//Scheduler.getInstance().add(new RumbleInTheJungleJuliaWasRight());
+		Scheduler.getInstance().add(new RumbleInTheJungleJuliaWasRight());
 	}
 
 	// Called when another command which requires one or more of the same
