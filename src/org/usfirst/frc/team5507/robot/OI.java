@@ -100,7 +100,7 @@ public class OI {
 				backRight.whenPressed(new SmartElevatorManualDrive(1));
 				//start.whenPressed(new Catapult());
 				//select.whenPressed(new ClimberRewind());
-				//start.whileHeld(new ClimberUp());
+				start.whileHeld(new ClimberUp());
 				break;
 			
 			case CONTROL_SCHEME_TESTING:

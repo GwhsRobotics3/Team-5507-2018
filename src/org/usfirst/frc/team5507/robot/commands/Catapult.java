@@ -11,6 +11,7 @@ import edu.wpi.first.wpilibj.command.Command;
 public class Catapult extends Command {
 	
 	public static Timer throwTimer = new Timer();
+	private boolean done = false;
 	
     public Catapult() {
         // Use requires() here to declare subsystem dependencies
@@ -21,27 +22,28 @@ public class Catapult extends Command {
     // Called just before this Command runs the first time
     protected void initialize() {
     	throwTimer.reset();
+    	throwTimer.start();
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	if(throwTimer.get() < 0.5)
+    	if(throwTimer.get() < 0.75)
     	{
-	    	Robot.m_climber.catapult(0.3);
+	    	Robot.m_climber.armUp(0.8);
     	}
-    	else if(throwTimer.get() > 0.5 && throwTimer.get() < .8)
+    	else if(throwTimer.get() < 1)
     	{
-    		Robot.m_climber.catapult(0.5);
+    		Robot.m_climber.armUp(-0.2);
+    	}
+    	else
+    	{
+    		done = true;
     	}
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-    	if(throwTimer.get() > 0.9)
-    	{
-    		return true;
-    	}
-        return false;
+        return done;
     }
 
     // Called once after isFinished returns true

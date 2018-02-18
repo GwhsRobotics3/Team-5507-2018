@@ -45,7 +45,7 @@ public class Climber extends Subsystem {
     }
     public void armDown()
     {
-    	climberArm.set(ControlMode.PercentOutput, .5);
+    	climberArm.set(ControlMode.PercentOutput, -.5);
     }
     public void climberRewind()
     {
@@ -62,8 +62,4 @@ public class Climber extends Subsystem {
     	System.out.println("button left trigger");
     }
     
-    public void catapult(double speed)
-    {
-    	climberArm.set(ControlMode.PercentOutput, speed);
-    }
 }

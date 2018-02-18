@@ -67,7 +67,10 @@ public class DriveTrain extends Subsystem {
     
     public void driveForward(double targetPos, double angle)
     {
-    	double angleError = Robot.m_ahrs.getYaw() - angle;
+    	double angleError = (angle - Robot.m_ahrs.getYaw()) / 180;
+    	angleError = angleError * 10;
+    	angleError = Math.min(angleError, 1);
+    	angleError = Math.max(angleError, -1);
     	double speed = 0;
     	if((targetPos < 0) && (frontLeft.getSelectedSensorPosition(0) > targetPos))
     	{
@@ -78,7 +81,7 @@ public class DriveTrain extends Subsystem {
     		speed = 0.4;
     	}
     	System.out.println(speed);
-    	Robot.m_driveTrain.drive(0, speed, angleError / 180);
+    	Robot.m_driveTrain.drive(0, speed, angleError);
     }
     
     public void driveSideways(double targetPos)

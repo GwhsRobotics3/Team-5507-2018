@@ -30,15 +30,17 @@ public class CatapultInLSwitch extends CommandGroup {
         // a CommandGroup containing them would require both the chassis and the
         // arm.
 
-    	addSequential(new DriveForwardDistance(-5.0));
+    	
     	if (side == FieldHelper.ROBOT_START_LEFT)
     	{
-    		addSequential(new DriveForwardDistance(-9.0));
-    		addSequential(new DriveTurnByAngle(90.0));
+    		//addSequential(new DriveForwardDistance(-5.0));
+    		//addSequential(new DriveForwardDistance(-7.0)); //9
+    		//addSequential(new DriveTurnByAngle(-90.0)); //+90 
     		addSequential(new Catapult());
     	}
     	if(side == FieldHelper.ROBOT_START_RIGHT)
     	{
+    		addSequential(new DriveForwardDistance(-5.0));
     		addSequential(new DriveTurnByAngle(-90.0));
     		addSequential(new DriveForwardDistance(14.0));
     		addSequential(new DriveTurnByAngle(90.0));
@@ -48,6 +50,7 @@ public class CatapultInLSwitch extends CommandGroup {
     	}
     	if (side == FieldHelper.ROBOT_START_MIDDLE)
 		{
+    		addSequential(new DriveForwardDistance(-5.0));
     		addSequential(new DriveForwardDistance(-2));
 			addSequential(new DriveSidewaysDistance(-6));
 			addSequential(new DriveForwardDistance(-12));

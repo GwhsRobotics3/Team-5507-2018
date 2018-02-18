@@ -49,7 +49,5 @@ public class RobotMap {
 	//DIO ports
 	public static int intakeBoxLimitSwitch = 0;
 
-	public static int elevatorLimitT = 1;
-	public static int elevatorLimitB = 2;
 
 }
