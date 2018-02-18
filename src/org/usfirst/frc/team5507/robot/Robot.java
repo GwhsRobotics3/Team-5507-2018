@@ -19,6 +19,7 @@ import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
+import org.usfirst.frc.team5507.robot.commands.AutonomousCrossLine;
 import org.usfirst.frc.team5507.robot.commands.AutonomousDriveStraightTurnLeft;
 import org.usfirst.frc.team5507.robot.commands.LCatapultInScale;
 import org.usfirst.frc.team5507.robot.commands.RCatapultInScale;
@@ -54,8 +55,16 @@ public class Robot extends TimedRobot {
 	public static WPI_TalonSRX left = new WPI_TalonSRX(3);
 	public static WPI_TalonSRX right = new WPI_TalonSRX(2);
 	public static XboxController stick = new XboxController(0);
-	Command m_autonomousCommand;
-	SendableChooser<Command> m_chooser = new SendableChooser<>(); 
+	public static Command m_autonomousCommand;
+	SendableChooser<Integer> m_chooser = new SendableChooser<>(); 
+	
+	private static final int DEFAULT = 0;
+	private static final int LEFT_CATAPULT_SCALE = 1;
+	private static final int LEFT_CATAPULT_SWITCH = 2;
+	private static final int CENTER_CATAPULT_SCALE = 3;
+	private static final int CENTER_CATAPULT_SWITCH = 4;
+	private static final int RIGHT_CATAPULT_SCALE = 5;
+	private static final int RIGHT_CATAPULT_SWITCH = 6;
 
 	public Robot() {
 		try {
@@ -86,7 +95,15 @@ public class Robot extends TimedRobot {
 	@Override
 	public void robotInit() {
 		m_oi = new OI();
-		SmartDashboard.putData("Auto mode", m_chooser);
+		m_chooser.addDefault("cross the line", DEFAULT);
+		m_chooser.addObject("Left catapult in scale", LEFT_CATAPULT_SCALE);
+		m_chooser.addObject("Left catapult in switch", LEFT_CATAPULT_SWITCH);
+		m_chooser.addObject("Center catapult in scale", CENTER_CATAPULT_SCALE);
+		m_chooser.addObject("Center catapult in switch", CENTER_CATAPULT_SWITCH);
+		m_chooser.addObject("Right catapult in scale", RIGHT_CATAPULT_SCALE);
+		m_chooser.addObject("Right catapult in switch", RIGHT_CATAPULT_SWITCH);
+		
+		SmartDashboard.putData("Auto modes", m_chooser);
 		UsbCamera camera = CameraServer.getInstance().startAutomaticCapture();
 		camera.setResolution(320, 240);
 	}
@@ -120,18 +137,40 @@ public class Robot extends TimedRobot {
 	@Override
 	public void autonomousInit() {
 		m_ahrs.reset();
-		m_autonomousCommand = new AutonomousDriveStraightTurnLeft(); //m_chooser.getSelected();
+		//m_autonomousCommand = m_chooser.getSelected(); //m_chooser.getSelected();
 		DriveTrain.resetPos();
 		
-		if (FieldHelper.isScaleLeft()) // change from scale to switch if needed and vise versa
+		switch(m_chooser.getSelected())
 		{
-			m_autonomousCommand = new LCatapultInScale(FieldHelper.ROBOT_START_LEFT); // change arguement every new match
+			case LEFT_CATAPULT_SWITCH:
+				m_autonomousCommand = FieldHelper.getAuto(FieldHelper.ROBOT_START_LEFT, "switch");
+				break;
+				
+			case LEFT_CATAPULT_SCALE:
+				m_autonomousCommand = FieldHelper.getAuto(FieldHelper.ROBOT_START_LEFT, "scale");
+				break;
+				
+			case CENTER_CATAPULT_SWITCH:
+				m_autonomousCommand = FieldHelper.getAuto(FieldHelper.ROBOT_START_MIDDLE, "switch");
+				break;
+			
+			case CENTER_CATAPULT_SCALE:
+				m_autonomousCommand = FieldHelper.getAuto(FieldHelper.ROBOT_START_MIDDLE, "scale");
+				break;
+			
+			case RIGHT_CATAPULT_SWITCH:
+				m_autonomousCommand = FieldHelper.getAuto(FieldHelper.ROBOT_START_RIGHT, "switch");
+				break;
+				
+			case RIGHT_CATAPULT_SCALE:
+				m_autonomousCommand = FieldHelper.getAuto(FieldHelper.ROBOT_START_RIGHT, "scale");
+				break;
+				
+			default:
+				m_autonomousCommand = new AutonomousCrossLine();
+				
 		}
-		else 
-		{
-			m_autonomousCommand = new RCatapultInScale(FieldHelper.ROBOT_START_LEFT);
-		}
-
+		
 		/*
 		 * String autoSelected = SmartDashboard.getString("Auto Selector",
 		 * "Default"); switch(autoSelected) { case "My Auto": autonomousCommand
