@@ -42,7 +42,7 @@ public class SmartElevator extends Subsystem {
 	}
 	
 	public void initDefaultCommand() {
-		setDefaultCommand(new ElevatorWithJoystick());
+		//setDefaultCommand();
 	}
 
 	public static void resetEncoders() {
