@@ -50,12 +50,15 @@ public class CatapultInLSwitch extends CommandGroup {
     	}
     	if (side == FieldHelper.ROBOT_START_MIDDLE)
 		{
-    		addSequential(new DriveForwardDistance(-2));
+    		/*addSequential(new DriveForwardDistance(-2));
     		addSequential(new DriveTurnByAngle(-45));
 			addSequential(new DriveForwardDistance(-4.5));
 			addSequential(new DriveTurnByAngle(45));
-			addSequential(new DriveForwardDistance(-2.5));
+			addSequential(new DriveForwardDistance(-2.5));*/
 			//addSequential(new Catapult());
+    		addSequential(new DriveForwardDistance(-2));
+    		addSequential(new DriveSidewaysDistance(4.5));
+    		addSequential(new DriveForwardDistance(-7));
 		}
     	addSequential(new DriveStop());
     }
