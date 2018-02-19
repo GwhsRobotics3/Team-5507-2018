@@ -44,7 +44,7 @@ public class AutoCatapultInLSwitch extends CommandGroup {
     		addSequential(new DriveTurnByAngle(-90.0));
     		addSequential(new DriveForwardDistance(14.0));
     		addSequential(new DriveTurnByAngle(90.0));
-    		addSequential(new DriveForwardDistance(-9.0));
+    		addSequential(new DriveForwardDistance(-7.0));
     		addSequential(new DriveTurnByAngle(90.0));
     		//addSequential(new Catapult());
     	}

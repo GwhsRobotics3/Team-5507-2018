@@ -4,6 +4,8 @@ import org.usfirst.frc.team5507.robot.Robot;
 import org.usfirst.frc.team5507.robot.RobotMap;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
+import com.ctre.phoenix.motorcontrol.LimitSwitchNormal;
+import com.ctre.phoenix.motorcontrol.LimitSwitchSource;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
@@ -147,7 +149,9 @@ public class SmartGripper extends Subsystem {
 		talon.configForwardSoftLimitEnable(true, ConfigTalon.kTimeoutMs);
 		talon.configReverseSoftLimitThreshold(0, ConfigTalon.kTimeoutMs);
 		talon.configReverseSoftLimitEnable(true, ConfigTalon.kTimeoutMs); // someone was right (no name)
-
+		
+		talon.configForwardLimitSwitchSource(LimitSwitchSource.FeedbackConnector, LimitSwitchNormal.Disabled, ConfigTalon.kTimeoutMs);
+		talon.configReverseLimitSwitchSource(LimitSwitchSource.FeedbackConnector, LimitSwitchNormal.Disabled, ConfigTalon.kTimeoutMs);
 	}
 	
 	public void configGripperTalonR(WPI_TalonSRX talon)
@@ -160,7 +164,9 @@ public class SmartGripper extends Subsystem {
 		talon.configForwardSoftLimitEnable(true, ConfigTalon.kTimeoutMs);
 		talon.configReverseSoftLimitThreshold(-(angleToTicks((DEGREES_CLOSED))), ConfigTalon.kTimeoutMs);
 		talon.configReverseSoftLimitEnable(true, ConfigTalon.kTimeoutMs); // someone was right (no name)
-
+		
+		talon.configReverseLimitSwitchSource(LimitSwitchSource.FeedbackConnector, LimitSwitchNormal.Disabled, ConfigTalon.kTimeoutMs);
+		talon.configForwardLimitSwitchSource(LimitSwitchSource.FeedbackConnector, LimitSwitchNormal.Disabled, ConfigTalon.kTimeoutMs);
 	}
 	
 	public static int angleToTicks(int degrees) {
