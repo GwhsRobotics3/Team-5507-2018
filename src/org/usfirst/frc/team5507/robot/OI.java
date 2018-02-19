@@ -14,6 +14,8 @@ import org.usfirst.frc.team5507.robot.commands.ClimberUp;
 import org.usfirst.frc.team5507.robot.commands.IntakeTakeIn;
 import org.usfirst.frc.team5507.robot.commands.IntakeTakeOut;
 import org.usfirst.frc.team5507.robot.commands.RumbleInTheJungleJuliaWasRight;
+import org.usfirst.frc.team5507.robot.commands.SmartElevatorGoToBottom;
+import org.usfirst.frc.team5507.robot.commands.SmartElevatorGoToTop;
 import org.usfirst.frc.team5507.robot.commands.SmartElevatorManualDrive;
 import org.usfirst.frc.team5507.robot.commands.SmartElevatorMove;
 import org.usfirst.frc.team5507.robot.commands.SmartGripperIntakeGrabCube;
@@ -90,6 +92,7 @@ public class OI {
 		Button leftJoy = new JoystickButton(controller, 9);
 		Button rightJoy = new JoystickButton(controller, 10);
 		Button dpadDown = new DpadButton(controller, DpadButton.DPAD_DOWN);
+		Button dpadUp = new DpadButton(controller, DpadButton.DPAD_UP);
 
 		switch(control_scheme) {			
 			case CONTROL_SCHEME_COMPETITION:
@@ -103,7 +106,8 @@ public class OI {
 				//start.whenPressed(new Catapult());
 				//select.whenPressed(new ClimberRewind());
 				start.whileHeld(new ClimberUp());
-				dpadDown.whileHeld(new SmartElevatorManualDrive(-1));
+				dpadDown.whenPressed(new SmartElevatorGoToBottom());
+				dpadUp.whenPressed(new SmartElevatorGoToTop());
 				
 				break;
 			

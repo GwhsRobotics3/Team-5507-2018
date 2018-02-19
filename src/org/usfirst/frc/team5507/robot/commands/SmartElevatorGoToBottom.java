@@ -7,9 +7,9 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class DpadElevatorDown extends Command {
+public class SmartElevatorGoToBottom extends Command {
 
-    public DpadElevatorDown() {
+    public SmartElevatorGoToBottom() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     	requires(Robot.m_smartElevator);
@@ -21,6 +21,7 @@ public class DpadElevatorDown extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+    	Robot.m_smartElevator.goDown();
     }
 
     // Make this return true when this Command no longer needs to run execute()
