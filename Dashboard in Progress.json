@@ -11,9 +11,9 @@
         "hgap": 16.0,
         "vgap": 16.0,
         "tiles": {
-          "1,0": {
+          "0,0": {
             "size": [
-              7,
+              8,
               6
             ],
             "content": {
@@ -110,19 +110,6 @@
                 }
               ]
             }
-          },
-          "2,1": {
-            "size": [
-              1,
-              1
-            ],
-            "content": {
-              "_type": "Boolean Box",
-              "_source0": "network_table:///SmartDashboard/limit switch",
-              "_title": "SmartDashboard/limit switch",
-              "colorWhenTrue": "#7CFC00FF",
-              "colorWhenFalse": "#8B0000FF"
-            }
           }
         }
       }
@@ -137,9 +124,9 @@
         "hgap": 16.0,
         "vgap": 16.0,
         "tiles": {
-          "0,2": {
+          "0,0": {
             "size": [
-              2,
+              1,
               1
             ],
             "content": {
@@ -333,6 +320,74 @@
               "_type": "Command",
               "_source0": "network_table:///SmartDashboard/Auto mode",
               "_title": "SmartDashboard/Auto mode"
+            }
+          },
+          "0,1": {
+            "size": [
+              2,
+              1
+            ],
+            "content": {
+              "_type": "Text View",
+              "_source0": "network_table:///SmartDashboard/Auto Starting Angle",
+              "_title": "/SmartDashboard/Auto Starting Angle"
+            }
+          },
+          "2,1": {
+            "size": [
+              2,
+              1
+            ],
+            "content": {
+              "_type": "Text View",
+              "_source0": "network_table:///SmartDashboard/Auto Target position Forward",
+              "_title": "/SmartDashboard/Auto Target position Forward"
+            }
+          },
+          "0,3": {
+            "size": [
+              2,
+              1
+            ],
+            "content": {
+              "_type": "Basic Subsystem",
+              "_source0": "network_table:///SmartDashboard/DriveTrain",
+              "_title": "/SmartDashboard/DriveTrain"
+            }
+          },
+          "2,3": {
+            "size": [
+              2,
+              1
+            ],
+            "content": {
+              "_type": "Text View",
+              "_source0": "network_table:///SmartDashboard/IMU_Yaw",
+              "_title": "/SmartDashboard/IMU_Yaw"
+            }
+          }
+        }
+      }
+    },
+    {
+      "title": "Climber",
+      "autoPopulate": false,
+      "autoPopulatePrefix": "",
+      "widgetPane": {
+        "gridSize": 128.0,
+        "showGrid": true,
+        "hgap": 16.0,
+        "vgap": 16.0,
+        "tiles": {
+          "0,0": {
+            "size": [
+              2,
+              1
+            ],
+            "content": {
+              "_type": "Basic Subsystem",
+              "_source0": "network_table:///SmartDashboard/Climber",
+              "_title": "/SmartDashboard/Climber"
             }
           }
         }

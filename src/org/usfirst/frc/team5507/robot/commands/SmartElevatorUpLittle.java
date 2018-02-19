@@ -2,14 +2,16 @@ package org.usfirst.frc.team5507.robot.commands;
 
 import org.usfirst.frc.team5507.robot.Robot;
 
+import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
  *
  */
-public class SmartElevatorGoToBottom extends Command {
+public class SmartElevatorUpLittle extends Command {
 
-    public SmartElevatorGoToBottom() {
+	private Timer x;
+    public SmartElevatorUpLittle() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     	requires(Robot.m_smartElevator);
@@ -17,22 +19,26 @@ public class SmartElevatorGoToBottom extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
+    	x.reset();
+    	x.start();
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.m_smartElevator.goDown();
+    	if(x.get() < .1)
+    	{
+    		Robot.m_smartElevator.goUp();
+    	}
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return Robot.m_smartElevator.isSwitchSetBot();
+        return x.get() > .1;
     }
 
     // Called once after isFinished returns true
     protected void end() {
     	Robot.m_smartElevator.stop();
-    	
     }
 
     // Called when another command which requires one or more of the same
