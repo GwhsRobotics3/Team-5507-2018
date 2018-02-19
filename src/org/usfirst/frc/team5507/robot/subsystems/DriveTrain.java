@@ -65,7 +65,7 @@ public class DriveTrain extends Subsystem {
     	}
     }
     
-    public void driveForward(double targetPos, double angle)
+    public void driveForwardDistance(double targetPos, double angle)
     {
     	double angleError = (angle - Robot.m_ahrs.getYaw()) / 180;
     	angleError = angleError * 10;
@@ -84,7 +84,7 @@ public class DriveTrain extends Subsystem {
     	Robot.m_driveTrain.drive(0, speed, angleError);
     }
     
-    public void driveSideways(double targetPos, double angle)
+    public void driveSidewaysDistance(double targetPos, double angle)
     {
     	double angleError = (angle - Robot.m_ahrs.getYaw()) / 180;
     	angleError = angleError * 10;
@@ -99,6 +99,15 @@ public class DriveTrain extends Subsystem {
     	{
     		speed = 0.4;
     	}
+    	Robot.m_driveTrain.drive(speed, 0, angleError);
+    }
+    
+    public void driveSideways(double speed, double targetAngle)
+    {
+    	double angleError = (targetAngle - Robot.m_ahrs.getYaw()) / 180;
+    	angleError = angleError * 10;
+    	angleError = Math.min(angleError, 1);
+    	angleError = Math.max(angleError, -1);
     	Robot.m_driveTrain.drive(speed, 0, angleError);
     }
     
