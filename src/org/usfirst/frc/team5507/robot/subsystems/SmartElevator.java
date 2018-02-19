@@ -8,6 +8,8 @@ import org.usfirst.frc.team5507.robot.commands.SmartElevatorStop;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.FeedbackDevice;
+import com.ctre.phoenix.motorcontrol.LimitSwitchNormal;
+import com.ctre.phoenix.motorcontrol.LimitSwitchSource;
 import com.ctre.phoenix.motorcontrol.StatusFrameEnhanced;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
@@ -195,6 +197,8 @@ public class SmartElevator extends Subsystem {
 		talon.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder, ConfigTalon.kPIDLoopIdx, ConfigTalon.kTimeoutMs);
 		talon.setSensorPhase(false);
 		talon.setInverted(false);
+		talon.configForwardLimitSwitchSource(LimitSwitchSource.FeedbackConnector, LimitSwitchNormal.NormallyClosed, ConfigTalon.kTimeoutMs);
+		talon.configReverseLimitSwitchSource(LimitSwitchSource.FeedbackConnector, LimitSwitchNormal.NormallyClosed, ConfigTalon.kTimeoutMs);
 		
 		/* Set relevant frame periods to be at least as fast as periodic rate*/
 		talon.setStatusFramePeriod(StatusFrameEnhanced.Status_13_Base_PIDF0, 10, ConfigTalon.kTimeoutMs);
