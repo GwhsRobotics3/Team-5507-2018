@@ -11,9 +11,9 @@
         "hgap": 16.0,
         "vgap": 16.0,
         "tiles": {
-          "0,0": {
+          "1,0": {
             "size": [
-              8,
+              7,
               6
             ],
             "content": {
@@ -110,6 +110,19 @@
                 }
               ]
             }
+          },
+          "2,1": {
+            "size": [
+              1,
+              1
+            ],
+            "content": {
+              "_type": "Boolean Box",
+              "_source0": "network_table:///SmartDashboard/limit switch",
+              "_title": "SmartDashboard/limit switch",
+              "colorWhenTrue": "#7CFC00FF",
+              "colorWhenFalse": "#8B0000FF"
+            }
           }
         }
       }
@@ -124,9 +137,9 @@
         "hgap": 16.0,
         "vgap": 16.0,
         "tiles": {
-          "0,0": {
+          "0,2": {
             "size": [
-              1,
+              2,
               1
             ],
             "content": {

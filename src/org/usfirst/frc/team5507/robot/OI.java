@@ -89,6 +89,7 @@ public class OI {
 		Button start = new JoystickButton(controller, 8);  
 		Button leftJoy = new JoystickButton(controller, 9);
 		Button rightJoy = new JoystickButton(controller, 10);
+		Button dpadDown = new DpadButton(controller, DpadButton.DPAD_DOWN);
 
 		switch(control_scheme) {			
 			case CONTROL_SCHEME_COMPETITION:
@@ -102,6 +103,8 @@ public class OI {
 				//start.whenPressed(new Catapult());
 				//select.whenPressed(new ClimberRewind());
 				start.whileHeld(new ClimberUp());
+				dpadDown.whileHeld(new SmartElevatorManualDrive(-1));
+				
 				break;
 			
 			case CONTROL_SCHEME_TESTING:
