@@ -7,11 +7,12 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 /**
  *
  */
-public class CatapultInRScale extends CommandGroup {
+public class AutoCatapultInLScale extends CommandGroup {
 
 	private int side;
 	
-    public CatapultInRScale(int s) {
+    public AutoCatapultInLScale(int s) {
+    	
     	side = s;
         // Add Commands here:
         // e.g. addSequential(new Command1());
@@ -31,21 +32,21 @@ public class CatapultInRScale extends CommandGroup {
         // arm.
     	
     	addSequential(new AutonomousWait(0));
-    	if (side == FieldHelper.ROBOT_START_RIGHT)
-    	{
-    		addSequential(new DriveForwardDistance(-1));
-    		addSequential(new DriveForwardDistance(-25));
-    		addSequential(new DriveTurnByAngle(-90));
-    		addSequential(new Catapult());
-    	}
     	if (side == FieldHelper.ROBOT_START_LEFT)
     	{
     		addSequential(new DriveForwardDistance(-1));
+    		addSequential(new DriveForwardDistance(-25));
     		addSequential(new DriveTurnByAngle(90));
-    		addSequential(new DriveForwardDistance(-14));
+    		addSequential(new Catapult());
+    	}
+    	if(side == FieldHelper.ROBOT_START_RIGHT)
+    	{
+    		addSequential(new DriveForwardDistance(-1));
     		addSequential(new DriveTurnByAngle(-90));
+    		addSequential(new DriveForwardDistance(-14));
+    		addSequential(new DriveTurnByAngle(90));
     		addSequential(new DriveForwardDistance(24));
-    		addSequential(new DriveSidewaysDistance(3));
+    		addSequential(new DriveSidewaysDistance(2));
     		addSequential(new DriveTurnByAngle(-90));
     		addSequential(new Catapult());
     	}
@@ -56,7 +57,12 @@ public class CatapultInRScale extends CommandGroup {
     		addSequential(new DriveForwardDistance(-25));
     		addSequential(new DriveTurnByAngle(-90.0));
     		addSequential(new Catapult());
+//        	addSequential(new DriveTurnByAngle(-68.0));
+//        	addSequential(new DriveForwardDistance(-10.8));
+//        	addSequential(new Catapult());
+//        	addSequential(new DriveStop());
     	}
     	addSequential(new DriveStop());	
     }
+
 }

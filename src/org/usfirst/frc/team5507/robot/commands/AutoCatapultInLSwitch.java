@@ -7,11 +7,11 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 /**
  *
  */
-public class CatapultInLSwitch extends CommandGroup {
+public class AutoCatapultInLSwitch extends CommandGroup {
 	
 	private int side;
 
-    public CatapultInLSwitch(int s) {
+    public AutoCatapultInLSwitch(int s) {
     	side = s;
         // Add Commands here:
         // e.g. addSequential(new Command1());
@@ -30,7 +30,7 @@ public class CatapultInLSwitch extends CommandGroup {
         // a CommandGroup containing them would require both the chassis and the
         // arm.
 
-    	addSequential(new AutonomousWait(0));
+    	//addSequential(new AutonomousWait(0));
     	if (side == FieldHelper.ROBOT_START_LEFT)
     	{
     		addSequential(new DriveForwardDistance(-5.0));

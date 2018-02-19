@@ -20,11 +20,6 @@ import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 import org.usfirst.frc.team5507.robot.commands.AutonomousCrossLine;
-import org.usfirst.frc.team5507.robot.commands.AutonomousDriveStraightTurnLeft;
-import org.usfirst.frc.team5507.robot.commands.CatapultInLScale;
-import org.usfirst.frc.team5507.robot.commands.CatapultInRScale;
-import org.usfirst.frc.team5507.robot.commands.DriveForward;
-import org.usfirst.frc.team5507.robot.commands.DriveForwardDistance;
 import org.usfirst.frc.team5507.robot.subsystems.Climber;
 import org.usfirst.frc.team5507.robot.subsystems.DriveTrain;
 import org.usfirst.frc.team5507.robot.subsystems.SmartGripper;
