@@ -9,6 +9,7 @@ import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import edu.wpi.first.wpilibj.Counter;
 
 
 /**
@@ -21,6 +22,7 @@ public class Intake extends Subsystem {
 	private static WPI_VictorSPX m_leftWheel = new WPI_VictorSPX(RobotMap.intakeLeftMotor);
 	private static WPI_VictorSPX m_rightWheel = new WPI_VictorSPX(RobotMap.intakeRightMotor);
 	private static DigitalInput limitSwitch = new DigitalInput(RobotMap.intakeBoxLimitSwitch);
+	private static Counter latch = new Counter(limitSwitch);
 	
 	public Intake() {
 		super("Intake");
@@ -54,9 +56,12 @@ public class Intake extends Subsystem {
     }
     
    public boolean isSwitchSet() {
-       return limitSwitch.get();    
+       return latch.get() > 1;    
     }
    
+   public void switchReset() { 
+	   latch.reset();
+   }
 	public void putExtraData() {
 		SmartDashboard.putBoolean("intake limit switch", Robot.m_intake.isSwitchSet());
 		SmartDashboard.putNumber("intake left wheel voltage", m_leftWheel.getMotorOutputVoltage());
