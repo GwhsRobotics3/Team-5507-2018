@@ -33,7 +33,7 @@ public class DriveForwardDistance extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.m_driveTrain.driveForward(d1, startAngle);
+    	Robot.m_driveTrain.driveForwardDistance(d1, startAngle);
     	System.out.println("Adam rolling out!");
     	SmartDashboard.putNumber("Auto Target position Forward", d1);
     	SmartDashboard.putNumber("Auto Starting Angle", startAngle);

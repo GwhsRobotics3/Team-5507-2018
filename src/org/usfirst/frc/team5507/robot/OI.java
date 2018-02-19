@@ -11,6 +11,7 @@ import org.usfirst.frc.team5507.robot.commands.Catapult;
 
 import org.usfirst.frc.team5507.robot.commands.ClimberRewind;
 import org.usfirst.frc.team5507.robot.commands.ClimberUp;
+import org.usfirst.frc.team5507.robot.commands.DriveStrafe;
 import org.usfirst.frc.team5507.robot.commands.IntakeTakeIn;
 import org.usfirst.frc.team5507.robot.commands.IntakeTakeOut;
 import org.usfirst.frc.team5507.robot.commands.RumbleInTheJungleJuliaWasRight;
@@ -93,6 +94,8 @@ public class OI {
 		Button rightJoy = new JoystickButton(controller, 10);
 		Button dpadDown = new DpadButton(controller, DpadButton.DPAD_DOWN);
 		Button dpadUp = new DpadButton(controller, DpadButton.DPAD_UP);
+		Button dpadLeft = new DpadButton(controller, DpadButton.DPAD_LEFT);
+		Button dpadRight = new DpadButton(controller, DpadButton.DPAD_RIGHT);
 
 		switch(control_scheme) {			
 			case CONTROL_SCHEME_COMPETITION:
@@ -108,6 +111,8 @@ public class OI {
 				start.whileHeld(new ClimberUp());
 				dpadDown.whenPressed(new SmartElevatorGoToBottom());
 				dpadUp.whenPressed(new SmartElevatorGoToTop());
+				dpadLeft.whileHeld(new DriveStrafe(-1));
+				dpadRight.whileHeld(new DriveStrafe(1));
 				
 				break;
 			
