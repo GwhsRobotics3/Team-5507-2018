@@ -23,7 +23,7 @@ public class DriveTrain extends Subsystem {
 	private double pos;
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
-	private static WPI_TalonSRX frontLeft = new WPI_TalonSRX(RobotMap.driveFrontLeft);
+	private WPI_TalonSRX frontLeft = new WPI_TalonSRX(RobotMap.driveFrontLeft);
 	private WPI_TalonSRX frontRight = new WPI_TalonSRX(RobotMap.driveFrontRight);
 	private WPI_TalonSRX backLeft = new WPI_TalonSRX(RobotMap.driveBackLeft);
 	private WPI_TalonSRX backRight = new WPI_TalonSRX(RobotMap.driveBackRight);
@@ -118,12 +118,12 @@ public class DriveTrain extends Subsystem {
     
     public static double getCurrentPos()
     {
-    	return frontLeft.getSelectedSensorPosition(0);
+    	return Robot.m_driveTrain.frontLeft.getSelectedSensorPosition(0);
     }
     
     public static void resetPos()
     {
-    	frontLeft.setSelectedSensorPosition(0,0,0);
+    	Robot.m_driveTrain.frontLeft.setSelectedSensorPosition(0,0,0);
    
     } 
     
