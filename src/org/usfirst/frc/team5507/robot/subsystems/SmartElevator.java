@@ -165,11 +165,11 @@ public class SmartElevator extends Subsystem {
 	}
 	
 	public boolean isSwitchSetBot() {
-		return elevatorPulley.getSensorCollection().isFwdLimitSwitchClosed();
+		return !elevatorPulley.getSensorCollection().isFwdLimitSwitchClosed();
 	}
 	
 	public boolean isSwitchSetTop() {
-		return elevatorPulley.getSensorCollection().isRevLimitSwitchClosed();   
+		return !elevatorPulley.getSensorCollection().isRevLimitSwitchClosed();   
 	}
 
 	public void putExtraData()

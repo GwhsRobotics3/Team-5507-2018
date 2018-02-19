@@ -112,8 +112,8 @@ public class OI {
 				//select.whenPressed(new ClimberRewind());
 				start.whileHeld(new ClimberUp());
 
-				dpadDown.whenPressed(new SmartElevatorDownThenUp());
-				dpadUp.whenPressed(new SmartElevatorUpThenDown());
+				//dpadDown.whenPressed(new SmartElevatorDownThenUp());
+				//dpadUp.whenPressed(new SmartElevatorUpThenDown());
 
 				dpadLeft.whileHeld(new DriveStrafe(-1));
 				dpadRight.whileHeld(new DriveStrafe(1));

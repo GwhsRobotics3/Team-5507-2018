@@ -22,9 +22,9 @@ public class SmartGripper extends Subsystem {
 	public static final int STATE_OPEN = 2;
 	public static final int STATE_CLOSED = 3;
 	
-	public static final int DEGREES_START = 0;
-	public static final int DEGREES_OPEN = 60;
-	public static final int DEGREES_CLOSED = 100;
+	public static final int DEGREES_START = 0; //arms start 80 degrees from T-pose
+	public static final int DEGREES_OPEN = 140;
+	public static final int DEGREES_CLOSED = 180;
 	
 	static final int CURRENT_LIMIT = 5;
 	
