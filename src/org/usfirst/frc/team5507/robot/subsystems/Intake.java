@@ -67,5 +67,6 @@ public class Intake extends Subsystem {
 		SmartDashboard.putNumber("intake left wheel voltage", m_leftWheel.getMotorOutputVoltage());
 		SmartDashboard.putNumber("intake right wheel voltage", m_rightWheel.getMotorOutputVoltage());
 	}
+	
 }
 

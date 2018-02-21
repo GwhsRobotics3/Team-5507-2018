@@ -4,8 +4,10 @@ import org.usfirst.frc.team5507.robot.Robot;
 import org.usfirst.frc.team5507.robot.RobotMap;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
+import com.ctre.phoenix.motorcontrol.FeedbackDevice;
 import com.ctre.phoenix.motorcontrol.LimitSwitchNormal;
 import com.ctre.phoenix.motorcontrol.LimitSwitchSource;
+import com.ctre.phoenix.motorcontrol.StatusFrameEnhanced;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
@@ -37,8 +39,6 @@ public class SmartGripper extends Subsystem {
 	public SmartGripper()
 	{
 		currentState = STATE_START;
-		ConfigTalon.configTalon(leftArm);
-		ConfigTalon.configTalon(rightArm);
 		/*leftArm.configForwardSoftLimitThreshold(DEGREES_START, ConfigTalon.kTimeoutMs);
 		leftArm.configReverseSoftLimitThreshold(DEGREES_OPEN, ConfigTalon.kTimeoutMs);
 		rightArm.configForwardSoftLimitThreshold(-DEGREES_START, ConfigTalon.kTimeoutMs);
@@ -152,6 +152,31 @@ public class SmartGripper extends Subsystem {
 		
 		talon.configForwardLimitSwitchSource(LimitSwitchSource.FeedbackConnector, LimitSwitchNormal.Disabled, ConfigTalon.kTimeoutMs);
 		talon.configReverseLimitSwitchSource(LimitSwitchSource.FeedbackConnector, LimitSwitchNormal.Disabled, ConfigTalon.kTimeoutMs);
+		
+		talon.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative, ConfigTalon.kPIDLoopIdx, ConfigTalon.kTimeoutMs);
+		talon.setSensorPhase(true);
+		talon.setInverted(false);
+		/* Set relevant frame periods to be at least as fast as periodic rate*/
+		talon.setStatusFramePeriod(StatusFrameEnhanced.Status_13_Base_PIDF0, 10, ConfigTalon.kTimeoutMs);
+		talon.setStatusFramePeriod(StatusFrameEnhanced.Status_10_MotionMagic, 10, ConfigTalon.kTimeoutMs);
+
+		/* set the peak and nominal outputs */
+		talon.configNominalOutputForward(0, ConfigTalon.kTimeoutMs);
+		talon.configNominalOutputReverse(0, ConfigTalon.kTimeoutMs);
+		talon.configPeakOutputForward(1, ConfigTalon.kTimeoutMs);
+		talon.configPeakOutputReverse(-1, ConfigTalon.kTimeoutMs);
+		
+		/* set closed loop gains in slot0 - see documentation */
+		talon.selectProfileSlot(ConfigTalon.kSlotIdx, ConfigTalon.kPIDLoopIdx);
+		talon.config_kF(0, 0.2, ConfigTalon.kTimeoutMs);
+		talon.config_kP(0, 1, ConfigTalon.kTimeoutMs);
+		talon.config_kI(0, 0, ConfigTalon.kTimeoutMs);
+		talon.config_kD(0, 10, ConfigTalon.kTimeoutMs);
+		/* set acceleration and vcruise velocity - see documentation */
+		talon.configMotionCruiseVelocity(15000, ConfigTalon.kTimeoutMs);
+		talon.configMotionAcceleration(6000, ConfigTalon.kTimeoutMs);
+		/* zero the sensor */
+		talon.setSelectedSensorPosition(0, ConfigTalon.kPIDLoopIdx, ConfigTalon.kTimeoutMs);
 	}
 	
 	public void configGripperTalonR(WPI_TalonSRX talon)
@@ -167,6 +192,31 @@ public class SmartGripper extends Subsystem {
 		
 		talon.configReverseLimitSwitchSource(LimitSwitchSource.FeedbackConnector, LimitSwitchNormal.Disabled, ConfigTalon.kTimeoutMs);
 		talon.configForwardLimitSwitchSource(LimitSwitchSource.FeedbackConnector, LimitSwitchNormal.Disabled, ConfigTalon.kTimeoutMs);
+		
+		talon.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative, ConfigTalon.kPIDLoopIdx, ConfigTalon.kTimeoutMs);
+		talon.setSensorPhase(true);
+		talon.setInverted(false);
+		/* Set relevant frame periods to be at least as fast as periodic rate*/
+		talon.setStatusFramePeriod(StatusFrameEnhanced.Status_13_Base_PIDF0, 10, ConfigTalon.kTimeoutMs);
+		talon.setStatusFramePeriod(StatusFrameEnhanced.Status_10_MotionMagic, 10, ConfigTalon.kTimeoutMs);
+
+		/* set the peak and nominal outputs */
+		talon.configNominalOutputForward(0, ConfigTalon.kTimeoutMs);
+		talon.configNominalOutputReverse(0, ConfigTalon.kTimeoutMs);
+		talon.configPeakOutputForward(1, ConfigTalon.kTimeoutMs);
+		talon.configPeakOutputReverse(-1, ConfigTalon.kTimeoutMs);
+		
+		/* set closed loop gains in slot0 - see documentation */
+		talon.selectProfileSlot(ConfigTalon.kSlotIdx, ConfigTalon.kPIDLoopIdx);
+		talon.config_kF(0, 0.2, ConfigTalon.kTimeoutMs);
+		talon.config_kP(0, 1, ConfigTalon.kTimeoutMs);
+		talon.config_kI(0, 0, ConfigTalon.kTimeoutMs);
+		talon.config_kD(0, 10, ConfigTalon.kTimeoutMs);
+		/* set acceleration and vcruise velocity - see documentation */
+		talon.configMotionCruiseVelocity(15000, ConfigTalon.kTimeoutMs);
+		talon.configMotionAcceleration(6000, ConfigTalon.kTimeoutMs);
+		/* zero the sensor */
+		talon.setSelectedSensorPosition(0, ConfigTalon.kPIDLoopIdx, ConfigTalon.kTimeoutMs);
 	}
 	
 	public static int angleToTicks(int degrees) {
