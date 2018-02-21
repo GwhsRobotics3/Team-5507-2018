@@ -56,7 +56,7 @@ public class Intake extends Subsystem {
     }
     
    public boolean isSwitchSet() {
-       return latch.get() > 1;    
+       return latch.get() > 0;    
     }
    
    public void switchReset() { 
