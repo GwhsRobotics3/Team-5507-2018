@@ -25,6 +25,6 @@ public class SmartElevatorDownThenUp extends CommandGroup {
         // a CommandGroup containing them would require both the chassis and the
         // arm.
     	addSequential(new SmartElevatorGoToBottom());
-    	addSequential(new SmartElevatorUpLittle(.2));
+    	addSequential(new SmartElevatorUpLittle(.1));
     }
 }
