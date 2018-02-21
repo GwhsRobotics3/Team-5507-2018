@@ -9,36 +9,35 @@ import edu.wpi.first.wpilibj.command.Command;
  *
  */
 public class SmartElevatorDownLittle extends Command {
- 
-	private Timer x;
-    public SmartElevatorDownLittle() {
+	private Timer timer = new Timer();
+	private double time;
+    public SmartElevatorDownLittle(double t) {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-    	requires(Robot.m_smartElevator);   	
+    	requires(Robot.m_smartElevator);
+    	time = t;
     }
-
+ 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	x.reset();
-    	x.start();
+    	timer.start();
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	if(x.get() < .1)
-    	{
-    		Robot.m_smartElevator.goDown();
-    	}
+    	
+    	Robot.m_smartElevator.goDown();
+    	System.out.println("ajgdjas");
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return x.get() > .1;
+    	return timer.get() > time;
     }
 
     // Called once after isFinished returns true
     protected void end() {
-    	Robot.m_smartElevator.stop();
+    	timer.reset();
     }
 
     // Called when another command which requires one or more of the same

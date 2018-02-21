@@ -15,11 +15,13 @@ import org.usfirst.frc.team5507.robot.commands.DriveStrafe;
 import org.usfirst.frc.team5507.robot.commands.IntakeTakeIn;
 import org.usfirst.frc.team5507.robot.commands.IntakeTakeOut;
 import org.usfirst.frc.team5507.robot.commands.RumbleInTheJungleJuliaWasRight;
+import org.usfirst.frc.team5507.robot.commands.SmartElevatorDownLittle;
 import org.usfirst.frc.team5507.robot.commands.SmartElevatorDownThenUp;
 import org.usfirst.frc.team5507.robot.commands.SmartElevatorGoToBottom;
 import org.usfirst.frc.team5507.robot.commands.SmartElevatorGoToTop;
 import org.usfirst.frc.team5507.robot.commands.SmartElevatorManualDrive;
 import org.usfirst.frc.team5507.robot.commands.SmartElevatorMove;
+import org.usfirst.frc.team5507.robot.commands.SmartElevatorUpLittle;
 import org.usfirst.frc.team5507.robot.commands.SmartElevatorUpThenDown;
 import org.usfirst.frc.team5507.robot.commands.SmartGripperIntakeGrabCube;
 import org.usfirst.frc.team5507.robot.commands.SmartGripperJankyMove;
@@ -112,8 +114,8 @@ public class OI {
 				select.whileHeld(new ClimberRewind());
 				start.whileHeld(new ClimberUp());
 
-				//dpadDown.whenPressed(new SmartElevatorDownThenUp());
-				//dpadUp.whenPressed(new SmartElevatorUpThenDown());
+				dpadDown.whenPressed(new SmartElevatorDownThenUp());
+				dpadUp.whenPressed(new SmartElevatorUpThenDown());
 
 				dpadLeft.whileHeld(new DriveStrafe(-1));
 				dpadRight.whileHeld(new DriveStrafe(1));
