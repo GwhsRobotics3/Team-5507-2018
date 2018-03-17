@@ -57,6 +57,7 @@ public class AutoCatapultInLScale extends CommandGroup {
     		addSequential(new DriveForwardDistance(-25));
     		addSequential(new DriveTurnByAngle(-90.0));
     		addSequential(new Catapult());
+    		
 //        	addSequential(new DriveTurnByAngle(-68.0));
 //        	addSequential(new DriveForwardDistance(-10.8));
 //        	addSequential(new Catapult());

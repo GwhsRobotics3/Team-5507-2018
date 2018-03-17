@@ -35,7 +35,7 @@ public class AutoCatapultInLSwitch extends CommandGroup {
     	{
     		addSequential(new DriveForwardDistance(-14.0));
     		addSequential(new DriveTurnByAngle(90.0)); //+90 
-    		//addSequential(new Catapult());
+    		addSequential(new Catapult());
     	}
     	if(side == FieldHelper.ROBOT_START_RIGHT)
     	{
@@ -45,19 +45,17 @@ public class AutoCatapultInLSwitch extends CommandGroup {
     		addSequential(new DriveTurnByAngle(90.0));
     		addSequential(new DriveForwardDistance(-7.0));
     		addSequential(new DriveTurnByAngle(90.0));
-    		//addSequential(new Catapult());
+    		addSequential(new DriveForwardDistance(2));
+    		addSequential(new Catapult());
     	}
     	if (side == FieldHelper.ROBOT_START_MIDDLE)
 		{
-    		/*addSequential(new DriveForwardDistance(-2));
+    		addSequential(new DriveForwardDistance(-1));
     		addSequential(new DriveTurnByAngle(-45));
-			addSequential(new DriveForwardDistance(-4.5));
+			addSequential(new DriveForwardDistance(-5.5));
 			addSequential(new DriveTurnByAngle(45));
-			addSequential(new DriveForwardDistance(-2.5));*/
-			//addSequential(new Catapult());
-    		addSequential(new DriveForwardDistance(-2));
-    		addSequential(new DriveSidewaysDistance(4.5));
-    		addSequential(new DriveForwardDistance(-7));
+			addSequential(new DriveForward(2, -0.55));
+			addSequential(new Catapult());
 		}
     	addSequential(new DriveStop());
     }

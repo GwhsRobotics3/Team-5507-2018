@@ -12,12 +12,14 @@ public class DriveForward extends Command {
 
 	private Timer m_timer = new Timer(); //subjected to change with encoders
 	private double time;
+	private double speed;
 	
-    public DriveForward(double t) {
+    public DriveForward(double t, double s) {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     	requires(Robot.m_driveTrain);   
     	time = t;
+    	speed = s;
     }
 
     // Called just before this Command runs the first time
@@ -28,7 +30,7 @@ public class DriveForward extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.m_driveTrain.drive(0, 0.4, 0);
+    	Robot.m_driveTrain.drive(0, speed, 0);
     }
 
     // Make this return true when this Command no longer needs to run execute()

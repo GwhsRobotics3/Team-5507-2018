@@ -68,6 +68,10 @@ public class DriveTrain extends Subsystem {
     	{
     		drive(x, -y , z);
     	}
+    	else
+    	{
+    		drive(0, 0, 0);
+    	}
     }
     
     public void driveForwardDistance(double targetPos, double angle)

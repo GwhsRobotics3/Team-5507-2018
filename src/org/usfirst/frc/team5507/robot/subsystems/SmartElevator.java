@@ -32,6 +32,8 @@ public class SmartElevator extends Subsystem {
 	public static final double ELEVATOR_HIGH = 24;
 	public static final double ELEVATOR_MED = 12;
 	public static final double ELEVATOR_LOW = 3;
+	
+	public static final int CURRENT_LIMIT = 10;
 
 	// Put methods for controlling this subsystem
 	// here. Call these from Commands.
@@ -199,6 +201,10 @@ public class SmartElevator extends Subsystem {
 		talon.setInverted(false);
 		talon.configForwardLimitSwitchSource(LimitSwitchSource.FeedbackConnector, LimitSwitchNormal.NormallyClosed, ConfigTalon.kTimeoutMs);
 		talon.configReverseLimitSwitchSource(LimitSwitchSource.FeedbackConnector, LimitSwitchNormal.NormallyClosed, ConfigTalon.kTimeoutMs);
+		
+		talon.configContinuousCurrentLimit(CURRENT_LIMIT, ConfigTalon.kTimeoutMs);
+		talon.configPeakCurrentLimit(0, ConfigTalon.kTimeoutMs);
+		talon.enableCurrentLimit(true);
 		
 		/* Set relevant frame periods to be at least as fast as periodic rate*/
 		talon.setStatusFramePeriod(StatusFrameEnhanced.Status_13_Base_PIDF0, 10, ConfigTalon.kTimeoutMs);

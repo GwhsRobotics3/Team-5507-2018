@@ -1,5 +1,5 @@
 {
-  "dividerPosition": 0.3336842105263158,
+  "dividerPosition": 0.3352631578947368,
   "tabPane": [
     {
       "title": "Camera",
@@ -172,9 +172,9 @@
               "_title": "SmartDashboard/Elevator State"
             }
           },
-          "2,0": {
+          "2,1": {
             "size": [
-              1,
+              2,
               2
             ],
             "content": {
@@ -187,9 +187,11 @@
                   "_title": "SmartDashboard/Elevator pos"
                 },
                 {
-                  "_type": "Text View",
+                  "_type": "Graph",
                   "_source0": "network_table:///SmartDashboard/Elevator Current",
-                  "_title": "SmartDashboard/Elevator Current"
+                  "_title": "SmartDashboard/Elevator Current",
+                  "Visible time": 30.0,
+                  "SmartDashboard/Elevator Current visible": true
                 },
                 {
                   "_type": "Text View",

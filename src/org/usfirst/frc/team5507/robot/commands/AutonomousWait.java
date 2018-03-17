@@ -10,7 +10,7 @@ import edu.wpi.first.wpilibj.command.Command;
  */
 public class AutonomousWait extends Command {
 
-	private Timer autoTimer;
+	private Timer autoTimer = new Timer();
 	private double timeWaiting;
 	
     public AutonomousWait(double t) {
