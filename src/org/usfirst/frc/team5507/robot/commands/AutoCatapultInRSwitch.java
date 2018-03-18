@@ -54,7 +54,7 @@ public class AutoCatapultInRSwitch extends CommandGroup {
 			addSequential(new DriveTurnByAngle(45));
 			addSequential(new DriveForwardDistance(-4.5));
 			addSequential(new DriveTurnByAngle(-45));
-			addSequential(new DriveForward(2, -0.55));
+			addSequential(new DriveForward(2, -0.4));
 			addSequential(new Catapult());
 			
 			/*addSequential(new DriveForwardDistance(-2));

@@ -29,7 +29,7 @@ public class Catapult extends Command {
     protected void execute() {
     	if(throwTimer.get() < 0.75)
     	{
-	    	Robot.m_climber.armUp(0.8);
+	    	Robot.m_climber.armUp(1.0);
     	}
     	else if(throwTimer.get() < 1)
     	{
