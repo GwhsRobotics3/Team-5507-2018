@@ -111,7 +111,11 @@ public class OI {
 				backLeft.whileHeld(new SmartElevatorManualDrive(-1)); 
 				backRight.whileHeld(new SmartElevatorManualDrive(1));
 				//start.whenPressed(new Catapult());
+				
 				select.whileHeld(new ClimberRewind());
+				
+				//select.whenPressed(new SmartGripperSetState(SmartGripper.STATE_DOCKED));
+				
 				start.whileHeld(new ClimberUp());
 
 				dpadDown.whenPressed(new SmartElevatorDownThenUp());

@@ -23,10 +23,12 @@ public class SmartGripper extends Subsystem {
 	public static final int STATE_START = 1;
 	public static final int STATE_OPEN = 2;
 	public static final int STATE_CLOSED = 3;
+	public static final int STATE_DOCKED = 4;
 	
 	public static final int DEGREES_START = 0; //arms start 80 degrees from T-pose
 	public static final int DEGREES_OPEN = 140;
 	public static final int DEGREES_CLOSED = 180;
+	public static final int DEGREES_DOCKED = 20;
 	
 	static final int CURRENT_LIMIT = 5;
 	
@@ -92,7 +94,7 @@ public class SmartGripper extends Subsystem {
 	
 	public void setState(int s)
 	{
-		if(s < STATE_START || s > STATE_CLOSED) {
+		if(s < STATE_START || s > STATE_DOCKED) {
 			s = STATE_OPEN;
 		}
 			
@@ -113,6 +115,10 @@ public class SmartGripper extends Subsystem {
 			case(STATE_CLOSED):
 				setTargetAngles(DEGREES_CLOSED);
 				System.out.println("Closed" + " Degrees " + angleToTicks(DEGREES_CLOSED));
+				break;
+				
+			case(STATE_DOCKED):
+				setTargetAngles(DEGREES_DOCKED);
 				break;
 				
 			default:
