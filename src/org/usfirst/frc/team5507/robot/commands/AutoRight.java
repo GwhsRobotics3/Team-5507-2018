@@ -1,19 +1,16 @@
 package org.usfirst.frc.team5507.robot.commands;
 
-import org.usfirst.frc.team5507.robot.FieldHelper;
 import org.usfirst.frc.team5507.robot.subsystems.SmartGripper;
 
+import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
 /**
  *
  */
-public class AutoCatapultInRScale extends CommandGroup {
+public class AutoRight extends CommandGroup {
 
-	private int side;
-	
-    public AutoCatapultInRScale(int s) {
-    	side = s;
+    public AutoRight() {
         // Add Commands here:
         // e.g. addSequential(new Command1());
         //      addSequential(new Command2());
@@ -31,9 +28,10 @@ public class AutoCatapultInRScale extends CommandGroup {
         // a CommandGroup containing them would require both the chassis and the
         // arm.
     	
-    	addSequential(new AutonomousWait(0));
-    	if (side == FieldHelper.ROBOT_START_RIGHT)
-    	{
+    	// If Sacle is ours we go for Scale
+    	//if Scale isnt ours && Switch is ours we go for Switch
+    	String gameData = DriverStation.getInstance().getGameSpecificMessage();
+    	if(gameData.charAt(1) == 'R') {
     		addSequential(new DriveForwardDistance(-1));
     		addSequential(new DriveForwardDistance(-25));
     		addSequential(new DriveTurnByAngle(-90));
@@ -41,32 +39,30 @@ public class AutoCatapultInRScale extends CommandGroup {
     		addSequential(new Catapult());
     		//new code
     		//picking up another cube
-    		addSequential(new DriveTurnByAngle(90));
+    		addSequential(new DriveTurnByAngle(-90));
     		addSequential(new SmartGripperSetState(SmartGripper.STATE_OPEN));
     		addSequential(new DriveForwardDistance(5)); 
-    		addSequential(new DriveSidewaysDistance(1.7));
+    		addSequential(new DriveSidewaysDistance(-1.7));
     		addSequential(new DriveForwardDistance(3.5));
     		addSequential(new SmartGripperIntakeGrabCube());
     	}
-    	if (side == FieldHelper.ROBOT_START_LEFT)
-    	{
-    		addSequential(new DriveForwardDistance(-1));
-    		addSequential(new DriveTurnByAngle(90));
-    		addSequential(new DriveForwardDistance(-14));
-    		addSequential(new DriveTurnByAngle(-90));
-    		addSequential(new DriveForwardDistance(24));
-    		addSequential(new DriveSidewaysDistance(3));
-    		addSequential(new DriveTurnByAngle(-90));
-    		addSequential(new Catapult());
+    	else if ( gameData.charAt(0) == 'R') {
+    		addSequential(new DriveForwardDistance(-14.0));
+			addSequential(new DriveTurnByAngle(-90.0));
+			addSequential(new DriveForwardDistance(-1.5));
+			addSequential(new Catapult());
+			//new code
+			//picking up another cube
+			addSequential(new DriveTurnByAngle(90));
+			addSequential(new DriveForwardDistance(-5));
+			addSequential(new DriveSidewaysDistance(2.5));
+			addSequential(new SmartGripperSetState(SmartGripper.STATE_OPEN));
+			addSequential(new DriveForwardDistance(2.5));
+    		addSequential(new SmartGripperIntakeGrabCube());
     	}
-    	if (side == FieldHelper.ROBOT_START_MIDDLE)
-    	{
-    		addSequential(new DriveForwardDistance(-1));
-    		addSequential(new DriveSidewaysDistance(8));
-    		addSequential(new DriveForwardDistance(-25));
-    		addSequential(new DriveTurnByAngle(-90.0));
-    		addSequential(new Catapult());
+    	else {
+    		addSequential(new DriveForwardDistance(-12.0));
+        	addSequential(new DriveStop());
     	}
-    	addSequential(new DriveStop());	
     }
 }

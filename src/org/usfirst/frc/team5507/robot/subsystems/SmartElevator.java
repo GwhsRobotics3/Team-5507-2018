@@ -33,7 +33,7 @@ public class SmartElevator extends Subsystem {
 	public static final double ELEVATOR_MED = 12;
 	public static final double ELEVATOR_LOW = 3;
 	
-	public static final int CURRENT_LIMIT = 10;
+	public static final int CURRENT_LIMIT = 40;
 
 	// Put methods for controlling this subsystem
 	// here. Call these from Commands.
@@ -153,7 +153,7 @@ public class SmartElevator extends Subsystem {
 	
 	public void goDown()
 	{
-		elevatorPulley.set(1);
+		elevatorPulley.set(0.5);
 	}
 
 	public void stop()

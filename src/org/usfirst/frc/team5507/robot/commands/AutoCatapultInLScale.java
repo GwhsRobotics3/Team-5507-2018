@@ -1,6 +1,7 @@
 package org.usfirst.frc.team5507.robot.commands;
 
 import org.usfirst.frc.team5507.robot.FieldHelper;
+import org.usfirst.frc.team5507.robot.subsystems.SmartGripper;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
@@ -37,7 +38,17 @@ public class AutoCatapultInLScale extends CommandGroup {
     		addSequential(new DriveForwardDistance(-1));
     		addSequential(new DriveForwardDistance(-25));
     		addSequential(new DriveTurnByAngle(90));
+    		addSequential(new DriveForwardDistance(2));
     		addSequential(new Catapult());
+    		//new code
+    		//picking up another cube
+    		addSequential(new DriveTurnByAngle(-90));
+    		addSequential(new SmartGripperSetState(SmartGripper.STATE_OPEN));
+    		addSequential(new DriveForwardDistance(5)); 
+    		addSequential(new DriveSidewaysDistance(-1.7));
+    		addSequential(new DriveForwardDistance(3.5));
+    		addSequential(new SmartGripperIntakeGrabCube());
+    		
     	}
     	if(side == FieldHelper.ROBOT_START_RIGHT)
     	{

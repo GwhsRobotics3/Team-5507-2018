@@ -20,6 +20,9 @@ import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
+import org.usfirst.frc.team5507.robot.commands.AutoLeft;
+import org.usfirst.frc.team5507.robot.commands.AutoMiddle;
+import org.usfirst.frc.team5507.robot.commands.AutoRight;
 import org.usfirst.frc.team5507.robot.commands.AutonomousCrossLine;
 import org.usfirst.frc.team5507.robot.subsystems.Climber;
 import org.usfirst.frc.team5507.robot.subsystems.DriveTrain;
@@ -63,6 +66,12 @@ public class Robot extends TimedRobot {
 	private static final int CENTER_CATAPULT_SWITCH = 4;
 	private static final int RIGHT_CATAPULT_SCALE = 5;
 	private static final int RIGHT_CATAPULT_SWITCH = 6;
+	
+	//new Auto system
+	private static final int START_DEFAULT = 0;
+	private static final int START_LEFT = 1;
+	private static final int START_MIDDLE = 2;
+	private static final int START_RIGHT = 3;
 
 	public Robot() {
 		try {
@@ -96,13 +105,19 @@ public class Robot extends TimedRobot {
 	@Override
 	public void robotInit() {
 		m_oi = new OI();
+		/*
 		m_chooser.addDefault("cross the line", DEFAULT);
 		m_chooser.addObject("Left catapult in scale", LEFT_CATAPULT_SCALE);
 		m_chooser.addObject("Left catapult in switch", LEFT_CATAPULT_SWITCH);
 		m_chooser.addObject("Center catapult in scale", CENTER_CATAPULT_SCALE);
 		m_chooser.addObject("Center catapult in switch", CENTER_CATAPULT_SWITCH);
 		m_chooser.addObject("Right catapult in scale", RIGHT_CATAPULT_SCALE);
-		m_chooser.addObject("Right catapult in switch", RIGHT_CATAPULT_SWITCH);
+		m_chooser.addObject("Right catapult in switch", RIGHT_CATAPULT_SWITCH); */
+		
+		m_chooser.addDefault("Cross the line", START_DEFAULT);
+		m_chooser.addObject("Starting from left", START_LEFT);
+		m_chooser.addObject("Starting from middle", START_MIDDLE);
+		m_chooser.addObject("Starting from right", START_RIGHT);
 		
 		SmartDashboard.putData("Auto modes", m_chooser);
 		UsbCamera camera = CameraServer.getInstance().startAutomaticCapture();
@@ -141,7 +156,7 @@ public class Robot extends TimedRobot {
 		m_autonomousCommand = new AutonomousCrossLine(); //m_chooser.getSelected();
 		DriveTrain.resetPos();
 		
-		switch(m_chooser.getSelected())
+	/*	switch(m_chooser.getSelected())
 		{
 			case LEFT_CATAPULT_SWITCH:
 				m_autonomousCommand = FieldHelper.getAuto(FieldHelper.ROBOT_START_LEFT, "switch");
@@ -169,8 +184,26 @@ public class Robot extends TimedRobot {
 				
 			default:
 				m_autonomousCommand = new AutonomousCrossLine();
+		} */
+		
+		switch(m_chooser.getSelected())
+		{
+			case START_LEFT:
+				m_autonomousCommand = new AutoLeft();
+				break;
 				
+			case START_MIDDLE:
+				m_autonomousCommand = new AutoMiddle();
+				break;
+			
+			case START_RIGHT:
+				m_autonomousCommand = new AutoRight();
+				break;
+				
+			default:
+				m_autonomousCommand = new AutonomousCrossLine();
 		}
+		
 		SmartDashboard.putData("Auto mode", m_autonomousCommand);
 		
 		/*
