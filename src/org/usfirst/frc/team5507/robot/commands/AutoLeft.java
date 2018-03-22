@@ -29,32 +29,31 @@ public class AutoLeft extends CommandGroup {
         // arm.
     	String gameData = DriverStation.getInstance().getGameSpecificMessage();
     	if(gameData.charAt(1) == 'L') {
-    		addSequential(new DriveForwardDistance(-1));
-    		addSequential(new DriveForwardDistance(-25));
+    		addSequential(new DriveForwardDistance(-24));
     		addSequential(new DriveTurnByAngle(90));
-    		addSequential(new DriveForwardDistance(2));
-    		addSequential(new Catapult());
+    		addParallel(new DriveForwardDistance(-0.5));
+    		addParallel(new Catapult());
     		//new code
     		//picking up another cube
     		addSequential(new DriveTurnByAngle(-90));
     		addSequential(new SmartGripperSetState(SmartGripper.STATE_OPEN));
-    		addSequential(new DriveForwardDistance(5)); 
-    		addSequential(new DriveSidewaysDistance(-1.7));
+    		addSequential(new DriveForwardDistance(3.5)); 
+    		addSequential(new DriveSidewaysDistance(3));
     		addSequential(new DriveForwardDistance(3.5));
     		addSequential(new SmartGripperIntakeGrabCube());
     	}
     	else if(gameData.charAt(0) == 'L') {
-    		addSequential(new DriveForwardDistance(-14.0));
+    		addSequential(new DriveForwardDistance(-11.0));
 			addSequential(new DriveTurnByAngle(90.0));
-			addSequential(new DriveForwardDistance(-1.5));
+			addSequential(new DriveForward(1.0, -1.0));
 			addSequential(new Catapult());
 			//new code
 			//picking up another cube
 			addSequential(new DriveTurnByAngle(-90));
 			addSequential(new DriveForwardDistance(5));
-			addSequential(new DriveSidewaysDistance(-2.5));
+			addSequential(new DriveSidewaysDistance(-4));
 			addSequential(new SmartGripperSetState(SmartGripper.STATE_OPEN));
-			addSequential(new DriveForwardDistance(2.5));
+			addSequential(new DriveForwardDistance(2));
     		addSequential(new SmartGripperIntakeGrabCube());
     	}
     	else {

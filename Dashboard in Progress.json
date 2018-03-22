@@ -293,85 +293,6 @@
       }
     },
     {
-      "title": "Auto",
-      "autoPopulate": false,
-      "autoPopulatePrefix": "",
-      "widgetPane": {
-        "gridSize": 128.0,
-        "showGrid": true,
-        "hgap": 16.0,
-        "vgap": 16.0,
-        "tiles": {
-          "0,0": {
-            "size": [
-              2,
-              1
-            ],
-            "content": {
-              "_type": "ComboBox Chooser",
-              "_source0": "network_table:///SmartDashboard/Auto modes",
-              "_title": "/SmartDashboard/Auto modes"
-            }
-          },
-          "2,0": {
-            "size": [
-              2,
-              1
-            ],
-            "content": {
-              "_type": "Command",
-              "_source0": "network_table:///SmartDashboard/Auto mode",
-              "_title": "SmartDashboard/Auto mode"
-            }
-          },
-          "0,1": {
-            "size": [
-              2,
-              1
-            ],
-            "content": {
-              "_type": "Text View",
-              "_source0": "network_table:///SmartDashboard/Auto Starting Angle",
-              "_title": "/SmartDashboard/Auto Starting Angle"
-            }
-          },
-          "2,1": {
-            "size": [
-              2,
-              1
-            ],
-            "content": {
-              "_type": "Text View",
-              "_source0": "network_table:///SmartDashboard/Auto Target position Forward",
-              "_title": "/SmartDashboard/Auto Target position Forward"
-            }
-          },
-          "0,3": {
-            "size": [
-              2,
-              1
-            ],
-            "content": {
-              "_type": "Basic Subsystem",
-              "_source0": "network_table:///SmartDashboard/DriveTrain",
-              "_title": "/SmartDashboard/DriveTrain"
-            }
-          },
-          "2,3": {
-            "size": [
-              2,
-              1
-            ],
-            "content": {
-              "_type": "Text View",
-              "_source0": "network_table:///SmartDashboard/IMU_Yaw",
-              "_title": "/SmartDashboard/IMU_Yaw"
-            }
-          }
-        }
-      }
-    },
-    {
       "title": "Climber",
       "autoPopulate": false,
       "autoPopulatePrefix": "",
@@ -390,6 +311,30 @@
               "_type": "Basic Subsystem",
               "_source0": "network_table:///SmartDashboard/Climber",
               "_title": "/SmartDashboard/Climber"
+            }
+          }
+        }
+      }
+    },
+    {
+      "title": "Autoi",
+      "autoPopulate": false,
+      "autoPopulatePrefix": "",
+      "widgetPane": {
+        "gridSize": 256.0,
+        "showGrid": true,
+        "hgap": 16.0,
+        "vgap": 16.0,
+        "tiles": {
+          "0,0": {
+            "size": [
+              1,
+              1
+            ],
+            "content": {
+              "_type": "ComboBox Chooser",
+              "_source0": "network_table:///SmartDashboard/Auto modes",
+              "_title": "SmartDashboard/Auto modes"
             }
           }
         }
