@@ -36,7 +36,7 @@ public class DriveTrain extends Subsystem {
 
 	public DriveTrain() {
 		super("DriveTrain");
-	    LiveWindow.addChild(this, m_drive);
+	    	LiveWindow.addChild(this, m_drive);
 		configTalon(frontLeft);
 		configTalon(frontRight);
 		configTalon(backRight);
